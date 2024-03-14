@@ -1,0 +1,344 @@
+﻿\file System\Corporate/Address.h
+\brief definition of dataclass myCorporate::TAddress of table \ref datamodel_table_Address with information on the addresses where a person lives, works or has any other relationship with them. in dictionary "simple person model"
+\see table \ref datamodel_table_Address
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\Corporate/Address.cpp
+\brief implementation of dataclass myCorporate::TAddress of table \ref datamodel_table_Address with information on the addresses where a person lives, works or has any other relationship with them. in dictionary "simple person model"
+\see table \ref datamodel_table_Address
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myCorporate::TAddress
+\brief information on the addresses where a person lives, works or has any other relationship with them.
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_Address
+
+\class myCorporate::TAddress::primary_key
+\brief primary key for elements of the class myCorporate::TAddress in a container or when seeking an entity in the database.
+
+\fn myCorporate::TAddress::primary_key::primary_key()
+\brief standard constructor for the class myCorporate::TAddress::primary_key
+
+\fn myCorporate::TAddress::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myCorporate::TAddress::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myCorporate::TAddress::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myCorporate::TAddress::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myCorporate::TAddress::primary_key::primary_key(TAddress const& other)
+\brief initializing constructor with an instance of the encircling class myCorporate::TAddress for the class myCorporate::TAddress::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myCorporate::TAddress const& with the instance of the encircling class which values should be copied
+
+\fn myCorporate::TAddress::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myCorporate::TAddress::primary_key::primary_key(int pID, int pAddressType)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with attribute as Foreign key from an attribute ID of the person entity to whom the address belongs
+\param [in] pAddressType int  with extension of the key by the address type to manage different addresses for one person
+
+\var myCorporate::TAddress::primary_key::iID
+\brief attribute as Foreign key from an attribute ID of the person entity to whom the address belongs
+\details Source: key member myCorporate::TAddress::primary_key::iID in class myCorporate::TAddress::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_Address with database type INT
+\fn myCorporate::TAddress::primary_key::ID() const
+\brief selector for the data element myCorporate::TAddress::primary_key::iID
+\returns int with the value for this member.
+\fn myCorporate::TAddress::primary_key::ID(int newVal)
+\brief manipulator for the data element myCorporate::TAddress::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\var myCorporate::TAddress::primary_key::iAddressType
+\brief extension of the key by the address type to manage different addresses for one person
+\details Source: key member myCorporate::TAddress::primary_key::iAddressType in class myCorporate::TAddress::primary_key with the type int
+\details Database: primary key attribute "AddressType" in entity \ref datamodel_table_Address with database type INT
+\fn myCorporate::TAddress::primary_key::AddressType() const
+\brief selector for the data element myCorporate::TAddress::primary_key::iAddressType
+\returns int with the value for this member.
+\fn myCorporate::TAddress::primary_key::AddressType(int newVal)
+\brief manipulator for the data element myCorporate::TAddress::primary_key::iAddressType
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myCorporate::TAddress::primary_key::operator TAddress () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myCorporate::TAddress
+
+\fn myCorporate::TAddress::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myCorporate::TAddress::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myCorporate::TAddress::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myCorporate::TAddress::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myCorporate::TAddress::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myCorporate::TAddress::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myCorporate::TAddress::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myCorporate::TAddress::container_ty
+\brief container type as std::map with the generated primary key type myCorporate::TAddress::primary_key for instances of this class
+
+\details The type uses the key type myCorporate::TAddress::primary_keypreviously created from the key attributes of table \ref datamodel_table_Address as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myCorporate::TAddress::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myCorporate::TAddress::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myCorporate::TAddress
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myCorporate::TAddress::TAddress()
+\brief standard constructor for TAddress
+
+\fn myCorporate::TAddress::TAddress(TAddress const& other)
+\brief copy constructor for TAddress
+\param[in] other reference of an instance of an other instance of myCorporate::TAddress to copy
+
+\fn myCorporate::TAddress::TAddress(TAddress&&)
+\brief rvalue constructor for TAddress
+
+\fn myCorporate::TAddress::~TAddress()
+\brief destructor for TAddress
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myCorporate::TAddress::swap(TAddress& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myCorporate::TAddress::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myCorporate::TAddress::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myCorporate::TAddress::copy(TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myCorporate::TAddress::iID
+\brief attribute as Foreign key from an attribute ID of the person entity to whom the address belongs
+\details Source: member myCorporate::TAddress::iID in class myCorporate::TAddress with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_Address with database type INT
+
+\var myCorporate::TAddress::iAddressType
+\brief extension of the key by the address type to manage different addresses for one person
+\details Source: member myCorporate::TAddress::iAddressType in class myCorporate::TAddress with the type std::optional<int>
+\details Database: attribute "AddressType" in entity \ref datamodel_table_Address with database type INT
+
+\var myCorporate::TAddress::strZipcode
+\brief Zip code for the address
+\details Source: member myCorporate::TAddress::strZipcode in class myCorporate::TAddress with the type std::optional<std::string>
+\details Database: attribute "Zipcode" in entity \ref datamodel_table_Address with database type VARCHAR
+
+\var myCorporate::TAddress::strCity
+\brief name of the city/county (possibly with district) for this address
+\details Source: member myCorporate::TAddress::strCity in class myCorporate::TAddress with the type std::optional<std::string>
+\details Database: attribute "City" in entity \ref datamodel_table_Address with database type VARCHAR
+
+\var myCorporate::TAddress::strStreet
+\brief name of the street belonging to this address
+\details Source: member myCorporate::TAddress::strStreet in class myCorporate::TAddress with the type std::optional<std::string>
+\details Database: attribute "Street" in entity \ref datamodel_table_Address with database type VARCHAR
+
+\var myCorporate::TAddress::strStreetNumber
+\brief house number with addition for this address
+\details Source: member myCorporate::TAddress::strStreetNumber in class myCorporate::TAddress with the type std::optional<std::string>
+\details Database: attribute "StreetNumber" in entity \ref datamodel_table_Address with database type VARCHAR
+
+\var myCorporate::TAddress::iCountry
+\brief ID of the country for the address, key attribute from the Countries entity
+\details Source: member myCorporate::TAddress::iCountry in class myCorporate::TAddress with the type std::optional<int>
+\details Database: attribute "Country" in entity \ref datamodel_table_Address with database type INT
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TAddress::ID() const
+\brief selector for the data element myCorporate::TAddress::iID
+\details <b>attribute as Foreign key from an attribute ID of the person entity to whom the address belongs</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TAddress::iID
+\fn std::optional<int> const& myCorporate::TAddress::AddressType() const
+\brief selector for the data element myCorporate::TAddress::iAddressType
+\details <b>extension of the key by the address type to manage different addresses for one person</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TAddress::iAddressType
+\fn std::optional<std::string> const& myCorporate::TAddress::Zipcode() const
+\brief selector for the data element myCorporate::TAddress::strZipcode
+\details <b>Zip code for the address</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strZipcode
+\fn std::optional<std::string> const& myCorporate::TAddress::City() const
+\brief selector for the data element myCorporate::TAddress::strCity
+\details <b>name of the city/county (possibly with district) for this address</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strCity
+\fn std::optional<std::string> const& myCorporate::TAddress::Street() const
+\brief selector for the data element myCorporate::TAddress::strStreet
+\details <b>name of the street belonging to this address</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strStreet
+\fn std::optional<std::string> const& myCorporate::TAddress::StreetNumber() const
+\brief selector for the data element myCorporate::TAddress::strStreetNumber
+\details <b>house number with addition for this address</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strStreetNumber
+\fn std::optional<int> const& myCorporate::TAddress::Country() const
+\brief selector for the data element myCorporate::TAddress::iCountry
+\details <b>ID of the country for the address, key attribute from the Countries entity</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TAddress::iCountry
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myCorporate::TAddress::_ID() const
+\brief special selector for data element myCorporate::TAddress::iID
+\details attribute as Foreign key from an attribute ID of the person entity to whom the address belongs
+\details <b>attribute as Foreign key from an attribute ID of the person entity to whom the address belongs</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::iID is empty
+\returns int const&: Reference to the data element myCorporate::TAddress::iID
+\fn int myCorporate::TAddress::_AddressType() const
+\brief special selector for data element myCorporate::TAddress::iAddressType
+\details extension of the key by the address type to manage different addresses for one person
+\details <b>extension of the key by the address type to manage different addresses for one person</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::iAddressType is empty
+\returns int const&: Reference to the data element myCorporate::TAddress::iAddressType
+\fn std::string const& myCorporate::TAddress::_Zipcode() const
+\brief special selector for data element myCorporate::TAddress::strZipcode
+\details Zip code for the address
+\details <b>Zip code for the address</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::strZipcode is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TAddress::strZipcode
+\fn std::string const& myCorporate::TAddress::_City() const
+\brief special selector for data element myCorporate::TAddress::strCity
+\details name of the city/county (possibly with district) for this address
+\details <b>name of the city/county (possibly with district) for this address</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::strCity is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TAddress::strCity
+\fn std::string const& myCorporate::TAddress::_Street() const
+\brief special selector for data element myCorporate::TAddress::strStreet
+\details name of the street belonging to this address
+\details <b>name of the street belonging to this address</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::strStreet is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TAddress::strStreet
+\fn std::string const& myCorporate::TAddress::_StreetNumber() const
+\brief special selector for data element myCorporate::TAddress::strStreetNumber
+\details house number with addition for this address
+\details <b>house number with addition for this address</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::strStreetNumber is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TAddress::strStreetNumber
+\fn int myCorporate::TAddress::_Country() const
+\brief special selector for data element myCorporate::TAddress::iCountry
+\details ID of the country for the address, key attribute from the Countries entity
+\details <b>ID of the country for the address, key attribute from the Countries entity</b>
+\throw std::runtime::error if the attribute myCorporate::TAddress::iCountry is empty
+\returns int const&: Reference to the data element myCorporate::TAddress::iCountry
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TAddress::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::iID
+\details <b>attribute as Foreign key from an attribute ID of the person entity to whom the address belongs</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::iID
+\returns std::optional<int> const&: Reference to the data element myCorporate::TAddress::iID
+
+\fn std::optional<int> const& myCorporate::TAddress::AddressType(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::iAddressType
+\details <b>extension of the key by the address type to manage different addresses for one person</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::iAddressType
+\returns std::optional<int> const&: Reference to the data element myCorporate::TAddress::iAddressType
+
+\fn std::optional<std::string> const& myCorporate::TAddress::Zipcode(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::strZipcode
+\details <b>Zip code for the address</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::strZipcode
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strZipcode
+
+\fn std::optional<std::string> const& myCorporate::TAddress::City(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::strCity
+\details <b>name of the city/county (possibly with district) for this address</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::strCity
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strCity
+
+\fn std::optional<std::string> const& myCorporate::TAddress::Street(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::strStreet
+\details <b>name of the street belonging to this address</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::strStreet
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strStreet
+
+\fn std::optional<std::string> const& myCorporate::TAddress::StreetNumber(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::strStreetNumber
+\details <b>house number with addition for this address</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::strStreetNumber
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TAddress::strStreetNumber
+
+\fn std::optional<int> const& myCorporate::TAddress::Country(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TAddress::iCountry
+\details <b>ID of the country for the address, key attribute from the Countries entity</b>
+\param[in] newVal the new Value for the member myCorporate::TAddress::iCountry
+\returns std::optional<int> const&: Reference to the data element myCorporate::TAddress::iCountry
+
+
+\}
+
+

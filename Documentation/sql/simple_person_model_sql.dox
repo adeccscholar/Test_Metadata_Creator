@@ -1,0 +1,659 @@
+﻿
+\page pgsimple_person_model_sql_informations informations to create database
+\section segPgsimple_person_model_preamble preamble
+\details the database contains 27 tables with additional informations. this           part of the documentations contains all information to create the database with tables, primary keys,
+          foreign keys, key canditates and indices.
+\details there is only a script to drop all informations in the database. at first the script will drop
+          all foreign key, before the tables can be dropped too.
+
+\section secPgsimple_person_model_sql_create create tables of the application
+\code{.sql}
+/* ------------------------------------------------------------------------------------
+ * script with statements to create tables / views for the project simple person model
+ * generated at: 14.03.2024 23:56:52,817 with the adecc Scholar metadata generator
+ * author:       Volker Hillmann (adecc Scholar)
+ * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
+ * ------------------------------------------------------------------------------------ */
+
+-- create tables for the project
+
+-- statement to create the table dbo.Address
+CREATE TABLE dbo.Address (
+   ID           INT NOT NULL,
+   AddressType  INT NOT NULL,
+   Zipcode      VARCHAR(10) NOT NULL,
+   City         VARCHAR(50) NOT NULL,
+   Street       VARCHAR(50) NOT NULL,
+   StreetNumber VARCHAR(10),
+   Country      INT NOT NULL
+   );
+
+-- statement to create the table dbo.AddressTypes
+CREATE TABLE dbo.AddressTypes (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.Banking
+CREATE TABLE dbo.Banking (
+   ID          INT NOT NULL,
+   BankingType INT NOT NULL,
+   BankName    VARCHAR(50),
+   IBAN        VARCHAR(33) NOT NULL,
+   BIC         VARCHAR(12),
+   BankOwner   VARCHAR(27),
+   Country     INT
+   );
+
+-- statement to create the table dbo.BankingTypes
+CREATE TABLE dbo.BankingTypes (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.Countries
+CREATE TABLE dbo.Countries (
+   ID             INT NOT NULL,
+   Denotation     VARCHAR(50) NOT NULL,
+   Abbreviation   VARCHAR(10),
+   Description    VARCHAR(MAX),
+   CountryDialing VARCHAR(10),
+   ISO_Code       VARCHAR(5),
+   IsEU           TINYINT CHECK (IsEU IN (0, 1)),
+   Capital        VARCHAR(50),
+   Currency       VARCHAR(50),
+   Notes          VARCHAR(MAX),
+   UrgentValue    TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+GO
+CREATE FUNCTION [dbo].[Country_Dialing] (@id AS INTEGER) RETURNS VARCHAR(10)
+BEGIN
+   DECLARE @retval VARCHAR(10);
+   SELECT @retval = CountryDialing
+   FROM dbo.Countries
+   WHERE ID = @id;
+   RETURN @retval;
+END
+GO
+
+-- statement to create the table dbo.Departments
+CREATE TABLE dbo.Departments (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Officer      INT,
+   Notes        VARCHAR(MAX)
+   );
+
+-- statement to create the table dbo.Employees
+CREATE TABLE dbo.Employees (
+   ID              INT NOT NULL,
+   PersonNumber    VARCHAR(15) NOT NULL,
+   Salary          DECIMAL(10, 2) CHECK (Salary >= 0.0),
+   SalaryType      INT,
+   TaxClass        INT NOT NULL,
+   StartOfJob      DATE NOT NULL,
+   EndOfJob        DATE,
+   ReasonDeparture INT,
+   JobPosition     INT,
+   JobSpec         VARCHAR(100),
+   VacationDays    INT CHECK (VacationDays >= 0),
+   Department      INT NOT NULL,
+   SocialNummer    VARCHAR(20) NOT NULL,
+
+   );
+
+-- statement to create the table dbo.FamilyStatus
+CREATE TABLE dbo.FamilyStatus (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Coupled      TINYINT CHECK (Coupled IN (0, 1)),
+   NeedDate     TINYINT CHECK (NeedDate IN (0, 1)),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.FamilyTypes
+CREATE TABLE dbo.FamilyTypes (
+   ID              INT NOT NULL,
+   Denotation      VARCHAR(50) NOT NULL,
+   Abbreviation    VARCHAR(10),
+   IsNaturalPerson TINYINT CHECK (IsNaturalPerson IN (0, 1)),
+   Description     VARCHAR(MAX),
+   Notes           VARCHAR(MAX),
+   UrgentValue     TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.FormOfAddress
+CREATE TABLE dbo.FormOfAddress (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   TypeSpec     INT,
+   Salutation   VARCHAR(50),
+   Valediction  VARCHAR(50),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.Internet
+CREATE TABLE dbo.Internet (
+   ID           INT NOT NULL,
+   InternetType INT NOT NULL,
+   Adresse      VARCHAR(100) NOT NULL
+   );
+
+-- statement to create the table dbo.InternetTypes
+CREATE TABLE dbo.InternetTypes (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Prefix       VARCHAR(10),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.JobPositions
+CREATE TABLE dbo.JobPositions (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   SalaryType   INT,
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.Person
+CREATE TABLE dbo.Person (
+   ID                INT NOT NULL,
+   Name              VARCHAR(30) NOT NULL,
+   Firstname         VARCHAR(30),
+   FormOfAddress     INT NOT NULL,
+   FamilyStatus      INT NOT NULL,
+   FamilyStatusSince DATE,
+   Birthday          DATE,
+   Notes             VARCHAR(MAX),
+   FullName          AS Name + ', ' + FirstName
+   );
+
+-- statement to create the table dbo.Phone
+CREATE TABLE dbo.Phone (
+   ID              INT NOT NULL,
+   PhoneType       INT NOT NULL,
+   AreaCode        VARCHAR(10) NOT NULL,
+   CallNumber      VARCHAR(13) NOT NULL CHECK (CallNumber NOT LIKE '%[^0-9 -]%'),
+   Country         INT NOT NULL,
+   DialingNational AS AreaCode + REPLACE(REPLACE(CallNumber, ' ', ''), '-', ''),
+
+   );
+
+-- statement to create the table dbo.PhoneTypes
+CREATE TABLE dbo.PhoneTypes (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.ReasonDeparture
+CREATE TABLE dbo.ReasonDeparture (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.ReasonNonWorking
+CREATE TABLE dbo.ReasonNonWorking (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.SalaryBase
+CREATE TABLE dbo.SalaryBase (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.SalaryType
+CREATE TABLE dbo.SalaryType (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   SalaryBase   INT,
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.TaxClasses
+CREATE TABLE dbo.TaxClasses (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Coupled      TINYINT NOT NULL CHECK (Coupled IN (0, 1)),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.WD_Holidays
+CREATE TABLE dbo.WD_Holidays (
+   CalendarDay DATE NOT NULL,
+   Donation    VARCHAR(50) NOT NULL,
+   Share       INT NOT NULL,
+   Description VARCHAR(MAX)
+   );
+
+GO
+CREATE FUNCTION [dbo].[GetIsHoliday](@caldate AS DATE) RETURNS INTEGER
+BEGIN
+   DECLARE @retval INTEGER;
+   SELECT @retval = COUNT(*)
+   FROM dbo.WD_Holidays
+   WHERE CalendarDay = @caldate;
+   RETURN @retval;
+END
+GO
+
+-- statement to create the table dbo.WD_Months
+CREATE TABLE dbo.WD_Months (
+   ID           INT NOT NULL CHECK (ID BETWEEN 1 AND 12),
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10) NOT NULL,
+   Quarter      INT NOT NULL CHECK (Quarter >= 0 AND Quarter BETWEEN 1 AND 4)
+   );
+
+GO
+CREATE FUNCTION [dbo].[GetQuarterOfMonth](@id AS INTEGER) RETURNS VARCHAR(10)
+BEGIN
+   DECLARE @retval VARCHAR(10);
+   SELECT @retval = Quarter
+   FROM dbo.WD_Months
+   WHERE ID = @id;
+   RETURN @retval;
+END
+GO
+
+-- statement to create the table dbo.WD_NonWorking
+CREATE TABLE dbo.WD_NonWorking (
+   ID        INT NOT NULL,
+   StartAt   DATE NOT NULL,
+   ClosingAt DATE,
+   Reason    INT NOT NULL CHECK (Reason BETWEEN 0 AND 6),
+   Notes     VARCHAR(MAX)
+   );
+
+-- statement to create the table dbo.WD_Weekdays
+CREATE TABLE dbo.WD_Weekdays (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(20) NOT NULL,
+   Abbreviation VARCHAR(5) NOT NULL,
+   Workday      TINYINT NOT NULL CHECK (Workday IN (0, 1))
+   );
+
+GO
+CREATE FUNCTION [dbo].[GetIsWorkday](@id AS INTEGER) RETURNS SMALLINT
+BEGIN
+   DECLARE @retval SMALLINT;
+   SELECT @retval = Workday
+   FROM dbo.WD_Weekdays
+   WHERE ID = @id;
+   RETURN @retval;
+END
+GO
+
+-- statement to create the table dbo.WD_Workdays
+CREATE TABLE dbo.WD_Workdays (
+   CalendarDay       DATE NOT NULL,
+   CalendarWeekday   INT NOT NULL,
+   CalendarWeek      INT NOT NULL,
+   CalendarYear      AS YEAR(CalendarDay)  PERSISTED,
+   CalendarMonth     AS MONTH(CalendarDay)  PERSISTED,
+   CalendarDayInWeek AS DAY(CalendarDay)  PERSISTED,
+   CalendarDayInYear AS DATEPART(DAYOFYEAR, CalendarDay),
+
+   );
+
+-- statement to create the table dbo.WorkingTime
+CREATE TABLE dbo.WorkingTime (
+   ID           INT NOT NULL,
+   StartingTime DATE NOT NULL,
+   ClosingTime  DATE,
+   Processed    TINYINT NOT NULL CHECK (Processed  IN (0, 1)),
+   ProcessedAt  DATE,
+
+   );
+
+-- create views for the project
+
+\endcode
+\section secPgsimple_person_model_sql_additional create all additional informations
+\code{.sql}
+/* ------------------------------------------------------------------------------------
+ * script with keys, references and indices for the project simple person model
+ * generated at: 14.03.2024 23:56:52,823 with the adecc Scholar metadata generator
+ * author:       Volker Hillmann (adecc Scholar)
+ * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
+ * ----------------------------------------------------------------------------------- */
+
+-- alter tables with calculated columns simple person model
+ALTER TABLE dbo.Employees ADD Active AS IIF(EndOfJob IS NULL OR EndOfJob >= GETDATE(), 1, 0);
+
+ALTER TABLE dbo.Phone ADD DialingInternational AS [dbo].[Country_Dialing](Country)+SUBSTRING(AreaCode, 2, LEN(AreaCode))+CallNumber;
+
+ALTER TABLE dbo.WD_Workdays ADD CalendarQuarter AS [dbo].[GetQuarterOfMonth](MONTH(CalendarDay));
+ALTER TABLE dbo.WD_Workdays ADD Workday AS IIF(dbo.GetIsWorkday(CalendarWeekday) = 1 AND dbo.GetIsHoliday(CalendarDay) = 0, 1, 0);
+
+ALTER TABLE dbo.WorkingTime ADD DayOfWork AS convert(date, StartingTime) PERSISTED;
+
+
+GO
+
+
+-- create primary keys for tables of the dictionary simple person model
+ALTER TABLE dbo.Address ADD CONSTRAINT pk_Address PRIMARY KEY (ID, AddressType);
+
+ALTER TABLE dbo.AddressTypes ADD CONSTRAINT pk_AddressTypes PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Banking ADD CONSTRAINT pk_Banking PRIMARY KEY (ID, BankingType);
+
+ALTER TABLE dbo.BankingTypes ADD CONSTRAINT pk_BankingTypes PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Countries ADD CONSTRAINT pk_Countries PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Departments ADD CONSTRAINT pk_Departments PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Employees ADD CONSTRAINT pk_Employees PRIMARY KEY (ID);
+
+ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT pk_FamilyStatus PRIMARY KEY (ID);
+
+ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT pk_FamilyTypes PRIMARY KEY (ID);
+
+ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT pk_FormOfAddress PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Internet ADD CONSTRAINT pk_Internet PRIMARY KEY (ID, InternetType);
+
+ALTER TABLE dbo.InternetTypes ADD CONSTRAINT pk_InternetTypes PRIMARY KEY (ID);
+
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT pk_JobPositions PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Person ADD CONSTRAINT pk_Person PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Phone ADD CONSTRAINT pk_Phone PRIMARY KEY (ID, PhoneType);
+
+ALTER TABLE dbo.PhoneTypes ADD CONSTRAINT pk_PhoneTypes PRIMARY KEY (ID);
+
+ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT pk_ReasonDeparture PRIMARY KEY (ID);
+
+ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT pk_ReasonNonWorking PRIMARY KEY (ID);
+
+ALTER TABLE dbo.SalaryBase ADD CONSTRAINT pk_SalaryBase PRIMARY KEY (ID);
+
+ALTER TABLE dbo.SalaryType ADD CONSTRAINT pk_SalaryType PRIMARY KEY (ID);
+
+ALTER TABLE dbo.TaxClasses ADD CONSTRAINT pk_TaxClasses PRIMARY KEY (ID);
+
+ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT pk_WD_Holidays PRIMARY KEY (CalendarDay);
+
+ALTER TABLE dbo.WD_Months ADD CONSTRAINT pk_WD_Months PRIMARY KEY (ID);
+
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT pk_WD_NonWorking PRIMARY KEY (ID, StartAt);
+
+ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT pk_WD_Weekdays PRIMARY KEY (ID);
+
+ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT pk_WD_Workdays PRIMARY KEY (CalendarDay);
+
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT pk_WorkingTime PRIMARY KEY (ID, StartingTime);
+
+
+GO
+
+
+-- create unique keys for tables of the dictionary simple person model
+ALTER TABLE dbo.AddressTypes ADD CONSTRAINT uk_AddressType_Denotation UNIQUE (Abbreviation);
+
+ALTER TABLE dbo.BankingTypes ADD CONSTRAINT uk_BankingTypes_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
+
+ALTER TABLE dbo.Departments ADD CONSTRAINT uk_Departments_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_PersonNumber UNIQUE (PersonNumber);
+ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_SocialNumber UNIQUE (ReasonDeparture);
+
+ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT uk_FamilyStatus_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT uk_FamilyTypes_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT uk_FormOfAddress_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.InternetTypes ADD CONSTRAINT uk_InternetTypes_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT uk_JobPositions_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.PhoneTypes ADD CONSTRAINT uk_PhonesTypes_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT uk_ReasonDeparture_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT uk_ReasonNonWorking_Denotation UNIQUE (Denotation);
+
+ALTER TABLE dbo.SalaryBase ADD CONSTRAINT uk_SalaryBase_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.SalaryBase ADD CONSTRAINT uk_SalaryBase_Abbreviation UNIQUE (Abbreviation);
+
+ALTER TABLE dbo.TaxClasses ADD CONSTRAINT uk_TaxClasses_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.TaxClasses ADD CONSTRAINT uk_TaxClasses_Abbreviation UNIQUE (Abbreviation);
+
+ALTER TABLE dbo.WD_Months ADD CONSTRAINT uk_WD_Months_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.WD_Months ADD CONSTRAINT uk_WD_Months_Abbreviation UNIQUE (Abbreviation);
+
+ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT uk_WD_Weekdays_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT uk_WD_Weekdays_Abbreviation UNIQUE (Abbreviation);
+
+
+GO
+
+
+-- create foreign keys for tables of the dictionary simple person model
+ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2AddressType FOREIGN KEY (AddressType) REFERENCES dbo.AddressTypes (ID);
+ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
+
+ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Type FOREIGN KEY (BankingType) REFERENCES dbo.BankingTypes (ID);
+ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
+
+ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (ID);
+
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2TaxClass FOREIGN KEY (TaxClass) REFERENCES dbo.TaxClasses (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2ReasonDeparture FOREIGN KEY (ReasonDeparture) REFERENCES dbo.ReasonDeparture (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2JobPositions FOREIGN KEY (JobPosition) REFERENCES dbo.JobPositions (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (Department) REFERENCES dbo.Departments (ID);
+
+ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT refFormOfAddress2Type FOREIGN KEY (TypeSpec) REFERENCES dbo.FamilyTypes (ID);
+
+ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetType) REFERENCES dbo.InternetTypes (ID);
+
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KEY (ID) REFERENCES dbo.SalaryType (ID);
+
+ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FormOfAddress FOREIGN KEY (FormOfAddress) REFERENCES dbo.FormOfAddress (ID);
+ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (FamilyStatus) REFERENCES dbo.FamilyStatus (ID);
+
+ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Type FOREIGN KEY (PhoneType) REFERENCES dbo.PhoneTypes (ID);
+ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
+
+ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (SalaryBase) REFERENCES dbo.SalaryBase (ID);
+
+ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (CalendarDay) REFERENCES dbo.WD_Workdays (CalendarDay);
+
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Start FOREIGN KEY (StartAt) REFERENCES dbo.WD_Workdays (CalendarDay);
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Finishing FOREIGN KEY (ClosingAt) REFERENCES dbo.WD_Workdays (CalendarDay);
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (Reason) REFERENCES dbo.ReasonNonWorking (ID);
+
+ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2WeekDay FOREIGN KEY (CalendarWeekday) REFERENCES dbo.WD_Weekdays (ID);
+ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (CalendarMonth) REFERENCES dbo.WD_Months (ID);
+
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (ID);
+
+
+GO
+
+
+-- create check conditions for tables of the dictionary simple person model
+ALTER TABLE dbo.Employees ADD CONSTRAINT ck_Employees_EndOfJob CHECK (EndOfJob IS NULL OR (EndOfJob > StartOfJob));
+ALTER TABLE dbo.Employees ADD CONSTRAINT ck_Employees_ReasonDeparture CHECK ((ReasonDeparture IS NULL AND EndOfJob IS NULL) OR  (ReasonDeparture IS NOT NULL AND EndOfJob IS NOT NULL));
+
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT ck_WorkingTime_ClosingTime CHECK (convert(date, ClosingTime) = DayOfWork and ClosingTime > StartingTime);
+
+
+GO
+
+
+-- create indices for tables of the dictionary simple person model
+CREATE INDEX idx_Address_City_Street ON dbo.Address (City, Street);
+
+CREATE INDEX idx_Banking_IBAN ON dbo.Banking (IBAN);
+CREATE INDEX idx_Banking_BIC ON dbo.Banking (BIC);
+
+CREATE INDEX idx_Departments_Abbr ON dbo.Departments (Abbreviation);
+
+CREATE INDEX idx_Employees_JobSpec ON dbo.Employees (StartOfJob);
+CREATE INDEX idx_Employees_Active ON dbo.Employees (JobPosition);
+
+CREATE INDEX idxInternet_Address ON dbo.Internet (Adresse);
+
+CREATE INDEX idx_Person_Name_Firstname ON dbo.Person (Name, Firstname);
+
+CREATE INDEX idx_Phone_Number ON dbo.Phone (AreaCode, CallNumber);
+
+CREATE INDEX idxWD_Workdays_Years_Month ON dbo.WD_Workdays (CalendarYear, CalendarMonth);
+
+
+GO
+
+\endcode
+\section secPgsimple_person_model_sql_drop drop all elements in the database
+\code{.sql}
+/* ------------------------------------------------------------------------------------
+ * script to drop relationships and tables for the project simple person model
+ * generated at: 14.03.2024 23:56:52,831 with the adecc Scholar metadata generator
+ * author:       Volker Hillmann (adecc Scholar)
+ * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
+ * ----------------------------------------------------------------------------------- */
+
+ -- drop foreign keys to erase dependencies
+ALTER TABLE dbo.Address DROP CONSTRAINT refAddress2Person;
+ALTER TABLE dbo.Address DROP CONSTRAINT refAddress2AddressType;
+ALTER TABLE dbo.Address DROP CONSTRAINT refAddress2Countries;
+
+ALTER TABLE dbo.Banking DROP CONSTRAINT refBanking2Person;
+ALTER TABLE dbo.Banking DROP CONSTRAINT refBanking2Type;
+ALTER TABLE dbo.Banking DROP CONSTRAINT refBanking2Countries;
+
+ALTER TABLE dbo.Departments DROP CONSTRAINT refDepartments2Employee;
+
+ALTER TABLE dbo.Employees DROP CONSTRAINT refEmployees2Person;
+ALTER TABLE dbo.Employees DROP CONSTRAINT refEmployees2SalaryType;
+ALTER TABLE dbo.Employees DROP CONSTRAINT refEmployees2TaxClass;
+ALTER TABLE dbo.Employees DROP CONSTRAINT refEmployees2ReasonDeparture;
+ALTER TABLE dbo.Employees DROP CONSTRAINT refEmployees2JobPositions;
+ALTER TABLE dbo.Employees DROP CONSTRAINT refEmployees2Department;
+
+ALTER TABLE dbo.FormOfAddress DROP CONSTRAINT refFormOfAddress2Type;
+
+ALTER TABLE dbo.Internet DROP CONSTRAINT refInternet2Person;
+ALTER TABLE dbo.Internet DROP CONSTRAINT refInternet2Type;
+
+ALTER TABLE dbo.JobPositions DROP CONSTRAINT refJobPosition2SalaryType;
+
+ALTER TABLE dbo.Person DROP CONSTRAINT refPerson2FormOfAddress;
+ALTER TABLE dbo.Person DROP CONSTRAINT refPerson2FamilyStatus;
+
+ALTER TABLE dbo.Phone DROP CONSTRAINT refPhone2Person;
+ALTER TABLE dbo.Phone DROP CONSTRAINT refPhone2Type;
+ALTER TABLE dbo.Phone DROP CONSTRAINT refPhone2Countries;
+
+ALTER TABLE dbo.SalaryType DROP CONSTRAINT refSalaryType2SalaryBase;
+
+ALTER TABLE dbo.WD_Holidays DROP CONSTRAINT refWD_Holidays_Workdays;
+
+ALTER TABLE dbo.WD_NonWorking DROP CONSTRAINT refNonWorking2Employee;
+ALTER TABLE dbo.WD_NonWorking DROP CONSTRAINT refNonWorking2Workday_Start;
+ALTER TABLE dbo.WD_NonWorking DROP CONSTRAINT refNonWorking2Workday_Finishing;
+ALTER TABLE dbo.WD_NonWorking DROP CONSTRAINT refNonWorking2Reason;
+
+ALTER TABLE dbo.WD_Workdays DROP CONSTRAINT refWD_Workdays2WeekDay;
+ALTER TABLE dbo.WD_Workdays DROP CONSTRAINT refWD_Workdays2Month;
+
+ALTER TABLE dbo.WorkingTime DROP CONSTRAINT refWorkTime2Employee;
+
+
+-- drop all tables
+DROP TABLE dbo.Address;
+DROP TABLE dbo.AddressTypes;
+DROP TABLE dbo.Banking;
+DROP TABLE dbo.BankingTypes;
+DROP TABLE dbo.Countries;
+DROP TABLE dbo.Departments;
+DROP TABLE dbo.Employees;
+DROP TABLE dbo.FamilyStatus;
+DROP TABLE dbo.FamilyTypes;
+DROP TABLE dbo.FormOfAddress;
+DROP TABLE dbo.Internet;
+DROP TABLE dbo.InternetTypes;
+DROP TABLE dbo.JobPositions;
+DROP TABLE dbo.Person;
+DROP TABLE dbo.Phone;
+DROP TABLE dbo.PhoneTypes;
+DROP TABLE dbo.ReasonDeparture;
+DROP TABLE dbo.ReasonNonWorking;
+DROP TABLE dbo.SalaryBase;
+DROP TABLE dbo.SalaryType;
+DROP TABLE dbo.TaxClasses;
+DROP TABLE dbo.WD_Holidays;
+DROP TABLE dbo.WD_Months;
+DROP TABLE dbo.WD_NonWorking;
+DROP TABLE dbo.WD_Weekdays;
+DROP TABLE dbo.WD_Workdays;
+DROP TABLE dbo.WorkingTime;
+
+-- run cleanings for added informations
+DROP FUNCTION [dbo].[Country_Dialing];
+
+DROP FUNCTION [dbo].[GetIsHoliday];
+
+DROP FUNCTION [dbo].[GetQuarterOfMonth];
+
+DROP FUNCTION [dbo].[GetIsWorkday];
+
+\endcode

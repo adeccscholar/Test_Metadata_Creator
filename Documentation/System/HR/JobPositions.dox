@@ -1,0 +1,332 @@
+﻿\file System\HR/JobPositions.h
+\brief definition of dataclass myHR::TJobPositions of table \ref datamodel_table_JobPositions with domain or range of values for different positions for the employee. Important as anchor for additional informations in dictionary "simple person model"
+\see table \ref datamodel_table_JobPositions
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\HR/JobPositions.cpp
+\brief implementation of dataclass myHR::TJobPositions of table \ref datamodel_table_JobPositions with domain or range of values for different positions for the employee. Important as anchor for additional informations in dictionary "simple person model"
+\see table \ref datamodel_table_JobPositions
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myHR::TJobPositions
+\brief domain or range of values for different positions for the employee. Important as anchor for additional informations
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_JobPositions
+
+\class myHR::TJobPositions::primary_key
+\brief primary key for elements of the class myHR::TJobPositions in a container or when seeking an entity in the database.
+
+\fn myHR::TJobPositions::primary_key::primary_key()
+\brief standard constructor for the class myHR::TJobPositions::primary_key
+
+\fn myHR::TJobPositions::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myHR::TJobPositions::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myHR::TJobPositions::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myHR::TJobPositions::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myHR::TJobPositions::primary_key::primary_key(TJobPositions const& other)
+\brief initializing constructor with an instance of the encircling class myHR::TJobPositions for the class myHR::TJobPositions::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myHR::TJobPositions const& with the instance of the encircling class which values should be copied
+
+\fn myHR::TJobPositions::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myHR::TJobPositions::primary_key::primary_key(int pID)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with unique identification number for a record in this domain with positions in job
+
+\var myHR::TJobPositions::primary_key::iID
+\brief unique identification number for a record in this domain with positions in job
+\details Source: key member myHR::TJobPositions::primary_key::iID in class myHR::TJobPositions::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_JobPositions with database type INT
+\fn myHR::TJobPositions::primary_key::ID() const
+\brief selector for the data element myHR::TJobPositions::primary_key::iID
+\returns int with the value for this member.
+\fn myHR::TJobPositions::primary_key::ID(int newVal)
+\brief manipulator for the data element myHR::TJobPositions::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myHR::TJobPositions::primary_key::operator TJobPositions () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myHR::TJobPositions
+
+\fn myHR::TJobPositions::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myHR::TJobPositions::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myHR::TJobPositions::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myHR::TJobPositions::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myHR::TJobPositions::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myHR::TJobPositions::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myHR::TJobPositions::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myHR::TJobPositions::container_ty
+\brief container type as std::map with the generated primary key type myHR::TJobPositions::primary_key for instances of this class
+
+\details The type uses the key type myHR::TJobPositions::primary_keypreviously created from the key attributes of table \ref datamodel_table_JobPositions as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myHR::TJobPositions::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myHR::TJobPositions::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myHR::TJobPositions
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myHR::TJobPositions::TJobPositions()
+\brief standard constructor for TJobPositions
+
+\fn myHR::TJobPositions::TJobPositions(TJobPositions const& other)
+\brief copy constructor for TJobPositions
+\param[in] other reference of an instance of an other instance of myHR::TJobPositions to copy
+
+\fn myHR::TJobPositions::TJobPositions(TJobPositions&&)
+\brief rvalue constructor for TJobPositions
+
+\fn myHR::TJobPositions::~TJobPositions()
+\brief destructor for TJobPositions
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myHR::TJobPositions::swap(TJobPositions& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myHR::TJobPositions::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myHR::TJobPositions::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myHR::TJobPositions::copy(myCorporate::TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myHR::TJobPositions::iID
+\brief unique identification number for a record in this domain with positions in job
+\details Source: member myHR::TJobPositions::iID in class myHR::TJobPositions with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_JobPositions with database type INT
+
+\var myHR::TJobPositions::strDenotation
+\brief unique denotation for this job position, used in selections, and lists to descripe this position
+\details Source: member myHR::TJobPositions::strDenotation in class myHR::TJobPositions with the type std::optional<std::string>
+\details Database: attribute "Denotation" in entity \ref datamodel_table_JobPositions with database type VARCHAR
+
+\var myHR::TJobPositions::strAbbreviation
+\brief abbreviation for this job position, used in overvies. Can be null and don't need be unique
+\details Source: member myHR::TJobPositions::strAbbreviation in class myHR::TJobPositions with the type std::optional<std::string>
+\details Database: attribute "Abbreviation" in entity \ref datamodel_table_JobPositions with database type VARCHAR
+
+\var myHR::TJobPositions::strDescription
+\brief detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
+\details Source: member myHR::TJobPositions::strDescription in class myHR::TJobPositions with the type std::optional<std::string>
+\details Database: attribute "Description" in entity \ref datamodel_table_JobPositions with database type VARCHAR(MAX)
+
+\var myHR::TJobPositions::iSalaryType
+\brief prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
+\details Source: member myHR::TJobPositions::iSalaryType in class myHR::TJobPositions with the type std::optional<int>
+\details Database: attribute "SalaryType" in entity \ref datamodel_table_JobPositions with database type INT
+
+\var myHR::TJobPositions::strNotes
+\brief notes, with additional / free information for this type of job position, not used in application
+\details Source: member myHR::TJobPositions::strNotes in class myHR::TJobPositions with the type std::optional<std::string>
+\details Database: attribute "Notes" in entity \ref datamodel_table_JobPositions with database type VARCHAR(MAX)
+
+\var myHR::TJobPositions::boUrgentValue
+\brief boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
+\details Source: member myHR::TJobPositions::boUrgentValue in class myHR::TJobPositions with the type std::optional<bool>
+\details Database: attribute "UrgentValue" in entity \ref datamodel_table_JobPositions with database type TINYINT
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myHR::TJobPositions::ID() const
+\brief selector for the data element myHR::TJobPositions::iID
+\details <b>unique identification number for a record in this domain with positions in job</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iID
+\fn std::optional<std::string> const& myHR::TJobPositions::Denotation() const
+\brief selector for the data element myHR::TJobPositions::strDenotation
+\details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDenotation
+\fn std::optional<std::string> const& myHR::TJobPositions::Abbreviation() const
+\brief selector for the data element myHR::TJobPositions::strAbbreviation
+\details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strAbbreviation
+\fn std::optional<std::string> const& myHR::TJobPositions::Description() const
+\brief selector for the data element myHR::TJobPositions::strDescription
+\details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDescription
+\fn std::optional<int> const& myHR::TJobPositions::SalaryType() const
+\brief selector for the data element myHR::TJobPositions::iSalaryType
+\details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iSalaryType
+\fn std::optional<std::string> const& myHR::TJobPositions::Notes() const
+\brief selector for the data element myHR::TJobPositions::strNotes
+\details <b>notes, with additional / free information for this type of job position, not used in application</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strNotes
+\fn std::optional<bool> const& myHR::TJobPositions::UrgentValue() const
+\brief selector for the data element myHR::TJobPositions::boUrgentValue
+\details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
+\returns std::optional<bool> const&: Reference to the data element myHR::TJobPositions::boUrgentValue
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myHR::TJobPositions::_ID() const
+\brief special selector for data element myHR::TJobPositions::iID
+\details unique identification number for a record in this domain with positions in job
+\details <b>unique identification number for a record in this domain with positions in job</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::iID is empty
+\returns int const&: Reference to the data element myHR::TJobPositions::iID
+\fn std::string const& myHR::TJobPositions::_Denotation() const
+\brief special selector for data element myHR::TJobPositions::strDenotation
+\details unique denotation for this job position, used in selections, and lists to descripe this position
+\details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::strDenotation is empty
+\returns std::string const& const&: Reference to the data element myHR::TJobPositions::strDenotation
+\fn std::string const& myHR::TJobPositions::_Abbreviation() const
+\brief special selector for data element myHR::TJobPositions::strAbbreviation
+\details abbreviation for this job position, used in overvies. Can be null and don't need be unique
+\details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::strAbbreviation is empty
+\returns std::string const& const&: Reference to the data element myHR::TJobPositions::strAbbreviation
+\fn std::string const& myHR::TJobPositions::_Description() const
+\brief special selector for data element myHR::TJobPositions::strDescription
+\details detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
+\details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::strDescription is empty
+\returns std::string const& const&: Reference to the data element myHR::TJobPositions::strDescription
+\fn int myHR::TJobPositions::_SalaryType() const
+\brief special selector for data element myHR::TJobPositions::iSalaryType
+\details prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
+\details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::iSalaryType is empty
+\returns int const&: Reference to the data element myHR::TJobPositions::iSalaryType
+\fn std::string const& myHR::TJobPositions::_Notes() const
+\brief special selector for data element myHR::TJobPositions::strNotes
+\details notes, with additional / free information for this type of job position, not used in application
+\details <b>notes, with additional / free information for this type of job position, not used in application</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::strNotes is empty
+\returns std::string const& const&: Reference to the data element myHR::TJobPositions::strNotes
+\fn bool myHR::TJobPositions::_UrgentValue() const
+\brief special selector for data element myHR::TJobPositions::boUrgentValue
+\details boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
+\details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
+\throw std::runtime::error if the attribute myHR::TJobPositions::boUrgentValue is empty
+\returns bool const&: Reference to the data element myHR::TJobPositions::boUrgentValue
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myHR::TJobPositions::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::iID
+\details <b>unique identification number for a record in this domain with positions in job</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::iID
+\returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iID
+
+\fn std::optional<std::string> const& myHR::TJobPositions::Denotation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::strDenotation
+\details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::strDenotation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDenotation
+
+\fn std::optional<std::string> const& myHR::TJobPositions::Abbreviation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::strAbbreviation
+\details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::strAbbreviation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strAbbreviation
+
+\fn std::optional<std::string> const& myHR::TJobPositions::Description(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::strDescription
+\details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::strDescription
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDescription
+
+\fn std::optional<int> const& myHR::TJobPositions::SalaryType(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::iSalaryType
+\details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::iSalaryType
+\returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iSalaryType
+
+\fn std::optional<std::string> const& myHR::TJobPositions::Notes(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::strNotes
+\details <b>notes, with additional / free information for this type of job position, not used in application</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::strNotes
+\returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strNotes
+
+\fn std::optional<bool> const& myHR::TJobPositions::UrgentValue(std::optional<bool> const& newVal)
+\brief manipulator for the data element myHR::TJobPositions::boUrgentValue
+\details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
+\param[in] newVal the new Value for the member myHR::TJobPositions::boUrgentValue
+\returns std::optional<bool> const&: Reference to the data element myHR::TJobPositions::boUrgentValue
+
+
+\}
+
+

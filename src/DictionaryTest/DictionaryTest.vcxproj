@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+***************************************************************************************************
+ Copyright (C) 2023 The Qt Company Ltd.
+ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+***************************************************************************************************
+-->
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F6A16F3F-1A2D-4BC7-ADF1-03B304DB8DB0}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.6</QtInstall>
+    <QtModules>core;gui;widgets;sql</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.6</QtInstall>
+    <QtModules>core;gui;widgets;sql</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>..;..\..\adecc_Database;..\..\adecc_Scholar;..\..\adecc_Tools;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>..;..\..\adecc_Database;..\..\adecc_Scholar;..\..\adecc_Tools;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>BUILD_WITH_QT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>BUILD_WITH_QT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <QtRcc Include="TestMain.qrc" />
+    <QtUic Include="TestMain.ui" />
+    <QtMoc Include="TestMain.h" />
+    <ClCompile Include="..\Persistence\person_reader.cpp" />
+    <ClCompile Include="..\Persistence\person_reader_sql.cpp" />
+    <ClCompile Include="..\System\Corporate\Address.cpp" />
+    <ClCompile Include="..\System\Corporate\AddressTypes.cpp" />
+    <ClCompile Include="..\System\Corporate\Banking.cpp" />
+    <ClCompile Include="..\System\Corporate\BankingTypes.cpp" />
+    <ClCompile Include="..\System\Corporate\Countries.cpp" />
+    <ClCompile Include="..\System\Corporate\FamilyStatus.cpp" />
+    <ClCompile Include="..\System\Corporate\FamilyTypes.cpp" />
+    <ClCompile Include="..\System\Corporate\FormOfAddress.cpp" />
+    <ClCompile Include="..\System\Corporate\Internet.cpp" />
+    <ClCompile Include="..\System\Corporate\InternetTypes.cpp" />
+    <ClCompile Include="..\System\Corporate\Person.cpp" />
+    <ClCompile Include="..\System\Corporate\Phone.cpp" />
+    <ClCompile Include="..\System\Corporate\PhonesTypes.cpp" />
+    <ClCompile Include="..\System\HR\Departments.cpp" />
+    <ClCompile Include="..\System\HR\Employees.cpp" />
+    <ClCompile Include="..\System\HR\JobPositions.cpp" />
+    <ClCompile Include="..\System\HR\ReasonDeparture.cpp" />
+    <ClCompile Include="..\System\HR\ReasonNonWorking.cpp" />
+    <ClCompile Include="..\System\HR\SalaryBase.cpp" />
+    <ClCompile Include="..\System\HR\SalaryType.cpp" />
+    <ClCompile Include="..\System\HR\TaxClasses.cpp" />
+    <ClCompile Include="..\System\HR\WD_Holidays.cpp" />
+    <ClCompile Include="..\System\HR\WD_Months.cpp" />
+    <ClCompile Include="..\System\HR\WD_NonWorking.cpp" />
+    <ClCompile Include="..\System\HR\WD_Weekdays.cpp" />
+    <ClCompile Include="..\System\HR\WD_Workdays.cpp" />
+    <ClCompile Include="..\System\HR\WorkingTime.cpp" />
+    <ClCompile Include="TestMain.cpp" />
+    <ClCompile Include="main.cpp" />
+    <None Include="DictionaryTest.ico" />
+    <ResourceCompile Include="DictionaryTest.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabase.h" />
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseCredentials.h" />
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseDefinitions.h" />
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseExceptions.h" />
+    <ClInclude Include="..\Persistence\person_reader.h" />
+    <ClInclude Include="..\Persistence\person_reader_sql.h" />
+    <ClInclude Include="..\System\Corporate\Address.h" />
+    <ClInclude Include="..\System\Corporate\AddressTypes.h" />
+    <ClInclude Include="..\System\Corporate\Banking.h" />
+    <ClInclude Include="..\System\Corporate\BankingTypes.h" />
+    <ClInclude Include="..\System\Corporate\base.h" />
+    <ClInclude Include="..\System\Corporate\Countries.h" />
+    <ClInclude Include="..\System\Corporate\FamilyStatus.h" />
+    <ClInclude Include="..\System\Corporate\FamilyTypes.h" />
+    <ClInclude Include="..\System\Corporate\FormOfAddress.h" />
+    <ClInclude Include="..\System\Corporate\Internet.h" />
+    <ClInclude Include="..\System\Corporate\InternetTypes.h" />
+    <ClInclude Include="..\System\Corporate\Person.h" />
+    <ClInclude Include="..\System\Corporate\Phone.h" />
+    <ClInclude Include="..\System\Corporate\PhonesTypes.h" />
+    <ClInclude Include="..\System\HR\Departments.h" />
+    <ClInclude Include="..\System\HR\Employees.h" />
+    <ClInclude Include="..\System\HR\JobPositions.h" />
+    <ClInclude Include="..\System\HR\ReasonDeparture.h" />
+    <ClInclude Include="..\System\HR\ReasonNonWorking.h" />
+    <ClInclude Include="..\System\HR\SalaryBase.h" />
+    <ClInclude Include="..\System\HR\SalaryType.h" />
+    <ClInclude Include="..\System\HR\TaxClasses.h" />
+    <ClInclude Include="..\System\HR\WD_Holidays.h" />
+    <ClInclude Include="..\System\HR\WD_Months.h" />
+    <ClInclude Include="..\System\HR\WD_NonWorking.h" />
+    <ClInclude Include="..\System\HR\WD_Weekdays.h" />
+    <ClInclude Include="..\System\HR\WD_Workdays.h" />
+    <ClInclude Include="..\System\HR\WorkingTime.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

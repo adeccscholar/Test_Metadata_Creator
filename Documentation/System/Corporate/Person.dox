@@ -1,0 +1,469 @@
+﻿\file System\Corporate/Person.h
+\brief definition of dataclass myCorporate::TPerson of table \ref datamodel_table_Person with informations about a person, base for different kinds of special persons in other areas of the company in dictionary "simple person model"
+\details The table "Person" serves as an abstraction of the "Employees" table, aiming to separate general attributes from specific employee-related ones. This abstraction facilitates the derivation of other types of individuals in the future.
+\details The "Employees" table inherits (is-a relationship) from the "Person" table, utilizing the primary key of "Person" as a foreign key.This establishes a referential relationship, ensuring data integrity and consistency between the two tables.
+\details By employing this design, future extensions or modifications to accommodate different types of individuals beyond employees become feasible without compromising the integrity of the database structure.
+\see table \ref datamodel_table_Person
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\Corporate/Person.cpp
+\brief implementation of dataclass myCorporate::TPerson of table \ref datamodel_table_Person with informations about a person, base for different kinds of special persons in other areas of the company in dictionary "simple person model"
+\details The table "Person" serves as an abstraction of the "Employees" table, aiming to separate general attributes from specific employee-related ones. This abstraction facilitates the derivation of other types of individuals in the future.
+\details The "Employees" table inherits (is-a relationship) from the "Person" table, utilizing the primary key of "Person" as a foreign key.This establishes a referential relationship, ensuring data integrity and consistency between the two tables.
+\details By employing this design, future extensions or modifications to accommodate different types of individuals beyond employees become feasible without compromising the integrity of the database structure.
+\see table \ref datamodel_table_Person
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myCorporate::TPerson
+\brief informations about a person, base for different kinds of special persons in other areas of the company
+\details The table "Person" serves as an abstraction of the "Employees" table, aiming to separate general attributes from specific employee-related ones. This abstraction facilitates the derivation of other types of individuals in the future.
+\details The "Employees" table inherits (is-a relationship) from the "Person" table, utilizing the primary key of "Person" as a foreign key.This establishes a referential relationship, ensuring data integrity and consistency between the two tables.
+\details By employing this design, future extensions or modifications to accommodate different types of individuals beyond employees become feasible without compromising the integrity of the database structure.
+\details this class have composed data of following class(es). The following table show a composed and types which created to use this classes:
+<table><thead>
+<tr><th rowspan="2">name of key</th>
+    <th rowspan="2">class</th>
+    <th rowspan="2">table</th>
+    <th colspan="2">key attributes</th>
+    <th rowspan="2">additional keys</th>
+    <th rowspan="2">file</th></tr>
+<tr><th> this</th>
+<th> foreign</th>
+</tr></thead><tbody><tr><td rowspan="1">myCorporate::TPerson::address_ty</td>
+    <td rowspan="1">myCorporate::TAddress</td>
+    <td rowspan="1">\ref datamodel_table_Address</td>
+    <td>ID(int)</td>
+    <td>ID(int)</td>
+    <td rowspan="1">AddressType(int)</td>
+    <td rowspan="1">\ref System\Corporate/Address.h </td>
+</tr>
+<tr><td rowspan="1">myCorporate::TPerson::banking_ty</td>
+    <td rowspan="1">myCorporate::TBanking</td>
+    <td rowspan="1">\ref datamodel_table_Banking</td>
+    <td>ID(int)</td>
+    <td>ID(int)</td>
+    <td rowspan="1">BankingType(int)</td>
+    <td rowspan="1">\ref System\Corporate/Banking.h </td>
+</tr>
+<tr><td rowspan="1">myCorporate::TPerson::internet_ty</td>
+    <td rowspan="1">myCorporate::TInternet</td>
+    <td rowspan="1">\ref datamodel_table_Internet</td>
+    <td>ID(int)</td>
+    <td>ID(int)</td>
+    <td rowspan="1">InternetType(int)</td>
+    <td rowspan="1">\ref System\Corporate/Internet.h </td>
+</tr>
+<tr><td rowspan="1">myCorporate::TPerson::phone_ty</td>
+    <td rowspan="1">myCorporate::TPhone</td>
+    <td rowspan="1">\ref datamodel_table_Phone</td>
+    <td>ID(int)</td>
+    <td>ID(int)</td>
+    <td rowspan="1">PhoneType(int)</td>
+    <td rowspan="1">\ref System\Corporate/Phone.h </td>
+</tr>
+</tbody></table>
+
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_Person
+
+\class myCorporate::TPerson::primary_key
+\brief primary key for elements of the class myCorporate::TPerson in a container or when seeking an entity in the database.
+
+\fn myCorporate::TPerson::primary_key::primary_key()
+\brief standard constructor for the class myCorporate::TPerson::primary_key
+
+\fn myCorporate::TPerson::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myCorporate::TPerson::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myCorporate::TPerson::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myCorporate::TPerson::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myCorporate::TPerson::primary_key::primary_key(TPerson const& other)
+\brief initializing constructor with an instance of the encircling class myCorporate::TPerson for the class myCorporate::TPerson::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myCorporate::TPerson const& with the instance of the encircling class which values should be copied
+
+\fn myCorporate::TPerson::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myCorporate::TPerson::primary_key::primary_key(int pID)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with unique identification number for a entity of person
+
+\var myCorporate::TPerson::primary_key::iID
+\brief unique identification number for a entity of person
+\details Source: key member myCorporate::TPerson::primary_key::iID in class myCorporate::TPerson::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_Person with database type INT
+\fn myCorporate::TPerson::primary_key::ID() const
+\brief selector for the data element myCorporate::TPerson::primary_key::iID
+\returns int with the value for this member.
+\fn myCorporate::TPerson::primary_key::ID(int newVal)
+\brief manipulator for the data element myCorporate::TPerson::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myCorporate::TPerson::primary_key::operator TPerson () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myCorporate::TPerson
+
+\fn myCorporate::TPerson::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myCorporate::TPerson::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myCorporate::TPerson::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myCorporate::TPerson::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myCorporate::TPerson::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myCorporate::TPerson::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myCorporate::TPerson::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myCorporate::TPerson::container_ty
+\brief container type as std::map with the generated primary key type myCorporate::TPerson::primary_key for instances of this class
+
+\details The type uses the key type myCorporate::TPerson::primary_keypreviously created from the key attributes of table \ref datamodel_table_Person as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myCorporate::TPerson::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myCorporate::TPerson::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myCorporate::TPerson
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+\typedef myCorporate::TPerson::address_ty
+\brief composed data element for the table \ref datamodel_table_Address
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>AddressType</td>
+    <td>myCorporate::TAddress::iAddressType</td>
+    <td>extension of the key by the address type to manage different addresses for one person</td>
+</tr>
+</table>
+\typedef myCorporate::TPerson::banking_ty
+\brief composed data element for the table \ref datamodel_table_Banking
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>BankingType</td>
+    <td>myCorporate::TBanking::iBankingType</td>
+    <td>extension of the account details key in order to be able to save several / different bank details in a standardized way</td>
+</tr>
+</table>
+\typedef myCorporate::TPerson::internet_ty
+\brief composed data element for the table \ref datamodel_table_Internet
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>InternetType</td>
+    <td>myCorporate::TInternet::iInternetType</td>
+    <td>type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))</td>
+</tr>
+</table>
+\typedef myCorporate::TPerson::phone_ty
+\brief composed data element for the table \ref datamodel_table_Phone
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>PhoneType</td>
+    <td>myCorporate::TPhone::iPhoneType</td>
+    <td>type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))</td>
+</tr>
+</table>
+
+\name constructors and destructor for this class
+\{
+
+\fn myCorporate::TPerson::TPerson()
+\brief standard constructor for TPerson
+
+\fn myCorporate::TPerson::TPerson(TPerson const& other)
+\brief copy constructor for TPerson
+\param[in] other reference of an instance of an other instance of myCorporate::TPerson to copy
+
+\fn myCorporate::TPerson::TPerson(TPerson&&)
+\brief rvalue constructor for TPerson
+
+\fn myCorporate::TPerson::~TPerson()
+\brief destructor for TPerson
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myCorporate::TPerson::swap(TPerson& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myCorporate::TPerson::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myCorporate::TPerson::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myCorporate::TPerson::copy(TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myCorporate::TPerson::iID
+\brief unique identification number for a entity of person
+\details Source: member myCorporate::TPerson::iID in class myCorporate::TPerson with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_Person with database type INT
+
+\var myCorporate::TPerson::strName
+\brief family name of the natural person respectively the name for a legal entity
+\details Source: member myCorporate::TPerson::strName in class myCorporate::TPerson with the type std::optional<std::string>
+\details Database: attribute "Name" in entity \ref datamodel_table_Person with database type VARCHAR
+
+\var myCorporate::TPerson::strFirstname
+\brief first name of the natural person respectively a name extenstion for a legal entity
+\details Source: member myCorporate::TPerson::strFirstname in class myCorporate::TPerson with the type std::optional<std::string>
+\details Database: attribute "Firstname" in entity \ref datamodel_table_Person with database type VARCHAR
+
+\var myCorporate::TPerson::iFormOfAddress
+\brief form of address for this person. this attribute control the kind of a person too
+\details Source: member myCorporate::TPerson::iFormOfAddress in class myCorporate::TPerson with the type std::optional<int>
+\details Database: attribute "FormOfAddress" in entity \ref datamodel_table_Person with database type INT
+
+\var myCorporate::TPerson::iFamilyStatus
+\brief family status for the person
+\details Source: member myCorporate::TPerson::iFamilyStatus in class myCorporate::TPerson with the type std::optional<int>
+\details Database: attribute "FamilyStatus" in entity \ref datamodel_table_Person with database type INT
+
+\var myCorporate::TPerson::daFamilyStatusSince
+\brief the date from which the current family status applies.
+\details Source: member myCorporate::TPerson::daFamilyStatusSince in class myCorporate::TPerson with the type std::optional<std::chrono::year_month_day>
+\details Database: attribute "FamilyStatusSince" in entity \ref datamodel_table_Person with database type DATE
+
+\var myCorporate::TPerson::daBirthday
+\brief birthday of a natural person. This attribute is unused for legal entrities
+\details Source: member myCorporate::TPerson::daBirthday in class myCorporate::TPerson with the type std::optional<std::chrono::year_month_day>
+\details Database: attribute "Birthday" in entity \ref datamodel_table_Person with database type DATE
+
+\var myCorporate::TPerson::strNotes
+\brief notes, with additional / free information for this tperson, not used in application
+\details Source: member myCorporate::TPerson::strNotes in class myCorporate::TPerson with the type std::optional<std::string>
+\details Database: attribute "Notes" in entity \ref datamodel_table_Person with database type VARCHAR(MAX)
+
+\var myCorporate::TPerson::strFullName
+\brief calculated field for displaying the full name for use in the program, for example, if a person is to be selected
+\details Source: member myCorporate::TPerson::strFullName in class myCorporate::TPerson with the type std::optional<std::string>
+\details Database: attribute "FullName" in entity \ref datamodel_table_Person with database type VARCHAR
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TPerson::ID() const
+\brief selector for the data element myCorporate::TPerson::iID
+\details <b>unique identification number for a entity of person</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPerson::iID
+\fn std::optional<std::string> const& myCorporate::TPerson::Name() const
+\brief selector for the data element myCorporate::TPerson::strName
+\details <b>family name of the natural person respectively the name for a legal entity</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strName
+\fn std::optional<std::string> const& myCorporate::TPerson::Firstname() const
+\brief selector for the data element myCorporate::TPerson::strFirstname
+\details <b>first name of the natural person respectively a name extenstion for a legal entity</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strFirstname
+\fn std::optional<int> const& myCorporate::TPerson::FormOfAddress() const
+\brief selector for the data element myCorporate::TPerson::iFormOfAddress
+\details <b>form of address for this person. this attribute control the kind of a person too</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPerson::iFormOfAddress
+\fn std::optional<int> const& myCorporate::TPerson::FamilyStatus() const
+\brief selector for the data element myCorporate::TPerson::iFamilyStatus
+\details <b>family status for the person</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPerson::iFamilyStatus
+\fn std::optional<std::chrono::year_month_day> const& myCorporate::TPerson::FamilyStatusSince() const
+\brief selector for the data element myCorporate::TPerson::daFamilyStatusSince
+\details <b>the date from which the current family status applies.</b>
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myCorporate::TPerson::daFamilyStatusSince
+\fn std::optional<std::chrono::year_month_day> const& myCorporate::TPerson::Birthday() const
+\brief selector for the data element myCorporate::TPerson::daBirthday
+\details <b>birthday of a natural person. This attribute is unused for legal entrities</b>
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myCorporate::TPerson::daBirthday
+\fn std::optional<std::string> const& myCorporate::TPerson::Notes() const
+\brief selector for the data element myCorporate::TPerson::strNotes
+\details <b>notes, with additional / free information for this tperson, not used in application</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strNotes
+\fn std::optional<std::string> const& myCorporate::TPerson::FullName() const
+\brief selector for the data element myCorporate::TPerson::strFullName
+\details <b>calculated field for displaying the full name for use in the program, for example, if a person is to be selected</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strFullName
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myCorporate::TPerson::_ID() const
+\brief special selector for data element myCorporate::TPerson::iID
+\details unique identification number for a entity of person
+\details <b>unique identification number for a entity of person</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::iID is empty
+\returns int const&: Reference to the data element myCorporate::TPerson::iID
+\fn std::string const& myCorporate::TPerson::_Name() const
+\brief special selector for data element myCorporate::TPerson::strName
+\details family name of the natural person respectively the name for a legal entity
+\details <b>family name of the natural person respectively the name for a legal entity</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::strName is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPerson::strName
+\fn std::string const& myCorporate::TPerson::_Firstname() const
+\brief special selector for data element myCorporate::TPerson::strFirstname
+\details first name of the natural person respectively a name extenstion for a legal entity
+\details <b>first name of the natural person respectively a name extenstion for a legal entity</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::strFirstname is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPerson::strFirstname
+\fn int myCorporate::TPerson::_FormOfAddress() const
+\brief special selector for data element myCorporate::TPerson::iFormOfAddress
+\details form of address for this person. this attribute control the kind of a person too
+\details <b>form of address for this person. this attribute control the kind of a person too</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::iFormOfAddress is empty
+\returns int const&: Reference to the data element myCorporate::TPerson::iFormOfAddress
+\fn int myCorporate::TPerson::_FamilyStatus() const
+\brief special selector for data element myCorporate::TPerson::iFamilyStatus
+\details family status for the person
+\details <b>family status for the person</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::iFamilyStatus is empty
+\returns int const&: Reference to the data element myCorporate::TPerson::iFamilyStatus
+\fn std::chrono::year_month_day myCorporate::TPerson::_FamilyStatusSince() const
+\brief special selector for data element myCorporate::TPerson::daFamilyStatusSince
+\details the date from which the current family status applies.
+\details <b>the date from which the current family status applies.</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::daFamilyStatusSince is empty
+\returns std::chrono::year_month_day const&: Reference to the data element myCorporate::TPerson::daFamilyStatusSince
+\fn std::chrono::year_month_day myCorporate::TPerson::_Birthday() const
+\brief special selector for data element myCorporate::TPerson::daBirthday
+\details birthday of a natural person. This attribute is unused for legal entrities
+\details <b>birthday of a natural person. This attribute is unused for legal entrities</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::daBirthday is empty
+\returns std::chrono::year_month_day const&: Reference to the data element myCorporate::TPerson::daBirthday
+\fn std::string const& myCorporate::TPerson::_Notes() const
+\brief special selector for data element myCorporate::TPerson::strNotes
+\details notes, with additional / free information for this tperson, not used in application
+\details <b>notes, with additional / free information for this tperson, not used in application</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::strNotes is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPerson::strNotes
+\fn std::string const& myCorporate::TPerson::_FullName() const
+\brief special selector for data element myCorporate::TPerson::strFullName
+\details calculated field for displaying the full name for use in the program, for example, if a person is to be selected
+\details <b>calculated field for displaying the full name for use in the program, for example, if a person is to be selected</b>
+\throw std::runtime::error if the attribute myCorporate::TPerson::strFullName is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPerson::strFullName
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TPerson::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::iID
+\details <b>unique identification number for a entity of person</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::iID
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPerson::iID
+
+\fn std::optional<std::string> const& myCorporate::TPerson::Name(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::strName
+\details <b>family name of the natural person respectively the name for a legal entity</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::strName
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strName
+
+\fn std::optional<std::string> const& myCorporate::TPerson::Firstname(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::strFirstname
+\details <b>first name of the natural person respectively a name extenstion for a legal entity</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::strFirstname
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strFirstname
+
+\fn std::optional<int> const& myCorporate::TPerson::FormOfAddress(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::iFormOfAddress
+\details <b>form of address for this person. this attribute control the kind of a person too</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::iFormOfAddress
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPerson::iFormOfAddress
+
+\fn std::optional<int> const& myCorporate::TPerson::FamilyStatus(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::iFamilyStatus
+\details <b>family status for the person</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::iFamilyStatus
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPerson::iFamilyStatus
+
+\fn std::optional<std::chrono::year_month_day> const& myCorporate::TPerson::FamilyStatusSince(std::optional<std::chrono::year_month_day> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::daFamilyStatusSince
+\details <b>the date from which the current family status applies.</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::daFamilyStatusSince
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myCorporate::TPerson::daFamilyStatusSince
+
+\fn std::optional<std::chrono::year_month_day> const& myCorporate::TPerson::Birthday(std::optional<std::chrono::year_month_day> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::daBirthday
+\details <b>birthday of a natural person. This attribute is unused for legal entrities</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::daBirthday
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myCorporate::TPerson::daBirthday
+
+\fn std::optional<std::string> const& myCorporate::TPerson::Notes(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::strNotes
+\details <b>notes, with additional / free information for this tperson, not used in application</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::strNotes
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strNotes
+
+
+\}
+
+\name private manipulators for direct access to the attributes (for views or calculated fields)
+\{
+
+\fn std::optional<std::string> const& myCorporate::TPerson::FullName(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPerson::strFullName
+\details <b>calculated field for displaying the full name for use in the program, for example, if a person is to be selected</b>
+\param[in] newVal the new Value for the member myCorporate::TPerson::strFullName
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPerson::strFullName
+
+
+\}
+
+

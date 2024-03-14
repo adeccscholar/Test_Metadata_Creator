@@ -1,0 +1,286 @@
+﻿\file System\HR/SalaryType.h
+\brief definition of dataclass myHR::TSalaryType of table \ref datamodel_table_SalaryType with kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...) in dictionary "simple person model"
+\see table \ref datamodel_table_SalaryType
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\HR/SalaryType.cpp
+\brief implementation of dataclass myHR::TSalaryType of table \ref datamodel_table_SalaryType with kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...) in dictionary "simple person model"
+\see table \ref datamodel_table_SalaryType
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myHR::TSalaryType
+\brief kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...)
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_SalaryType
+
+\class myHR::TSalaryType::primary_key
+\brief primary key for elements of the class myHR::TSalaryType in a container or when seeking an entity in the database.
+
+\fn myHR::TSalaryType::primary_key::primary_key()
+\brief standard constructor for the class myHR::TSalaryType::primary_key
+
+\fn myHR::TSalaryType::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myHR::TSalaryType::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myHR::TSalaryType::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myHR::TSalaryType::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myHR::TSalaryType::primary_key::primary_key(TSalaryType const& other)
+\brief initializing constructor with an instance of the encircling class myHR::TSalaryType for the class myHR::TSalaryType::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myHR::TSalaryType const& with the instance of the encircling class which values should be copied
+
+\fn myHR::TSalaryType::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myHR::TSalaryType::primary_key::primary_key(int pID)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with 
+
+\var myHR::TSalaryType::primary_key::iID
+\brief Source: key member myHR::TSalaryType::primary_key::iID in class myHR::TSalaryType::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_SalaryType with database type INT
+\fn myHR::TSalaryType::primary_key::ID() const
+\brief selector for the data element myHR::TSalaryType::primary_key::iID
+\returns int with the value for this member.
+\fn myHR::TSalaryType::primary_key::ID(int newVal)
+\brief manipulator for the data element myHR::TSalaryType::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myHR::TSalaryType::primary_key::operator TSalaryType () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myHR::TSalaryType
+
+\fn myHR::TSalaryType::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myHR::TSalaryType::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myHR::TSalaryType::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myHR::TSalaryType::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myHR::TSalaryType::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myHR::TSalaryType::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myHR::TSalaryType::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myHR::TSalaryType::container_ty
+\brief container type as std::map with the generated primary key type myHR::TSalaryType::primary_key for instances of this class
+
+\details The type uses the key type myHR::TSalaryType::primary_keypreviously created from the key attributes of table \ref datamodel_table_SalaryType as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myHR::TSalaryType::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myHR::TSalaryType::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myHR::TSalaryType
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myHR::TSalaryType::TSalaryType()
+\brief standard constructor for TSalaryType
+
+\fn myHR::TSalaryType::TSalaryType(TSalaryType const& other)
+\brief copy constructor for TSalaryType
+\param[in] other reference of an instance of an other instance of myHR::TSalaryType to copy
+
+\fn myHR::TSalaryType::TSalaryType(TSalaryType&&)
+\brief rvalue constructor for TSalaryType
+
+\fn myHR::TSalaryType::~TSalaryType()
+\brief destructor for TSalaryType
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myHR::TSalaryType::swap(TSalaryType& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myHR::TSalaryType::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myHR::TSalaryType::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myHR::TSalaryType::copy(myCorporate::TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myHR::TSalaryType::iID
+\brief Source: member myHR::TSalaryType::iID in class myHR::TSalaryType with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_SalaryType with database type INT
+
+\var myHR::TSalaryType::strDenotation
+\brief Source: member myHR::TSalaryType::strDenotation in class myHR::TSalaryType with the type std::optional<std::string>
+\details Database: attribute "Denotation" in entity \ref datamodel_table_SalaryType with database type VARCHAR
+
+\var myHR::TSalaryType::strAbbreviation
+\brief Source: member myHR::TSalaryType::strAbbreviation in class myHR::TSalaryType with the type std::optional<std::string>
+\details Database: attribute "Abbreviation" in entity \ref datamodel_table_SalaryType with database type VARCHAR
+
+\var myHR::TSalaryType::strDescription
+\brief Source: member myHR::TSalaryType::strDescription in class myHR::TSalaryType with the type std::optional<std::string>
+\details Database: attribute "Description" in entity \ref datamodel_table_SalaryType with database type VARCHAR(MAX)
+
+\var myHR::TSalaryType::iSalaryBase
+\brief Source: member myHR::TSalaryType::iSalaryBase in class myHR::TSalaryType with the type std::optional<int>
+\details Database: attribute "SalaryBase" in entity \ref datamodel_table_SalaryType with database type INT
+
+\var myHR::TSalaryType::boUrgentValue
+\brief Source: member myHR::TSalaryType::boUrgentValue in class myHR::TSalaryType with the type std::optional<bool>
+\details Database: attribute "UrgentValue" in entity \ref datamodel_table_SalaryType with database type TINYINT
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myHR::TSalaryType::ID() const
+\brief selector for the data element myHR::TSalaryType::iID
+\returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iID
+\fn std::optional<std::string> const& myHR::TSalaryType::Denotation() const
+\brief selector for the data element myHR::TSalaryType::strDenotation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDenotation
+\fn std::optional<std::string> const& myHR::TSalaryType::Abbreviation() const
+\brief selector for the data element myHR::TSalaryType::strAbbreviation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strAbbreviation
+\fn std::optional<std::string> const& myHR::TSalaryType::Description() const
+\brief selector for the data element myHR::TSalaryType::strDescription
+\returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDescription
+\fn std::optional<int> const& myHR::TSalaryType::SalaryBase() const
+\brief selector for the data element myHR::TSalaryType::iSalaryBase
+\returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iSalaryBase
+\fn std::optional<bool> const& myHR::TSalaryType::UrgentValue() const
+\brief selector for the data element myHR::TSalaryType::boUrgentValue
+\returns std::optional<bool> const&: Reference to the data element myHR::TSalaryType::boUrgentValue
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myHR::TSalaryType::_ID() const
+\brief special selector for data element myHR::TSalaryType::iID
+\details attribute "ID" in entity "SalaryType"
+\throw std::runtime::error if the attribute myHR::TSalaryType::iID is empty
+\returns int const&: Reference to the data element myHR::TSalaryType::iID
+\fn std::string const& myHR::TSalaryType::_Denotation() const
+\brief special selector for data element myHR::TSalaryType::strDenotation
+\details attribute "Denotation" in entity "SalaryType"
+\throw std::runtime::error if the attribute myHR::TSalaryType::strDenotation is empty
+\returns std::string const& const&: Reference to the data element myHR::TSalaryType::strDenotation
+\fn std::string const& myHR::TSalaryType::_Abbreviation() const
+\brief special selector for data element myHR::TSalaryType::strAbbreviation
+\details attribute "Abbreviation" in entity "SalaryType"
+\throw std::runtime::error if the attribute myHR::TSalaryType::strAbbreviation is empty
+\returns std::string const& const&: Reference to the data element myHR::TSalaryType::strAbbreviation
+\fn std::string const& myHR::TSalaryType::_Description() const
+\brief special selector for data element myHR::TSalaryType::strDescription
+\details attribute "Description" in entity "SalaryType"
+\throw std::runtime::error if the attribute myHR::TSalaryType::strDescription is empty
+\returns std::string const& const&: Reference to the data element myHR::TSalaryType::strDescription
+\fn int myHR::TSalaryType::_SalaryBase() const
+\brief special selector for data element myHR::TSalaryType::iSalaryBase
+\details attribute "SalaryBase" in entity "SalaryType"
+\throw std::runtime::error if the attribute myHR::TSalaryType::iSalaryBase is empty
+\returns int const&: Reference to the data element myHR::TSalaryType::iSalaryBase
+\fn bool myHR::TSalaryType::_UrgentValue() const
+\brief special selector for data element myHR::TSalaryType::boUrgentValue
+\details attribute "UrgentValue" in entity "SalaryType"
+\throw std::runtime::error if the attribute myHR::TSalaryType::boUrgentValue is empty
+\returns bool const&: Reference to the data element myHR::TSalaryType::boUrgentValue
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myHR::TSalaryType::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TSalaryType::iID
+\param[in] newVal the new Value for the member myHR::TSalaryType::iID
+\returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iID
+
+\fn std::optional<std::string> const& myHR::TSalaryType::Denotation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TSalaryType::strDenotation
+\param[in] newVal the new Value for the member myHR::TSalaryType::strDenotation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDenotation
+
+\fn std::optional<std::string> const& myHR::TSalaryType::Abbreviation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TSalaryType::strAbbreviation
+\param[in] newVal the new Value for the member myHR::TSalaryType::strAbbreviation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strAbbreviation
+
+\fn std::optional<std::string> const& myHR::TSalaryType::Description(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TSalaryType::strDescription
+\param[in] newVal the new Value for the member myHR::TSalaryType::strDescription
+\returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDescription
+
+\fn std::optional<int> const& myHR::TSalaryType::SalaryBase(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TSalaryType::iSalaryBase
+\param[in] newVal the new Value for the member myHR::TSalaryType::iSalaryBase
+\returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iSalaryBase
+
+\fn std::optional<bool> const& myHR::TSalaryType::UrgentValue(std::optional<bool> const& newVal)
+\brief manipulator for the data element myHR::TSalaryType::boUrgentValue
+\param[in] newVal the new Value for the member myHR::TSalaryType::boUrgentValue
+\returns std::optional<bool> const&: Reference to the data element myHR::TSalaryType::boUrgentValue
+
+
+\}
+
+

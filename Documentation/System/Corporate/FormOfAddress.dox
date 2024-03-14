@@ -1,0 +1,374 @@
+﻿\file System\Corporate/FormOfAddress.h
+\brief definition of dataclass myCorporate::TFormOfAddress of table \ref datamodel_table_FormOfAddress with domain with the possible values for form of addresses with additional informations for this in dictionary "simple person model"
+\see table \ref datamodel_table_FormOfAddress
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\Corporate/FormOfAddress.cpp
+\brief implementation of dataclass myCorporate::TFormOfAddress of table \ref datamodel_table_FormOfAddress with domain with the possible values for form of addresses with additional informations for this in dictionary "simple person model"
+\see table \ref datamodel_table_FormOfAddress
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myCorporate::TFormOfAddress
+\brief domain with the possible values for form of addresses with additional informations for this
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_FormOfAddress
+
+\class myCorporate::TFormOfAddress::primary_key
+\brief primary key for elements of the class myCorporate::TFormOfAddress in a container or when seeking an entity in the database.
+
+\fn myCorporate::TFormOfAddress::primary_key::primary_key()
+\brief standard constructor for the class myCorporate::TFormOfAddress::primary_key
+
+\fn myCorporate::TFormOfAddress::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myCorporate::TFormOfAddress::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myCorporate::TFormOfAddress::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myCorporate::TFormOfAddress::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myCorporate::TFormOfAddress::primary_key::primary_key(TFormOfAddress const& other)
+\brief initializing constructor with an instance of the encircling class myCorporate::TFormOfAddress for the class myCorporate::TFormOfAddress::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myCorporate::TFormOfAddress const& with the instance of the encircling class which values should be copied
+
+\fn myCorporate::TFormOfAddress::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myCorporate::TFormOfAddress::primary_key::primary_key(int pID)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with unique identification number of the form of address to use it in relationships
+
+\var myCorporate::TFormOfAddress::primary_key::iID
+\brief unique identification number of the form of address to use it in relationships
+\details Source: key member myCorporate::TFormOfAddress::primary_key::iID in class myCorporate::TFormOfAddress::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_FormOfAddress with database type INT
+\fn myCorporate::TFormOfAddress::primary_key::ID() const
+\brief selector for the data element myCorporate::TFormOfAddress::primary_key::iID
+\returns int with the value for this member.
+\fn myCorporate::TFormOfAddress::primary_key::ID(int newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myCorporate::TFormOfAddress::primary_key::operator TFormOfAddress () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myCorporate::TFormOfAddress
+
+\fn myCorporate::TFormOfAddress::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myCorporate::TFormOfAddress::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myCorporate::TFormOfAddress::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myCorporate::TFormOfAddress::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myCorporate::TFormOfAddress::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myCorporate::TFormOfAddress::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myCorporate::TFormOfAddress::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myCorporate::TFormOfAddress::container_ty
+\brief container type as std::map with the generated primary key type myCorporate::TFormOfAddress::primary_key for instances of this class
+
+\details The type uses the key type myCorporate::TFormOfAddress::primary_keypreviously created from the key attributes of table \ref datamodel_table_FormOfAddress as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myCorporate::TFormOfAddress::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myCorporate::TFormOfAddress::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myCorporate::TFormOfAddress
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myCorporate::TFormOfAddress::TFormOfAddress()
+\brief standard constructor for TFormOfAddress
+
+\fn myCorporate::TFormOfAddress::TFormOfAddress(TFormOfAddress const& other)
+\brief copy constructor for TFormOfAddress
+\param[in] other reference of an instance of an other instance of myCorporate::TFormOfAddress to copy
+
+\fn myCorporate::TFormOfAddress::TFormOfAddress(TFormOfAddress&&)
+\brief rvalue constructor for TFormOfAddress
+
+\fn myCorporate::TFormOfAddress::~TFormOfAddress()
+\brief destructor for TFormOfAddress
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myCorporate::TFormOfAddress::swap(TFormOfAddress& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myCorporate::TFormOfAddress::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myCorporate::TFormOfAddress::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myCorporate::TFormOfAddress::copy(TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myCorporate::TFormOfAddress::iID
+\brief unique identification number of the form of address to use it in relationships
+\details Source: member myCorporate::TFormOfAddress::iID in class myCorporate::TFormOfAddress with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_FormOfAddress with database type INT
+
+\var myCorporate::TFormOfAddress::strDenotation
+\brief unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)
+\details Source: member myCorporate::TFormOfAddress::strDenotation in class myCorporate::TFormOfAddress with the type std::optional<std::string>
+\details Database: attribute "Denotation" in entity \ref datamodel_table_FormOfAddress with database type VARCHAR
+
+\var myCorporate::TFormOfAddress::strAbbreviation
+\brief non-representative abbreviation that can be used for a short advertisement for this form of address
+\details Source: member myCorporate::TFormOfAddress::strAbbreviation in class myCorporate::TFormOfAddress with the type std::optional<std::string>
+\details Database: attribute "Abbreviation" in entity \ref datamodel_table_FormOfAddress with database type VARCHAR
+
+\var myCorporate::TFormOfAddress::strDescription
+\brief detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm
+\details Source: member myCorporate::TFormOfAddress::strDescription in class myCorporate::TFormOfAddress with the type std::optional<std::string>
+\details Database: attribute "Description" in entity \ref datamodel_table_FormOfAddress with database type VARCHAR(MAX)
+
+\var myCorporate::TFormOfAddress::iTypeSpec
+\brief value from FamilyTypes who determine the art of persontype (gender, legal form, …)
+\details Source: member myCorporate::TFormOfAddress::iTypeSpec in class myCorporate::TFormOfAddress with the type std::optional<int>
+\details Database: attribute "TypeSpec" in entity \ref datamodel_table_FormOfAddress with database type INT
+
+\var myCorporate::TFormOfAddress::strSalutation
+\brief salutation formula to be used in letters and emails for this salutation type and therefore person type
+\details Source: member myCorporate::TFormOfAddress::strSalutation in class myCorporate::TFormOfAddress with the type std::optional<std::string>
+\details Database: attribute "Salutation" in entity \ref datamodel_table_FormOfAddress with database type VARCHAR
+
+\var myCorporate::TFormOfAddress::strValediction
+\brief farewell formula to be used in letters and emails for this salutation type and therefore person type
+\details Source: member myCorporate::TFormOfAddress::strValediction in class myCorporate::TFormOfAddress with the type std::optional<std::string>
+\details Database: attribute "Valediction" in entity \ref datamodel_table_FormOfAddress with database type VARCHAR
+
+\var myCorporate::TFormOfAddress::strNotes
+\brief notes, with additional / free information for this type of form of address, not used in application
+\details Source: member myCorporate::TFormOfAddress::strNotes in class myCorporate::TFormOfAddress with the type std::optional<std::string>
+\details Database: attribute "Notes" in entity \ref datamodel_table_FormOfAddress with database type VARCHAR(MAX)
+
+\var myCorporate::TFormOfAddress::boUrgentValue
+\brief boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)
+\details Source: member myCorporate::TFormOfAddress::boUrgentValue in class myCorporate::TFormOfAddress with the type std::optional<bool>
+\details Database: attribute "UrgentValue" in entity \ref datamodel_table_FormOfAddress with database type TINYINT
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TFormOfAddress::ID() const
+\brief selector for the data element myCorporate::TFormOfAddress::iID
+\details <b>unique identification number of the form of address to use it in relationships</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TFormOfAddress::iID
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Denotation() const
+\brief selector for the data element myCorporate::TFormOfAddress::strDenotation
+\details <b>unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strDenotation
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Abbreviation() const
+\brief selector for the data element myCorporate::TFormOfAddress::strAbbreviation
+\details <b>non-representative abbreviation that can be used for a short advertisement for this form of address</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strAbbreviation
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Description() const
+\brief selector for the data element myCorporate::TFormOfAddress::strDescription
+\details <b>detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strDescription
+\fn std::optional<int> const& myCorporate::TFormOfAddress::TypeSpec() const
+\brief selector for the data element myCorporate::TFormOfAddress::iTypeSpec
+\details <b>value from FamilyTypes who determine the art of persontype (gender, legal form, …)</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TFormOfAddress::iTypeSpec
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Salutation() const
+\brief selector for the data element myCorporate::TFormOfAddress::strSalutation
+\details <b>salutation formula to be used in letters and emails for this salutation type and therefore person type</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strSalutation
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Valediction() const
+\brief selector for the data element myCorporate::TFormOfAddress::strValediction
+\details <b>farewell formula to be used in letters and emails for this salutation type and therefore person type</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strValediction
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Notes() const
+\brief selector for the data element myCorporate::TFormOfAddress::strNotes
+\details <b>notes, with additional / free information for this type of form of address, not used in application</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strNotes
+\fn std::optional<bool> const& myCorporate::TFormOfAddress::UrgentValue() const
+\brief selector for the data element myCorporate::TFormOfAddress::boUrgentValue
+\details <b>boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)</b>
+\returns std::optional<bool> const&: Reference to the data element myCorporate::TFormOfAddress::boUrgentValue
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myCorporate::TFormOfAddress::_ID() const
+\brief special selector for data element myCorporate::TFormOfAddress::iID
+\details unique identification number of the form of address to use it in relationships
+\details <b>unique identification number of the form of address to use it in relationships</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::iID is empty
+\returns int const&: Reference to the data element myCorporate::TFormOfAddress::iID
+\fn std::string const& myCorporate::TFormOfAddress::_Denotation() const
+\brief special selector for data element myCorporate::TFormOfAddress::strDenotation
+\details unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)
+\details <b>unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strDenotation is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strDenotation
+\fn std::string const& myCorporate::TFormOfAddress::_Abbreviation() const
+\brief special selector for data element myCorporate::TFormOfAddress::strAbbreviation
+\details non-representative abbreviation that can be used for a short advertisement for this form of address
+\details <b>non-representative abbreviation that can be used for a short advertisement for this form of address</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strAbbreviation is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strAbbreviation
+\fn std::string const& myCorporate::TFormOfAddress::_Description() const
+\brief special selector for data element myCorporate::TFormOfAddress::strDescription
+\details detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm
+\details <b>detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strDescription is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strDescription
+\fn int myCorporate::TFormOfAddress::_TypeSpec() const
+\brief special selector for data element myCorporate::TFormOfAddress::iTypeSpec
+\details value from FamilyTypes who determine the art of persontype (gender, legal form, …)
+\details <b>value from FamilyTypes who determine the art of persontype (gender, legal form, …)</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::iTypeSpec is empty
+\returns int const&: Reference to the data element myCorporate::TFormOfAddress::iTypeSpec
+\fn std::string const& myCorporate::TFormOfAddress::_Salutation() const
+\brief special selector for data element myCorporate::TFormOfAddress::strSalutation
+\details salutation formula to be used in letters and emails for this salutation type and therefore person type
+\details <b>salutation formula to be used in letters and emails for this salutation type and therefore person type</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strSalutation is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strSalutation
+\fn std::string const& myCorporate::TFormOfAddress::_Valediction() const
+\brief special selector for data element myCorporate::TFormOfAddress::strValediction
+\details farewell formula to be used in letters and emails for this salutation type and therefore person type
+\details <b>farewell formula to be used in letters and emails for this salutation type and therefore person type</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strValediction is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strValediction
+\fn std::string const& myCorporate::TFormOfAddress::_Notes() const
+\brief special selector for data element myCorporate::TFormOfAddress::strNotes
+\details notes, with additional / free information for this type of form of address, not used in application
+\details <b>notes, with additional / free information for this type of form of address, not used in application</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strNotes is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strNotes
+\fn bool myCorporate::TFormOfAddress::_UrgentValue() const
+\brief special selector for data element myCorporate::TFormOfAddress::boUrgentValue
+\details boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)
+\details <b>boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)</b>
+\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::boUrgentValue is empty
+\returns bool const&: Reference to the data element myCorporate::TFormOfAddress::boUrgentValue
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TFormOfAddress::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::iID
+\details <b>unique identification number of the form of address to use it in relationships</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::iID
+\returns std::optional<int> const&: Reference to the data element myCorporate::TFormOfAddress::iID
+
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Denotation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::strDenotation
+\details <b>unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::strDenotation
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strDenotation
+
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Abbreviation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::strAbbreviation
+\details <b>non-representative abbreviation that can be used for a short advertisement for this form of address</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::strAbbreviation
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strAbbreviation
+
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Description(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::strDescription
+\details <b>detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::strDescription
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strDescription
+
+\fn std::optional<int> const& myCorporate::TFormOfAddress::TypeSpec(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::iTypeSpec
+\details <b>value from FamilyTypes who determine the art of persontype (gender, legal form, …)</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::iTypeSpec
+\returns std::optional<int> const&: Reference to the data element myCorporate::TFormOfAddress::iTypeSpec
+
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Salutation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::strSalutation
+\details <b>salutation formula to be used in letters and emails for this salutation type and therefore person type</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::strSalutation
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strSalutation
+
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Valediction(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::strValediction
+\details <b>farewell formula to be used in letters and emails for this salutation type and therefore person type</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::strValediction
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strValediction
+
+\fn std::optional<std::string> const& myCorporate::TFormOfAddress::Notes(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::strNotes
+\details <b>notes, with additional / free information for this type of form of address, not used in application</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::strNotes
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TFormOfAddress::strNotes
+
+\fn std::optional<bool> const& myCorporate::TFormOfAddress::UrgentValue(std::optional<bool> const& newVal)
+\brief manipulator for the data element myCorporate::TFormOfAddress::boUrgentValue
+\details <b>boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)</b>
+\param[in] newVal the new Value for the member myCorporate::TFormOfAddress::boUrgentValue
+\returns std::optional<bool> const&: Reference to the data element myCorporate::TFormOfAddress::boUrgentValue
+
+
+\}
+
+

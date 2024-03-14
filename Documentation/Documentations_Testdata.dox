@@ -1,0 +1,293 @@
+\page pgTestData Generation of Testdata
+
+\section secpreambleTest preamble / descriptions
+
+\details In addition to the value ranges belonging to the program for some tables and inserted with the scripts to 
+create zu database, additional test data are also required. Program tests are an important part of the development and
+are missed often. Productive data should never be used. This applies both to the internal and secret data of a company, 
+but of course data protection regulations must also be complied with, especially in the case of personal data.
+
+\details The test data is not contained in the metadata directory, but is imported via separate scripts. For testing, 
+it is important that this is reproducible and that tests can be repeated on defined initial data sets.
+
+\details This means that the effort required to provide meaningful test data for the programs should not be underestimated. 
+Test data for the software proce&szlig;es must also appear "real" and fulfill conditions. And in the case of load tests in 
+particular, it must also be available in sufficient quantities at the end.
+
+\details A set of test data was created for the program and supplied with it. This should enable program 
+functions to be tested and also be used in the context of this project to demonstrate methodologies, 
+program techniques, principles of data modeling and other things. 
+
+\details The test data in this project are random data mixed with open data sources. These are fictitious. For example, 
+job titles and departments of a fictitious company are used. A list of countries within Europe consists of freely acce&szlig;ible 
+information. In addition to the name, this list also contains the ISO codes, country dailing codes, capitals, national 
+currencies and an indicator of EU membership. These data are only tests and do not have to be up-to-date or correct.
+
+\subsection subTestDataDepartments Departments
+
+\details Typical departments of an industrial company were selected for the test. The following table shows the test data.
+
+<table><tr><td>ID</td><td>Denotation</td><td>Abbreviation</td><td>Description</td></tr>
+       <tr><td>1</td><td>'Gesch&auml;ftsf&uuml;hrung'</td><td>'GF'</td>
+	       <td>'Leitung und strategische F&uuml;hrung des Unternehmens.'</td></tr>
+	   <tr><td>2</td><td>'Vertrieb'</td><td>'VRB'</td>
+	       <td>'Zust&auml;ndig f&uuml;r den Verkauf von Produkten und Dienstleistungen an Kunden.'</td></tr>
+	   <tr><td>3</td><td>'Finanzen'</td><td>'FIN'</td>
+	       <td>'Verwaltung der finanziellen Aspekte des Unternehmens, einschlie&szlig;lich Buchhaltung und Budgetierung.'</td></tr>
+	   <tr><td>4</td><td>'Controlling'</td><td>'CON'</td>
+	       <td>'Teil des Unternehmensmanagements, der sich mit der Planung, &uuml;berwachung und Steuerung von Unternehmensaktivit&auml;ten befa&szlig;t.'</td></tr>
+	   <tr><td>5</td><td>'Personalwesen'</td><td>'HR'</td>
+	       <td>'Verantwortlich f&uuml;r Einstellung, Schulung und Betreuung der Mitarbeiter. '</td></tr>
+	   <tr><td>6</td><td>'Produktion'</td><td>'PRO'</td>
+	       <td>'Herstellung von Produkten oder Bereitstellung von Dienstleistungen.'</td></tr>
+	   <tr><td>7</td><td>'Marketing'</td><td>'MKT'</td>
+	       <td>'Planung und Umsetzung von Marketingstrategien zur F&ouml;rderung der Produkte oder Dienstleistungen des Unternehmens.'</td></tr>
+	   <tr><td>8</td><td>'Informationstechnologie'</td><td>'IT'</td>
+	       <td>'Bereitstellung und Wartung von IT-Infrastruktur und Unterst&uuml;tzung f&uuml;r die computergest&uuml;tzten Prozesse im Unternehmen.'</td></tr>
+	   <tr><td>9</td><td>'Kundenservice'</td><td>'CS'</td>
+	       <td>'Bereitstellung von Unterst&uuml;tzung und L&ouml;sung von Problemen f&uuml;r Kunden nach dem Kauf.'</td></tr>
+	   <tr><td>10</td><td>'Forschung und Entwicklung'</td><td>'F&amb;E'</td>
+	       <td>'Verantwortlich f&uuml;r die Entwicklung neuer Produkte, Dienstleistungen oder Technologien.'</td></tr>
+	   <tr><td>11</td><td>'Qualit&auml;tskontrolle'</td><td>'QC'</td>
+	       <td>'&uuml;berwachung und Sicherstellung der Qualit&auml;t von Produkten oder Dienstleistungen.'</td></tr>
+	   <tr><td>12</td><td>'Logistik'</td><td>'LOG'</td>
+	       <td>'Verwaltung und Koordination des Transports und der Lagerung von Waren und Materialien.'</td></tr>
+</table>
+
+\subsection subTestDataJobPositions JobPositions
+
+\details The same applies to the types of employment in the company as for the departments. Typical job positions in an 
+industrial company were selected for the tests. Here too, this table can be expanded within HR's area of responsibility 
+and used for other tasks. For example, for collective bargaining framework conditions, types of payroll accounting or 
+for advertising new positions. 
+
+<table><tr><td>ID</td><td>Denotation</td><td>Abbreviation</td><td>Description</td><td>UrgentValue</td></tr>
+       <tr><td>1</td><td>'Gesch&auml;ftsf&uuml;hrer*in'</td><td>'V'</td>
+	       <td>'Gesch&auml;ftsf&uuml;hrerin / Gesch&auml;ftsf&uuml;hrer im Unternehmen.'</td><td>0</td></tr>
+	   <tr><td>2</td><td>'Bereichsleiter*in'</td><td>'BL'</td>
+	       <td>'Bereichsleiterin / Bereichsleiter im Unternehmen.'</td><td>0</td></tr>
+	   <tr><td>3</td><td>'Abteilungsleiter*in'</td><td>'AL'</td>
+	       <td>'Abteilungsleiterin / Abteilungsleiter des Unternehmens.'</td><td>0</td></tr>
+	   <tr><td>4</td><td>'Gruppenleiter*in'</td><td>'GL'</td>
+	       <td>'Gruppenleiterin / Gruppenleiter im Unternehmen.'</td><td>0</td></tr>
+	   <tr><td>5</td><td>'Angestellter*in'</td><td>'AN'</td>
+	       <td>'Angestellte / Angestellter im Unternehmen (kaufm&auml;nnische Bereiche, IT, Entwicklung, ...).'</td><td>0</td></tr>
+	   <tr><td>6</td><td>'Arbeiter*in'</td><td>'AR'</td>
+	       <td>'Arbeiterin / Arbeiter im Unternehmen (Produktion, Lager, ...).'</td><td>0</td></tr>
+	   <tr><td>7</td><td>'Aushilfe'</td><td>'AH'</td>
+	       <td>'Aushilfe im Unternehmen (auch 400 &euro;- Basis).'</td><td>0</td></tr>
+	   <tr><td>8</td><td>'Auszubildende/r'</td><td>'LE'</td>
+	       <td>'Auszubildende oder Auszubildener im Unternehmen.'</td><td>0</td></tr>
+</table>
+
+\subsection subTestDataCountries Countries
+
+\details Even if it is not nece&szlig;ary for the program at the beginning, I have compiled most of the European countries as 
+test data. Especially with such general information that is shared by different parts of the company, an analysis is 
+recommended right from the start. For example, the sales department could use the information on EU affiliation for 
+invoicing. It is likely that this table will be expanded later to meet various requirements.
+
+\details The following table show the used data to test the program.
+
+<table><tr><td>ID</td><td>Denotation</td><td>Abbreviation</td><td>Description</td>
+           <td>CountryDialing</td><td>ISO_Code</td><td>IsEU</td><td>Capital</td><td>Currency</td>
+		   <td>UrgentValue</td></tr>
+        <tr><td>1</td><td>'Deutschland'</td><td>'BRD'</td><td>'Bundesrebublik Deutschland'</td><td>'+49'</td>
+		    <td>'DE'</td><td>1</td><td>'Berlin'</td><td>'Euro'</td><td>1</td></tr>
+		<tr><td>2</td><td>'&ouml;sterreich'</td><td>'AUT'</td><td>'&ouml;stereich'</td><td>'+43'</td>
+		    <td>'AT'</td><td>1</td><td>'Wien'</td><td>'Euro'</td><td>1</td></tr>
+		<tr><td>3</td><td>'Schweiz'</td><td>'CHE'</td><td>'Schweizerische Eidgeno&szlig;enschaft'</td><td>'+41'</td>
+		    <td>'CH'</td><td>0</td><td>'Bern'</td><td>'Schweizer Franken'</td><td>1</td></tr>
+		<tr><td>4</td><td>'Frankreich'</td><td>'France'</td><td>'Franz&ouml;sische Republik'</td><td>'+33'</td>
+		    <td>'FR'</td><td>1</td><td>'Paris'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>5</td><td>'Luxemburg'</td><td>'Lux'</td><td>'Gro&szlig;herzogtum Luxemburg'</td><td>'+352'</td>
+		    <td>'LU'</td><td>1</td><td>'Luxemburg'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>6</td><td>'Liechtenstein'</td><td>'LIE'</td><td>'F&uuml;rstentum Liechtenstein'</td><td>'+432'</td>
+		    <td>'LI'</td><td>1</td><td>'Vaduz'</td><td>'Schweizer Franken'</td><td>0</td></tr>
+		<tr><td>7</td><td>'Belgien'</td><td>'BEL'</td><td>'K&ouml;nigreich Belgien '</td><td>'+32'</td>
+		    <td>'BE'</td><td>1</td><td>'Br&uuml;&szlig;el'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>8</td><td>'Niederlande'</td><td>'NDL'</td><td>'K&ouml;nigreich der Niederlande'</td><td>'+31'</td>
+		    <td>'NL'</td><td>1</td><td>'Amsterdam'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>9</td><td>'Gro&szlig;britannien'</td><td>'GBR'</td>
+		    <td>'Vereinigtes K&ouml;nigreich Gro&szlig;britannien und Nordirland'</td><td>'+44'</td>
+		    <td>'GB'</td><td>1</td><td>'Athen'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>10</td><td>'D&auml;nemark'</td><td>'DNK'</td><td>'K&ouml;nigreich D&auml;nemark'</td><td>'+45'</td>
+		    <td>'DK'</td><td>1</td><td>'Kopenhagen'</td><td>'D&auml;nische Krone'</td><td>0</td></tr>
+		<tr><td>11</td><td>'Finnland'</td><td>'FIN'</td><td>'Republik Finnland'</td><td>'+358'</td>
+		    <td>'FI'</td><td>1</td><td>'Helsinki'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>12</td><td>'Griechenland'</td><td>'GRC'</td><td>'Hellenische Republik'</td><td>'+30'</td>
+		    <td>'GR'</td><td>1</td><td>'Athen'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>13</td><td>'Monaco'</td><td>'MCO'</td><td>'F&uuml;rstentum Monaco'</td><td>'+377'</td>
+		    <td>'MC'</td><td>0</td><td>'Monaco'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>14</td><td>'Kroatien'</td><td>'HRV'</td><td>'Republik Kroatien'</td><td>'+385'</td>
+		    <td>'HR'</td><td>1</td><td>'Zagreb'</td><td>'Kroatische Kuna'</td><td>0</td></tr>
+		<tr><td>15</td><td>'Bulgarien'</td><td>'BGR'</td><td>'Republik Bulgarien'</td><td>'+359'</td>
+		    <td>'BG'</td><td>1</td><td>'Sofia'</td><td>'Bulgarischer Lew'</td><td>0</td></tr>
+		<tr><td>16</td><td>'Estland'</td><td>'EST'</td><td>'Republik Estland'</td><td>'+372'</td>
+		    <td>'EE'</td><td>1</td><td>'Tallinn'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>17</td><td>'Irland'</td><td>'IRL'</td><td>'Irische Republik'</td><td>'+353'</td>
+		    <td>'IE'</td><td>1</td><td>'Dublin'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>18</td><td>'Island'</td><td>'ISL'</td><td>'Republik Island'</td><td>'+354'</td>
+		    <td>'IS'</td><td>0</td><td>'Reykjavik'</td><td>'Isl&auml;ndische Krone'</td><td>0</td></tr>
+		<tr><td>19</td><td>'Italien'</td><td>'ITA'</td><td>'Italienische Republik'</td><td>'+39'</td>
+		    <td>'IT'</td><td>1</td><td>'Rom'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>20</td><td>'Kosovo'</td><td>'XKX'</td><td>'Republik Kosovo'</td><td>'+383'</td>
+		    <td>'XK'</td><td>0</td><td>'Pristina'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>21</td><td>'Lettland'</td><td>'LVA'</td><td>'Republik Lettland'</td><td>'+371'</td>
+		    <td>'LV'</td><td>1</td><td>'Riga'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>22</td><td>'Litauen'</td><td>'LTU'</td><td>'Republik Litauen'</td><td>'+370'</td>
+		    <td>'LT'</td><td>1</td><td>'Vilnius'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>23</td><td>'Malta'</td><td>'MLT'</td><td>'Republik Malta'</td><td>'+356'</td>
+		    <td>'MT'</td><td>1</td><td>'Valletta'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>24</td><td>'Polen'</td><td>'POL'</td><td>'Republik Polen'</td><td>'+48'</td>
+		    <td>'PL'</td><td>1</td><td>'Warschau'</td><td>'Zloty'</td><td>0</td></tr>
+		<tr><td>25</td><td>'Portugal'</td><td>'PRT'</td><td>'Portugiesische Republik'</td><td>'+351'</td>
+		    <td>'PT'</td><td>1</td><td>'Li&szlig;abon'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>26</td><td>'Rum&auml;nien'</td><td>'ROU'</td><td>'Rum&auml;nien'</td><td>'+40'</td>
+		    <td>'RO'</td><td>1</td><td>'Bukarest'</td><td>'Rum&auml;nischer Leu'</td><td>0</td></tr>
+		<tr><td>27</td><td>'Norwegen'</td><td>'NOR'</td><td>'K&ouml;nigreich Norwegen'</td><td>'+47'</td>
+		    <td>'NO'</td><td>0</td><td>'Oslo'</td><td>'Norwegische Krone'</td><td>0</td></tr>
+		<tr><td>28</td><td>'Slowakei'</td><td>'SVK'</td><td>'Slowakische Republik'</td><td>'+421'</td>
+		    <td>'SK'</td><td>1</td><td>'Bratislava'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>29</td><td>'Slowenien'</td><td>'SVN'</td><td>'Republik Slowenien'</td><td>'+386'</td>
+		    <td>'SI'</td><td>1</td><td>'Ljubljana'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>30</td><td>'Spanien'</td><td>'ESP'</td><td>'K&ouml;nigreich Spanien'</td><td>'+34'</td>
+		    <td>'ES'</td><td>1</td><td>'Madrid'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>31</td><td>'Tschechien'</td><td>'CZE'</td><td>'Tschechische Republik'</td><td>'+420'</td>
+		    <td>'CZ'</td><td>1</td><td>'Prag'</td><td>'Tschechische Krone'</td><td>0</td></tr>
+		<tr><td>32</td><td>'Schweden'</td><td>'SWE'</td><td>'K&ouml;nigreich Schweden'</td><td>'+46'</td>
+		    <td>'SE'</td><td>1</td><td>'Stockholm'</td><td>'Schwedische Krone'</td><td>0</td></tr>
+		<tr><td>33</td><td>'T&uuml;rkei'</td><td>'TUR'</td><td>'Republik T&uuml;rkei'</td><td>'+90'</td>
+		    <td>'TR'</td><td>0</td><td>'Ankara'</td><td>'T&uuml;rkische Lira'</td><td>0</td></tr>
+		<tr><td>34</td><td>'Ungarn'</td><td>'HUN'</td><td>'Ungarn'</td><td>'+36'</td>
+		    <td>'HU'</td><td>1</td><td>'London'</td><td>'Britisches Pfund'</td><td>0</td></tr>
+		<tr><td>35</td><td>'Vatikanstadt'</td><td>'VAT'</td><td>'Staat der Vatikanstadt'</td><td>'+379'</td>
+		    <td>'VA'</td><td>0</td><td>'London'</td><td>'Britisches Pfund'</td><td>0</td></tr>
+		<tr><td>36</td><td>'Ukraine'</td><td>'UKR'</td><td>'Ukraine'</td><td>'+380'</td>
+	    	<td>'UA'</td><td>0</td><td>'Kiew'</td><td>'Ukrainische Hrywnja'</td><td>0</td></tr>
+		<tr><td>37</td><td>'Albanien'</td><td>'ALB'</td><td>'Republik Albanien'</td><td>'+355'</td>
+	    	<td>'AL'</td><td>0</td><td>'Tirana'</td><td>'Albanischer Lek'</td><td>0</td></tr>
+		<tr><td>38</td><td>'Andorra'</td><td>'AND'</td><td>'F&uuml;rstentum Andorra'</td><td>'+376'</td>
+		    <td>'AD'</td><td>0</td><td>'Andorra la Vella'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>39</td><td>'Bosnien und Herzegowina'</td><td>'BIH'</td><td>'Bosnien und Herzegowina'</td><td>'+387'</td>
+		    <td>'BA'</td><td>0</td><td>'Sarajevo'</td><td>'Konvertible Mark'</td><td>0</td></tr>
+		<tr><td>40</td><td>'Moldau'</td><td>'MDA'</td><td>'Republik Moldau'</td><td>'+373'</td>
+		    <td>'MD'</td><td>0</td><td>'Chisinau'</td><td>'Moldau-Leu'</td><td>0</td></tr>
+		<tr><td>41</td><td>'Montenegro'</td><td>'MNE'</td><td>'Republik Montenegro'</td><td>'+382'</td>
+		    <td>'ME'</td><td>0</td><td>'Podgorica'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>42</td><td>'Nordmazedonien'</td><td>'MKD'</td><td>'Republik Nordmazedonien'</td><td>'+389'</td>
+		<td>'MK'</td><td>0</td><td>'Skopje'</td><td>'Mazedonischer Denar'</td><td>0</td></tr>
+		<tr><td>43</td><td>'Ru&szlig;land'</td><td>'RUS'</td><td>'Ru&szlig;ische F&ouml;deration'</td><td>'+7'</td>
+		    <td>'RU'</td><td>0</td><td>'Moskau'</td><td>'Ru&szlig;ischer Rubel'</td><td>0</td></tr>
+		<tr><td>44</td><td>'San Marino'</td><td>'SMR'</td><td>'Republik San Marino'</td><td>'+378'</td>
+		    <td>'SM'</td><td>0</td><td>'San Marino'</td><td>'Euro'</td><td>0</td></tr>
+		<tr><td>45</td><td>'Serbien'</td><td>'SRB'</td><td>'Republik Serbien'</td><td>'+381'</td>
+		    <td>'RS'</td><td>0</td><td>'Belgrad'</td><td>'Serbischer Dinar'</td><td>0</td></tr>
+		<tr><td>46</td><td>'Wei&szlig;ru&szlig;land'</td><td>'BLR'</td><td>'Republik Belarus'</td><td>'+375'</td>
+		    <td>'BY'</td><td>0</td><td>'Minsk'</td><td>'Wei&szlig;ru&szlig;ischer Rubel'</td><td>0</td></tr>
+		<tr><td>47</td><td>'Zypern'</td><td>'CYP'</td><td>'Republik Zypern'</td><td>'+357'</td>
+ 		    <td>'CY'</td><td>1</td><td>'Nikosia'</td><td>'Euro'</td><td>0</td></tr>
+</table>
+
+
+\details In the first step, 305 data sets for fictional persons will be provided, but this can be expanded as the project 
+progre&szlig;es. 
+
+\details The aim is to provide random test data that complies with data protection guidelines. This 
+involved repeatedly generating random data or selecting and combining random data from openly available 
+data sources. For example, fictitious persons were constructed from lists of names. 
+
+\details For the addre&szlig;es, OpenData sources with the addre&szlig; points from Berlin and Brandenburg were used 
+and a number of addre&szlig;es were selected. These addre&szlig;es really exist, but the persons are fictitious, the 
+use of the addre&szlig; is not targeted and cannot be a&szlig;igned to any real persons. Any resemblance to real persons 
+is unintentional and coincidental.
+
+\details Bank details were randomly generated from real banks with the name of the bank, the BIC code and the 
+bank code. A valid check code calculation was then carried out so that the bank data also leaves a correct 
+impre&szlig;ion and check routines can be run within the software. The above applies here: the numbers are generated 
+from random numbers, similarities with real bank details are unintentional and random.
+
+\details The telephone numbers were also generated from a mixture of real, generally available sources 
+and random numbers. For example, the real area codes of the local networks were supplemented with a random number. 
+This means that checks can again be made in the program, but the data is only random / fictitious.
+
+\section Data sources and licenses for addre&szlig; points
+
+\details The cadastral data of Berlin and Brandenburg were used to generate random addre&szlig;es. These come from 
+various sources. The main components are licensed under the OpenData Initiative in Germany. Other information 
+was supplemented and proce&szlig;ed from freely acce&szlig;ible, public sources.
+
+\details These are licensed as follows:
+
+\subsection secTestDataBrandenburg Brandenburg
+
+\details The data can be used in accordance with the "Datenlizenz Deutschland Namensnennung 2.0". 
+Source reference: GeoBasis-DE/LGB, 2019.
+
+\details From the database for the addre&szlig;es from "Brandenburg", 50 random addre&szlig;es were selected from the 
+"Potsdam" district, plus an additional 50 addre&szlig;es from the "Potsdam-Mittelmark" and "Havelland" districts.
+
+\subsection secTestDataBerlin Berlin 
+
+\details The data is used in accordance with the " Datenlizenz Deutschland - Namensnennung - Version 2.0". The source reference 
+is "Geoportal Berlin / Adre&szlig;en Berlin". The data protection regulations, in particular the Federal Data Protection Act, 
+must be observed. The license can be acce&szlig;ed via https://www.govdata.de/dl-de/by-2-0.
+
+\details From the database of more than 380000 data records, 200 addre&szlig;es were selected from the districts of "Spandau", 
+"Reinickendorf" and "Charlottenburg-Wilmersdorf". In addition, a further 100 data records from the districts of 
+"Mitte", "Steglitz-Zehlendorf" and "Neuk&ouml;lln". In addition, there are another 100 data records from all other boroughs. 
+
+\details This is intended to simulate a natural distribution for a company in the western part of Berlin.
+
+\subsection secTestDataOpenDataSQL statement to generate testdata
+
+\details The following statement was used to select the data records. Random IDs are generated in each subgroup and 
+then sorted according to these. Finally, the corresponding number is selected.
+
+\details At the end, all data records are combined and only the required number of test records is taken again.
+A random ID is generated again and the data is shuffled once more, and a subset is also selected at random.
+
+\code{.sql}
+
+SELECT TOP 305 * FROM (
+  SELECT *, ROW_NUMBER() OVER (ORDER BY NEWID()) AS rm FROM (
+    SELECT TOP 200 PLZ, Stadt, Stra&szlig;e, CAST(HNR AS VARCHAR(5)) +  ADZ AS HNR, ROW_NUMBER() OVER (ORDER BY NEWID()) AS rn
+    FROM Berlin
+	WHERE Bezirk IN ('Spandau', 'Reinickendorf', 'Charlottenburg-Wilmersdorf')
+	ORDER BY rn
+	
+	UNION
+
+    SELECT TOP 100 PLZ, Stadt, Stra&szlig;e, CAST(HNR AS VARCHAR(5)) +  ADZ AS HNR, ROW_NUMBER() OVER (ORDER BY NEWID()) AS rn
+    FROM Berlin
+	WHERE Bezirk IN ('Mitte', 'Steglitz-Zehlendorf', 'Neuk&ouml;lln')
+	ORDER BY rn
+
+
+	UNION 
+
+    SELECT TOP 100 PLZ, Stadt, Stra&szlig;e, CAST(HNR AS VARCHAR(5)) +  ADZ AS HNR, ROW_NUMBER() OVER (ORDER BY NEWID()) AS rn
+    FROM Berlin
+	WHERE Bezirk NOT IN ('Spandau', 'Reinickendorf', 'Charlottenburg-Wilmersdorf', 'Mitte', 'Steglitz-Zehlendorf', 'Neuk&ouml;lln')
+	ORDER BY rn
+
+    UNION
+
+    SELECT TOP 50 PLZ, Ort, Stra&szlig;e, CAST(HNR AS VARCHAR(5)) + ADZ AS HNR, ROW_NUMBER() OVER (ORDER BY NEWID()) AS rn
+    FROM Brandenburg
+	WHERE Kreis = 'Potsdam'
+	      and not Ort IS NULL and len(Ort) > 1
+    ORDER BY rn
+
+	UNION
+
+    SELECT TOP 50 PLZ, Ort, Stra&szlig;e, CAST(HNR AS VARCHAR(5)) + ADZ AS HNR, ROW_NUMBER() OVER (ORDER BY NEWID()) AS rn
+    FROM Brandenburg
+	WHERE Kreis IN ('Potsdam-Mittelmark', 'Havelland')
+	      and not Ort IS NULL and len(Ort) > 1
+    ORDER BY rn
+  ) AS Randomized
+) AS Randomized2
+ORDER BY rm
+
+\endcode

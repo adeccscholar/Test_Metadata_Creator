@@ -1,0 +1,350 @@
+﻿\file System\Corporate/Phone.h
+\brief definition of dataclass myCorporate::TPhone of table \ref datamodel_table_Phone with phone connections of persons (part of relationship) in dictionary "simple person model"
+\see table \ref datamodel_table_Phone
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\Corporate/Phone.cpp
+\brief implementation of dataclass myCorporate::TPhone of table \ref datamodel_table_Phone with phone connections of persons (part of relationship) in dictionary "simple person model"
+\see table \ref datamodel_table_Phone
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myCorporate::TPhone
+\brief phone connections of persons (part of relationship)
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_Phone
+
+\class myCorporate::TPhone::primary_key
+\brief primary key for elements of the class myCorporate::TPhone in a container or when seeking an entity in the database.
+
+\fn myCorporate::TPhone::primary_key::primary_key()
+\brief standard constructor for the class myCorporate::TPhone::primary_key
+
+\fn myCorporate::TPhone::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myCorporate::TPhone::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myCorporate::TPhone::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myCorporate::TPhone::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myCorporate::TPhone::primary_key::primary_key(TPhone const& other)
+\brief initializing constructor with an instance of the encircling class myCorporate::TPhone for the class myCorporate::TPhone::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myCorporate::TPhone const& with the instance of the encircling class which values should be copied
+
+\fn myCorporate::TPhone::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myCorporate::TPhone::primary_key::primary_key(int pID, int pPhoneType)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with unique identification number of the person to whom the phone data belongs (foreign key from person)
+\param [in] pPhoneType int  with type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))
+
+\var myCorporate::TPhone::primary_key::iID
+\brief unique identification number of the person to whom the phone data belongs (foreign key from person)
+\details Source: key member myCorporate::TPhone::primary_key::iID in class myCorporate::TPhone::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_Phone with database type INT
+\fn myCorporate::TPhone::primary_key::ID() const
+\brief selector for the data element myCorporate::TPhone::primary_key::iID
+\returns int with the value for this member.
+\fn myCorporate::TPhone::primary_key::ID(int newVal)
+\brief manipulator for the data element myCorporate::TPhone::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\var myCorporate::TPhone::primary_key::iPhoneType
+\brief type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))
+\details Source: key member myCorporate::TPhone::primary_key::iPhoneType in class myCorporate::TPhone::primary_key with the type int
+\details Database: primary key attribute "PhoneType" in entity \ref datamodel_table_Phone with database type INT
+\fn myCorporate::TPhone::primary_key::PhoneType() const
+\brief selector for the data element myCorporate::TPhone::primary_key::iPhoneType
+\returns int with the value for this member.
+\fn myCorporate::TPhone::primary_key::PhoneType(int newVal)
+\brief manipulator for the data element myCorporate::TPhone::primary_key::iPhoneType
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myCorporate::TPhone::primary_key::operator TPhone () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myCorporate::TPhone
+
+\fn myCorporate::TPhone::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myCorporate::TPhone::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myCorporate::TPhone::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myCorporate::TPhone::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myCorporate::TPhone::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myCorporate::TPhone::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myCorporate::TPhone::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myCorporate::TPhone::container_ty
+\brief container type as std::map with the generated primary key type myCorporate::TPhone::primary_key for instances of this class
+
+\details The type uses the key type myCorporate::TPhone::primary_keypreviously created from the key attributes of table \ref datamodel_table_Phone as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myCorporate::TPhone::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myCorporate::TPhone::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myCorporate::TPhone
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myCorporate::TPhone::TPhone()
+\brief standard constructor for TPhone
+
+\fn myCorporate::TPhone::TPhone(TPhone const& other)
+\brief copy constructor for TPhone
+\param[in] other reference of an instance of an other instance of myCorporate::TPhone to copy
+
+\fn myCorporate::TPhone::TPhone(TPhone&&)
+\brief rvalue constructor for TPhone
+
+\fn myCorporate::TPhone::~TPhone()
+\brief destructor for TPhone
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myCorporate::TPhone::swap(TPhone& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myCorporate::TPhone::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myCorporate::TPhone::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myCorporate::TPhone::copy(TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myCorporate::TPhone::iID
+\brief unique identification number of the person to whom the phone data belongs (foreign key from person)
+\details Source: member myCorporate::TPhone::iID in class myCorporate::TPhone with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_Phone with database type INT
+
+\var myCorporate::TPhone::iPhoneType
+\brief type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))
+\details Source: member myCorporate::TPhone::iPhoneType in class myCorporate::TPhone with the type std::optional<int>
+\details Database: attribute "PhoneType" in entity \ref datamodel_table_Phone with database type INT
+
+\var myCorporate::TPhone::strAreaCode
+\brief area code or network code of the telephone connection
+\details Source: member myCorporate::TPhone::strAreaCode in class myCorporate::TPhone with the type std::optional<std::string>
+\details Database: attribute "AreaCode" in entity \ref datamodel_table_Phone with database type VARCHAR
+
+\var myCorporate::TPhone::strCallNumber
+\brief call number within the local network or the selected cellphone network
+\details Source: member myCorporate::TPhone::strCallNumber in class myCorporate::TPhone with the type std::optional<std::string>
+\details Database: attribute "CallNumber" in entity \ref datamodel_table_Phone with database type VARCHAR
+
+\var myCorporate::TPhone::iCountry
+\brief country id for this data as foreign key in the Countries table. the country code is also located here
+\details Source: member myCorporate::TPhone::iCountry in class myCorporate::TPhone with the type std::optional<int>
+\details Database: attribute "Country" in entity \ref datamodel_table_Phone with database type INT
+
+\var myCorporate::TPhone::strDialingNational
+\brief complete telephone number to be dialed in the national network as computed field
+\details Source: member myCorporate::TPhone::strDialingNational in class myCorporate::TPhone with the type std::optional<std::string>
+\details Database: attribute "DialingNational" in entity \ref datamodel_table_Phone with database type VARCHAR
+
+\var myCorporate::TPhone::strDialingInternational
+\brief complete telephone number to be dialed in the international network as computed field
+\details Source: member myCorporate::TPhone::strDialingInternational in class myCorporate::TPhone with the type std::optional<std::string>
+\details Database: attribute "DialingInternational" in entity \ref datamodel_table_Phone with database type VARCHAR
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TPhone::ID() const
+\brief selector for the data element myCorporate::TPhone::iID
+\details <b>unique identification number of the person to whom the phone data belongs (foreign key from person)</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPhone::iID
+\fn std::optional<int> const& myCorporate::TPhone::PhoneType() const
+\brief selector for the data element myCorporate::TPhone::iPhoneType
+\details <b>type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPhone::iPhoneType
+\fn std::optional<std::string> const& myCorporate::TPhone::AreaCode() const
+\brief selector for the data element myCorporate::TPhone::strAreaCode
+\details <b>area code or network code of the telephone connection</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strAreaCode
+\fn std::optional<std::string> const& myCorporate::TPhone::CallNumber() const
+\brief selector for the data element myCorporate::TPhone::strCallNumber
+\details <b>call number within the local network or the selected cellphone network</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strCallNumber
+\fn std::optional<int> const& myCorporate::TPhone::Country() const
+\brief selector for the data element myCorporate::TPhone::iCountry
+\details <b>country id for this data as foreign key in the Countries table. the country code is also located here</b>
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPhone::iCountry
+\fn std::optional<std::string> const& myCorporate::TPhone::DialingNational() const
+\brief selector for the data element myCorporate::TPhone::strDialingNational
+\details <b>complete telephone number to be dialed in the national network as computed field</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strDialingNational
+\fn std::optional<std::string> const& myCorporate::TPhone::DialingInternational() const
+\brief selector for the data element myCorporate::TPhone::strDialingInternational
+\details <b>complete telephone number to be dialed in the international network as computed field</b>
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strDialingInternational
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myCorporate::TPhone::_ID() const
+\brief special selector for data element myCorporate::TPhone::iID
+\details unique identification number of the person to whom the phone data belongs (foreign key from person)
+\details <b>unique identification number of the person to whom the phone data belongs (foreign key from person)</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::iID is empty
+\returns int const&: Reference to the data element myCorporate::TPhone::iID
+\fn int myCorporate::TPhone::_PhoneType() const
+\brief special selector for data element myCorporate::TPhone::iPhoneType
+\details type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))
+\details <b>type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::iPhoneType is empty
+\returns int const&: Reference to the data element myCorporate::TPhone::iPhoneType
+\fn std::string const& myCorporate::TPhone::_AreaCode() const
+\brief special selector for data element myCorporate::TPhone::strAreaCode
+\details area code or network code of the telephone connection
+\details <b>area code or network code of the telephone connection</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::strAreaCode is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPhone::strAreaCode
+\fn std::string const& myCorporate::TPhone::_CallNumber() const
+\brief special selector for data element myCorporate::TPhone::strCallNumber
+\details call number within the local network or the selected cellphone network
+\details <b>call number within the local network or the selected cellphone network</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::strCallNumber is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPhone::strCallNumber
+\fn int myCorporate::TPhone::_Country() const
+\brief special selector for data element myCorporate::TPhone::iCountry
+\details country id for this data as foreign key in the Countries table. the country code is also located here
+\details <b>country id for this data as foreign key in the Countries table. the country code is also located here</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::iCountry is empty
+\returns int const&: Reference to the data element myCorporate::TPhone::iCountry
+\fn std::string const& myCorporate::TPhone::_DialingNational() const
+\brief special selector for data element myCorporate::TPhone::strDialingNational
+\details complete telephone number to be dialed in the national network as computed field
+\details <b>complete telephone number to be dialed in the national network as computed field</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::strDialingNational is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPhone::strDialingNational
+\fn std::string const& myCorporate::TPhone::_DialingInternational() const
+\brief special selector for data element myCorporate::TPhone::strDialingInternational
+\details complete telephone number to be dialed in the international network as computed field
+\details <b>complete telephone number to be dialed in the international network as computed field</b>
+\throw std::runtime::error if the attribute myCorporate::TPhone::strDialingInternational is empty
+\returns std::string const& const&: Reference to the data element myCorporate::TPhone::strDialingInternational
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myCorporate::TPhone::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::iID
+\details <b>unique identification number of the person to whom the phone data belongs (foreign key from person)</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::iID
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPhone::iID
+
+\fn std::optional<int> const& myCorporate::TPhone::PhoneType(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::iPhoneType
+\details <b>type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::iPhoneType
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPhone::iPhoneType
+
+\fn std::optional<std::string> const& myCorporate::TPhone::AreaCode(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::strAreaCode
+\details <b>area code or network code of the telephone connection</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::strAreaCode
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strAreaCode
+
+\fn std::optional<std::string> const& myCorporate::TPhone::CallNumber(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::strCallNumber
+\details <b>call number within the local network or the selected cellphone network</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::strCallNumber
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strCallNumber
+
+\fn std::optional<int> const& myCorporate::TPhone::Country(std::optional<int> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::iCountry
+\details <b>country id for this data as foreign key in the Countries table. the country code is also located here</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::iCountry
+\returns std::optional<int> const&: Reference to the data element myCorporate::TPhone::iCountry
+
+
+\}
+
+\name private manipulators for direct access to the attributes (for views or calculated fields)
+\{
+
+\fn std::optional<std::string> const& myCorporate::TPhone::DialingNational(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::strDialingNational
+\details <b>complete telephone number to be dialed in the national network as computed field</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::strDialingNational
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strDialingNational
+
+\fn std::optional<std::string> const& myCorporate::TPhone::DialingInternational(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myCorporate::TPhone::strDialingInternational
+\details <b>complete telephone number to be dialed in the international network as computed field</b>
+\param[in] newVal the new Value for the member myCorporate::TPhone::strDialingInternational
+\returns std::optional<std::string> const&: Reference to the data element myCorporate::TPhone::strDialingInternational
+
+
+\}
+
+

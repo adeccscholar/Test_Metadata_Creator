@@ -1,0 +1,539 @@
+﻿\file System\HR/Employees.h
+\brief definition of dataclass myHR::TEmployees of table \ref datamodel_table_Employees with information about the employees in the company (generalization of a person) in dictionary "simple person model"
+\details This table, together with the Person table, forms the basis of this sample application. The aim is to implement a time accounting system for various situations that takes into account not only the working time rules on weekdays but also time off (vacation, illness, etc.). This is the basis for time recording and payroll accounting. All other areas are based around this.
+\see table \ref datamodel_table_Employees
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\HR/Employees.cpp
+\brief implementation of dataclass myHR::TEmployees of table \ref datamodel_table_Employees with information about the employees in the company (generalization of a person) in dictionary "simple person model"
+\details This table, together with the Person table, forms the basis of this sample application. The aim is to implement a time accounting system for various situations that takes into account not only the working time rules on weekdays but also time off (vacation, illness, etc.). This is the basis for time recording and payroll accounting. All other areas are based around this.
+\see table \ref datamodel_table_Employees
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myHR::TEmployees
+\brief information about the employees in the company (generalization of a person)
+\details This table, together with the Person table, forms the basis of this sample application. The aim is to implement a time accounting system for various situations that takes into account not only the working time rules on weekdays but also time off (vacation, illness, etc.). This is the basis for time recording and payroll accounting. All other areas are based around this.
+\details this class is inherited by following class(es):
+<table>
+<tr><th>class</th><th>table</th><th>file</th></tr>
+<tr><td>myCorporate::TPerson</td>    <td>\ref datamodel_table_Person</td>    <td>System\Corporate/Person.h</td></tr></table>
+
+\details this class have composed data of following class(es). The following table show a composed and types which created to use this classes:
+<table><thead>
+<tr><th rowspan="2">name of key</th>
+    <th rowspan="2">class</th>
+    <th rowspan="2">table</th>
+    <th colspan="2">key attributes</th>
+    <th rowspan="2">additional keys</th>
+    <th rowspan="2">file</th></tr>
+<tr><th> this</th>
+<th> foreign</th>
+</tr></thead><tbody><tr><td rowspan="1">myHR::TEmployees::wd_nonworking_ty</td>
+    <td rowspan="1">myHR::TWD_NonWorking</td>
+    <td rowspan="1">\ref datamodel_table_WD_NonWorking</td>
+    <td>ID(int)</td>
+    <td>ID(int)</td>
+    <td rowspan="1">StartAt(std::chrono::year_month_day)</td>
+    <td rowspan="1">\ref System\HR/WD_NonWorking.h </td>
+</tr>
+<tr><td rowspan="1">myHR::TEmployees::workingtime_ty</td>
+    <td rowspan="1">myHR::TWorkingTime</td>
+    <td rowspan="1">\ref datamodel_table_WorkingTime</td>
+    <td>ID(int)</td>
+    <td>ID(int)</td>
+    <td rowspan="1">StartingTime(std::chrono::system_clock::time_point)</td>
+    <td rowspan="1">\ref System\HR/WorkingTime.h </td>
+</tr>
+</tbody></table>
+
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_Employees
+
+\class myHR::TEmployees::primary_key
+\brief primary key for elements of the class myHR::TEmployees in a container or when seeking an entity in the database.
+
+\fn myHR::TEmployees::primary_key::primary_key()
+\brief standard constructor for the class myHR::TEmployees::primary_key
+
+\fn myHR::TEmployees::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myHR::TEmployees::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myHR::TEmployees::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myHR::TEmployees::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myHR::TEmployees::primary_key::primary_key(TEmployees const& other)
+\brief initializing constructor with an instance of the encircling class myHR::TEmployees for the class myHR::TEmployees::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myHR::TEmployees const& with the instance of the encircling class which values should be copied
+
+\fn myHR::TEmployees::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myHR::TEmployees::primary_key::primary_key(int pID)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with attribute as foreign key from an attribute ID of a person entity to which these account details belong
+
+\var myHR::TEmployees::primary_key::iID
+\brief attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\details Source: key member myHR::TEmployees::primary_key::iID in class myHR::TEmployees::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_Employees with database type INT
+\fn myHR::TEmployees::primary_key::ID() const
+\brief selector for the data element myHR::TEmployees::primary_key::iID
+\returns int with the value for this member.
+\fn myHR::TEmployees::primary_key::ID(int newVal)
+\brief manipulator for the data element myHR::TEmployees::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn myHR::TEmployees::primary_key::operator TEmployees () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myHR::TEmployees
+
+\fn myHR::TEmployees::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myHR::TEmployees::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myHR::TEmployees::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myHR::TEmployees::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myHR::TEmployees::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myHR::TEmployees::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myHR::TEmployees::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myHR::TEmployees::container_ty
+\brief container type as std::map with the generated primary key type myHR::TEmployees::primary_key for instances of this class
+
+\details The type uses the key type myHR::TEmployees::primary_keypreviously created from the key attributes of table \ref datamodel_table_Employees as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myHR::TEmployees::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myHR::TEmployees::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myHR::TEmployees
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+\typedef myHR::TEmployees::wd_nonworking_ty
+\brief composed data element for the table \ref datamodel_table_WD_NonWorking
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>StartAt</td>
+    <td>myHR::TWD_NonWorking::daStartAt</td>
+    <td>date when the non working time starts as foreign key from the wokdays table</td>
+</tr>
+</table>
+\typedef myHR::TEmployees::workingtime_ty
+\brief composed data element for the table \ref datamodel_table_WorkingTime
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>StartingTime</td>
+    <td>myHR::TWorkingTime::dtStartingTime</td>
+    <td>date and time at which this work block started as timestamp</td>
+</tr>
+</table>
+
+\name constructors and destructor for this class
+\{
+
+\fn myHR::TEmployees::TEmployees()
+\brief standard constructor for TEmployees
+
+\fn myHR::TEmployees::TEmployees(TEmployees const& other)
+\brief copy constructor for TEmployees
+\param[in] other reference of an instance of an other instance of myHR::TEmployees to copy
+
+\fn myHR::TEmployees::TEmployees(TEmployees&&)
+\brief rvalue constructor for TEmployees
+
+\fn myHR::TEmployees::~TEmployees()
+\brief destructor for TEmployees
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myHR::TEmployees::swap(TEmployees& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myHR::TEmployees::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myHR::TEmployees::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myHR::TEmployees::copy(myCorporate::TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myHR::TEmployees::iID
+\brief attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\details Source: member myHR::TEmployees::iID in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::strPersonNumber
+\brief unique HR number of the employee in the company, assigned by the HR department
+\details Source: member myHR::TEmployees::strPersonNumber in class myHR::TEmployees with the type std::optional<std::string>
+\details Database: attribute "PersonNumber" in entity \ref datamodel_table_Employees with database type VARCHAR
+
+\var myHR::TEmployees::flSalary
+\brief salary / income that the employee currently receives, dependant by the SalaryBase
+\details Source: member myHR::TEmployees::flSalary in class myHR::TEmployees with the type std::optional<double>
+\details Database: attribute "Salary" in entity \ref datamodel_table_Employees with database type DECIMAL
+
+\var myHR::TEmployees::iSalaryType
+\brief range for SalaryType with the kind of Salary and determine the SalaryBase for the calculation
+\details Source: member myHR::TEmployees::iSalaryType in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "SalaryType" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::iTaxClass
+\brief Tax class currently held by the employee
+\details Source: member myHR::TEmployees::iTaxClass in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "TaxClass" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::daStartOfJob
+\brief starting date of the employee in the company (can be extended later for the start of the current position)
+\details Source: member myHR::TEmployees::daStartOfJob in class myHR::TEmployees with the type std::optional<std::chrono::year_month_day>
+\details Database: attribute "StartOfJob" in entity \ref datamodel_table_Employees with database type DATE
+
+\var myHR::TEmployees::daEndOfJob
+\brief end date of the employee in the company, all dates without time history
+\details Source: member myHR::TEmployees::daEndOfJob in class myHR::TEmployees with the type std::optional<std::chrono::year_month_day>
+\details Database: attribute "EndOfJob" in entity \ref datamodel_table_Employees with database type DATE
+
+\var myHR::TEmployees::iReasonDeparture
+\brief reason of departture when the person separated and the emplyment finished (NULL if active)
+\details Source: member myHR::TEmployees::iReasonDeparture in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "ReasonDeparture" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::iJobPosition
+\brief current position / activity of the employee within the company
+\details Source: member myHR::TEmployees::iJobPosition in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "JobPosition" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::strJobSpec
+\brief specification of the job as free text to concretize this
+\details Source: member myHR::TEmployees::strJobSpec in class myHR::TEmployees with the type std::optional<std::string>
+\details Database: attribute "JobSpec" in entity \ref datamodel_table_Employees with database type VARCHAR
+
+\var myHR::TEmployees::uVacationDays
+\brief Entitlement to annual vacations for this employee
+\details Source: member myHR::TEmployees::uVacationDays in class myHR::TEmployees with the type std::optional<unsigned int>
+\details Database: attribute "VacationDays" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::iDepartment
+\brief id of the department where the employee currently work
+\details Source: member myHR::TEmployees::iDepartment in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "Department" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::strSocialNummer
+\brief social insurance number of the employee
+\details Source: member myHR::TEmployees::strSocialNummer in class myHR::TEmployees with the type std::optional<std::string>
+\details Database: attribute "SocialNummer" in entity \ref datamodel_table_Employees with database type VARCHAR
+
+\var myHR::TEmployees::boActive
+\brief calculated boolean value indicating whether the person is active in the company
+\details Source: member myHR::TEmployees::boActive in class myHR::TEmployees with the type std::optional<bool>
+\details Database: attribute "Active" in entity \ref datamodel_table_Employees with database type TINYINT
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myHR::TEmployees::ID() const
+\brief selector for the data element myHR::TEmployees::iID
+\details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iID
+\fn std::optional<std::string> const& myHR::TEmployees::PersonNumber() const
+\brief selector for the data element myHR::TEmployees::strPersonNumber
+\details <b>unique HR number of the employee in the company, assigned by the HR department</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TEmployees::strPersonNumber
+\fn std::optional<double> const& myHR::TEmployees::Salary() const
+\brief selector for the data element myHR::TEmployees::flSalary
+\details <b>salary / income that the employee currently receives, dependant by the SalaryBase</b>
+\returns std::optional<double> const&: Reference to the data element myHR::TEmployees::flSalary
+\fn std::optional<int> const& myHR::TEmployees::SalaryType() const
+\brief selector for the data element myHR::TEmployees::iSalaryType
+\details <b>range for SalaryType with the kind of Salary and determine the SalaryBase for the calculation</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iSalaryType
+\fn std::optional<int> const& myHR::TEmployees::TaxClass() const
+\brief selector for the data element myHR::TEmployees::iTaxClass
+\details <b>Tax class currently held by the employee</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iTaxClass
+\fn std::optional<std::chrono::year_month_day> const& myHR::TEmployees::StartOfJob() const
+\brief selector for the data element myHR::TEmployees::daStartOfJob
+\details <b>starting date of the employee in the company (can be extended later for the start of the current position)</b>
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TEmployees::daStartOfJob
+\fn std::optional<std::chrono::year_month_day> const& myHR::TEmployees::EndOfJob() const
+\brief selector for the data element myHR::TEmployees::daEndOfJob
+\details <b>end date of the employee in the company, all dates without time history</b>
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TEmployees::daEndOfJob
+\fn std::optional<int> const& myHR::TEmployees::ReasonDeparture() const
+\brief selector for the data element myHR::TEmployees::iReasonDeparture
+\details <b>reason of departture when the person separated and the emplyment finished (NULL if active)</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iReasonDeparture
+\fn std::optional<int> const& myHR::TEmployees::JobPosition() const
+\brief selector for the data element myHR::TEmployees::iJobPosition
+\details <b>current position / activity of the employee within the company</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iJobPosition
+\fn std::optional<std::string> const& myHR::TEmployees::JobSpec() const
+\brief selector for the data element myHR::TEmployees::strJobSpec
+\details <b>specification of the job as free text to concretize this</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TEmployees::strJobSpec
+\fn std::optional<unsigned int> const& myHR::TEmployees::VacationDays() const
+\brief selector for the data element myHR::TEmployees::uVacationDays
+\details <b>Entitlement to annual vacations for this employee</b>
+\returns std::optional<unsigned int> const&: Reference to the data element myHR::TEmployees::uVacationDays
+\fn std::optional<int> const& myHR::TEmployees::Department() const
+\brief selector for the data element myHR::TEmployees::iDepartment
+\details <b>id of the department where the employee currently work</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iDepartment
+\fn std::optional<std::string> const& myHR::TEmployees::SocialNummer() const
+\brief selector for the data element myHR::TEmployees::strSocialNummer
+\details <b>social insurance number of the employee</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TEmployees::strSocialNummer
+\fn std::optional<bool> const& myHR::TEmployees::Active() const
+\brief selector for the data element myHR::TEmployees::boActive
+\details <b>calculated boolean value indicating whether the person is active in the company</b>
+\returns std::optional<bool> const&: Reference to the data element myHR::TEmployees::boActive
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myHR::TEmployees::_ID() const
+\brief special selector for data element myHR::TEmployees::iID
+\details attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iID is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iID
+\fn std::string const& myHR::TEmployees::_PersonNumber() const
+\brief special selector for data element myHR::TEmployees::strPersonNumber
+\details unique HR number of the employee in the company, assigned by the HR department
+\details <b>unique HR number of the employee in the company, assigned by the HR department</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::strPersonNumber is empty
+\returns std::string const& const&: Reference to the data element myHR::TEmployees::strPersonNumber
+\fn double const& myHR::TEmployees::_Salary() const
+\brief special selector for data element myHR::TEmployees::flSalary
+\details salary / income that the employee currently receives, dependant by the SalaryBase
+\details <b>salary / income that the employee currently receives, dependant by the SalaryBase</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::flSalary is empty
+\returns double const& const&: Reference to the data element myHR::TEmployees::flSalary
+\fn int myHR::TEmployees::_SalaryType() const
+\brief special selector for data element myHR::TEmployees::iSalaryType
+\details range for SalaryType with the kind of Salary and determine the SalaryBase for the calculation
+\details <b>range for SalaryType with the kind of Salary and determine the SalaryBase for the calculation</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iSalaryType is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iSalaryType
+\fn int myHR::TEmployees::_TaxClass() const
+\brief special selector for data element myHR::TEmployees::iTaxClass
+\details Tax class currently held by the employee
+\details <b>Tax class currently held by the employee</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iTaxClass is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iTaxClass
+\fn std::chrono::year_month_day myHR::TEmployees::_StartOfJob() const
+\brief special selector for data element myHR::TEmployees::daStartOfJob
+\details starting date of the employee in the company (can be extended later for the start of the current position)
+\details <b>starting date of the employee in the company (can be extended later for the start of the current position)</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::daStartOfJob is empty
+\returns std::chrono::year_month_day const&: Reference to the data element myHR::TEmployees::daStartOfJob
+\fn std::chrono::year_month_day myHR::TEmployees::_EndOfJob() const
+\brief special selector for data element myHR::TEmployees::daEndOfJob
+\details end date of the employee in the company, all dates without time history
+\details <b>end date of the employee in the company, all dates without time history</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::daEndOfJob is empty
+\returns std::chrono::year_month_day const&: Reference to the data element myHR::TEmployees::daEndOfJob
+\fn int myHR::TEmployees::_ReasonDeparture() const
+\brief special selector for data element myHR::TEmployees::iReasonDeparture
+\details reason of departture when the person separated and the emplyment finished (NULL if active)
+\details <b>reason of departture when the person separated and the emplyment finished (NULL if active)</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iReasonDeparture is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iReasonDeparture
+\fn int myHR::TEmployees::_JobPosition() const
+\brief special selector for data element myHR::TEmployees::iJobPosition
+\details current position / activity of the employee within the company
+\details <b>current position / activity of the employee within the company</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iJobPosition is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iJobPosition
+\fn std::string const& myHR::TEmployees::_JobSpec() const
+\brief special selector for data element myHR::TEmployees::strJobSpec
+\details specification of the job as free text to concretize this
+\details <b>specification of the job as free text to concretize this</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::strJobSpec is empty
+\returns std::string const& const&: Reference to the data element myHR::TEmployees::strJobSpec
+\fn unsigned int myHR::TEmployees::_VacationDays() const
+\brief special selector for data element myHR::TEmployees::uVacationDays
+\details Entitlement to annual vacations for this employee
+\details <b>Entitlement to annual vacations for this employee</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::uVacationDays is empty
+\returns unsigned int const&: Reference to the data element myHR::TEmployees::uVacationDays
+\fn int myHR::TEmployees::_Department() const
+\brief special selector for data element myHR::TEmployees::iDepartment
+\details id of the department where the employee currently work
+\details <b>id of the department where the employee currently work</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iDepartment is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iDepartment
+\fn std::string const& myHR::TEmployees::_SocialNummer() const
+\brief special selector for data element myHR::TEmployees::strSocialNummer
+\details social insurance number of the employee
+\details <b>social insurance number of the employee</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::strSocialNummer is empty
+\returns std::string const& const&: Reference to the data element myHR::TEmployees::strSocialNummer
+\fn bool myHR::TEmployees::_Active() const
+\brief special selector for data element myHR::TEmployees::boActive
+\details calculated boolean value indicating whether the person is active in the company
+\details <b>calculated boolean value indicating whether the person is active in the company</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::boActive is empty
+\returns bool const&: Reference to the data element myHR::TEmployees::boActive
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myHR::TEmployees::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iID
+\details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iID
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iID
+
+\fn std::optional<std::string> const& myHR::TEmployees::PersonNumber(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::strPersonNumber
+\details <b>unique HR number of the employee in the company, assigned by the HR department</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::strPersonNumber
+\returns std::optional<std::string> const&: Reference to the data element myHR::TEmployees::strPersonNumber
+
+\fn std::optional<double> const& myHR::TEmployees::Salary(std::optional<double> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::flSalary
+\details <b>salary / income that the employee currently receives, dependant by the SalaryBase</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::flSalary
+\returns std::optional<double> const&: Reference to the data element myHR::TEmployees::flSalary
+
+\fn std::optional<int> const& myHR::TEmployees::SalaryType(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iSalaryType
+\details <b>range for SalaryType with the kind of Salary and determine the SalaryBase for the calculation</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iSalaryType
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iSalaryType
+
+\fn std::optional<int> const& myHR::TEmployees::TaxClass(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iTaxClass
+\details <b>Tax class currently held by the employee</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iTaxClass
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iTaxClass
+
+\fn std::optional<std::chrono::year_month_day> const& myHR::TEmployees::StartOfJob(std::optional<std::chrono::year_month_day> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::daStartOfJob
+\details <b>starting date of the employee in the company (can be extended later for the start of the current position)</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::daStartOfJob
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TEmployees::daStartOfJob
+
+\fn std::optional<std::chrono::year_month_day> const& myHR::TEmployees::EndOfJob(std::optional<std::chrono::year_month_day> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::daEndOfJob
+\details <b>end date of the employee in the company, all dates without time history</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::daEndOfJob
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TEmployees::daEndOfJob
+
+\fn std::optional<int> const& myHR::TEmployees::ReasonDeparture(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iReasonDeparture
+\details <b>reason of departture when the person separated and the emplyment finished (NULL if active)</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iReasonDeparture
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iReasonDeparture
+
+\fn std::optional<int> const& myHR::TEmployees::JobPosition(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iJobPosition
+\details <b>current position / activity of the employee within the company</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iJobPosition
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iJobPosition
+
+\fn std::optional<std::string> const& myHR::TEmployees::JobSpec(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::strJobSpec
+\details <b>specification of the job as free text to concretize this</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::strJobSpec
+\returns std::optional<std::string> const&: Reference to the data element myHR::TEmployees::strJobSpec
+
+\fn std::optional<unsigned int> const& myHR::TEmployees::VacationDays(std::optional<unsigned int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::uVacationDays
+\details <b>Entitlement to annual vacations for this employee</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::uVacationDays
+\returns std::optional<unsigned int> const&: Reference to the data element myHR::TEmployees::uVacationDays
+
+\fn std::optional<int> const& myHR::TEmployees::Department(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iDepartment
+\details <b>id of the department where the employee currently work</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iDepartment
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iDepartment
+
+\fn std::optional<std::string> const& myHR::TEmployees::SocialNummer(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::strSocialNummer
+\details <b>social insurance number of the employee</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::strSocialNummer
+\returns std::optional<std::string> const&: Reference to the data element myHR::TEmployees::strSocialNummer
+
+
+\}
+
+\name private manipulators for direct access to the attributes (for views or calculated fields)
+\{
+
+\fn std::optional<bool> const& myHR::TEmployees::Active(std::optional<bool> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::boActive
+\details <b>calculated boolean value indicating whether the person is active in the company</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::boActive
+\returns std::optional<bool> const&: Reference to the data element myHR::TEmployees::boActive
+
+
+\}
+
+

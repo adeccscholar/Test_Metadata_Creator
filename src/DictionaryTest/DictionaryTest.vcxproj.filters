@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Corporate">
+      <UniqueIdentifier>{40e6734e-6d64-402e-a8c3-e2b160ecae09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HR">
+      <UniqueIdentifier>{f531bcca-00f6-4a18-87f5-1b95386bc18b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HR">
+      <UniqueIdentifier>{49ab48fa-0bc4-4617-80e1-5670860c3fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Corporate">
+      <UniqueIdentifier>{d5167c6b-ff61-4467-843f-607124121629}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\adecc_Database">
+      <UniqueIdentifier>{7ed3b352-c6df-497c-9da0-0470864a9386}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="TestMain.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="TestMain.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="TestMain.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="TestMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <None Include="DictionaryTest.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <ResourceCompile Include="DictionaryTest.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\Departments.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\Employees.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\JobPositions.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\ReasonDeparture.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\ReasonNonWorking.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\SalaryBase.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\SalaryType.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\TaxClasses.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\WD_Holidays.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\WD_Months.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\WD_NonWorking.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\WD_Weekdays.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\WD_Workdays.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\HR\WorkingTime.cpp">
+      <Filter>Source Files\HR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\Address.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\AddressTypes.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\Banking.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\BankingTypes.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\Countries.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\FamilyStatus.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\FamilyTypes.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\FormOfAddress.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\Internet.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\InternetTypes.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\Person.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\Phone.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Corporate\PhonesTypes.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Persistence\person_reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Persistence\person_reader_sql.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\System\Corporate\base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\Address.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\AddressTypes.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\Banking.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\BankingTypes.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\Countries.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\FamilyStatus.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\FamilyTypes.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\FormOfAddress.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\Internet.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\InternetTypes.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\Person.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\Phone.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\PhonesTypes.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\Departments.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\Employees.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\JobPositions.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\ReasonDeparture.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\ReasonNonWorking.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\SalaryBase.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\SalaryType.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\TaxClasses.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\WD_Holidays.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\WD_Months.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\WD_NonWorking.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\WD_Weekdays.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\WD_Workdays.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\HR\WorkingTime.h">
+      <Filter>Header Files\HR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Persistence\person_reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Persistence\person_reader_sql.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabase.h">
+      <Filter>Header Files\adecc_Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseCredentials.h">
+      <Filter>Header Files\adecc_Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseDefinitions.h">
+      <Filter>Header Files\adecc_Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseExceptions.h">
+      <Filter>Header Files\adecc_Database</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

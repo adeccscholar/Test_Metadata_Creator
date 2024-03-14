@@ -1,0 +1,18 @@
+\dir adecc_Database 
+\brief example project with a database interface for access to several database server
+
+\dir adecc_Database/adecc_Database 
+\brief header only library with a database interface for access to several database server
+
+\file adecc_Database/adecc_Database/MyDatabaseDefinitions.h
+\brief file with type traits and concepts to define the data acess rules
+\note C++20 necessary to use this library. eliminate this concepts to downgrade the library
+
+\page pgadeccDatabase adecc Database
+\tableofcontents
+\section secDatabasePreamble Description of the project / libary adecc Database
+C++20 Interface to databases, which initially only supports Qt6. When a C++20 compiler becomes available
+we will try to implement this for Embarcadero FireDac(tm) as well.
+
+
+

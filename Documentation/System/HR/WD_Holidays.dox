@@ -1,0 +1,269 @@
+﻿\file System\HR/WD_Holidays.h
+\brief definition of dataclass myHR::TWD_Holidays of table \ref datamodel_table_WD_Holidays with entities with public holidays, in relation to working days table to determine non working days in dictionary "simple person model"
+\see table \ref datamodel_table_WD_Holidays
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\HR/WD_Holidays.cpp
+\brief implementation of dataclass myHR::TWD_Holidays of table \ref datamodel_table_WD_Holidays with entities with public holidays, in relation to working days table to determine non working days in dictionary "simple person model"
+\see table \ref datamodel_table_WD_Holidays
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myHR::TWD_Holidays
+\brief entities with public holidays, in relation to working days table to determine non working days
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_WD_Holidays
+
+\class myHR::TWD_Holidays::primary_key
+\brief primary key for elements of the class myHR::TWD_Holidays in a container or when seeking an entity in the database.
+
+\fn myHR::TWD_Holidays::primary_key::primary_key()
+\brief standard constructor for the class myHR::TWD_Holidays::primary_key
+
+\fn myHR::TWD_Holidays::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myHR::TWD_Holidays::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myHR::TWD_Holidays::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myHR::TWD_Holidays::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myHR::TWD_Holidays::primary_key::primary_key(TWD_Holidays const& other)
+\brief initializing constructor with an instance of the encircling class myHR::TWD_Holidays for the class myHR::TWD_Holidays::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myHR::TWD_Holidays const& with the instance of the encircling class which values should be copied
+
+\fn myHR::TWD_Holidays::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myHR::TWD_Holidays::primary_key::primary_key(std::chrono::year_month_day pCalendarDay)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pCalendarDay std::chrono::year_month_day  with calendar day on which the holiday is
+
+\var myHR::TWD_Holidays::primary_key::daCalendarDay
+\brief calendar day on which the holiday is
+\details Source: key member myHR::TWD_Holidays::primary_key::daCalendarDay in class myHR::TWD_Holidays::primary_key with the type std::chrono::year_month_day
+\details Database: primary key attribute "CalendarDay" in entity \ref datamodel_table_WD_Holidays with database type DATE
+\fn myHR::TWD_Holidays::primary_key::CalendarDay() const
+\brief selector for the data element myHR::TWD_Holidays::primary_key::daCalendarDay
+\returns std::chrono::year_month_day with the value for this member.
+\fn myHR::TWD_Holidays::primary_key::CalendarDay(std::chrono::year_month_day newVal)
+\brief manipulator for the data element myHR::TWD_Holidays::primary_key::daCalendarDay
+\param[in] newVal std::chrono::year_month_day with the value of the member.
+\returns std::chrono::year_month_day with the new value for this member.
+\fn myHR::TWD_Holidays::primary_key::operator TWD_Holidays () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myHR::TWD_Holidays
+
+\fn myHR::TWD_Holidays::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myHR::TWD_Holidays::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myHR::TWD_Holidays::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myHR::TWD_Holidays::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myHR::TWD_Holidays::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myHR::TWD_Holidays::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myHR::TWD_Holidays::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myHR::TWD_Holidays::container_ty
+\brief container type as std::map with the generated primary key type myHR::TWD_Holidays::primary_key for instances of this class
+
+\details The type uses the key type myHR::TWD_Holidays::primary_keypreviously created from the key attributes of table \ref datamodel_table_WD_Holidays as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myHR::TWD_Holidays::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myHR::TWD_Holidays::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myHR::TWD_Holidays
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myHR::TWD_Holidays::TWD_Holidays()
+\brief standard constructor for TWD_Holidays
+
+\fn myHR::TWD_Holidays::TWD_Holidays(TWD_Holidays const& other)
+\brief copy constructor for TWD_Holidays
+\param[in] other reference of an instance of an other instance of myHR::TWD_Holidays to copy
+
+\fn myHR::TWD_Holidays::TWD_Holidays(TWD_Holidays&&)
+\brief rvalue constructor for TWD_Holidays
+
+\fn myHR::TWD_Holidays::~TWD_Holidays()
+\brief destructor for TWD_Holidays
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myHR::TWD_Holidays::swap(TWD_Holidays& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myHR::TWD_Holidays::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myHR::TWD_Holidays::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myHR::TWD_Holidays::copy(myCorporate::TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myHR::TWD_Holidays::daCalendarDay
+\brief calendar day on which the holiday is
+\details Source: member myHR::TWD_Holidays::daCalendarDay in class myHR::TWD_Holidays with the type std::optional<std::chrono::year_month_day>
+\details Database: attribute "CalendarDay" in entity \ref datamodel_table_WD_Holidays with database type DATE
+
+\var myHR::TWD_Holidays::strDonation
+\brief specification of the holiday as text
+\details Source: member myHR::TWD_Holidays::strDonation in class myHR::TWD_Holidays with the type std::optional<std::string>
+\details Database: attribute "Donation" in entity \ref datamodel_table_WD_Holidays with database type VARCHAR
+
+\var myHR::TWD_Holidays::iShare
+\brief share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
+\details Source: member myHR::TWD_Holidays::iShare in class myHR::TWD_Holidays with the type std::optional<int>
+\details Database: attribute "Share" in entity \ref datamodel_table_WD_Holidays with database type INT
+
+\var myHR::TWD_Holidays::strDescription
+\brief additional, more detailed description of the holiday. can use as hint in programm or reports
+\details Source: member myHR::TWD_Holidays::strDescription in class myHR::TWD_Holidays with the type std::optional<std::string>
+\details Database: attribute "Description" in entity \ref datamodel_table_WD_Holidays with database type VARCHAR(MAX)
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<std::chrono::year_month_day> const& myHR::TWD_Holidays::CalendarDay() const
+\brief selector for the data element myHR::TWD_Holidays::daCalendarDay
+\details <b>calendar day on which the holiday is</b>
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
+\fn std::optional<std::string> const& myHR::TWD_Holidays::Donation() const
+\brief selector for the data element myHR::TWD_Holidays::strDonation
+\details <b>specification of the holiday as text</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDonation
+\fn std::optional<int> const& myHR::TWD_Holidays::Share() const
+\brief selector for the data element myHR::TWD_Holidays::iShare
+\details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TWD_Holidays::iShare
+\fn std::optional<std::string> const& myHR::TWD_Holidays::Description() const
+\brief selector for the data element myHR::TWD_Holidays::strDescription
+\details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
+\returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDescription
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn std::chrono::year_month_day myHR::TWD_Holidays::_CalendarDay() const
+\brief special selector for data element myHR::TWD_Holidays::daCalendarDay
+\details calendar day on which the holiday is
+\details <b>calendar day on which the holiday is</b>
+\throw std::runtime::error if the attribute myHR::TWD_Holidays::daCalendarDay is empty
+\returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
+\fn std::string const& myHR::TWD_Holidays::_Donation() const
+\brief special selector for data element myHR::TWD_Holidays::strDonation
+\details specification of the holiday as text
+\details <b>specification of the holiday as text</b>
+\throw std::runtime::error if the attribute myHR::TWD_Holidays::strDonation is empty
+\returns std::string const& const&: Reference to the data element myHR::TWD_Holidays::strDonation
+\fn int myHR::TWD_Holidays::_Share() const
+\brief special selector for data element myHR::TWD_Holidays::iShare
+\details share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
+\details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
+\throw std::runtime::error if the attribute myHR::TWD_Holidays::iShare is empty
+\returns int const&: Reference to the data element myHR::TWD_Holidays::iShare
+\fn std::string const& myHR::TWD_Holidays::_Description() const
+\brief special selector for data element myHR::TWD_Holidays::strDescription
+\details additional, more detailed description of the holiday. can use as hint in programm or reports
+\details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
+\throw std::runtime::error if the attribute myHR::TWD_Holidays::strDescription is empty
+\returns std::string const& const&: Reference to the data element myHR::TWD_Holidays::strDescription
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<std::chrono::year_month_day> const& myHR::TWD_Holidays::CalendarDay(std::optional<std::chrono::year_month_day> const& newVal)
+\brief manipulator for the data element myHR::TWD_Holidays::daCalendarDay
+\details <b>calendar day on which the holiday is</b>
+\param[in] newVal the new Value for the member myHR::TWD_Holidays::daCalendarDay
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
+
+\fn std::optional<std::string> const& myHR::TWD_Holidays::Donation(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TWD_Holidays::strDonation
+\details <b>specification of the holiday as text</b>
+\param[in] newVal the new Value for the member myHR::TWD_Holidays::strDonation
+\returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDonation
+
+\fn std::optional<int> const& myHR::TWD_Holidays::Share(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TWD_Holidays::iShare
+\details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
+\param[in] newVal the new Value for the member myHR::TWD_Holidays::iShare
+\returns std::optional<int> const&: Reference to the data element myHR::TWD_Holidays::iShare
+
+\fn std::optional<std::string> const& myHR::TWD_Holidays::Description(std::optional<std::string> const& newVal)
+\brief manipulator for the data element myHR::TWD_Holidays::strDescription
+\details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
+\param[in] newVal the new Value for the member myHR::TWD_Holidays::strDescription
+\returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDescription
+
+
+\}
+
+

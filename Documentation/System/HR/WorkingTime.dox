@@ -1,0 +1,337 @@
+﻿\file System\HR/WorkingTime.h
+\brief definition of dataclass myHR::TWorkingTime of table \ref datamodel_table_WorkingTime with entity with the working times for an employee, as a composition for these. in dictionary "simple person model"
+\details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
+\details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
+\see table \ref datamodel_table_WorkingTime
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\HR/WorkingTime.cpp
+\brief implementation of dataclass myHR::TWorkingTime of table \ref datamodel_table_WorkingTime with entity with the working times for an employee, as a composition for these. in dictionary "simple person model"
+\details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
+\details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
+\note the relationship with the project tasks is similar as the relationship to the employee, but without existence dependency.
+\see table \ref datamodel_table_WorkingTime
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class myHR::TWorkingTime
+\brief entity with the working times for an employee, as a composition for these.
+\details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
+\details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
+\note the relationship with the project tasks is similar as the relationship to the employee, but without existence dependency.
+\author Volker Hillmann (adecc Scholar)
+\date 14.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_WorkingTime
+
+\class myHR::TWorkingTime::primary_key
+\brief primary key for elements of the class myHR::TWorkingTime in a container or when seeking an entity in the database.
+
+\fn myHR::TWorkingTime::primary_key::primary_key()
+\brief standard constructor for the class myHR::TWorkingTime::primary_key
+
+\fn myHR::TWorkingTime::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class myHR::TWorkingTime::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn myHR::TWorkingTime::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class myHR::TWorkingTime::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn myHR::TWorkingTime::primary_key::primary_key(TWorkingTime const& other)
+\brief initializing constructor with an instance of the encircling class myHR::TWorkingTime for the class myHR::TWorkingTime::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other myHR::TWorkingTime const& with the instance of the encircling class which values should be copied
+
+\fn myHR::TWorkingTime::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn myHR::TWorkingTime::primary_key::primary_key(int pID, std::chrono::system_clock::time_point pStartingTime)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pID int  with attribute as foreign key from an attribute ID of a employee entity to who as worked these time
+\param [in] pStartingTime std::chrono::system_clock::time_point  with date and time at which this work block started as timestamp
+
+\var myHR::TWorkingTime::primary_key::iID
+\brief attribute as foreign key from an attribute ID of a employee entity to who as worked these time
+\details Source: key member myHR::TWorkingTime::primary_key::iID in class myHR::TWorkingTime::primary_key with the type int
+\details Database: primary key attribute "ID" in entity \ref datamodel_table_WorkingTime with database type INT
+\fn myHR::TWorkingTime::primary_key::ID() const
+\brief selector for the data element myHR::TWorkingTime::primary_key::iID
+\returns int with the value for this member.
+\fn myHR::TWorkingTime::primary_key::ID(int newVal)
+\brief manipulator for the data element myHR::TWorkingTime::primary_key::iID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\var myHR::TWorkingTime::primary_key::dtStartingTime
+\brief date and time at which this work block started as timestamp
+\details Source: key member myHR::TWorkingTime::primary_key::dtStartingTime in class myHR::TWorkingTime::primary_key with the type std::chrono::system_clock::time_point
+\details Database: primary key attribute "StartingTime" in entity \ref datamodel_table_WorkingTime with database type DATE
+\fn myHR::TWorkingTime::primary_key::StartingTime() const
+\brief selector for the data element myHR::TWorkingTime::primary_key::dtStartingTime
+\returns std::chrono::system_clock::time_point with the value for this member.
+\fn myHR::TWorkingTime::primary_key::StartingTime(std::chrono::system_clock::time_point newVal)
+\brief manipulator for the data element myHR::TWorkingTime::primary_key::dtStartingTime
+\param[in] newVal std::chrono::system_clock::time_point with the value of the member.
+\returns std::chrono::system_clock::time_point with the new value for this member.
+\fn myHR::TWorkingTime::primary_key::operator TWorkingTime () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class myHR::TWorkingTime
+
+\fn myHR::TWorkingTime::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn myHR::TWorkingTime::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn myHR::TWorkingTime::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn myHR::TWorkingTime::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn myHR::TWorkingTime::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn myHR::TWorkingTime::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn myHR::TWorkingTime::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef myHR::TWorkingTime::container_ty
+\brief container type as std::map with the generated primary key type myHR::TWorkingTime::primary_key for instances of this class
+
+\details The type uses the key type myHR::TWorkingTime::primary_keypreviously created from the key attributes of table \ref datamodel_table_WorkingTime as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef myHR::TWorkingTime::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn myHR::TWorkingTime::GetKey() const
+\brief method to get the primary key for this instance
+\returns type myHR::TWorkingTime
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+
+\name constructors and destructor for this class
+\{
+
+\fn myHR::TWorkingTime::TWorkingTime()
+\brief standard constructor for TWorkingTime
+
+\fn myHR::TWorkingTime::TWorkingTime(TWorkingTime const& other)
+\brief copy constructor for TWorkingTime
+\param[in] other reference of an instance of an other instance of myHR::TWorkingTime to copy
+
+\fn myHR::TWorkingTime::TWorkingTime(TWorkingTime&&)
+\brief rvalue constructor for TWorkingTime
+
+\fn myHR::TWorkingTime::~TWorkingTime()
+\brief destructor for TWorkingTime
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn myHR::TWorkingTime::swap(TWorkingTime& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn myHR::TWorkingTime::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn myHR::TWorkingTime::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn myHR::TWorkingTime::copy(myCorporate::TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var myHR::TWorkingTime::iID
+\brief attribute as foreign key from an attribute ID of a employee entity to who as worked these time
+\details Source: member myHR::TWorkingTime::iID in class myHR::TWorkingTime with the type std::optional<int>
+\details Database: attribute "ID" in entity \ref datamodel_table_WorkingTime with database type INT
+
+\var myHR::TWorkingTime::dtStartingTime
+\brief date and time at which this work block started as timestamp
+\details Source: member myHR::TWorkingTime::dtStartingTime in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
+\details Database: attribute "StartingTime" in entity \ref datamodel_table_WorkingTime with database type DATE
+
+\var myHR::TWorkingTime::dtClosingTime
+\brief date and time at which this block of work finished as timestamp
+\details Source: member myHR::TWorkingTime::dtClosingTime in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
+\details Database: attribute "ClosingTime" in entity \ref datamodel_table_WorkingTime with database type DATE
+
+\var myHR::TWorkingTime::boProcessed
+\brief boolean indicator that specifies whether this time booking has already been charged
+\details Source: member myHR::TWorkingTime::boProcessed in class myHR::TWorkingTime with the type std::optional<bool>
+\details Database: attribute "Processed " in entity \ref datamodel_table_WorkingTime with database type TINYINT
+
+\var myHR::TWorkingTime::dtProcessedAt
+\brief time at which this data record was settled and posted
+\details Source: member myHR::TWorkingTime::dtProcessedAt in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
+\details Database: attribute "ProcessedAt" in entity \ref datamodel_table_WorkingTime with database type DATE
+
+\var myHR::TWorkingTime::daDayOfWork
+\brief calculated day to the timepoint where work started
+\details Source: member myHR::TWorkingTime::daDayOfWork in class myHR::TWorkingTime with the type std::optional<std::chrono::year_month_day>
+\details Database: attribute "DayOfWork" in entity \ref datamodel_table_WorkingTime with database type DATE
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& myHR::TWorkingTime::ID() const
+\brief selector for the data element myHR::TWorkingTime::iID
+\details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TWorkingTime::iID
+\fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::StartingTime() const
+\brief selector for the data element myHR::TWorkingTime::dtStartingTime
+\details <b>date and time at which this work block started as timestamp</b>
+\returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
+\fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ClosingTime() const
+\brief selector for the data element myHR::TWorkingTime::dtClosingTime
+\details <b>date and time at which this block of work finished as timestamp</b>
+\returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
+\fn std::optional<bool> const& myHR::TWorkingTime::Processed() const
+\brief selector for the data element myHR::TWorkingTime::boProcessed
+\details <b>boolean indicator that specifies whether this time booking has already been charged</b>
+\returns std::optional<bool> const&: Reference to the data element myHR::TWorkingTime::boProcessed
+\fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ProcessedAt() const
+\brief selector for the data element myHR::TWorkingTime::dtProcessedAt
+\details <b>time at which this data record was settled and posted</b>
+\returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
+\fn std::optional<std::chrono::year_month_day> const& myHR::TWorkingTime::DayOfWork() const
+\brief selector for the data element myHR::TWorkingTime::daDayOfWork
+\details <b>calculated day to the timepoint where work started</b>
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int myHR::TWorkingTime::_ID() const
+\brief special selector for data element myHR::TWorkingTime::iID
+\details attribute as foreign key from an attribute ID of a employee entity to who as worked these time
+\details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
+\throw std::runtime::error if the attribute myHR::TWorkingTime::iID is empty
+\returns int const&: Reference to the data element myHR::TWorkingTime::iID
+\fn std::chrono::system_clock::time_point myHR::TWorkingTime::_StartingTime() const
+\brief special selector for data element myHR::TWorkingTime::dtStartingTime
+\details date and time at which this work block started as timestamp
+\details <b>date and time at which this work block started as timestamp</b>
+\throw std::runtime::error if the attribute myHR::TWorkingTime::dtStartingTime is empty
+\returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
+\fn std::chrono::system_clock::time_point myHR::TWorkingTime::_ClosingTime() const
+\brief special selector for data element myHR::TWorkingTime::dtClosingTime
+\details date and time at which this block of work finished as timestamp
+\details <b>date and time at which this block of work finished as timestamp</b>
+\throw std::runtime::error if the attribute myHR::TWorkingTime::dtClosingTime is empty
+\returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
+\fn bool myHR::TWorkingTime::_Processed() const
+\brief special selector for data element myHR::TWorkingTime::boProcessed
+\details boolean indicator that specifies whether this time booking has already been charged
+\details <b>boolean indicator that specifies whether this time booking has already been charged</b>
+\throw std::runtime::error if the attribute myHR::TWorkingTime::boProcessed is empty
+\returns bool const&: Reference to the data element myHR::TWorkingTime::boProcessed
+\fn std::chrono::system_clock::time_point myHR::TWorkingTime::_ProcessedAt() const
+\brief special selector for data element myHR::TWorkingTime::dtProcessedAt
+\details time at which this data record was settled and posted
+\details <b>time at which this data record was settled and posted</b>
+\throw std::runtime::error if the attribute myHR::TWorkingTime::dtProcessedAt is empty
+\returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
+\fn std::chrono::year_month_day myHR::TWorkingTime::_DayOfWork() const
+\brief special selector for data element myHR::TWorkingTime::daDayOfWork
+\details calculated day to the timepoint where work started
+\details <b>calculated day to the timepoint where work started</b>
+\throw std::runtime::error if the attribute myHR::TWorkingTime::daDayOfWork is empty
+\returns std::chrono::year_month_day const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& myHR::TWorkingTime::ID(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TWorkingTime::iID
+\details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
+\param[in] newVal the new Value for the member myHR::TWorkingTime::iID
+\returns std::optional<int> const&: Reference to the data element myHR::TWorkingTime::iID
+
+\fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::StartingTime(std::optional<std::chrono::system_clock::time_point> const& newVal)
+\brief manipulator for the data element myHR::TWorkingTime::dtStartingTime
+\details <b>date and time at which this work block started as timestamp</b>
+\param[in] newVal the new Value for the member myHR::TWorkingTime::dtStartingTime
+\returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
+
+\fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ClosingTime(std::optional<std::chrono::system_clock::time_point> const& newVal)
+\brief manipulator for the data element myHR::TWorkingTime::dtClosingTime
+\details <b>date and time at which this block of work finished as timestamp</b>
+\param[in] newVal the new Value for the member myHR::TWorkingTime::dtClosingTime
+\returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
+
+\fn std::optional<bool> const& myHR::TWorkingTime::Processed(std::optional<bool> const& newVal)
+\brief manipulator for the data element myHR::TWorkingTime::boProcessed
+\details <b>boolean indicator that specifies whether this time booking has already been charged</b>
+\param[in] newVal the new Value for the member myHR::TWorkingTime::boProcessed
+\returns std::optional<bool> const&: Reference to the data element myHR::TWorkingTime::boProcessed
+
+\fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ProcessedAt(std::optional<std::chrono::system_clock::time_point> const& newVal)
+\brief manipulator for the data element myHR::TWorkingTime::dtProcessedAt
+\details <b>time at which this data record was settled and posted</b>
+\param[in] newVal the new Value for the member myHR::TWorkingTime::dtProcessedAt
+\returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
+
+
+\}
+
+\name private manipulators for direct access to the attributes (for views or calculated fields)
+\{
+
+\fn std::optional<std::chrono::year_month_day> const& myHR::TWorkingTime::DayOfWork(std::optional<std::chrono::year_month_day> const& newVal)
+\brief manipulator for the data element myHR::TWorkingTime::daDayOfWork
+\details <b>calculated day to the timepoint where work started</b>
+\param[in] newVal the new Value for the member myHR::TWorkingTime::daDayOfWork
+\returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
+
+
+\}
+
+
