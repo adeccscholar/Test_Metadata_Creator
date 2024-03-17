@@ -2,12 +2,12 @@
 * Project: model with a simple person administration
 * Implementation of the data class TSalaryType
 * Content: kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...)
-* Date: 14.03.2024 23:56:54,097  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:25,301  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
-#include "System\HR/SalaryType.h"
+#include "System/HR\SalaryType.h"
 
 #include <typeinfo>
 

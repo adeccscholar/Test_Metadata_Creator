@@ -4,7 +4,7 @@
 \see table \ref datamodel_table_Employees
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -16,7 +16,7 @@
 \see table \ref datamodel_table_Employees
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -43,7 +43,7 @@
 </tr></thead><tbody><tr><td rowspan="1">myHR::TEmployees::wd_nonworking_ty</td>
     <td rowspan="1">myHR::TWD_NonWorking</td>
     <td rowspan="1">\ref datamodel_table_WD_NonWorking</td>
-    <td>ID(int)</td>
+    <td>StartAt(std::chrono::year_month_day)</td>
     <td>ID(int)</td>
     <td rowspan="1">StartAt(std::chrono::year_month_day)</td>
     <td rowspan="1">\ref System\HR/WD_NonWorking.h </td>
@@ -51,7 +51,7 @@
 <tr><td rowspan="1">myHR::TEmployees::workingtime_ty</td>
     <td rowspan="1">myHR::TWorkingTime</td>
     <td rowspan="1">\ref datamodel_table_WorkingTime</td>
-    <td>ID(int)</td>
+    <td>StartingTime(std::chrono::system_clock::time_point)</td>
     <td>ID(int)</td>
     <td rowspan="1">StartingTime(std::chrono::system_clock::time_point)</td>
     <td rowspan="1">\ref System\HR/WorkingTime.h </td>
@@ -59,7 +59,7 @@
 </tbody></table>
 
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024 documentation for this project created
+\date 17.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Employees
 
 \class myHR::TEmployees::primary_key
@@ -85,19 +85,19 @@
 \fn myHR::TEmployees::primary_key::~primary_key()
 \brief destructor for the primary_key class
 
-\fn myHR::TEmployees::primary_key::primary_key(int pID)
+\fn myHR::TEmployees::primary_key::primary_key(int pEmployeeID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\param [in] pEmployeeID int  with attribute as foreign key from an attribute ID of a person entity to which these account details belong
 
-\var myHR::TEmployees::primary_key::iID
+\var myHR::TEmployees::primary_key::iEmployeeID
 \brief attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\details Source: key member myHR::TEmployees::primary_key::iID in class myHR::TEmployees::primary_key with the type int
-\details Database: primary key attribute "ID" in entity \ref datamodel_table_Employees with database type INT
-\fn myHR::TEmployees::primary_key::ID() const
-\brief selector for the data element myHR::TEmployees::primary_key::iID
+\details Source: key member myHR::TEmployees::primary_key::iEmployeeID in class myHR::TEmployees::primary_key with the type int
+\details Database: primary key attribute "EmployeeID" in entity \ref datamodel_table_Employees with database type INT
+\fn myHR::TEmployees::primary_key::EmployeeID() const
+\brief selector for the data element myHR::TEmployees::primary_key::iEmployeeID
 \returns int with the value for this member.
-\fn myHR::TEmployees::primary_key::ID(int newVal)
-\brief manipulator for the data element myHR::TEmployees::primary_key::iID
+\fn myHR::TEmployees::primary_key::EmployeeID(int newVal)
+\brief manipulator for the data element myHR::TEmployees::primary_key::iEmployeeID
 \param[in] newVal int with the value of the member.
 \returns int with the new value for this member.
 \fn myHR::TEmployees::primary_key::operator TEmployees () const
@@ -215,10 +215,15 @@ method to copy instances of the hierachie of classes into another
 \name direct data elements from table
 \{
 
-\var myHR::TEmployees::iID
+\var myHR::TEmployees::iDummy
+\brief dummy field to test the generator
+\details Source: member myHR::TEmployees::iDummy in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "Dummy" in entity \ref datamodel_table_Employees with database type INT
+
+\var myHR::TEmployees::iEmployeeID
 \brief attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\details Source: member myHR::TEmployees::iID in class myHR::TEmployees with the type std::optional<int>
-\details Database: attribute "ID" in entity \ref datamodel_table_Employees with database type INT
+\details Source: member myHR::TEmployees::iEmployeeID in class myHR::TEmployees with the type std::optional<int>
+\details Database: attribute "EmployeeID" in entity \ref datamodel_table_Employees with database type INT
 
 \var myHR::TEmployees::strPersonNumber
 \brief unique HR number of the employee in the company, assigned by the HR department
@@ -291,10 +296,14 @@ method to copy instances of the hierachie of classes into another
 \name public selectors with an optional retval for direct access to attributes
 \{
 
-\fn std::optional<int> const& myHR::TEmployees::ID() const
-\brief selector for the data element myHR::TEmployees::iID
+\fn std::optional<int> const& myHR::TEmployees::Dummy() const
+\brief selector for the data element myHR::TEmployees::iDummy
+\details <b>dummy field to test the generator</b>
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iDummy
+\fn std::optional<int> const& myHR::TEmployees::EmployeeID() const
+\brief selector for the data element myHR::TEmployees::iEmployeeID
 \details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
-\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iID
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iEmployeeID
 \fn std::optional<std::string> const& myHR::TEmployees::PersonNumber() const
 \brief selector for the data element myHR::TEmployees::strPersonNumber
 \details <b>unique HR number of the employee in the company, assigned by the HR department</b>
@@ -353,12 +362,18 @@ method to copy instances of the hierachie of classes into another
 \name public selectors with an direct access to attributes
 \{
 
-\fn int myHR::TEmployees::_ID() const
-\brief special selector for data element myHR::TEmployees::iID
+\fn int myHR::TEmployees::_Dummy() const
+\brief special selector for data element myHR::TEmployees::iDummy
+\details dummy field to test the generator
+\details <b>dummy field to test the generator</b>
+\throw std::runtime::error if the attribute myHR::TEmployees::iDummy is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iDummy
+\fn int myHR::TEmployees::_EmployeeID() const
+\brief special selector for data element myHR::TEmployees::iEmployeeID
 \details attribute as foreign key from an attribute ID of a person entity to which these account details belong
 \details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
-\throw std::runtime::error if the attribute myHR::TEmployees::iID is empty
-\returns int const&: Reference to the data element myHR::TEmployees::iID
+\throw std::runtime::error if the attribute myHR::TEmployees::iEmployeeID is empty
+\returns int const&: Reference to the data element myHR::TEmployees::iEmployeeID
 \fn std::string const& myHR::TEmployees::_PersonNumber() const
 \brief special selector for data element myHR::TEmployees::strPersonNumber
 \details unique HR number of the employee in the company, assigned by the HR department
@@ -443,11 +458,17 @@ method to copy instances of the hierachie of classes into another
 \name public manipulators for direct access to the attributes
 \{
 
-\fn std::optional<int> const& myHR::TEmployees::ID(std::optional<int> const& newVal)
-\brief manipulator for the data element myHR::TEmployees::iID
+\fn std::optional<int> const& myHR::TEmployees::Dummy(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iDummy
+\details <b>dummy field to test the generator</b>
+\param[in] newVal the new Value for the member myHR::TEmployees::iDummy
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iDummy
+
+\fn std::optional<int> const& myHR::TEmployees::EmployeeID(std::optional<int> const& newVal)
+\brief manipulator for the data element myHR::TEmployees::iEmployeeID
 \details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
-\param[in] newVal the new Value for the member myHR::TEmployees::iID
-\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iID
+\param[in] newVal the new Value for the member myHR::TEmployees::iEmployeeID
+\returns std::optional<int> const&: Reference to the data element myHR::TEmployees::iEmployeeID
 
 \fn std::optional<std::string> const& myHR::TEmployees::PersonNumber(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TEmployees::strPersonNumber

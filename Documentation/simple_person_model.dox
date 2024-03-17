@@ -1,4 +1,4 @@
-
+Ôªø
 
 \dir .
 \brief root folder for the source of the project.
@@ -20,11 +20,20 @@
 \brief subfolder with header and source files for the source files for human resources.
 \details This folder contains all header and source files for the system layer of the part of human resources
 
+
+\dir System\Sales
+\brief subfolder with header and source files for the source files about customers and sales informations.
+\details This folder contains all header and source files for the sales system layer with customer and sales informations.
+
 \include{doc} System\Corporate/Address.dox
 \include{doc} System\Corporate/AddressTypes.dox
 \include{doc} System\Corporate/Banking.dox
 \include{doc} System\Corporate/BankingTypes.dox
+\include{doc} System\Sales/Contacts.dox
 \include{doc} System\Corporate/Countries.dox
+\include{doc} System\Sales/CustClassification.dox
+\include{doc} System\Sales/CustLiaison.dox
+\include{doc} System\Sales/Customers.dox
 \include{doc} System\HR/Departments.dox
 \include{doc} System\HR/Employees.dox
 \include{doc} System\Corporate/FamilyStatus.dox
@@ -39,7 +48,7 @@
 \include{doc} System\HR/ReasonDeparture.dox
 \include{doc} System\HR/ReasonNonWorking.dox
 \include{doc} System\HR/SalaryBase.dox
-\include{doc} System\HR/SalaryType.dox
+\include{doc} System/HR/SalaryType.dox
 \include{doc} System\HR/TaxClasses.dox
 \include{doc} System\HR/WD_Holidays.dox
 \include{doc} System\HR/WD_Months.dox
@@ -63,6 +72,13 @@
 \details All areas are based on the namespace myCorporate .
 
 \note This area is under the responsibility of the HR department
+
+
+\namespace mySales
+\brief namespace with the classes that are developed for use in the department of sales.
+\details This area contains the classes and data structures that are used in the sales and customer service area.
+\details This area is under the responsibility of the Sales department
+
 
 
 \file System\Corporate\base.h
@@ -102,10 +118,10 @@
 \details The example project \ref pgadeccDatabase is use to implement the access to the concrete database.
 \details The used sql database server is from type TMyMSSQL.
 
-\var reader::strSQLAddressAll
+\var reader::strSQLAddressSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Address.
 
-\var reader::strSQLAddressDetail
+\var reader::strSQLAddressSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Address with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TAddress::container_ty& data)
@@ -114,10 +130,10 @@
 \param[out] data reference to myCorporate::TAddress::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLAddressTypesAll
+\var reader::strSQLAddressTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_AddressTypes.
 
-\var reader::strSQLAddressTypesDetail
+\var reader::strSQLAddressTypesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_AddressTypes with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TAddressTypes::container_ty& data)
@@ -126,10 +142,10 @@
 \param[out] data reference to myCorporate::TAddressTypes::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLBankingAll
+\var reader::strSQLBankingSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Banking.
 
-\var reader::strSQLBankingDetail
+\var reader::strSQLBankingSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Banking with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TBanking::container_ty& data)
@@ -138,10 +154,10 @@
 \param[out] data reference to myCorporate::TBanking::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLBankingTypesAll
+\var reader::strSQLBankingTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_BankingTypes.
 
-\var reader::strSQLBankingTypesDetail
+\var reader::strSQLBankingTypesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_BankingTypes with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TBankingTypes::container_ty& data)
@@ -150,10 +166,22 @@
 \param[out] data reference to myCorporate::TBankingTypes::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLCountriesAll
+\var reader::strSQLContactsSelectAll
+\brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Contacts.
+
+\var reader::strSQLContactsSelectDetail
+\brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Contacts with the primary key.
+
+\fn reader::TPersonReader::Read(mySales::TContacts::container_ty& data)
+\brief method to read all data of the table \ref datamodel_table_Contacts in a container.
+\details the method use the const std::string reader::strSQLContactsAll to read the data.
+\param[out] data reference to mySales::TContacts::container_ty with the container to take the data.
+\returns bool when data readed successfull (0 .. n)
+
+\var reader::strSQLCountriesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Countries.
 
-\var reader::strSQLCountriesDetail
+\var reader::strSQLCountriesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Countries with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TCountries::container_ty& data)
@@ -162,10 +190,46 @@
 \param[out] data reference to myCorporate::TCountries::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLDepartmentsAll
+\var reader::strSQLCustClassificationSelectAll
+\brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_CustClassification.
+
+\var reader::strSQLCustClassificationSelectDetail
+\brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_CustClassification with the primary key.
+
+\fn reader::TPersonReader::Read(mySales::TCustClassification::container_ty& data)
+\brief method to read all data of the table \ref datamodel_table_CustClassification in a container.
+\details the method use the const std::string reader::strSQLCustClassificationAll to read the data.
+\param[out] data reference to mySales::TCustClassification::container_ty with the container to take the data.
+\returns bool when data readed successfull (0 .. n)
+
+\var reader::strSQLCustLiaisonSelectAll
+\brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_CustLiaison.
+
+\var reader::strSQLCustLiaisonSelectDetail
+\brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_CustLiaison with the primary key.
+
+\fn reader::TPersonReader::Read(mySales::TCustLiaison::container_ty& data)
+\brief method to read all data of the table \ref datamodel_table_CustLiaison in a container.
+\details the method use the const std::string reader::strSQLCustLiaisonAll to read the data.
+\param[out] data reference to mySales::TCustLiaison::container_ty with the container to take the data.
+\returns bool when data readed successfull (0 .. n)
+
+\var reader::strSQLCustomersSelectAll
+\brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Customers.
+
+\var reader::strSQLCustomersSelectDetail
+\brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Customers with the primary key.
+
+\fn reader::TPersonReader::Read(mySales::TCustomers::container_ty& data)
+\brief method to read all data of the table \ref datamodel_table_Customers in a container.
+\details the method use the const std::string reader::strSQLCustomersAll to read the data.
+\param[out] data reference to mySales::TCustomers::container_ty with the container to take the data.
+\returns bool when data readed successfull (0 .. n)
+
+\var reader::strSQLDepartmentsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Departments.
 
-\var reader::strSQLDepartmentsDetail
+\var reader::strSQLDepartmentsSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Departments with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TDepartments::container_ty& data)
@@ -174,10 +238,10 @@
 \param[out] data reference to myHR::TDepartments::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLEmployeesAll
+\var reader::strSQLEmployeesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Employees.
 
-\var reader::strSQLEmployeesDetail
+\var reader::strSQLEmployeesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Employees with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TEmployees::container_ty& data)
@@ -186,10 +250,10 @@
 \param[out] data reference to myHR::TEmployees::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLFamilyStatusAll
+\var reader::strSQLFamilyStatusSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_FamilyStatus.
 
-\var reader::strSQLFamilyStatusDetail
+\var reader::strSQLFamilyStatusSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_FamilyStatus with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TFamilyStatus::container_ty& data)
@@ -198,10 +262,10 @@
 \param[out] data reference to myCorporate::TFamilyStatus::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLFamilyTypesAll
+\var reader::strSQLFamilyTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_FamilyTypes.
 
-\var reader::strSQLFamilyTypesDetail
+\var reader::strSQLFamilyTypesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_FamilyTypes with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TFamilyTypes::container_ty& data)
@@ -210,10 +274,10 @@
 \param[out] data reference to myCorporate::TFamilyTypes::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLFormOfAddressAll
+\var reader::strSQLFormOfAddressSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_FormOfAddress.
 
-\var reader::strSQLFormOfAddressDetail
+\var reader::strSQLFormOfAddressSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_FormOfAddress with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TFormOfAddress::container_ty& data)
@@ -222,10 +286,10 @@
 \param[out] data reference to myCorporate::TFormOfAddress::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLInternetAll
+\var reader::strSQLInternetSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Internet.
 
-\var reader::strSQLInternetDetail
+\var reader::strSQLInternetSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Internet with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TInternet::container_ty& data)
@@ -234,10 +298,10 @@
 \param[out] data reference to myCorporate::TInternet::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLInternetTypesAll
+\var reader::strSQLInternetTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_InternetTypes.
 
-\var reader::strSQLInternetTypesDetail
+\var reader::strSQLInternetTypesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_InternetTypes with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TInternetTypes::container_ty& data)
@@ -246,10 +310,10 @@
 \param[out] data reference to myCorporate::TInternetTypes::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLJobPositionsAll
+\var reader::strSQLJobPositionsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_JobPositions.
 
-\var reader::strSQLJobPositionsDetail
+\var reader::strSQLJobPositionsSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_JobPositions with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TJobPositions::container_ty& data)
@@ -258,10 +322,10 @@
 \param[out] data reference to myHR::TJobPositions::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLPersonAll
+\var reader::strSQLPersonSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Person.
 
-\var reader::strSQLPersonDetail
+\var reader::strSQLPersonSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Person with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TPerson::container_ty& data)
@@ -270,10 +334,10 @@
 \param[out] data reference to myCorporate::TPerson::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLPhoneAll
+\var reader::strSQLPhoneSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Phone.
 
-\var reader::strSQLPhoneDetail
+\var reader::strSQLPhoneSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_Phone with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TPhone::container_ty& data)
@@ -282,10 +346,10 @@
 \param[out] data reference to myCorporate::TPhone::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLPhonesTypesAll
+\var reader::strSQLPhonesTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_PhonesTypes.
 
-\var reader::strSQLPhonesTypesDetail
+\var reader::strSQLPhonesTypesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_PhonesTypes with the primary key.
 
 \fn reader::TPersonReader::Read(myCorporate::TPhonesTypes::container_ty& data)
@@ -294,10 +358,10 @@
 \param[out] data reference to myCorporate::TPhonesTypes::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLReasonDepartureAll
+\var reader::strSQLReasonDepartureSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_ReasonDeparture.
 
-\var reader::strSQLReasonDepartureDetail
+\var reader::strSQLReasonDepartureSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_ReasonDeparture with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TReasonDeparture::container_ty& data)
@@ -306,10 +370,10 @@
 \param[out] data reference to myHR::TReasonDeparture::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLReasonNonWorkingAll
+\var reader::strSQLReasonNonWorkingSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_ReasonNonWorking.
 
-\var reader::strSQLReasonNonWorkingDetail
+\var reader::strSQLReasonNonWorkingSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_ReasonNonWorking with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TReasonNonWorking::container_ty& data)
@@ -318,10 +382,10 @@
 \param[out] data reference to myHR::TReasonNonWorking::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLSalaryBaseAll
+\var reader::strSQLSalaryBaseSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_SalaryBase.
 
-\var reader::strSQLSalaryBaseDetail
+\var reader::strSQLSalaryBaseSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_SalaryBase with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TSalaryBase::container_ty& data)
@@ -330,10 +394,10 @@
 \param[out] data reference to myHR::TSalaryBase::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLSalaryTypeAll
+\var reader::strSQLSalaryTypeSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_SalaryType.
 
-\var reader::strSQLSalaryTypeDetail
+\var reader::strSQLSalaryTypeSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_SalaryType with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TSalaryType::container_ty& data)
@@ -342,10 +406,10 @@
 \param[out] data reference to myHR::TSalaryType::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLTaxClassesAll
+\var reader::strSQLTaxClassesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_TaxClasses.
 
-\var reader::strSQLTaxClassesDetail
+\var reader::strSQLTaxClassesSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_TaxClasses with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TTaxClasses::container_ty& data)
@@ -354,10 +418,10 @@
 \param[out] data reference to myHR::TTaxClasses::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLWD_HolidaysAll
+\var reader::strSQLWD_HolidaysSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Holidays.
 
-\var reader::strSQLWD_HolidaysDetail
+\var reader::strSQLWD_HolidaysSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_WD_Holidays with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TWD_Holidays::container_ty& data)
@@ -366,10 +430,10 @@
 \param[out] data reference to myHR::TWD_Holidays::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLWD_MonthsAll
+\var reader::strSQLWD_MonthsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Months.
 
-\var reader::strSQLWD_MonthsDetail
+\var reader::strSQLWD_MonthsSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_WD_Months with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TWD_Months::container_ty& data)
@@ -378,10 +442,10 @@
 \param[out] data reference to myHR::TWD_Months::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLWD_NonWorkingAll
+\var reader::strSQLWD_NonWorkingSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_NonWorking.
 
-\var reader::strSQLWD_NonWorkingDetail
+\var reader::strSQLWD_NonWorkingSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_WD_NonWorking with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TWD_NonWorking::container_ty& data)
@@ -390,10 +454,10 @@
 \param[out] data reference to myHR::TWD_NonWorking::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLWD_WeekdaysAll
+\var reader::strSQLWD_WeekdaysSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Weekdays.
 
-\var reader::strSQLWD_WeekdaysDetail
+\var reader::strSQLWD_WeekdaysSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_WD_Weekdays with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TWD_Weekdays::container_ty& data)
@@ -402,10 +466,10 @@
 \param[out] data reference to myHR::TWD_Weekdays::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLWD_WorkdaysAll
+\var reader::strSQLWD_WorkdaysSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Workdays.
 
-\var reader::strSQLWD_WorkdaysDetail
+\var reader::strSQLWD_WorkdaysSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_WD_Workdays with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TWD_Workdays::container_ty& data)
@@ -414,10 +478,10 @@
 \param[out] data reference to myHR::TWD_Workdays::container_ty with the container to take the data.
 \returns bool when data readed successfull (0 .. n)
 
-\var reader::strSQLWorkingTimeAll
+\var reader::strSQLWorkingTimeSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WorkingTime.
 
-\var reader::strSQLWorkingTimeDetail
+\var reader::strSQLWorkingTimeSelectDetail
 \brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_WorkingTime with the primary key.
 
 \fn reader::TPersonReader::Read(myHR::TWorkingTime::container_ty& data)
@@ -582,11 +646,31 @@
     <td>Domain</td>
     <td>myCorporate::TBankingTypes</td></tr>
 <tr><td colspan="3">domain / range of values for banking types, this is an extension of the relationship between persons and banking accounts.</td>
+</tr><tr><td rowspan="2" valign="top">\ref datamodel_table_Contacts</td>
+    <td>dbo.Contacts</td>
+    <td>Entity</td>
+    <td>mySales::TContacts</td></tr>
+<tr><td colspan="3">information to the data of a contact person at the customer  (inherited from Person)</td>
 </tr><tr><td rowspan="2" valign="top">\ref datamodel_table_Countries</td>
     <td>dbo.Countries</td>
     <td>Entity</td>
     <td>myCorporate::TCountries</td></tr>
 <tr><td colspan="3">table with the countries and additional values for the countries. Used by others for assoziation.</td>
+</tr><tr><td rowspan="2" valign="top">\ref datamodel_table_CustClassification</td>
+    <td>dbo.CustClassification</td>
+    <td>Domain</td>
+    <td>mySales::TCustClassification</td></tr>
+<tr><td colspan="3">domain / range with the classifications for customers</td>
+</tr><tr><td rowspan="2" valign="top">\ref datamodel_table_CustLiaison</td>
+    <td>dbo.CustLiaison</td>
+    <td>Domain</td>
+    <td>mySales::TCustLiaison</td></tr>
+<tr><td colspan="3">doman range with the liaisons to use a contact at a customer</td>
+</tr><tr><td rowspan="2" valign="top">\ref datamodel_table_Customers</td>
+    <td>dbo.Customers</td>
+    <td>Entity</td>
+    <td>mySales::TCustomers</td></tr>
+<tr><td colspan="3">information to the data of a client / customer  (inherited from Person)</td>
 </tr><tr><td rowspan="2" valign="top">\ref datamodel_table_Departments</td>
     <td>dbo.Departments</td>
     <td>Entity</td>
@@ -709,7 +793,11 @@ graph ER {
    AddressTypes [label="AddressTypes", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_AddressTypes"];
    Banking [label="Banking", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Banking"];
    BankingTypes [label="BankingTypes", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_BankingTypes"];
+   Contacts [label="Contacts", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Contacts"];
    Countries [label="Countries", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Countries"];
+   CustClassification [label="CustClassification", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_CustClassification"];
+   CustLiaison [label="CustLiaison", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_CustLiaison"];
+   Customers [label="Customers", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Customers"];
    Departments [label="Departments", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Departments"];
    Employees [label="Employees", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Employees"];
    FamilyStatus [label="FamilyStatus", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_FamilyStatus"];
@@ -738,17 +826,23 @@ graph ER {
    Banking -- Person [label="owns",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Banking -- BankingTypes [label="has values",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Banking -- Countries [label="belongs to",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
-   Departments -- Employees [label="responsible",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Contacts -- Person [label="",  headlabel = "",  taillabel = "", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Contacts -- Customers [label="",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Contacts -- CustLiaison [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Customers -- Person [label="is-a",  headlabel = "1",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Customers -- CustClassification [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Customers -- Employees [label="works in",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Departments -- Employees [label="responsible",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Employees -- Person [label="is-a",  headlabel = "1",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
-   Employees -- SalaryType [label="has values",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
-   Employees -- TaxClasses [label="has values",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Employees -- SalaryType [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Employees -- TaxClasses [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Employees -- ReasonDeparture [label="separation because",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
-   Employees -- JobPositions [label="holds",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
-   Employees -- Departments [label="works in",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Employees -- JobPositions [label="holds",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Employees -- Departments [label="works in",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    FormOfAddress -- FamilyTypes [label="represent",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Internet -- Person [label="owns",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Internet -- InternetTypes [label="has values",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
-   JobPositions -- SalaryType [label="is in this",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   JobPositions -- SalaryType [label="is in this",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Person -- FormOfAddress [label="has values",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Person -- FamilyStatus [label="has values",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Phone -- Person [label="owns",  headlabel = "1",  taillabel = "n", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
@@ -956,7 +1050,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of an entry in the domain, display in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of an entry in the domain, display in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1044,9 +1138,9 @@ ALTER TABLE dbo.AddressTypes ADD CONSTRAINT uk_AddressType_Denotation UNIQUE (Ab
 \subsubsection datamodel_table_AddressTypes_values insert values
 \code{.sql}
 INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
-    (1, 'Hauptadresse', 'HA', 'Hauptadresse f¸r die Anwendung', 1), 
-    (2, 'Rechnungsadresse', 'RA', 'Rechnungsadresse f¸r die Anwendung', 0), 
-    (3, 'Lieferadresse', 'LA', 'Lieferadresse f¸r die Trainingsanwendung', 0), 
+    (1, 'Hauptadresse', 'HA', 'Hauptadresse f√ºr die Anwendung', 1), 
+    (2, 'Rechnungsadresse', 'RA', 'Rechnungsadresse f√ºr die Anwendung', 0), 
+    (3, 'Lieferadresse', 'LA', 'Lieferadresse f√ºr die Trainingsanwendung', 0), 
     (4, 'Urlaubsadresse', 'UA', 'eine Adresse, in der die Person im Urlaub erreichbar ist', 0);
 
 \endcode
@@ -1240,7 +1334,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of an banking type entity in the domain, used in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of an banking type entity in the domain, used in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1328,9 +1422,109 @@ ALTER TABLE dbo.BankingTypes ADD CONSTRAINT uk_BankingTypes_Denotation UNIQUE (D
 \subsubsection datamodel_table_BankingTypes_values insert values
 \code{.sql}
 INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
-    (1, 'Hauptkonto', 'HK', 'Hauptkonto f¸r die Personen in der Anwendung', 1);
+    (1, 'Hauptkonto', 'HK', 'Hauptkonto f√ºr die Personen in der Anwendung', 1);
 
 \endcode
+<hr><a href = "#top_of_mainpage">top of the page</a>
+<hr>
+\subsection datamodel_table_Contacts Contacts
+\details <b>information to the data of a contact person at the customer  (inherited from Person)</b>
+\details the system class which represent this table in source is \ref mySales::TContacts.
+
+\subsubsection datamodel_table_Contacts_attributes attributes
+\details <table>
+<tr><th rowspan="2" valign="center">name
+    <th>type
+    <th>db type
+    <th>size
+    <th>not null
+    <th>primary
+    <th>check
+    <th>init seq
+    <th>computed
+    <th>source name
+    <th>source type
+</tr><tr><th colspan="11">description
+</tr>
+<tr><td rowspan="2" valign ="top">ContactID
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">true
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iContactID
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
+</tr><tr><td rowspan="2" valign ="top">CustID
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iCustID
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">Customer identification number of the contact associated customer.
+</tr><tr><td rowspan="2" valign ="top">CustLiaison
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iCustLiaison
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">liaision for this contact person as range value (from table CustLiasion)
+</tr></table>
+
+
+\subsubsection datamodel_table_Contacts_relationships_from relationships from Contacts
+\details <table>
+<tr><th>type
+    <th>related
+    <th>to table
+    <th>description
+</tr>
+<tr><td valign ="top">generalization
+    <td valign ="top">
+    <td valign ="top"> \ref datamodel_table_Person
+    <td valign ="top">generalization of a contact to a person (is-a relationship)
+</tr><tr><td valign ="top">composition
+    <td valign ="top">
+    <td valign ="top"> \ref datamodel_table_Customers
+    <td valign ="top">part of relationship of the contact to a customer
+</tr><tr><td valign ="top">range
+    <td valign ="top">has values
+    <td valign ="top"> \ref datamodel_table_CustLiaison
+    <td valign ="top">range values as domain for the attribute CustLiaison
+</tr></table>
+
+
+\subsubsection datamodel_table_Contacts_create create statement
+\code{.sql}
+-- statement to create the table dbo.Contacts
+CREATE TABLE dbo.Contacts (
+   ContactID   INT NOT NULL,
+   CustID      INT NOT NULL,
+   CustLiaison INT NOT NULL
+   );
+
+
+
+
+ALTER TABLE dbo.Contacts ADD CONSTRAINT pk_Contacts PRIMARY KEY (ContactID);
+
+
+ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Person FOREIGN KEY (ContactID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Customer FOREIGN KEY (CustID) REFERENCES dbo.Customers (CustID);
+ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLiaison) REFERENCES dbo.CustLiaison (ID);
+
+\endcode
+
 <hr><a href = "#top_of_mainpage">top of the page</a>
 <hr>
 \subsection datamodel_table_Countries Countries
@@ -1538,6 +1732,394 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
 
 <hr><a href = "#top_of_mainpage">top of the page</a>
 <hr>
+\subsection datamodel_table_CustClassification CustClassification
+\details <b>domain / range with the classifications for customers</b>
+\details the system class which represent this table in source is \ref mySales::TCustClassification.
+
+\subsubsection datamodel_table_CustClassification_attributes attributes
+\details <table>
+<tr><th rowspan="2" valign="center">name
+    <th>type
+    <th>db type
+    <th>size
+    <th>not null
+    <th>primary
+    <th>check
+    <th>init seq
+    <th>computed
+    <th>source name
+    <th>source type
+</tr><tr><th colspan="11">description
+</tr>
+<tr><td rowspan="2" valign ="top">ID
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">true
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iID
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">unique identification number / id of this classification of a customer
+</tr><tr><td rowspan="2" valign ="top">Denotation
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(50)
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strDenotation
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">unique denotation of this classification of a customer
+</tr><tr><td rowspan="2" valign ="top">Abbreviation
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(10)
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strAbbreviation
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">abbreviation of this classification of a customer, used in the application for a compact display
+</tr><tr><td rowspan="2" valign ="top">Description
+    <td valign = "top"><a href ="#datatyp_text">text</a>
+    <td valign = "top">VARCHAR(MAX)
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strDescription
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">description as long text of this classification of a customer, used in the application for detailed informations
+</tr><tr><td rowspan="2" valign ="top">Notes
+    <td valign = "top"><a href ="#datatyp_text">text</a>
+    <td valign = "top">VARCHAR(MAX)
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strNotes
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">notes, with additional / free information of this classification of a customer, not used in the application
+</tr><tr><td rowspan="2" valign ="top">UrgentValue
+    <td valign = "top"><a href ="#datatyp_bool">bool</a>
+    <td valign = "top">TINYINT
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">IN (0, 1)    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">boUrgentValue
+    <td valign = "top">bool</td></tr>
+<tr><td colspan="11" valign = "top">boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)
+</tr></table>
+
+
+\subsubsection datamodel_table_CustClassification_relationships_to relationships to CustClassification
+\details <table>
+<tr><th>from table
+    <th>type
+    <th>related
+    <th>description
+</tr>
+<tr><td valign ="top"> \ref datamodel_table_Customers
+    <td valign ="top">range
+    <td valign ="top">has values
+    <td valign ="top">range values as domain for the attribute CustClassification
+</tr></table>
+
+
+\subsubsection datamodel_table_CustClassification_create create statement
+\code{.sql}
+-- statement to create the table dbo.CustClassification
+CREATE TABLE dbo.CustClassification (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+
+
+
+ALTER TABLE dbo.CustClassification ADD CONSTRAINT pk_CustClassification PRIMARY KEY (ID);
+
+ALTER TABLE dbo.CustClassification ADD CONSTRAINT uk_CustClass_Donation UNIQUE (Denotation);
+
+
+\endcode
+
+
+\subsubsection datamodel_table_CustClassification_values insert values
+\code{.sql}
+INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
+    (1, 'Neukunde', 'Neu', 'Ein Kunde, der gerade erst begonnen hat, Gesch√§fte mit dem Unternehmen zu t√§tigen und m√∂glicherweise noch nicht viel Erfahrung mit den Produkten oder Dienstleistungen des Unternehmens hat.', 1), 
+    (2, 'VIP-Kunde', 'VIP', 'Ein Kunde, der aufgrund seines langj√§hrigen Engagements, seines hohen Umsatzes oder seiner anderen besonderen Merkmale einen VIP-Status im Unternehmen hat.', 1), 
+    (3, 'Gelegenheitskunde', 'GK', 'Ein Kunde, der nur gelegentlich Gesch√§fte mit dem Unternehmen t√§tigt und keine regelm√§√üigen oder wiederkehrenden K√§ufe macht.', 1), 
+    (4, 'Gesch√§ftskunde', 'B2B', 'Ein Kunde, der ein anderes Unternehmen oder eine Organisation vertritt und Produkte oder Dienstleistungen f√ºr gesch√§ftliche Zwecke erwirbt. Diese Kunden haben oft spezifische Anforderungen und erwarten eine professionelle Betreuung.', 1), 
+    (5, 'Privatkunde', 'B2C', 'Ein Kunde, der als Einzelperson Produkte oder Dienstleistungen f√ºr den pers√∂nlichen Gebrauch erwirbt. Diese Kunden k√∂nnen eine Vielzahl von Bed√ºrfnissen haben und erwarten oft eine pers√∂nliche und freundliche Betreuung.', 1);
+
+\endcode
+<hr><a href = "#top_of_mainpage">top of the page</a>
+<hr>
+\subsection datamodel_table_CustLiaison CustLiaison
+\details <b>doman range with the liaisons to use a contact at a customer</b>
+\details the system class which represent this table in source is \ref mySales::TCustLiaison.
+
+\subsubsection datamodel_table_CustLiaison_attributes attributes
+\details <table>
+<tr><th rowspan="2" valign="center">name
+    <th>type
+    <th>db type
+    <th>size
+    <th>not null
+    <th>primary
+    <th>check
+    <th>init seq
+    <th>computed
+    <th>source name
+    <th>source type
+</tr><tr><th colspan="11">description
+</tr>
+<tr><td rowspan="2" valign ="top">ID
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">true
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iID
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">unique identification number / id of this liaison to use a contact in a customer
+</tr><tr><td rowspan="2" valign ="top">Denotation
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(50)
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strDenotation
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">unique denotation of this liaison to use a contact in a customer
+</tr><tr><td rowspan="2" valign ="top">Abbreviation
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(10)
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strAbbreviation
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">abbreviation of this liaison to use a contact in a customer, used in the application for a compact display
+</tr><tr><td rowspan="2" valign ="top">Description
+    <td valign = "top"><a href ="#datatyp_text">text</a>
+    <td valign = "top">VARCHAR(MAX)
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strDescription
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">description as long text of this liaison to use a contact in a customer, used in the application for detailed informations
+</tr><tr><td rowspan="2" valign ="top">Notes
+    <td valign = "top"><a href ="#datatyp_text">text</a>
+    <td valign = "top">VARCHAR(MAX)
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strNotes
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application
+</tr><tr><td rowspan="2" valign ="top">UrgentValue
+    <td valign = "top"><a href ="#datatyp_bool">bool</a>
+    <td valign = "top">TINYINT
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">IN (0, 1)    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">boUrgentValue
+    <td valign = "top">bool</td></tr>
+<tr><td colspan="11" valign = "top">boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)
+</tr></table>
+
+
+\subsubsection datamodel_table_CustLiaison_relationships_to relationships to CustLiaison
+\details <table>
+<tr><th>from table
+    <th>type
+    <th>related
+    <th>description
+</tr>
+<tr><td valign ="top"> \ref datamodel_table_Contacts
+    <td valign ="top">range
+    <td valign ="top">has values
+    <td valign ="top">range values as domain for the attribute CustLiaison
+</tr></table>
+
+
+\subsubsection datamodel_table_CustLiaison_create create statement
+\code{.sql}
+-- statement to create the table dbo.CustLiaison
+CREATE TABLE dbo.CustLiaison (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+
+
+
+ALTER TABLE dbo.CustLiaison ADD CONSTRAINT pk_CustLiaison PRIMARY KEY (ID);
+
+ALTER TABLE dbo.CustLiaison ADD CONSTRAINT uk_CustLiaison_Donation UNIQUE (Denotation);
+
+
+\endcode
+
+
+\subsubsection datamodel_table_CustLiaison_values insert values
+\code{.sql}
+INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
+    (1, 'Gesch√§ftsf√ºhrer/in', 'GV', 'Der Gesch√§ftsf√ºhrer ist die h√∂chste F√ºhrungsperson des Kunden und vertritt das Unternehmen. Sie sind f√ºr die strategische Ausrichtung, das Management und die langfristige Entwicklung der Gesch√§ftsbeziehung verantwortlich. Der Gesch√§ftsf√ºhrer tr√§gt die Gesamtverantwortung f√ºr den Erfolg des Projekts.', 1), 
+    (2, 'Projektmanager/in', 'Projekt', 'Der Projektleiter ist die zentrale Kontaktperson beim Kunden w√§hrend eines Projekts. Sie sind verantwortlich f√ºr die Planung, Organisation und √úberwachung des Projekts sowie f√ºr die Koordination aller internen und externen Aktivit√§ten.', 1), 
+    (3, 'Technische/r Berater/in', 'Technik', 'Der technische Ansprechpartner ist eine Person beim Kunden, die als direkter Kontaktpunkt f√ºr technische Fragen, Unterst√ºtzung und Probleml√∂sungen fungiert.', 1), 
+    (4, 'Kaufm√§nnische/r Berater/in', 'Finanzen', 'Der kaufm√§nnische Ansprechpartner ist f√ºr alle kaufm√§nnischen Belange beim Kunden zust√§ndig. Er ist verantwortlich f√ºr die Verwaltung von Vertr√§gen, Preisgestaltung, Budgetierung und anderen finanziellen Fragen.', 1), 
+    (5, 'Vertragsmanager/in', 'Vertrag', 'Der Vertragsmanager ist f√ºr die Verwaltung und √úberwachung aller vertraglichen Angelegenheiten beim Kunden verantwortlich. Sie sind daf√ºr zust√§ndig, Vertr√§ge zu erstellen, zu √ºberpr√ºfen und zu verhandeln, √Ñnderungen zu koordinieren und sicherzustellen, dass alle Vertragsbedingungen eingehalten werden.', 1);
+
+\endcode
+<hr><a href = "#top_of_mainpage">top of the page</a>
+<hr>
+\subsection datamodel_table_Customers Customers
+\details <b>information to the data of a client / customer  (inherited from Person)</b>
+\details the system class which represent this table in source is \ref mySales::TCustomers.
+
+\subsubsection datamodel_table_Customers_attributes attributes
+\details <table>
+<tr><th rowspan="2" valign="center">name
+    <th>type
+    <th>db type
+    <th>size
+    <th>not null
+    <th>primary
+    <th>check
+    <th>init seq
+    <th>computed
+    <th>source name
+    <th>source type
+</tr><tr><th colspan="11">description
+</tr>
+<tr><td rowspan="2" valign ="top">CustID
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">true
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iCustID
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+</tr><tr><td rowspan="2" valign ="top">ServiceAgent
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iServiceAgent
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">employee is  responsible for this client (association with the employys entity)
+</tr><tr><td rowspan="2" valign ="top">CustClassification
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iCustClassification
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">classification of this customer as range value 
+</tr></table>
+
+
+\subsubsection datamodel_table_Customers_relationships_from relationships from Customers
+\details <table>
+<tr><th>type
+    <th>related
+    <th>to table
+    <th>description
+</tr>
+<tr><td valign ="top">generalization
+    <td valign ="top">is-a
+    <td valign ="top"> \ref datamodel_table_Person
+    <td valign ="top">generalization from a custumer to a person (is-a relationship)
+</tr><tr><td valign ="top">range
+    <td valign ="top">has values
+    <td valign ="top"> \ref datamodel_table_CustClassification
+    <td valign ="top">range values as domain for the attribute CustClassification
+</tr><tr><td valign ="top">assoziation
+    <td valign ="top">works in
+    <td valign ="top"> \ref datamodel_table_Employees
+    <td valign ="top">assoziations between an customer to the the employee who act as service agent
+</tr></table>
+
+
+\subsubsection datamodel_table_Customers_relationships_to relationships to Customers
+\details <table>
+<tr><th>from table
+    <th>type
+    <th>related
+    <th>description
+</tr>
+<tr><td valign ="top"> \ref datamodel_table_Contacts
+    <td valign ="top">composition
+    <td valign ="top">
+    <td valign ="top">part of relationship of the contact to a customer
+</tr></table>
+
+
+\subsubsection datamodel_table_Customers_create create statement
+\code{.sql}
+-- statement to create the table dbo.Customers
+CREATE TABLE dbo.Customers (
+   CustID             INT NOT NULL,
+   ServiceAgent       INT NOT NULL,
+   CustClassification INT NOT NULL
+   );
+
+
+
+
+ALTER TABLE dbo.Customers ADD CONSTRAINT pk_Customers PRIMARY KEY (CustID);
+
+
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Person FOREIGN KEY (CustID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Classification FOREIGN KEY (CustClassification) REFERENCES dbo.CustClassification (ID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Employees_SA FOREIGN KEY (ServiceAgent) REFERENCES dbo.Employees (EmployeeID);
+
+\endcode
+
+<hr><a href = "#top_of_mainpage">top of the page</a>
+<hr>
 \subsection datamodel_table_Departments Departments
 \details <b>independent entity with the departments in the company, independent identity</b>
 \details the system class which represent this table in source is \ref myHR::TDepartments.
@@ -1673,7 +2255,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT pk_Departments PRIMARY KEY (ID);
 
 ALTER TABLE dbo.Departments ADD CONSTRAINT uk_Departments_Denotation UNIQUE (Denotation);
 
-ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (EmployeeID);
 
 \endcode
 
@@ -1699,7 +2281,18 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <th>source type
 </tr><tr><th colspan="11">description
 </tr>
-<tr><td rowspan="2" valign ="top">ID
+<tr><td rowspan="2" valign ="top">Dummy
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iDummy
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">dummy field to test the generator
+</tr><tr><td rowspan="2" valign ="top">EmployeeID
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
     <td valign = "top">
@@ -1707,7 +2300,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top">true
     <td valign = "top">    <td valign = "top"> &nbsp;
     <td valign = "top"> &nbsp;
-    <td valign = "top">iID
+    <td valign = "top">iEmployeeID
     <td valign = "top">int</td></tr>
 <tr><td colspan="11" valign = "top">attribute as foreign key from an attribute ID of a person entity to which these account details belong
 </tr><tr><td rowspan="2" valign ="top">PersonNumber
@@ -1870,7 +2463,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
 </tr><tr><td valign ="top">range
     <td valign ="top">has values
     <td valign ="top"> \ref datamodel_table_SalaryType
-    <td valign ="top">range values as domain for the attribute SalaryBase
+    <td valign ="top">range values as domain for the attribute SalaryType (inside this SalaryBase)
 </tr><tr><td valign ="top">range
     <td valign ="top">has values
     <td valign ="top"> \ref datamodel_table_TaxClasses
@@ -1897,7 +2490,11 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <th>related
     <th>description
 </tr>
-<tr><td valign ="top"> \ref datamodel_table_Departments
+<tr><td valign ="top"> \ref datamodel_table_Customers
+    <td valign ="top">assoziation
+    <td valign ="top">works in
+    <td valign ="top">assoziations between an customer to the the employee who act as service agent
+</tr><tr><td valign ="top"> \ref datamodel_table_Departments
     <td valign ="top">assoziation
     <td valign ="top">responsible
     <td valign ="top">assoziation between the department to employee who is the responsible officer for this
@@ -1916,7 +2513,8 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
 \code{.sql}
 -- statement to create the table dbo.Employees
 CREATE TABLE dbo.Employees (
-   ID              INT NOT NULL,
+   Dummy           INT,
+   EmployeeID      INT NOT NULL,
    PersonNumber    VARCHAR(15) NOT NULL,
    Salary          DECIMAL(10, 2) CHECK (Salary >= 0.0),
    SalaryType      INT,
@@ -1938,12 +2536,12 @@ ALTER TABLE dbo.Employees ADD Active AS IIF(EndOfJob IS NULL OR EndOfJob >= GETD
 ALTER TABLE dbo.Employees ADD CONSTRAINT ck_Employees_EndOfJob CHECK (EndOfJob IS NULL OR (EndOfJob > StartOfJob));
 ALTER TABLE dbo.Employees ADD CONSTRAINT ck_Employees_ReasonDeparture CHECK ((ReasonDeparture IS NULL AND EndOfJob IS NULL) OR  (ReasonDeparture IS NOT NULL AND EndOfJob IS NOT NULL));
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT pk_Employees PRIMARY KEY (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT pk_Employees PRIMARY KEY (EmployeeID);
 
 ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_PersonNumber UNIQUE (PersonNumber);
 ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_SocialNumber UNIQUE (ReasonDeparture);
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (EmployeeID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2TaxClass FOREIGN KEY (TaxClass) REFERENCES dbo.TaxClasses (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2ReasonDeparture FOREIGN KEY (ReasonDeparture) REFERENCES dbo.ReasonDeparture (ID);
@@ -1994,7 +2592,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of a family status entity in the domain, used in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of a family status entity in the domain, used in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2156,7 +2754,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of a family type entity in the domain, used in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of a family type entity in the domain, used in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2256,14 +2854,14 @@ ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT uk_FamilyTypes_Denotation UNIQUE (Den
 \subsubsection datamodel_table_FamilyTypes_values insert values
 \code{.sql}
 INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
-    (1, 'Mann', 'M', 'Person mit m‰nnlichem Geschlecht', 1), 
+    (1, 'Mann', 'M', 'Person mit m√§nnlichem Geschlecht', 1), 
     (2, 'Frau', 'F', 'Person mit weiblichen Geschlecht', 1), 
-    (3, 'Diverse', 'div', 'Eine Identit‰t, die die Vielfalt der Geschlechteridentit‰ten umfasst und nicht in die traditionellen bin‰ren Kategorien m‰nnlich oder weiblich passt.', 1), 
-    (4, 'Non-Bin‰r', 'non', 'Eine Identit‰t auﬂerhalb der traditionellen bin‰ren Geschlechtkategorien m‰nnlich und weiblich, die sich jenseits dieser Konzepte befindet.', 1), 
-    (5, 'Firma', 'FA', 'Eine rechtliche Einheit, die gegr¸ndet wird, um kommerzielle oder gesch‰ftliche Aktivit‰ten auszu¸ben, die in der Regel einen oder mehrere Eigent¸mer haben.', 1), 
-    (6, 'Familie', 'Fam', 'Eine soziale Einheit, die aus Eltern und ihren Kindern besteht, die zusammenleben und sich normalerweise gegenseitig unterst¸tzen und emotional miteinander verbunden sind.', 1), 
+    (3, 'Diverse', 'div', 'Eine Identit√§t, die die Vielfalt der Geschlechteridentit√§ten umfasst und nicht in die traditionellen bin√§ren Kategorien m√§nnlich oder weiblich passt.', 1), 
+    (4, 'Non-Bin√§r', 'non', 'Eine Identit√§t au√üerhalb der traditionellen bin√§ren Geschlechtkategorien m√§nnlich und weiblich, die sich jenseits dieser Konzepte befindet.', 1), 
+    (5, 'Firma', 'FA', 'Eine rechtliche Einheit, die gegr√ºndet wird, um kommerzielle oder gesch√§ftliche Aktivit√§ten auszu√ºben, die in der Regel einen oder mehrere Eigent√ºmer haben.', 1), 
+    (6, 'Familie', 'Fam', 'Eine soziale Einheit, die aus Eltern und ihren Kindern besteht, die zusammenleben und sich normalerweise gegenseitig unterst√ºtzen und emotional miteinander verbunden sind.', 1), 
     (7, 'Gemeinschaft', 'eLG', 'Eine Form des Zusammenlebens von Menschen, die nicht notwendigerweise auf einer romantischen Beziehung basiert, sondern auf gemeinsamen Zielen, Werten oder Lebensweisen beruht, oft in einem gemeinsamen Haushalt.', 1), 
-    (8, 'Verein', 'EV', 'Eine rechtliche und organisatorische Struktur, die von einer Gruppe von Personen gegr¸ndet wurde, um gemeinsame Interessen oder Ziele zu verfolgen, oft auf gemeinn¸tziger Basis.', 1);
+    (8, 'Verein', 'EV', 'Eine rechtliche und organisatorische Struktur, die von einer Gruppe von Personen gegr√ºndet wurde, um gemeinsame Interessen oder Ziele zu verfolgen, oft auf gemeinn√ºtziger Basis.', 1);
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -2308,7 +2906,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of  this form of address entity in the domain, used in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of  this form of address entity in the domain, used in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2341,7 +2939,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iTypeSpec
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">value from FamilyTypes who determine the art of persontype (gender, legal form, Ö)
+<tr><td colspan="11" valign = "top">value from FamilyTypes who determine the art of persontype (gender, legal form, ‚Ä¶)
 </tr><tr><td rowspan="2" valign ="top">Salutation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2447,9 +3045,9 @@ ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT refFormOfAddress2Type FOREIGN KEY (
 \subsubsection datamodel_table_FormOfAddress_values insert values
 \code{.sql}
 INSERT INTO FormOfAddress (ID, Denotation, Abbreviation, Description, TypeSpec, Salutation, Valediction, UrgentValue) VALUES
-    (1, 'Herr', 'Hr', 'Anredesteuerung f¸r Herr', 1, 'Sehr geehrter Herr', 'Mit freundlichen Gr¸ﬂen', 1), 
-    (2, 'Frau', 'Fr', 'Anredesteuerung f¸r Frauen', 2, 'Sehr geehrte Frau', 'Mit freundlichen Gr¸ﬂen', 1), 
-    (3, 'Firma', 'Fa', 'Anredesteuerung f¸r Firmen', 3, 'Sehr geehrte Damen und Herren', 'Mit freundlichen Gr¸ﬂen', 0);
+    (1, 'Herr', 'Hr', 'Anredesteuerung f√ºr Herr', 1, 'Sehr geehrter Herr', 'Mit freundlichen Gr√º√üen', 1), 
+    (2, 'Frau', 'Fr', 'Anredesteuerung f√ºr Frauen', 2, 'Sehr geehrte Frau', 'Mit freundlichen Gr√º√üen', 1), 
+    (3, 'Firma', 'Fa', 'Anredesteuerung f√ºr Firmen', 3, 'Sehr geehrte Damen und Herren', 'Mit freundlichen Gr√º√üen', 0);
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -2589,7 +3187,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of an internet connection type entity in the domain, used in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of an internet connection type entity in the domain, used in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2622,7 +3220,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strPrefix
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2844,7 +3442,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT pk_JobPositions PRIMARY KEY (ID);
 
 ALTER TABLE dbo.JobPositions ADD CONSTRAINT uk_JobPositions_Denotation UNIQUE (Denotation);
 
-ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KEY (ID) REFERENCES dbo.SalaryType (ID);
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
 
 \endcode
 
@@ -3007,6 +3605,14 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign ="top">composition
     <td valign ="top">owns
     <td valign ="top">part of relationship from a banking account to the person who own it
+</tr><tr><td valign ="top"> \ref datamodel_table_Contacts
+    <td valign ="top">generalization
+    <td valign ="top">
+    <td valign ="top">generalization of a contact to a person (is-a relationship)
+</tr><tr><td valign ="top"> \ref datamodel_table_Customers
+    <td valign ="top">generalization
+    <td valign ="top">is-a
+    <td valign ="top">generalization from a custumer to a person (is-a relationship)
 </tr><tr><td valign ="top"> \ref datamodel_table_Employees
     <td valign ="top">generalization
     <td valign ="top">is-a
@@ -3239,7 +3845,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of a phone type entity in the domain, used in selections, comboboxes, Ö (key canditate)
+<tr><td colspan="11" valign = "top">unique description of a phone type entity in the domain, used in selections, comboboxes, ‚Ä¶ (key canditate)
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3462,10 +4068,10 @@ ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT uk_ReasonDeparture_Denotation UNI
 \subsubsection datamodel_table_ReasonDeparture_values insert values
 \code{.sql}
 INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
-    (1, 'K¸ndigung', 'K¸', 'Die Person hat freiwillig beschlossen, das Unternehmen zu verlassen (Resignation).', 1), 
-    (2, 'Rente', 'Re', 'Die Person verl‰sst das Unternehmen aufgrund des Erreichens des Rentenalters oder aus Altersgr¸nden (Retirement ).', 1), 
-    (3, 'Entlassung', 'En', 'Das Unternehmen hat das Arbeitsverh‰ltnis mit der Person beendet (Dismissal )', 1), 
-    (4, 'Restrukturierung', 'St', 'Die Person wird nicht mehr in diesem Programm gef¸hrt, da sie in einem anderen Unternehmensteil besch‰ftigt wird (restructuring).', 1);
+    (1, 'K√ºndigung', 'K√º', 'Die Person hat freiwillig beschlossen, das Unternehmen zu verlassen (Resignation).', 1), 
+    (2, 'Rente', 'Re', 'Die Person verl√§sst das Unternehmen aufgrund des Erreichens des Rentenalters oder aus Altersgr√ºnden (Retirement ).', 1), 
+    (3, 'Entlassung', 'En', 'Das Unternehmen hat das Arbeitsverh√§ltnis mit der Person beendet (Dismissal )', 1), 
+    (4, 'Restrukturierung', 'St', 'Die Person wird nicht mehr in diesem Programm gef√ºhrt, da sie in einem anderen Unternehmensteil besch√§ftigt wird (restructuring).', 1);
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -3598,7 +4204,7 @@ ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT uk_ReasonNonWorking_Denotation U
 \subsubsection datamodel_table_ReasonNonWorking_values insert values
 \code{.sql}
 INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
-    (1, 'Urlaub', 'U', 'Die Person hat regul‰ren Urlaub (inklusive eventuelle Tage Resturlaub', 1), 
+    (1, 'Urlaub', 'U', 'Die Person hat regul√§ren Urlaub (inklusive eventuelle Tage Resturlaub', 1), 
     (2, 'Sonderurlaub', 'SU', 'Die Person hat Sonderurlaub', 1), 
     (3, 'Krankheit bezahlt', 'K', 'Die Person ist krankgeschrieben', 1), 
     (4, 'Krankheit unbezahlt', 'KU', 'Die Person ist krankgeschrieben, aber die Krankenkasse zahlt.', 1), 
@@ -3680,7 +4286,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
 </tr></table>
 
 
@@ -3725,8 +4331,8 @@ ALTER TABLE dbo.SalaryBase ADD CONSTRAINT uk_SalaryBase_Abbreviation UNIQUE (Abb
 \code{.sql}
 INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
     (0, 'ohne', 'f', 'Die Angabe des Gehalts wird ignoriert oder einmalig gezahlt. Kostenloses Praktikum oder Probezeit.', 1), 
-    (1, 'st¸ndlich', 'h', 'Die Angabe des Gehalts erfolgt auf Stundenbasis. Entspricht meistens dem Arbeitslohn, eventuell mit Zuschl‰gen.', 1), 
-    (2, 't‰glich', 'd', 'Die Angabe des Gehalts erfolgt auf Tagesbasis. Dieses wird oft f¸r Honorare verwendet.', 1), 
+    (1, 'st√ºndlich', 'h', 'Die Angabe des Gehalts erfolgt auf Stundenbasis. Entspricht meistens dem Arbeitslohn, eventuell mit Zuschl√§gen.', 1), 
+    (2, 't√§glich', 'd', 'Die Angabe des Gehalts erfolgt auf Tagesbasis. Dieses wird oft f√ºr Honorare verwendet.', 1), 
     (3, 'monatlich', 'm', 'Die Angabe des Bezugs erfolgt auf Monatsbasis.Das entspricht meistens dem Gehalt bei Angestellten*innen', 1);
 
 \endcode
@@ -3761,7 +4367,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">unique identification number / id of the type of salary
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3772,7 +4378,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">unique denotation for the type of salary
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3783,7 +4389,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">abbreviation for thetype of salary, used in the application for a compact display
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3794,7 +4400,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">description as long text for the type of salary, used in the application for detailed informations
 </tr><tr><td rowspan="2" valign ="top">SalaryBase
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -3805,7 +4411,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">iSalaryBase
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">id of the salary base which is used for this type of salary (foreign key from SalaryBase)
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3816,7 +4422,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top"> &nbsp;
+<tr><td colspan="11" valign = "top">boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
 </tr></table>
 
 
@@ -3844,7 +4450,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
 <tr><td valign ="top"> \ref datamodel_table_Employees
     <td valign ="top">range
     <td valign ="top">has values
-    <td valign ="top">range values as domain for the attribute SalaryBase
+    <td valign ="top">range values as domain for the attribute SalaryType (inside this SalaryBase)
 </tr><tr><td valign ="top"> \ref datamodel_table_JobPositions
     <td valign ="top">range
     <td valign ="top">is in this
@@ -4005,14 +4611,14 @@ ALTER TABLE dbo.TaxClasses ADD CONSTRAINT uk_TaxClasses_Abbreviation UNIQUE (Abb
 \subsubsection datamodel_table_TaxClasses_values insert values
 \code{.sql}
 INSERT INTO TaxClasses (ID, Denotation, Abbreviation, Description, Coupled, UrgentValue) VALUES
-    (1, 'Steuerklasse 1', 'I', 'Dies ist die Standardsteuerklasse f¸r alleinstehende Personen ohne Kinder.', 0, 1), 
-    (2, 'Steuerklasse 2', 'II', 'Diese Steuerklasse ist f¸r Alleinerziehende mit mindestens einem Kind gedacht.', 0, 1), 
-    (3, 'Steuerklasse 3', 'III', 'Diese Klasse ist f¸r verheiratete oder in einer eingetragenen Lebenspartnerschaft lebende Personen, wenn der Ehe- oder Lebenspartner in Steuerklasse V eingestuft ist oder keine Eink¸nfte hat.', 1, 1), 
-    (4, 'Steuerklasse 4', 'IV', 'Dies ist die Standardsteuerklasse f¸r verheiratete oder in einer eingetragenen Lebenspartnerschaft lebende Personen, wenn beide Partner ein ‰hnliches Einkommen haben.', 1, 1), 
-    (5, 'Steuerklasse 5', 'V', 'Diese Klasse wird f¸r den Ehe- oder Lebenspartner verwendet, wenn der andere Partner in Steuerklasse III eingestuft ist.', 1, 1), 
-    (6, 'Steuerklasse 6', 'VI', 'Diese Klasse wird verwendet, wenn eine Person mehrere Jobs hat oder zus‰tzliche Eink¸nfte aus einer geringf¸gigen Besch‰ftigung hat.', 0, 1), 
+    (1, 'Steuerklasse 1', 'I', 'Dies ist die Standardsteuerklasse f√ºr alleinstehende Personen ohne Kinder.', 0, 1), 
+    (2, 'Steuerklasse 2', 'II', 'Diese Steuerklasse ist f√ºr Alleinerziehende mit mindestens einem Kind gedacht.', 0, 1), 
+    (3, 'Steuerklasse 3', 'III', 'Diese Klasse ist f√ºr verheiratete oder in einer eingetragenen Lebenspartnerschaft lebende Personen, wenn der Ehe- oder Lebenspartner in Steuerklasse V eingestuft ist oder keine Eink√ºnfte hat.', 1, 1), 
+    (4, 'Steuerklasse 4', 'IV', 'Dies ist die Standardsteuerklasse f√ºr verheiratete oder in einer eingetragenen Lebenspartnerschaft lebende Personen, wenn beide Partner ein √§hnliches Einkommen haben.', 1, 1), 
+    (5, 'Steuerklasse 5', 'V', 'Diese Klasse wird f√ºr den Ehe- oder Lebenspartner verwendet, wenn der andere Partner in Steuerklasse III eingestuft ist.', 1, 1), 
+    (6, 'Steuerklasse 6', 'VI', 'Diese Klasse wird verwendet, wenn eine Person mehrere Jobs hat oder zus√§tzliche Eink√ºnfte aus einer geringf√ºgigen Besch√§ftigung hat.', 0, 1), 
     (7, 'Ausland', 'A', 'Person wohnt im Ausland, Steuer individuell bestimmen ', 0, 1), 
-    (8, 'unbekannt', '-', 'Steuerklasse noch unbekannt, unbedingt nachfragen, vorl‰ufig als Steuerklasse 6 abrechnen', 0, 1);
+    (8, 'unbekannt', '-', 'Steuerklasse noch unbekannt, unbedingt nachfragen, vorl√§ufig als Steuerklasse 6 abrechnen', 0, 1);
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -4246,7 +4852,7 @@ ALTER TABLE dbo.WD_Months ADD CONSTRAINT uk_WD_Months_Abbreviation UNIQUE (Abbre
 INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     (1, 'Januar', 'Jan', 1), 
     (2, 'Februar', 'Feb', 1), 
-    (3, 'M‰rz', 'M‰r', 1), 
+    (3, 'M√§rz', 'M√§r', 1), 
     (4, 'April', 'Apr', 2), 
     (5, 'Mai', 'Mai', 2), 
     (6, 'Juni', 'Jun', 2), 
@@ -4380,7 +4986,7 @@ CREATE TABLE dbo.WD_NonWorking (
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT pk_WD_NonWorking PRIMARY KEY (ID, StartAt);
 
 
-ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployeeID);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Start FOREIGN KEY (StartAt) REFERENCES dbo.WD_Workdays (CalendarDay);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Finishing FOREIGN KEY (ClosingAt) REFERENCES dbo.WD_Workdays (CalendarDay);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (Reason) REFERENCES dbo.ReasonNonWorking (ID);
@@ -4829,7 +5435,7 @@ ALTER TABLE dbo.WorkingTime ADD CONSTRAINT ck_WorkingTime_ClosingTime CHECK (con
 ALTER TABLE dbo.WorkingTime ADD CONSTRAINT pk_WorkingTime PRIMARY KEY (ID, StartingTime);
 
 
-ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployeeID);
 
 \endcode
 
@@ -4843,5 +5449,5 @@ ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID)
 This project is released under the MIT License.
 \author Volker Hillmann (adecc Scholar)
 \version 1.0
-\date 14.03.2024
+\date 17.03.2024
 \copyright adecc Systemhaus GmbH 2024, All rights reserved.

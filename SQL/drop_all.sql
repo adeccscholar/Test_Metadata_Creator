@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script to drop relationships and tables for the project simple person model
- * generated at: 14.03.2024 23:56:52,704 with the adecc Scholar metadata generator
+ * generated at: 17.03.2024 20:08:19,236 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -13,6 +13,14 @@ ALTER TABLE dbo.Address DROP CONSTRAINT refAddress2Countries;
 ALTER TABLE dbo.Banking DROP CONSTRAINT refBanking2Person;
 ALTER TABLE dbo.Banking DROP CONSTRAINT refBanking2Type;
 ALTER TABLE dbo.Banking DROP CONSTRAINT refBanking2Countries;
+
+ALTER TABLE dbo.Contacts DROP CONSTRAINT refContacts2Person;
+ALTER TABLE dbo.Contacts DROP CONSTRAINT refContacts2Customer;
+ALTER TABLE dbo.Contacts DROP CONSTRAINT refContacts2Liaison;
+
+ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2Person;
+ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2Classification;
+ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2Employees_SA;
 
 ALTER TABLE dbo.Departments DROP CONSTRAINT refDepartments2Employee;
 
@@ -57,7 +65,11 @@ DROP TABLE dbo.Address;
 DROP TABLE dbo.AddressTypes;
 DROP TABLE dbo.Banking;
 DROP TABLE dbo.BankingTypes;
+DROP TABLE dbo.Contacts;
 DROP TABLE dbo.Countries;
+DROP TABLE dbo.CustClassification;
+DROP TABLE dbo.CustLiaison;
+DROP TABLE dbo.Customers;
 DROP TABLE dbo.Departments;
 DROP TABLE dbo.Employees;
 DROP TABLE dbo.FamilyStatus;

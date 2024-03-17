@@ -2,12 +2,12 @@
 * Project: model with a simple person administration
 * Implementation of the data class TAddressTypes
 * Content: domain / range of values for address types, this is an extension of the relationship between persons and addresses.
-* Date: 14.03.2024 23:56:53,023  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:19,542  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
-#include "System\Corporate/AddressTypes.h"
+#include "System\Corporate\AddressTypes.h"
 
 #include <typeinfo>
 

@@ -2,16 +2,26 @@
 * Project: model with a simple person administration
 * Implementation of the data class TPerson
 * Content: informations about a person, base for different kinds of special persons in other areas of the company
-* Date: 14.03.2024 23:56:53,789  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:25,042  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
-#include "System\Corporate/Person.h"
+#include "System\Corporate\Person.h"
+
+#include "System\Sales\Contacts.h"
+#include "System\Sales\Customers.h"
+#include "System\HR\Employees.h"
 
 #include <typeinfo>
 
 namespace myCorporate {
+
+TPerson::primary_key::primary_key(mySales::TContacts const& other) : iID(other._ContactID()) { }
+
+TPerson::primary_key::primary_key(mySales::TCustomers const& other) : iID(other._CustID()) { }
+
+TPerson::primary_key::primary_key(myHR::TEmployees const& other) : iID(other._EmployeeID()) { }
 
 TPerson::TPerson() {
    _init();

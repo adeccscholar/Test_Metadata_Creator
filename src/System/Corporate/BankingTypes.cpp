@@ -2,12 +2,12 @@
 * Project: model with a simple person administration
 * Implementation of the data class TBankingTypes
 * Content: domain / range of values for banking types, this is an extension of the relationship between persons and banking accounts.
-* Date: 14.03.2024 23:56:53,152  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:19,701  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
-#include "System\Corporate/BankingTypes.h"
+#include "System\Corporate\BankingTypes.h"
 
 #include <typeinfo>
 

@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_InternetTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_InternetTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TInternetTypes
 \brief domain / range of values for internet connection types, this is an extension of the relationship between persons and internet connections.
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024 documentation for this project created
+\date 17.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_InternetTypes
 
 \class myCorporate::TInternetTypes::primary_key
@@ -182,7 +182,8 @@ method to copy instances of the hierachie of classes into another
 \details Database: attribute "Description" in entity \ref datamodel_table_InternetTypes with database type VARCHAR(MAX)
 
 \var myCorporate::TInternetTypes::strPrefix
-\brief Source: member myCorporate::TInternetTypes::strPrefix in class myCorporate::TInternetTypes with the type std::optional<std::string>
+\brief protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)
+\details Source: member myCorporate::TInternetTypes::strPrefix in class myCorporate::TInternetTypes with the type std::optional<std::string>
 \details Database: attribute "Prefix" in entity \ref datamodel_table_InternetTypes with database type VARCHAR
 
 \var myCorporate::TInternetTypes::strNotes
@@ -219,6 +220,7 @@ method to copy instances of the hierachie of classes into another
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strDescription
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Prefix() const
 \brief selector for the data element myCorporate::TInternetTypes::strPrefix
+\details <b>protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strPrefix
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Notes() const
 \brief selector for the data element myCorporate::TInternetTypes::strNotes
@@ -260,7 +262,8 @@ method to copy instances of the hierachie of classes into another
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strDescription
 \fn std::string const& myCorporate::TInternetTypes::_Prefix() const
 \brief special selector for data element myCorporate::TInternetTypes::strPrefix
-\details attribute "Prefix" in entity "InternetTypes"
+\details protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)
+\details <b>protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)</b>
 \throw std::runtime::error if the attribute myCorporate::TInternetTypes::strPrefix is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strPrefix
 \fn std::string const& myCorporate::TInternetTypes::_Notes() const
@@ -307,6 +310,7 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Prefix(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::strPrefix
+\details <b>protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::strPrefix
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strPrefix
 

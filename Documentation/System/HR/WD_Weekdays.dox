@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Weekdays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Weekdays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Weekdays
 \brief domain for days of week, used for table working time. Possible to extent with informations. In area HR only
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024 documentation for this project created
+\date 17.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Weekdays
 
 \class myHR::TWD_Weekdays::primary_key

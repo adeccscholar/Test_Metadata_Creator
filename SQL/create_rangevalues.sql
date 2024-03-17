@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to prefill the rangevalues for the project simple person model
- * generated at: 14.03.2024 23:56:52,689 with the adecc Scholar metadata generator
+ * generated at: 17.03.2024 20:08:19,223 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -12,6 +12,20 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
 
 INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
     (1, 'Hauptkonto', 'HK', 'Hauptkonto für die Personen in der Anwendung', 1);
+
+INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
+    (1, 'Neukunde', 'Neu', 'Ein Kunde, der gerade erst begonnen hat, Geschäfte mit dem Unternehmen zu tätigen und möglicherweise noch nicht viel Erfahrung mit den Produkten oder Dienstleistungen des Unternehmens hat.', 1), 
+    (2, 'VIP-Kunde', 'VIP', 'Ein Kunde, der aufgrund seines langjährigen Engagements, seines hohen Umsatzes oder seiner anderen besonderen Merkmale einen VIP-Status im Unternehmen hat.', 1), 
+    (3, 'Gelegenheitskunde', 'GK', 'Ein Kunde, der nur gelegentlich Geschäfte mit dem Unternehmen tätigt und keine regelmäßigen oder wiederkehrenden Käufe macht.', 1), 
+    (4, 'Geschäftskunde', 'B2B', 'Ein Kunde, der ein anderes Unternehmen oder eine Organisation vertritt und Produkte oder Dienstleistungen für geschäftliche Zwecke erwirbt. Diese Kunden haben oft spezifische Anforderungen und erwarten eine professionelle Betreuung.', 1), 
+    (5, 'Privatkunde', 'B2C', 'Ein Kunde, der als Einzelperson Produkte oder Dienstleistungen für den persönlichen Gebrauch erwirbt. Diese Kunden können eine Vielzahl von Bedürfnissen haben und erwarten oft eine persönliche und freundliche Betreuung.', 1);
+
+INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
+    (1, 'Geschäftsführer/in', 'GV', 'Der Geschäftsführer ist die höchste Führungsperson des Kunden und vertritt das Unternehmen. Sie sind für die strategische Ausrichtung, das Management und die langfristige Entwicklung der Geschäftsbeziehung verantwortlich. Der Geschäftsführer trägt die Gesamtverantwortung für den Erfolg des Projekts.', 1), 
+    (2, 'Projektmanager/in', 'Projekt', 'Der Projektleiter ist die zentrale Kontaktperson beim Kunden während eines Projekts. Sie sind verantwortlich für die Planung, Organisation und Überwachung des Projekts sowie für die Koordination aller internen und externen Aktivitäten.', 1), 
+    (3, 'Technische/r Berater/in', 'Technik', 'Der technische Ansprechpartner ist eine Person beim Kunden, die als direkter Kontaktpunkt für technische Fragen, Unterstützung und Problemlösungen fungiert.', 1), 
+    (4, 'Kaufmännische/r Berater/in', 'Finanzen', 'Der kaufmännische Ansprechpartner ist für alle kaufmännischen Belange beim Kunden zuständig. Er ist verantwortlich für die Verwaltung von Verträgen, Preisgestaltung, Budgetierung und anderen finanziellen Fragen.', 1), 
+    (5, 'Vertragsmanager/in', 'Vertrag', 'Der Vertragsmanager ist für die Verwaltung und Überwachung aller vertraglichen Angelegenheiten beim Kunden verantwortlich. Sie sind dafür zuständig, Verträge zu erstellen, zu überprüfen und zu verhandeln, Änderungen zu koordinieren und sicherzustellen, dass alle Vertragsbedingungen eingehalten werden.', 1);
 
 INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, NeedDate, UrgentValue) VALUES
     (0, 'unbekannt', 'kA', 'unbekannt oder keine Angabe', 0, 0, 1), 

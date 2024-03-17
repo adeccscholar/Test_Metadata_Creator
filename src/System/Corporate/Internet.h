@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TInternet
 * Content: connections for different kinds of communications about the internet as part of persons (part of relationship)
-* Date: 14.03.2024 23:56:53,612  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:20,322  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

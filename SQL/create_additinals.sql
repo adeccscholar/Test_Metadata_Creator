@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with keys, references and indices for the project simple person model
- * generated at: 14.03.2024 23:56:52,666 with the adecc Scholar metadata generator
+ * generated at: 17.03.2024 20:08:19,201 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -28,11 +28,19 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT pk_Banking PRIMARY KEY (ID, BankingType);
 
 ALTER TABLE dbo.BankingTypes ADD CONSTRAINT pk_BankingTypes PRIMARY KEY (ID);
 
+ALTER TABLE dbo.Contacts ADD CONSTRAINT pk_Contacts PRIMARY KEY (ContactID);
+
 ALTER TABLE dbo.Countries ADD CONSTRAINT pk_Countries PRIMARY KEY (ID);
+
+ALTER TABLE dbo.CustClassification ADD CONSTRAINT pk_CustClassification PRIMARY KEY (ID);
+
+ALTER TABLE dbo.CustLiaison ADD CONSTRAINT pk_CustLiaison PRIMARY KEY (ID);
+
+ALTER TABLE dbo.Customers ADD CONSTRAINT pk_Customers PRIMARY KEY (CustID);
 
 ALTER TABLE dbo.Departments ADD CONSTRAINT pk_Departments PRIMARY KEY (ID);
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT pk_Employees PRIMARY KEY (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT pk_Employees PRIMARY KEY (EmployeeID);
 
 ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT pk_FamilyStatus PRIMARY KEY (ID);
 
@@ -86,6 +94,10 @@ ALTER TABLE dbo.BankingTypes ADD CONSTRAINT uk_BankingTypes_Denotation UNIQUE (D
 ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_Denotation UNIQUE (Denotation);
 ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
 
+ALTER TABLE dbo.CustClassification ADD CONSTRAINT uk_CustClass_Donation UNIQUE (Denotation);
+
+ALTER TABLE dbo.CustLiaison ADD CONSTRAINT uk_CustLiaison_Donation UNIQUE (Denotation);
+
 ALTER TABLE dbo.Departments ADD CONSTRAINT uk_Departments_Denotation UNIQUE (Denotation);
 
 ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_PersonNumber UNIQUE (PersonNumber);
@@ -132,9 +144,17 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Person FOREIGN KEY (ID) REFERE
 ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Type FOREIGN KEY (BankingType) REFERENCES dbo.BankingTypes (ID);
 ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
 
-ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Person FOREIGN KEY (ContactID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Customer FOREIGN KEY (CustID) REFERENCES dbo.Customers (CustID);
+ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLiaison) REFERENCES dbo.CustLiaison (ID);
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Person FOREIGN KEY (CustID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Classification FOREIGN KEY (CustClassification) REFERENCES dbo.CustClassification (ID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Employees_SA FOREIGN KEY (ServiceAgent) REFERENCES dbo.Employees (EmployeeID);
+
+ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (EmployeeID);
+
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (EmployeeID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2TaxClass FOREIGN KEY (TaxClass) REFERENCES dbo.TaxClasses (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2ReasonDeparture FOREIGN KEY (ReasonDeparture) REFERENCES dbo.ReasonDeparture (ID);
@@ -146,7 +166,7 @@ ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT refFormOfAddress2Type FOREIGN KEY (
 ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetType) REFERENCES dbo.InternetTypes (ID);
 
-ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KEY (ID) REFERENCES dbo.SalaryType (ID);
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
 
 ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FormOfAddress FOREIGN KEY (FormOfAddress) REFERENCES dbo.FormOfAddress (ID);
 ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (FamilyStatus) REFERENCES dbo.FamilyStatus (ID);
@@ -159,7 +179,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
 
 ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (CalendarDay) REFERENCES dbo.WD_Workdays (CalendarDay);
 
-ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployeeID);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Start FOREIGN KEY (StartAt) REFERENCES dbo.WD_Workdays (CalendarDay);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Finishing FOREIGN KEY (ClosingAt) REFERENCES dbo.WD_Workdays (CalendarDay);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (Reason) REFERENCES dbo.ReasonNonWorking (ID);
@@ -167,7 +187,7 @@ ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (R
 ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2WeekDay FOREIGN KEY (CalendarWeekday) REFERENCES dbo.WD_Weekdays (ID);
 ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (CalendarMonth) REFERENCES dbo.WD_Months (ID);
 
-ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (ID);
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployeeID);
 
 
 GO

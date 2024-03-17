@@ -1,8 +1,8 @@
 ﻿/*
 * Project: model with a simple person administration
 * Implementation of sql statement for access with class TPersonReader
-* Date: 14.03.2024 23:56:54,451  file created with adecc Scholar metadata generator
-* copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
+* Date: 17.03.2024 20:08:25,650  file created with adecc Scholar metadata generator
+* copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
@@ -13,368 +13,645 @@ namespace reader {
 // --------------------------------------------------------------------
 //   Statements for table / view: Address
 // --------------------------------------------------------------------
-const std::string strSQLAddressAll = 
+const std::string strSQLAddressSelectAll = 
      "SELECT ID, AddressType, Zipcode, City, Street, StreetNumber, Country\n"
      "FROM dbo.Address";
 
-const std::string strSQLAddressDetail = 
+const std::string strSQLAddressSelectDetail = 
      "SELECT ID, AddressType, Zipcode, City, Street, StreetNumber, Country\n"
      "FROM dbo.Address\n"
-     "WHERE ID           = :keyID AND\n"
-     "      AddressType  = :keyAddressType";
+     "WHERE ID          = :keyID AND\n"
+     "      AddressType = :keyAddressType";
+
+const std::string strSQLAddressDeleteAll = 
+     "DELETE FROM dbo.Address";
+
+const std::string strSQLAddressDeleteDetail = 
+     "DELETE FROM dbo.Address\n"
+     "WHERE ID          = :keyID AND\n"
+     "      AddressType = :keyAddressType";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: AddressTypes
 // --------------------------------------------------------------------
-const std::string strSQLAddressTypesAll = 
+const std::string strSQLAddressTypesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.AddressTypes";
 
-const std::string strSQLAddressTypesDetail = 
+const std::string strSQLAddressTypesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.AddressTypes\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLAddressTypesDeleteAll = 
+     "DELETE FROM dbo.AddressTypes";
+
+const std::string strSQLAddressTypesDeleteDetail = 
+     "DELETE FROM dbo.AddressTypes\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Banking
 // --------------------------------------------------------------------
-const std::string strSQLBankingAll = 
+const std::string strSQLBankingSelectAll = 
      "SELECT ID, BankingType, BankName, IBAN, BIC, BankOwner, Country\n"
      "FROM dbo.Banking";
 
-const std::string strSQLBankingDetail = 
+const std::string strSQLBankingSelectDetail = 
      "SELECT ID, BankingType, BankName, IBAN, BIC, BankOwner, Country\n"
      "FROM dbo.Banking\n"
-     "WHERE ID           = :keyID AND\n"
-     "      BankingType  = :keyBankingType";
+     "WHERE ID          = :keyID AND\n"
+     "      BankingType = :keyBankingType";
+
+const std::string strSQLBankingDeleteAll = 
+     "DELETE FROM dbo.Banking";
+
+const std::string strSQLBankingDeleteDetail = 
+     "DELETE FROM dbo.Banking\n"
+     "WHERE ID          = :keyID AND\n"
+     "      BankingType = :keyBankingType";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: BankingTypes
 // --------------------------------------------------------------------
-const std::string strSQLBankingTypesAll = 
+const std::string strSQLBankingTypesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.BankingTypes";
 
-const std::string strSQLBankingTypesDetail = 
+const std::string strSQLBankingTypesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.BankingTypes\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLBankingTypesDeleteAll = 
+     "DELETE FROM dbo.BankingTypes";
+
+const std::string strSQLBankingTypesDeleteDetail = 
+     "DELETE FROM dbo.BankingTypes\n"
+     "WHERE ID = :keyID";
+
+
+// --------------------------------------------------------------------
+//   Statements for table / view: Contacts
+// --------------------------------------------------------------------
+const std::string strSQLContactsSelectAll = 
+     "SELECT ContactID, CustID, CustLiaison\n"
+     "FROM dbo.Contacts";
+
+const std::string strSQLContactsSelectDetail = 
+     "SELECT ContactID, CustID, CustLiaison\n"
+     "FROM dbo.Contacts\n"
+     "WHERE ContactID = :keyContactID";
+
+const std::string strSQLContactsDeleteAll = 
+     "DELETE FROM dbo.Contacts";
+
+const std::string strSQLContactsDeleteDetail = 
+     "DELETE FROM dbo.Contacts\n"
+     "WHERE ContactID = :keyContactID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Countries
 // --------------------------------------------------------------------
-const std::string strSQLCountriesAll = 
+const std::string strSQLCountriesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, CountryDialing, ISO_Code, IsEU,\n"
      "       Capital, Currency, Notes, UrgentValue\n"
      "FROM dbo.Countries";
 
-const std::string strSQLCountriesDetail = 
+const std::string strSQLCountriesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, CountryDialing, ISO_Code, IsEU,\n"
      "       Capital, Currency, Notes, UrgentValue\n"
      "FROM dbo.Countries\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLCountriesDeleteAll = 
+     "DELETE FROM dbo.Countries";
+
+const std::string strSQLCountriesDeleteDetail = 
+     "DELETE FROM dbo.Countries\n"
+     "WHERE ID = :keyID";
+
+
+// --------------------------------------------------------------------
+//   Statements for table / view: CustClassification
+// --------------------------------------------------------------------
+const std::string strSQLCustClassificationSelectAll = 
+     "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
+     "FROM dbo.CustClassification";
+
+const std::string strSQLCustClassificationSelectDetail = 
+     "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
+     "FROM dbo.CustClassification\n"
+     "WHERE ID = :keyID";
+
+const std::string strSQLCustClassificationDeleteAll = 
+     "DELETE FROM dbo.CustClassification";
+
+const std::string strSQLCustClassificationDeleteDetail = 
+     "DELETE FROM dbo.CustClassification\n"
+     "WHERE ID = :keyID";
+
+
+// --------------------------------------------------------------------
+//   Statements for table / view: CustLiaison
+// --------------------------------------------------------------------
+const std::string strSQLCustLiaisonSelectAll = 
+     "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
+     "FROM dbo.CustLiaison";
+
+const std::string strSQLCustLiaisonSelectDetail = 
+     "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
+     "FROM dbo.CustLiaison\n"
+     "WHERE ID = :keyID";
+
+const std::string strSQLCustLiaisonDeleteAll = 
+     "DELETE FROM dbo.CustLiaison";
+
+const std::string strSQLCustLiaisonDeleteDetail = 
+     "DELETE FROM dbo.CustLiaison\n"
+     "WHERE ID = :keyID";
+
+
+// --------------------------------------------------------------------
+//   Statements for table / view: Customers
+// --------------------------------------------------------------------
+const std::string strSQLCustomersSelectAll = 
+     "SELECT CustID, ServiceAgent, CustClassification\n"
+     "FROM dbo.Customers";
+
+const std::string strSQLCustomersSelectDetail = 
+     "SELECT CustID, ServiceAgent, CustClassification\n"
+     "FROM dbo.Customers\n"
+     "WHERE CustID = :keyCustID";
+
+const std::string strSQLCustomersDeleteAll = 
+     "DELETE FROM dbo.Customers";
+
+const std::string strSQLCustomersDeleteDetail = 
+     "DELETE FROM dbo.Customers\n"
+     "WHERE CustID = :keyCustID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Departments
 // --------------------------------------------------------------------
-const std::string strSQLDepartmentsAll = 
+const std::string strSQLDepartmentsSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Officer, Notes\n"
      "FROM dbo.Departments";
 
-const std::string strSQLDepartmentsDetail = 
+const std::string strSQLDepartmentsSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Officer, Notes\n"
      "FROM dbo.Departments\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLDepartmentsDeleteAll = 
+     "DELETE FROM dbo.Departments";
+
+const std::string strSQLDepartmentsDeleteDetail = 
+     "DELETE FROM dbo.Departments\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Employees
 // --------------------------------------------------------------------
-const std::string strSQLEmployeesAll = 
-     "SELECT ID, PersonNumber, Salary, SalaryType, TaxClass, StartOfJob, EndOfJob, ReasonDeparture,\n"
-     "       JobPosition, JobSpec, VacationDays, Department, SocialNummer, Active\n"
+const std::string strSQLEmployeesSelectAll = 
+     "SELECT Dummy, EmployeeID, PersonNumber, Salary, SalaryType, TaxClass, StartOfJob,\n"
+     "       EndOfJob, ReasonDeparture, JobPosition, JobSpec, VacationDays, Department,\n"
+     "       SocialNummer, Active\n"
      "FROM dbo.Employees";
 
-const std::string strSQLEmployeesDetail = 
-     "SELECT ID, PersonNumber, Salary, SalaryType, TaxClass, StartOfJob, EndOfJob, ReasonDeparture,\n"
-     "       JobPosition, JobSpec, VacationDays, Department, SocialNummer, Active\n"
+const std::string strSQLEmployeesSelectDetail = 
+     "SELECT Dummy, EmployeeID, PersonNumber, Salary, SalaryType, TaxClass, StartOfJob,\n"
+     "       EndOfJob, ReasonDeparture, JobPosition, JobSpec, VacationDays, Department,\n"
+     "       SocialNummer, Active\n"
      "FROM dbo.Employees\n"
-     "WHERE ID  = :keyID";
+     "WHERE EmployeeID = :keyEmployeeID";
+
+const std::string strSQLEmployeesDeleteAll = 
+     "DELETE FROM dbo.Employees";
+
+const std::string strSQLEmployeesDeleteDetail = 
+     "DELETE FROM dbo.Employees\n"
+     "WHERE EmployeeID = :keyEmployeeID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: FamilyStatus
 // --------------------------------------------------------------------
-const std::string strSQLFamilyStatusAll = 
+const std::string strSQLFamilyStatusSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Coupled, NeedDate, Notes, UrgentValue\n"
      "FROM dbo.FamilyStatus";
 
-const std::string strSQLFamilyStatusDetail = 
+const std::string strSQLFamilyStatusSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Coupled, NeedDate, Notes, UrgentValue\n"
      "FROM dbo.FamilyStatus\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLFamilyStatusDeleteAll = 
+     "DELETE FROM dbo.FamilyStatus";
+
+const std::string strSQLFamilyStatusDeleteDetail = 
+     "DELETE FROM dbo.FamilyStatus\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: FamilyTypes
 // --------------------------------------------------------------------
-const std::string strSQLFamilyTypesAll = 
+const std::string strSQLFamilyTypesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, IsNaturalPerson, Description, Notes, UrgentValue\n"
      "FROM dbo.FamilyTypes";
 
-const std::string strSQLFamilyTypesDetail = 
+const std::string strSQLFamilyTypesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, IsNaturalPerson, Description, Notes, UrgentValue\n"
      "FROM dbo.FamilyTypes\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLFamilyTypesDeleteAll = 
+     "DELETE FROM dbo.FamilyTypes";
+
+const std::string strSQLFamilyTypesDeleteDetail = 
+     "DELETE FROM dbo.FamilyTypes\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: FormOfAddress
 // --------------------------------------------------------------------
-const std::string strSQLFormOfAddressAll = 
+const std::string strSQLFormOfAddressSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, TypeSpec, Salutation, Valediction,\n"
      "       Notes, UrgentValue\n"
      "FROM dbo.FormOfAddress";
 
-const std::string strSQLFormOfAddressDetail = 
+const std::string strSQLFormOfAddressSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, TypeSpec, Salutation, Valediction,\n"
      "       Notes, UrgentValue\n"
      "FROM dbo.FormOfAddress\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLFormOfAddressDeleteAll = 
+     "DELETE FROM dbo.FormOfAddress";
+
+const std::string strSQLFormOfAddressDeleteDetail = 
+     "DELETE FROM dbo.FormOfAddress\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Internet
 // --------------------------------------------------------------------
-const std::string strSQLInternetAll = 
+const std::string strSQLInternetSelectAll = 
      "SELECT ID, InternetType, Adresse\n"
      "FROM dbo.Internet";
 
-const std::string strSQLInternetDetail = 
+const std::string strSQLInternetSelectDetail = 
      "SELECT ID, InternetType, Adresse\n"
      "FROM dbo.Internet\n"
-     "WHERE ID            = :keyID AND\n"
-     "      InternetType  = :keyInternetType";
+     "WHERE ID           = :keyID AND\n"
+     "      InternetType = :keyInternetType";
+
+const std::string strSQLInternetDeleteAll = 
+     "DELETE FROM dbo.Internet";
+
+const std::string strSQLInternetDeleteDetail = 
+     "DELETE FROM dbo.Internet\n"
+     "WHERE ID           = :keyID AND\n"
+     "      InternetType = :keyInternetType";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: InternetTypes
 // --------------------------------------------------------------------
-const std::string strSQLInternetTypesAll = 
+const std::string strSQLInternetTypesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Prefix, Notes, UrgentValue\n"
      "FROM dbo.InternetTypes";
 
-const std::string strSQLInternetTypesDetail = 
+const std::string strSQLInternetTypesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Prefix, Notes, UrgentValue\n"
      "FROM dbo.InternetTypes\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLInternetTypesDeleteAll = 
+     "DELETE FROM dbo.InternetTypes";
+
+const std::string strSQLInternetTypesDeleteDetail = 
+     "DELETE FROM dbo.InternetTypes\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: JobPositions
 // --------------------------------------------------------------------
-const std::string strSQLJobPositionsAll = 
+const std::string strSQLJobPositionsSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, SalaryType, Notes, UrgentValue\n"
      "FROM dbo.JobPositions";
 
-const std::string strSQLJobPositionsDetail = 
+const std::string strSQLJobPositionsSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, SalaryType, Notes, UrgentValue\n"
      "FROM dbo.JobPositions\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLJobPositionsDeleteAll = 
+     "DELETE FROM dbo.JobPositions";
+
+const std::string strSQLJobPositionsDeleteDetail = 
+     "DELETE FROM dbo.JobPositions\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Person
 // --------------------------------------------------------------------
-const std::string strSQLPersonAll = 
+const std::string strSQLPersonSelectAll = 
      "SELECT ID, Name, Firstname, FormOfAddress, FamilyStatus, FamilyStatusSince, Birthday,\n"
      "       Notes, FullName\n"
      "FROM dbo.Person";
 
-const std::string strSQLPersonDetail = 
+const std::string strSQLPersonSelectDetail = 
      "SELECT ID, Name, Firstname, FormOfAddress, FamilyStatus, FamilyStatusSince, Birthday,\n"
      "       Notes, FullName\n"
      "FROM dbo.Person\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLPersonDeleteAll = 
+     "DELETE FROM dbo.Person";
+
+const std::string strSQLPersonDeleteDetail = 
+     "DELETE FROM dbo.Person\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: Phone
 // --------------------------------------------------------------------
-const std::string strSQLPhoneAll = 
+const std::string strSQLPhoneSelectAll = 
      "SELECT ID, PhoneType, AreaCode, CallNumber, Country, DialingNational, DialingInternational\n"
      "FROM dbo.Phone";
 
-const std::string strSQLPhoneDetail = 
+const std::string strSQLPhoneSelectDetail = 
      "SELECT ID, PhoneType, AreaCode, CallNumber, Country, DialingNational, DialingInternational\n"
      "FROM dbo.Phone\n"
-     "WHERE ID         = :keyID AND\n"
-     "      PhoneType  = :keyPhoneType";
+     "WHERE ID        = :keyID AND\n"
+     "      PhoneType = :keyPhoneType";
+
+const std::string strSQLPhoneDeleteAll = 
+     "DELETE FROM dbo.Phone";
+
+const std::string strSQLPhoneDeleteDetail = 
+     "DELETE FROM dbo.Phone\n"
+     "WHERE ID        = :keyID AND\n"
+     "      PhoneType = :keyPhoneType";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: PhonesTypes
 // --------------------------------------------------------------------
-const std::string strSQLPhonesTypesAll = 
+const std::string strSQLPhonesTypesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.PhoneTypes";
 
-const std::string strSQLPhonesTypesDetail = 
+const std::string strSQLPhonesTypesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.PhoneTypes\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLPhonesTypesDeleteAll = 
+     "DELETE FROM dbo.PhoneTypes";
+
+const std::string strSQLPhonesTypesDeleteDetail = 
+     "DELETE FROM dbo.PhoneTypes\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: ReasonDeparture
 // --------------------------------------------------------------------
-const std::string strSQLReasonDepartureAll = 
+const std::string strSQLReasonDepartureSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.ReasonDeparture";
 
-const std::string strSQLReasonDepartureDetail = 
+const std::string strSQLReasonDepartureSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.ReasonDeparture\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLReasonDepartureDeleteAll = 
+     "DELETE FROM dbo.ReasonDeparture";
+
+const std::string strSQLReasonDepartureDeleteDetail = 
+     "DELETE FROM dbo.ReasonDeparture\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: ReasonNonWorking
 // --------------------------------------------------------------------
-const std::string strSQLReasonNonWorkingAll = 
+const std::string strSQLReasonNonWorkingSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.ReasonNonWorking";
 
-const std::string strSQLReasonNonWorkingDetail = 
+const std::string strSQLReasonNonWorkingSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Notes, UrgentValue\n"
      "FROM dbo.ReasonNonWorking\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLReasonNonWorkingDeleteAll = 
+     "DELETE FROM dbo.ReasonNonWorking";
+
+const std::string strSQLReasonNonWorkingDeleteDetail = 
+     "DELETE FROM dbo.ReasonNonWorking\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: SalaryBase
 // --------------------------------------------------------------------
-const std::string strSQLSalaryBaseAll = 
+const std::string strSQLSalaryBaseSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, UrgentValue\n"
      "FROM dbo.SalaryBase";
 
-const std::string strSQLSalaryBaseDetail = 
+const std::string strSQLSalaryBaseSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, UrgentValue\n"
      "FROM dbo.SalaryBase\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLSalaryBaseDeleteAll = 
+     "DELETE FROM dbo.SalaryBase";
+
+const std::string strSQLSalaryBaseDeleteDetail = 
+     "DELETE FROM dbo.SalaryBase\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: SalaryType
 // --------------------------------------------------------------------
-const std::string strSQLSalaryTypeAll = 
+const std::string strSQLSalaryTypeSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, SalaryBase, UrgentValue\n"
      "FROM dbo.SalaryType";
 
-const std::string strSQLSalaryTypeDetail = 
+const std::string strSQLSalaryTypeSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, SalaryBase, UrgentValue\n"
      "FROM dbo.SalaryType\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLSalaryTypeDeleteAll = 
+     "DELETE FROM dbo.SalaryType";
+
+const std::string strSQLSalaryTypeDeleteDetail = 
+     "DELETE FROM dbo.SalaryType\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: TaxClasses
 // --------------------------------------------------------------------
-const std::string strSQLTaxClassesAll = 
+const std::string strSQLTaxClassesSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Description, Coupled, UrgentValue\n"
      "FROM dbo.TaxClasses";
 
-const std::string strSQLTaxClassesDetail = 
+const std::string strSQLTaxClassesSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Description, Coupled, UrgentValue\n"
      "FROM dbo.TaxClasses\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLTaxClassesDeleteAll = 
+     "DELETE FROM dbo.TaxClasses";
+
+const std::string strSQLTaxClassesDeleteDetail = 
+     "DELETE FROM dbo.TaxClasses\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: WD_Holidays
 // --------------------------------------------------------------------
-const std::string strSQLWD_HolidaysAll = 
+const std::string strSQLWD_HolidaysSelectAll = 
      "SELECT CalendarDay, Donation, Share, Description\n"
      "FROM dbo.WD_Holidays";
 
-const std::string strSQLWD_HolidaysDetail = 
+const std::string strSQLWD_HolidaysSelectDetail = 
      "SELECT CalendarDay, Donation, Share, Description\n"
      "FROM dbo.WD_Holidays\n"
-     "WHERE CalendarDay  = :keyCalendarDay";
+     "WHERE CalendarDay = :keyCalendarDay";
+
+const std::string strSQLWD_HolidaysDeleteAll = 
+     "DELETE FROM dbo.WD_Holidays";
+
+const std::string strSQLWD_HolidaysDeleteDetail = 
+     "DELETE FROM dbo.WD_Holidays\n"
+     "WHERE CalendarDay = :keyCalendarDay";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: WD_Months
 // --------------------------------------------------------------------
-const std::string strSQLWD_MonthsAll = 
+const std::string strSQLWD_MonthsSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Quarter\n"
      "FROM dbo.WD_Months";
 
-const std::string strSQLWD_MonthsDetail = 
+const std::string strSQLWD_MonthsSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Quarter\n"
      "FROM dbo.WD_Months\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLWD_MonthsDeleteAll = 
+     "DELETE FROM dbo.WD_Months";
+
+const std::string strSQLWD_MonthsDeleteDetail = 
+     "DELETE FROM dbo.WD_Months\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: WD_NonWorking
 // --------------------------------------------------------------------
-const std::string strSQLWD_NonWorkingAll = 
+const std::string strSQLWD_NonWorkingSelectAll = 
      "SELECT ID, StartAt, ClosingAt, Reason, Notes\n"
      "FROM dbo.WD_NonWorking";
 
-const std::string strSQLWD_NonWorkingDetail = 
+const std::string strSQLWD_NonWorkingSelectDetail = 
      "SELECT ID, StartAt, ClosingAt, Reason, Notes\n"
      "FROM dbo.WD_NonWorking\n"
-     "WHERE ID       = :keyID AND\n"
-     "      StartAt  = :keyStartAt";
+     "WHERE ID      = :keyID AND\n"
+     "      StartAt = :keyStartAt";
+
+const std::string strSQLWD_NonWorkingDeleteAll = 
+     "DELETE FROM dbo.WD_NonWorking";
+
+const std::string strSQLWD_NonWorkingDeleteDetail = 
+     "DELETE FROM dbo.WD_NonWorking\n"
+     "WHERE ID      = :keyID AND\n"
+     "      StartAt = :keyStartAt";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: WD_Weekdays
 // --------------------------------------------------------------------
-const std::string strSQLWD_WeekdaysAll = 
+const std::string strSQLWD_WeekdaysSelectAll = 
      "SELECT ID, Denotation, Abbreviation, Workday\n"
      "FROM dbo.WD_Weekdays";
 
-const std::string strSQLWD_WeekdaysDetail = 
+const std::string strSQLWD_WeekdaysSelectDetail = 
      "SELECT ID, Denotation, Abbreviation, Workday\n"
      "FROM dbo.WD_Weekdays\n"
-     "WHERE ID  = :keyID";
+     "WHERE ID = :keyID";
+
+const std::string strSQLWD_WeekdaysDeleteAll = 
+     "DELETE FROM dbo.WD_Weekdays";
+
+const std::string strSQLWD_WeekdaysDeleteDetail = 
+     "DELETE FROM dbo.WD_Weekdays\n"
+     "WHERE ID = :keyID";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: WD_Workdays
 // --------------------------------------------------------------------
-const std::string strSQLWD_WorkdaysAll = 
+const std::string strSQLWD_WorkdaysSelectAll = 
      "SELECT CalendarDay, CalendarWeekday, CalendarWeek, CalendarYear, CalendarMonth,\n"
      "       CalendarDayInWeek, CalendarDayInYear, CalendarQuarter, Workday\n"
      "FROM dbo.WD_Workdays";
 
-const std::string strSQLWD_WorkdaysDetail = 
+const std::string strSQLWD_WorkdaysSelectDetail = 
      "SELECT CalendarDay, CalendarWeekday, CalendarWeek, CalendarYear, CalendarMonth,\n"
      "       CalendarDayInWeek, CalendarDayInYear, CalendarQuarter, Workday\n"
      "FROM dbo.WD_Workdays\n"
-     "WHERE CalendarDay  = :keyCalendarDay";
+     "WHERE CalendarDay = :keyCalendarDay";
+
+const std::string strSQLWD_WorkdaysDeleteAll = 
+     "DELETE FROM dbo.WD_Workdays";
+
+const std::string strSQLWD_WorkdaysDeleteDetail = 
+     "DELETE FROM dbo.WD_Workdays\n"
+     "WHERE CalendarDay = :keyCalendarDay";
 
 
 // --------------------------------------------------------------------
 //   Statements for table / view: WorkingTime
 // --------------------------------------------------------------------
-const std::string strSQLWorkingTimeAll = 
+const std::string strSQLWorkingTimeSelectAll = 
      "SELECT ID, StartingTime, ClosingTime, Processed , ProcessedAt, DayOfWork\n"
      "FROM dbo.WorkingTime";
 
-const std::string strSQLWorkingTimeDetail = 
+const std::string strSQLWorkingTimeSelectDetail = 
      "SELECT ID, StartingTime, ClosingTime, Processed , ProcessedAt, DayOfWork\n"
      "FROM dbo.WorkingTime\n"
-     "WHERE ID            = :keyID AND\n"
-     "      StartingTime  = :keyStartingTime";
+     "WHERE ID           = :keyID AND\n"
+     "      StartingTime = :keyStartingTime";
+
+const std::string strSQLWorkingTimeDeleteAll = 
+     "DELETE FROM dbo.WorkingTime";
+
+const std::string strSQLWorkingTimeDeleteDetail = 
+     "DELETE FROM dbo.WorkingTime\n"
+     "WHERE ID           = :keyID AND\n"
+     "      StartingTime = :keyStartingTime";
 
 
 

@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TPerson
 * Content: informations about a person, base for different kinds of special persons in other areas of the company
-* Date: 14.03.2024 23:56:53,767  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:20,467  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -16,10 +16,10 @@
 #include "System\Corporate\base.h"
 
 // includes for required header files for part of relationships
-#include "System\Corporate/Address.h"
-#include "System\Corporate/Banking.h"
-#include "System\Corporate/Internet.h"
-#include "System\Corporate/Phone.h"
+#include "System\Corporate\Address.h"
+#include "System\Corporate\Banking.h"
+#include "System\Corporate\Internet.h"
+#include "System\Corporate\Phone.h"
 
 // necessary additional headers for used datatypes
 #include <chrono>
@@ -34,6 +34,15 @@
 
 namespace reader {
    class TPersonReader;
+   }
+
+namespace mySales {
+   class TContacts;
+   class TCustomers;
+   }
+
+namespace myHR {
+   class TEmployees;
    }
 
 namespace myCorporate {
@@ -57,6 +66,9 @@ class TPerson : virtual public TSimplePersonBase {
          public:
             constexpr primary_key(int pID) : iID(pID) { }
             primary_key(TPerson const& other) : iID(other._ID()) { }
+            primary_key(mySales::TContacts const& other);
+            primary_key(mySales::TCustomers const& other);
+            primary_key(myHR::TEmployees const& other);
             constexpr primary_key(primary_key const& other) : iID(other.iID) { }
             constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
             constexpr ~primary_key() { }

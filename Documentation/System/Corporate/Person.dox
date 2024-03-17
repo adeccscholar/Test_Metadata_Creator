@@ -6,7 +6,7 @@
 \see table \ref datamodel_table_Person
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -20,7 +20,7 @@
 \see table \ref datamodel_table_Person
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -76,7 +76,7 @@
 </tbody></table>
 
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024 documentation for this project created
+\date 17.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Person
 
 \class myCorporate::TPerson::primary_key
@@ -98,6 +98,24 @@
 \note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
 \throws std::runtime_error when a data element in the encircling class is empty
 \param [in] other myCorporate::TPerson const& with the instance of the encircling class which values should be copied
+
+\fn myCorporate::TPerson::primary_key::primary_key(mySales::TContacts const& other)
+\brief initializing constructor with an instance of the inherited class mySales::TContacts for the class myCorporate::TPerson::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the inherited class may throw an exception
+\throws std::runtime_error when a data element in the inherited class mySales::TContacts is empty
+\param [in] other mySales::TContacts const& with the instance of the inherited class which values should be copied
+
+\fn myCorporate::TPerson::primary_key::primary_key(mySales::TCustomers const& other)
+\brief initializing constructor with an instance of the inherited class mySales::TCustomers for the class myCorporate::TPerson::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the inherited class may throw an exception
+\throws std::runtime_error when a data element in the inherited class mySales::TCustomers is empty
+\param [in] other mySales::TCustomers const& with the instance of the inherited class which values should be copied
+
+\fn myCorporate::TPerson::primary_key::primary_key(myHR::TEmployees const& other)
+\brief initializing constructor with an instance of the inherited class myHR::TEmployees for the class myCorporate::TPerson::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the inherited class may throw an exception
+\throws std::runtime_error when a data element in the inherited class myHR::TEmployees is empty
+\param [in] other myHR::TEmployees const& with the instance of the inherited class which values should be copied
 
 \fn myCorporate::TPerson::primary_key::~primary_key()
 \brief destructor for the primary_key class

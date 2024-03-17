@@ -1,0 +1,18 @@
+\dir adecc_Tools 
+\brief example project  with common methods and classes for the projects \ref pgadeccTools in the adecc Scholar Stream
+\details The project can be found in the GitHub repository at https://github.com/adeccscholar/adecc_Scholar_Tools
+
+\dir adecc_Tools/adecc_Tools 
+\brief header only library with common methods and classes for the projects in the adecc Scholar Stream
+
+
+\page pgadeccTools adecc Tools
+\details This library was developed concurrently with the new library \ref pgadeccDatabase to extract utility routines 
+needed in both libraries, the former developed \ref adeccScholar and the new database interface, and have a more general 
+character, in a separate area. Therefore, it actually sits centrally above the two and should contain no platform dependencies.
+
+\details Partially existing methods from the \ref adeccScholar project were outsourced during this process.
+
+\details The project can be found in the GitHub repository at https://github.com/adeccscholar/adecc_Scholar_Tools
+
+\todo Complete separation of general, platform-independent methods and tool classes into the new library.

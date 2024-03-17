@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TTaxClasses
 * Content: tax class in germany to use it with employees (not a range, but very similar)
-* Date: 14.03.2024 23:56:54,127  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:25,329  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

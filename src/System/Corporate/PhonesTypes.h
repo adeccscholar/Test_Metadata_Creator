@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TPhonesTypes
 * Content: domain / range of values for phone types, this is an extension of the relationship between persons and phone.
-* Date: 14.03.2024 23:56:53,894  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:25,121  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of the persistence class TPersonReader
-* Date: 14.03.2024 23:56:54,469  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:25,666  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -15,7 +15,11 @@
 #include <System\Corporate\AddressTypes.h>
 #include <System\Corporate\Banking.h>
 #include <System\Corporate\BankingTypes.h>
+#include <System\Sales\Contacts.h>
 #include <System\Corporate\Countries.h>
+#include <System\Sales\CustClassification.h>
+#include <System\Sales\CustLiaison.h>
+#include <System\Sales\Customers.h>
 #include <System\HR\Departments.h>
 #include <System\HR\Employees.h>
 #include <System\Corporate\FamilyStatus.h>
@@ -30,7 +34,7 @@
 #include <System\HR\ReasonDeparture.h>
 #include <System\HR\ReasonNonWorking.h>
 #include <System\HR\SalaryBase.h>
-#include <System\HR\SalaryType.h>
+#include <System/HR\SalaryType.h>
 #include <System\HR\TaxClasses.h>
 #include <System\HR\WD_Holidays.h>
 #include <System\HR\WD_Months.h>
@@ -86,9 +90,25 @@ class TPersonReader {
       bool Read(myCorporate::TBankingTypes::container_ty&);
       bool Read(myCorporate::TBankingTypes::primary_key const&, myCorporate::TBankingTypes&);
 
+      // access methods for class TContacts
+      bool Read(mySales::TContacts::container_ty&);
+      bool Read(mySales::TContacts::primary_key const&, mySales::TContacts&);
+
       // access methods for class TCountries
       bool Read(myCorporate::TCountries::container_ty&);
       bool Read(myCorporate::TCountries::primary_key const&, myCorporate::TCountries&);
+
+      // access methods for class TCustClassification
+      bool Read(mySales::TCustClassification::container_ty&);
+      bool Read(mySales::TCustClassification::primary_key const&, mySales::TCustClassification&);
+
+      // access methods for class TCustLiaison
+      bool Read(mySales::TCustLiaison::container_ty&);
+      bool Read(mySales::TCustLiaison::primary_key const&, mySales::TCustLiaison&);
+
+      // access methods for class TCustomers
+      bool Read(mySales::TCustomers::container_ty&);
+      bool Read(mySales::TCustomers::primary_key const&, mySales::TCustomers&);
 
       // access methods for class TDepartments
       bool Read(myHR::TDepartments::container_ty&);

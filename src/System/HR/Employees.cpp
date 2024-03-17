@@ -2,12 +2,12 @@
 * Project: model with a simple person administration
 * Implementation of the data class TEmployees
 * Content: information about the employees in the company (generalization of a person)
-* Date: 14.03.2024 23:56:53,351  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:20,110  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
-#include "System\HR/Employees.h"
+#include "System\HR\Employees.h"
 
 #include <typeinfo>
 
@@ -59,14 +59,15 @@ void TEmployees::copy(myCorporate::TSimplePersonBase const& other) {
 // init(primary_key const&): initialization method for the instance with the primary key attributes
 TEmployees& TEmployees::init(primary_key const& key_values) {
    init();
-   ID(key_values.ID());
+   EmployeeID(key_values.EmployeeID());
    return *this;
    }
 
 // _swap: internal swapping method for the class
 void TEmployees::_swap(TEmployees& other) noexcept {
    // swapping own data elements
-   std::swap(iID, other.iID);
+   std::swap(iDummy, other.iDummy);
+   std::swap(iEmployeeID, other.iEmployeeID);
    std::swap(strPersonNumber, other.strPersonNumber);
    std::swap(flSalary, other.flSalary);
    std::swap(iSalaryType, other.iSalaryType);
@@ -89,7 +90,8 @@ void TEmployees::_swap(TEmployees& other) noexcept {
 // _init: internal initialization method for the instance of this class
 void TEmployees::_init() {
    // initializing own data elements
-   iID               = {};
+   iDummy            = {};
+   iEmployeeID       = {};
    strPersonNumber   = {};
    flSalary          = {};
    iSalaryType       = {};
@@ -111,7 +113,8 @@ void TEmployees::_init() {
 
 // _copy: internal copy method for the class
 void TEmployees::_copy(TEmployees const& other) {
-   ID(other.ID());
+   Dummy(other.Dummy());
+   EmployeeID(other.EmployeeID());
    PersonNumber(other.PersonNumber());
    Salary(other.Salary());
    SalaryType(other.SalaryType());

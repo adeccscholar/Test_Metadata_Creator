@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TEmployees
 * Content: information about the employees in the company (generalization of a person)
-* Date: 14.03.2024 23:56:53,326  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:20,088  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,11 +13,11 @@
 
 
 // includes for required header files of base classes
-#include "System\Corporate/Person.h"
+#include "System\Corporate\Person.h"
 
 // includes for required header files for part of relationships
-#include "System\HR/WD_NonWorking.h"
-#include "System\HR/WorkingTime.h"
+#include "System\HR\WD_NonWorking.h"
+#include "System\HR\WorkingTime.h"
 
 // necessary additional headers for used datatypes
 #include <chrono>
@@ -49,14 +49,14 @@ class TEmployees: public myCorporate::TPerson {
       class primary_key {
          friend class TEmployees;
          private:
-            int iID;             
+            int iEmployeeID;     
 
-            constexpr primary_key() : iID {} { }
+            constexpr primary_key() : iEmployeeID {} { }
          public:
-            constexpr primary_key(int pID) : iID(pID) { }
-            primary_key(TEmployees const& other) : iID(other._ID()) { }
-            constexpr primary_key(primary_key const& other) : iID(other.iID) { }
-            constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+            constexpr primary_key(int pEmployeeID) : iEmployeeID(pEmployeeID) { }
+            primary_key(TEmployees const& other) : iEmployeeID(other._EmployeeID()) { }
+            constexpr primary_key(primary_key const& other) : iEmployeeID(other.iEmployeeID) { }
+            constexpr primary_key(primary_key&& other) noexcept : iEmployeeID(std::move(other.iEmployeeID)) { }
             constexpr ~primary_key() { }
 
             // conversions operator for this element to the encircling class
@@ -74,17 +74,17 @@ class TEmployees: public myCorporate::TPerson {
             bool operator >= (primary_key const& other) const { return _compare(other) >= 0; }
 
             // selectors the primary type class
-            int        ID() const { return iID; }
+            int        EmployeeID() const { return iEmployeeID; }
 
             // manipulators the primary type class
-            int        ID(int newVal) { return iID = newVal; }
+            int        EmployeeID(int newVal) { return iEmployeeID = newVal; }
 
          private:
             int _compare(primary_key const& other) const {
                static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
                   return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
                   };
-               if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+               if(auto ret = comp_help(this->iEmployeeID, other.iEmployeeID); ret != 0) return ret;
                return 0;
                }
          };
@@ -102,7 +102,8 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // private data elements, direct attributes from table Employees
       // ----------------------------------------------------------------------------------------------
-      std::optional<int>                         iID;             
+      std::optional<int>                         iDummy;          
+      std::optional<int>                         iEmployeeID;     
       std::optional<std::string>                 strPersonNumber; 
       std::optional<double>                      flSalary;        
       std::optional<int>                         iSalaryType;     
@@ -156,7 +157,8 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // selectors for the data access to the direct data elements with std::optional retval
       // ----------------------------------------------------------------------------------------------
-      std::optional<int> const&                         ID() const { return iID; }
+      std::optional<int> const&                         Dummy() const { return iDummy; }
+      std::optional<int> const&                         EmployeeID() const { return iEmployeeID; }
       std::optional<std::string> const&                 PersonNumber() const { return strPersonNumber; }
       std::optional<double> const&                      Salary() const { return flSalary; }
       std::optional<int> const&                         SalaryType() const { return iSalaryType; }
@@ -174,7 +176,8 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // public selectors for direct data access to the values inside std::optional (unboxing)
       // ----------------------------------------------------------------------------------------------
-      int                                               _ID() const;
+      int                                               _Dummy() const;
+      int                                               _EmployeeID() const;
       std::string const&                                _PersonNumber() const;
       double const&                                     _Salary() const;
       int                                               _SalaryType() const;
@@ -198,7 +201,8 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // public manipulators for the class
       // ----------------------------------------------------------------------------------------------
-      std::optional<int> const&                         ID(std::optional<int> const& newVal);
+      std::optional<int> const&                         Dummy(std::optional<int> const& newVal);
+      std::optional<int> const&                         EmployeeID(std::optional<int> const& newVal);
       std::optional<std::string> const&                 PersonNumber(std::optional<std::string> const& newVal);
       std::optional<double> const&                      Salary(std::optional<double> const& newVal);
       std::optional<int> const&                         SalaryType(std::optional<int> const& newVal);
@@ -236,9 +240,14 @@ class TEmployees: public myCorporate::TPerson {
 // -------------------------------------------------------------------------------------------------
 // Implementations of the special selectors for return values instead std::optional
 // -------------------------------------------------------------------------------------------------
-inline int TEmployees::_ID() const {
-   if(iID) [[likely]] return iID.value();
-   else throw std::runtime_error("value for attribute \"ID\" in class \"TEmployees\" is empty.");;
+inline int TEmployees::_Dummy() const {
+   if(iDummy) [[likely]] return iDummy.value();
+   else throw std::runtime_error("value for attribute \"Dummy\" in class \"TEmployees\" is empty.");;
+   }
+
+inline int TEmployees::_EmployeeID() const {
+   if(iEmployeeID) [[likely]] return iEmployeeID.value();
+   else throw std::runtime_error("value for attribute \"EmployeeID\" in class \"TEmployees\" is empty.");;
    }
 
 inline std::string const& TEmployees::_PersonNumber() const {
@@ -308,8 +317,12 @@ inline bool TEmployees::_Active() const {
 
 
 // Implementations of the manipulators
-inline std::optional<int> const& TEmployees::ID(std::optional<int> const& newVal) {
-   return iID = newVal;
+inline std::optional<int> const& TEmployees::Dummy(std::optional<int> const& newVal) {
+   return iDummy = newVal;
+   }
+
+inline std::optional<int> const& TEmployees::EmployeeID(std::optional<int> const& newVal) {
+   return iEmployeeID = newVal;
    }
 
 inline std::optional<std::string> const& TEmployees::PersonNumber(std::optional<std::string> const& newVal) {

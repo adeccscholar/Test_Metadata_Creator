@@ -1,0 +1,282 @@
+﻿\file System\Sales/Customers.h
+\brief definition of dataclass mySales::TCustomers of table \ref datamodel_table_Customers with information to the data of a client / customer  (inherited from Person) in dictionary "simple person model"
+\see table \ref datamodel_table_Customers
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 17.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\file System\Sales/Customers.cpp
+\brief implementation of dataclass mySales::TCustomers of table \ref datamodel_table_Customers with information to the data of a client / customer  (inherited from Person) in dictionary "simple person model"
+\see table \ref datamodel_table_Customers
+\version 1.0
+\author Volker Hillmann (adecc Scholar)
+\date 17.03.2024  file created with adecc Scholar metadata generator
+<HR>
+\copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
+<BR>This project is released under the MIT License.
+
+
+\class mySales::TCustomers
+\brief information to the data of a client / customer  (inherited from Person)
+\details this class is inherited by following class(es):
+<table>
+<tr><th>class</th><th>table</th><th>file</th></tr>
+<tr><td>myCorporate::TPerson</td>    <td>\ref datamodel_table_Person</td>    <td>System\Corporate/Person.h</td></tr></table>
+
+\details this class have composed data of following class(es). The following table show a composed and types which created to use this classes:
+<table><thead>
+<tr><th rowspan="2">name of key</th>
+    <th rowspan="2">class</th>
+    <th rowspan="2">table</th>
+    <th colspan="2">key attributes</th>
+    <th rowspan="2">additional keys</th>
+    <th rowspan="2">file</th></tr>
+<tr><th> this</th>
+<th> foreign</th>
+</tr></thead><tbody><tr><td rowspan="1">mySales::TCustomers::contacts_ty</td>
+    <td rowspan="1">mySales::TContacts</td>
+    <td rowspan="1">\ref datamodel_table_Contacts</td>
+    <td>ContactID(int)</td>
+    <td>CustID(int)</td>
+    <td rowspan="1">ContactID(int)</td>
+    <td rowspan="1">\ref System\Sales/Contacts.h </td>
+</tr>
+</tbody></table>
+
+\author Volker Hillmann (adecc Scholar)
+\date 17.03.2024 documentation for this project created
+\see system class for the table \ref datamodel_table_Customers
+
+\class mySales::TCustomers::primary_key
+\brief primary key for elements of the class mySales::TCustomers in a container or when seeking an entity in the database.
+
+\fn mySales::TCustomers::primary_key::primary_key()
+\brief standard constructor for the class mySales::TCustomers::primary_key
+
+\fn mySales::TCustomers::primary_key::primary_key(primary_key const& other)
+\brief copy constructor for the class mySales::TCustomers::primary_key
+\param [in] other primary_key const& with the instance which values should be copied
+
+\fn mySales::TCustomers::primary_key::primary_key(primary_key&&)
+\brief move constructor for the class mySales::TCustomers::primary_key
+\param [in] other primary_key&& with the instance which values should be occupied and moved to this instance
+
+\fn mySales::TCustomers::primary_key::primary_key(TCustomers const& other)
+\brief initializing constructor with an instance of the encircling class mySales::TCustomers for the class mySales::TCustomers::primary_key
+\note this constructor can't be constexpr because the direct manipulator of the encircling class may throw an exception
+\throws std::runtime_error when a data element in the encircling class is empty
+\param [in] other mySales::TCustomers const& with the instance of the encircling class which values should be copied
+
+\fn mySales::TCustomers::primary_key::~primary_key()
+\brief destructor for the primary_key class
+
+\fn mySales::TCustomers::primary_key::primary_key(int pCustID)
+\brief initializing constructor with the values for key attributes of the primary_key class
+\param [in] pCustID int  with internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+
+\var mySales::TCustomers::primary_key::iCustID
+\brief internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\details Source: key member mySales::TCustomers::primary_key::iCustID in class mySales::TCustomers::primary_key with the type int
+\details Database: primary key attribute "CustID" in entity \ref datamodel_table_Customers with database type INT
+\fn mySales::TCustomers::primary_key::CustID() const
+\brief selector for the data element mySales::TCustomers::primary_key::iCustID
+\returns int with the value for this member.
+\fn mySales::TCustomers::primary_key::CustID(int newVal)
+\brief manipulator for the data element mySales::TCustomers::primary_key::iCustID
+\param[in] newVal int with the value of the member.
+\returns int with the new value for this member.
+\fn mySales::TCustomers::primary_key::operator TCustomers () const
+\brief conversion operator for the encircling class
+\returns value of an instance of the encircling class mySales::TCustomers
+
+\fn mySales::TCustomers::primary_key::_compare(primary_key const&) const
+\brief internal help function to compare the current instance with to another instance of the same class.
+\details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
+\param [in] other a constant reference to another object of the same class whose is being compared with the current object's values.
+\return an integer value representing the result of the comparison:
+<ul><li> returns  0 if the values of both objects are equal.</li>
+<li>returns -1 if the values of the current object is less than values of the other object.</li>
+<li>returns  1 if the values of the current object are greater than the values of the other object.</li>
+</ul>
+\fn mySales::TCustomers::primary_key::operator == (primary_key const&) const
+\brief checks whether the object is equal to another object of the same primary key class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are equal, false otherwise.
+
+\fn mySales::TCustomers::primary_key::operator != (primary_key const&) const
+\brief checks whether the object is not equal to another object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the objects are not equal, false otherwise.
+
+\fn mySales::TCustomers::primary_key::operator < (primary_key const&) const
+\brief checks whether the object is less than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than to the other object, false otherwise.
+
+\fn mySales::TCustomers::primary_key::operator <= (primary_key const&) const
+\brief checks whether the object is less than or equal to the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is less than or equal to the other object, false otherwise.
+
+\fn mySales::TCustomers::primary_key::operator > (primary_key const&) const
+\brief checks whether the object is greater than the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than to the other object, false otherwise.
+
+\fn mySales::TCustomers::primary_key::operator >= (primary_key const&) const
+\brief checks whether the object is greater than or equal the other object of the same class.
+\details this operator use the internal function primary_key::_compare() as implemetation and compare the member in the sequence they are found in the dictionary.\param other a constant reference to another object of the same class primary_key.
+\return boolean value, true if the object is greater than or equal to the other object, false otherwise.
+
+\typedef mySales::TCustomers::container_ty
+\brief container type as std::map with the generated primary key type mySales::TCustomers::primary_key for instances of this class
+
+\details The type uses the key type mySales::TCustomers::primary_keypreviously created from the key attributes of table \ref datamodel_table_Customers as the key_type for the container to hold values of this class as value_type.
+This means that the same rules apply in the database and the program, and the data can be assigned quickly.
+
+\typedef mySales::TCustomers::vector_ty
+\brief container type as vector for elements of this class.
+\details you can use a sort order to read data into this container or work with this later.
+
+\fn mySales::TCustomers::GetKey() const
+\brief method to get the primary key for this instance
+\returns type mySales::TCustomers
+\throw std::runtime::error if the attribute(s) of the primary key are empty.
+
+\typedef mySales::TCustomers::contacts_ty
+\brief composed data element for the table \ref datamodel_table_Contacts
+\details This type uses the data elements of the primary key of the table that are not used in the link to this type.
+\details <table><tr><th>attribute</th><th>data element</th><th>description</th></tr>
+<tr><td>ContactID</td>
+    <td>mySales::TContacts::iContactID</td>
+    <td>internal id for this contact, attribute as foreign key from an attribute ID of a person entity </td>
+</tr>
+</table>
+
+\name constructors and destructor for this class
+\{
+
+\fn mySales::TCustomers::TCustomers()
+\brief standard constructor for TCustomers
+
+\fn mySales::TCustomers::TCustomers(TCustomers const& other)
+\brief copy constructor for TCustomers
+\param[in] other reference of an instance of an other instance of mySales::TCustomers to copy
+
+\fn mySales::TCustomers::TCustomers(TCustomers&&)
+\brief rvalue constructor for TCustomers
+
+\fn mySales::TCustomers::~TCustomers()
+\brief destructor for TCustomers
+\}
+
+\name public functions for this class (following the framework for this project)
+\{
+\fn mySales::TCustomers::swap(TCustomers& other)\brief swap method for elements of this class, swap the paramter with the instance variables of this instance
+\param[in] other reference of an other instance of the same type to swap the content
+
+\fn mySales::TCustomers::init();
+\brief method to init this instance with empty / default values (reset it)
+
+\fn mySales::TCustomers::init(primary_key const& key_values)
+\brief method to initialiaze an instance and copy the values of a primary key into it
+\param[in] key_values a const reference to primary_key type to init this instance
+\returns a reference to the instance
+
+\fn mySales::TCustomers::copy(myCorporate::TSimplePersonBase const& other);
+method to copy instances of the hierachie of classes into another
+
+\}
+
+\name direct data elements from table
+\{
+
+\var mySales::TCustomers::iCustID
+\brief internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\details Source: member mySales::TCustomers::iCustID in class mySales::TCustomers with the type std::optional<int>
+\details Database: attribute "CustID" in entity \ref datamodel_table_Customers with database type INT
+
+\var mySales::TCustomers::iServiceAgent
+\brief employee is  responsible for this client (association with the employys entity)
+\details Source: member mySales::TCustomers::iServiceAgent in class mySales::TCustomers with the type std::optional<int>
+\details Database: attribute "ServiceAgent" in entity \ref datamodel_table_Customers with database type INT
+
+\var mySales::TCustomers::iCustClassification
+\brief classification of this customer as range value 
+\details Source: member mySales::TCustomers::iCustClassification in class mySales::TCustomers with the type std::optional<int>
+\details Database: attribute "CustClassification" in entity \ref datamodel_table_Customers with database type INT
+
+
+\}
+
+\name public selectors with an optional retval for direct access to attributes
+\{
+
+\fn std::optional<int> const& mySales::TCustomers::CustID() const
+\brief selector for the data element mySales::TCustomers::iCustID
+\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustID
+\fn std::optional<int> const& mySales::TCustomers::ServiceAgent() const
+\brief selector for the data element mySales::TCustomers::iServiceAgent
+\details <b>employee is  responsible for this client (association with the employys entity)</b>
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iServiceAgent
+\fn std::optional<int> const& mySales::TCustomers::CustClassification() const
+\brief selector for the data element mySales::TCustomers::iCustClassification
+\details <b>classification of this customer as range value </b>
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustClassification
+
+\}
+
+\name public selectors with an direct access to attributes
+\{
+
+\fn int mySales::TCustomers::_CustID() const
+\brief special selector for data element mySales::TCustomers::iCustID
+\details internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\throw std::runtime::error if the attribute mySales::TCustomers::iCustID is empty
+\returns int const&: Reference to the data element mySales::TCustomers::iCustID
+\fn int mySales::TCustomers::_ServiceAgent() const
+\brief special selector for data element mySales::TCustomers::iServiceAgent
+\details employee is  responsible for this client (association with the employys entity)
+\details <b>employee is  responsible for this client (association with the employys entity)</b>
+\throw std::runtime::error if the attribute mySales::TCustomers::iServiceAgent is empty
+\returns int const&: Reference to the data element mySales::TCustomers::iServiceAgent
+\fn int mySales::TCustomers::_CustClassification() const
+\brief special selector for data element mySales::TCustomers::iCustClassification
+\details classification of this customer as range value 
+\details <b>classification of this customer as range value </b>
+\throw std::runtime::error if the attribute mySales::TCustomers::iCustClassification is empty
+\returns int const&: Reference to the data element mySales::TCustomers::iCustClassification
+
+\}
+
+\name public manipulators for direct access to the attributes
+\{
+
+\fn std::optional<int> const& mySales::TCustomers::CustID(std::optional<int> const& newVal)
+\brief manipulator for the data element mySales::TCustomers::iCustID
+\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\param[in] newVal the new Value for the member mySales::TCustomers::iCustID
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustID
+
+\fn std::optional<int> const& mySales::TCustomers::ServiceAgent(std::optional<int> const& newVal)
+\brief manipulator for the data element mySales::TCustomers::iServiceAgent
+\details <b>employee is  responsible for this client (association with the employys entity)</b>
+\param[in] newVal the new Value for the member mySales::TCustomers::iServiceAgent
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iServiceAgent
+
+\fn std::optional<int> const& mySales::TCustomers::CustClassification(std::optional<int> const& newVal)
+\brief manipulator for the data element mySales::TCustomers::iCustClassification
+\details <b>classification of this customer as range value </b>
+\param[in] newVal the new Value for the member mySales::TCustomers::iCustClassification
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustClassification
+
+
+\}
+
+

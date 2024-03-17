@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TWD_Months
 * Content: domain with months for human resources, actually used for working time, later for processes too. This range make it possible additional informations to adding later. This isn't a typical range value.
-* Date: 14.03.2024 23:56:54,211  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:25,414  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

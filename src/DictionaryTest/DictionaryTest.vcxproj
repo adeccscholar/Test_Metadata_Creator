@@ -139,6 +139,10 @@
     <ClCompile Include="..\System\HR\WD_Weekdays.cpp" />
     <ClCompile Include="..\System\HR\WD_Workdays.cpp" />
     <ClCompile Include="..\System\HR\WorkingTime.cpp" />
+    <ClCompile Include="..\System\Sales\Contacts.cpp" />
+    <ClCompile Include="..\System\Sales\CustClassification.cpp" />
+    <ClCompile Include="..\System\Sales\CustLiaison.cpp" />
+    <ClCompile Include="..\System\Sales\Customers.cpp" />
     <ClCompile Include="TestMain.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="DictionaryTest.ico" />
@@ -179,6 +183,10 @@
     <ClInclude Include="..\System\HR\WD_Weekdays.h" />
     <ClInclude Include="..\System\HR\WD_Workdays.h" />
     <ClInclude Include="..\System\HR\WorkingTime.h" />
+    <ClInclude Include="..\System\Sales\Contacts.h" />
+    <ClInclude Include="..\System\Sales\CustClassification.h" />
+    <ClInclude Include="..\System\Sales\CustLiaison.h" />
+    <ClInclude Include="..\System\Sales\Customers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

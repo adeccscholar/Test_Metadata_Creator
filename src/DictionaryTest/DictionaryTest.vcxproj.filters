@@ -36,6 +36,12 @@
     <Filter Include="Header Files\adecc_Database">
       <UniqueIdentifier>{7ed3b352-c6df-497c-9da0-0470864a9386}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Sales">
+      <UniqueIdentifier>{155acc96-327a-4422-93bb-2721681cf9c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sales">
+      <UniqueIdentifier>{35ef88e6-3287-4d25-b80a-fb381c1db5ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="TestMain.qrc">
@@ -148,6 +154,18 @@
     <ClCompile Include="..\Persistence\person_reader_sql.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\System\Sales\CustClassification.cpp">
+      <Filter>Source Files\Sales</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Sales\Customers.cpp">
+      <Filter>Source Files\Sales</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Sales\Contacts.cpp">
+      <Filter>Source Files\Sales</Filter>
+    </ClCompile>
+    <ClCompile Include="..\System\Sales\CustLiaison.cpp">
+      <Filter>Source Files\Sales</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\System\Corporate\base.h">
@@ -251,6 +269,18 @@
     </ClInclude>
     <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseExceptions.h">
       <Filter>Header Files\adecc_Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Sales\CustClassification.h">
+      <Filter>Header Files\Sales</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Sales\Customers.h">
+      <Filter>Header Files\Sales</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Sales\Contacts.h">
+      <Filter>Header Files\Sales</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Sales\CustLiaison.h">
+      <Filter>Header Files\Sales</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

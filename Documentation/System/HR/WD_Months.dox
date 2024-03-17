@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Months
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Months
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024  file created with adecc Scholar metadata generator
+\date 17.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Months
 \brief domain with months for human resources, actually used for working time, later for processes too. This range make it possible additional informations to adding later. This isn't a typical range value.
 \author Volker Hillmann (adecc Scholar)
-\date 14.03.2024 documentation for this project created
+\date 17.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Months
 
 \class myHR::TWD_Months::primary_key

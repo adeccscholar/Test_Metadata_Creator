@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to add descriptions for the project simple person model
- * generated at: 14.03.2024 23:56:52,718 with the adecc Scholar metadata generator
+ * generated at: 17.03.2024 20:08:19,245 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ------------------------------------------------------------------------------------ */
@@ -343,6 +343,52 @@ END
 
 EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'BankingTypes', @level2type = N'COLUMN', @level2name = N'UrgentValue'
 
+IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'Contacts', NULL, NULL))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
+                                    @level0type=N'SCHEMA', @level0name = N'dbo', 
+                                    @level1type = N'TABLE', @level1name = 'Contacts'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', 
+              @value = N'information to the data of a contact person at the customer  (inherited from Person)', 
+              @level0type=N'SCHEMA', @level0name = N'dbo', 
+              @level1type = N'TABLE', @level1name = 'Contacts'
+
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Contacts',
+                                                N'column', 'ContactID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Contacts',
+                                   @level2type = N'COLUMN', @level2name = N'ContactID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'internal id for this contact, attribute as foreign key from an attribute ID of a person entity ', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Contacts', @level2type = N'COLUMN', @level2name = N'ContactID'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Contacts',
+                                                N'column', 'CustID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Contacts',
+                                   @level2type = N'COLUMN', @level2name = N'CustID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'Customer identification number of the contact associated customer.', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Contacts', @level2type = N'COLUMN', @level2name = N'CustID'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Contacts',
+                                                N'column', 'CustLiaison'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Contacts',
+                                   @level2type = N'COLUMN', @level2name = N'CustLiaison'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'liaision for this contact person as range value (from table CustLiasion)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Contacts', @level2type = N'COLUMN', @level2name = N'CustLiaison'
+
 IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'Countries', NULL, NULL))
 BEGIN
    EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
@@ -477,6 +523,210 @@ END
 
 EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Countries', @level2type = N'COLUMN', @level2name = N'UrgentValue'
 
+IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'CustClassification', NULL, NULL))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
+                                    @level0type=N'SCHEMA', @level0name = N'dbo', 
+                                    @level1type = N'TABLE', @level1name = 'CustClassification'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', 
+              @value = N'domain / range with the classifications for customers', 
+              @level0type=N'SCHEMA', @level0name = N'dbo', 
+              @level1type = N'TABLE', @level1name = 'CustClassification'
+
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustClassification',
+                                                N'column', 'ID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustClassification',
+                                   @level2type = N'COLUMN', @level2name = N'ID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique identification number / id of this classification of a customer', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustClassification', @level2type = N'COLUMN', @level2name = N'ID'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustClassification',
+                                                N'column', 'Denotation'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustClassification',
+                                   @level2type = N'COLUMN', @level2name = N'Denotation'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique denotation of this classification of a customer', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustClassification', @level2type = N'COLUMN', @level2name = N'Denotation'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustClassification',
+                                                N'column', 'Abbreviation'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustClassification',
+                                   @level2type = N'COLUMN', @level2name = N'Abbreviation'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'abbreviation of this classification of a customer, used in the application for a compact display', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustClassification', @level2type = N'COLUMN', @level2name = N'Abbreviation'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustClassification',
+                                                N'column', 'Description'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustClassification',
+                                   @level2type = N'COLUMN', @level2name = N'Description'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'description as long text of this classification of a customer, used in the application for detailed informations', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustClassification', @level2type = N'COLUMN', @level2name = N'Description'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustClassification',
+                                                N'column', 'Notes'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustClassification',
+                                   @level2type = N'COLUMN', @level2name = N'Notes'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'notes, with additional / free information of this classification of a customer, not used in the application', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustClassification', @level2type = N'COLUMN', @level2name = N'Notes'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustClassification',
+                                                N'column', 'UrgentValue'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustClassification',
+                                   @level2type = N'COLUMN', @level2name = N'UrgentValue'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustClassification', @level2type = N'COLUMN', @level2name = N'UrgentValue'
+
+IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'CustLiaison', NULL, NULL))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
+                                    @level0type=N'SCHEMA', @level0name = N'dbo', 
+                                    @level1type = N'TABLE', @level1name = 'CustLiaison'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', 
+              @value = N'doman range with the liaisons to use a contact at a customer', 
+              @level0type=N'SCHEMA', @level0name = N'dbo', 
+              @level1type = N'TABLE', @level1name = 'CustLiaison'
+
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustLiaison',
+                                                N'column', 'ID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustLiaison',
+                                   @level2type = N'COLUMN', @level2name = N'ID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique identification number / id of this liaison to use a contact in a customer', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustLiaison', @level2type = N'COLUMN', @level2name = N'ID'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustLiaison',
+                                                N'column', 'Denotation'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustLiaison',
+                                   @level2type = N'COLUMN', @level2name = N'Denotation'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique denotation of this liaison to use a contact in a customer', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustLiaison', @level2type = N'COLUMN', @level2name = N'Denotation'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustLiaison',
+                                                N'column', 'Abbreviation'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustLiaison',
+                                   @level2type = N'COLUMN', @level2name = N'Abbreviation'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'abbreviation of this liaison to use a contact in a customer, used in the application for a compact display', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustLiaison', @level2type = N'COLUMN', @level2name = N'Abbreviation'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustLiaison',
+                                                N'column', 'Description'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustLiaison',
+                                   @level2type = N'COLUMN', @level2name = N'Description'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'description as long text of this liaison to use a contact in a customer, used in the application for detailed informations', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustLiaison', @level2type = N'COLUMN', @level2name = N'Description'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustLiaison',
+                                                N'column', 'Notes'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustLiaison',
+                                   @level2type = N'COLUMN', @level2name = N'Notes'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustLiaison', @level2type = N'COLUMN', @level2name = N'Notes'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CustLiaison',
+                                                N'column', 'UrgentValue'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CustLiaison',
+                                   @level2type = N'COLUMN', @level2name = N'UrgentValue'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CustLiaison', @level2type = N'COLUMN', @level2name = N'UrgentValue'
+
+IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'Customers', NULL, NULL))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
+                                    @level0type=N'SCHEMA', @level0name = N'dbo', 
+                                    @level1type = N'TABLE', @level1name = 'Customers'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', 
+              @value = N'information to the data of a client / customer  (inherited from Person)', 
+              @level0type=N'SCHEMA', @level0name = N'dbo', 
+              @level1type = N'TABLE', @level1name = 'Customers'
+
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Customers',
+                                                N'column', 'CustID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Customers',
+                                   @level2type = N'COLUMN', @level2name = N'CustID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'CustID'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Customers',
+                                                N'column', 'ServiceAgent'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Customers',
+                                   @level2type = N'COLUMN', @level2name = N'ServiceAgent'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'employee is  responsible for this client (association with the employys entity)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'ServiceAgent'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Customers',
+                                                N'column', 'CustClassification'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Customers',
+                                   @level2type = N'COLUMN', @level2name = N'CustClassification'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'classification of this customer as range value ', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'CustClassification'
+
 IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'Departments', NULL, NULL))
 BEGIN
    EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
@@ -570,15 +820,26 @@ EXEC sys.sp_addextendedproperty @name = N'MS_Description',
 
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'Employees',
-                                                N'column', 'ID'))
+                                                N'column', 'Dummy'))
 BEGIN
    EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
                                    @level0type=N'SCHEMA', @level0name = N'dbo',
                                    @level1type = N'TABLE', @level1name = 'Employees',
-                                   @level2type = N'COLUMN', @level2name = N'ID'
+                                   @level2type = N'COLUMN', @level2name = N'Dummy'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'attribute as foreign key from an attribute ID of a person entity to which these account details belong', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Employees', @level2type = N'COLUMN', @level2name = N'ID'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'dummy field to test the generator', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Employees', @level2type = N'COLUMN', @level2name = N'Dummy'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Employees',
+                                                N'column', 'EmployeeID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Employees',
+                                   @level2type = N'COLUMN', @level2name = N'EmployeeID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'attribute as foreign key from an attribute ID of a person entity to which these account details belong', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Employees', @level2type = N'COLUMN', @level2name = N'EmployeeID'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'Employees',
                                                 N'column', 'PersonNumber'))
@@ -1138,7 +1399,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'Prefix'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'InternetTypes', @level2type = N'COLUMN', @level2name = N'Prefix'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'InternetTypes', @level2type = N'COLUMN', @level2name = N'Prefix'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'InternetTypes',
                                                 N'column', 'Notes'))
@@ -1757,7 +2018,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'UrgentValue'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryBase', @level2type = N'COLUMN', @level2name = N'UrgentValue'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryBase', @level2type = N'COLUMN', @level2name = N'UrgentValue'
 
 IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'SalaryType', NULL, NULL))
 BEGIN
@@ -1781,7 +2042,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'ID'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'ID'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique identification number / id of the type of salary', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'ID'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'SalaryType',
                                                 N'column', 'Denotation'))
@@ -1792,7 +2053,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'Denotation'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'Denotation'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique denotation for the type of salary', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'Denotation'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'SalaryType',
                                                 N'column', 'Abbreviation'))
@@ -1803,7 +2064,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'Abbreviation'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'Abbreviation'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'abbreviation for thetype of salary, used in the application for a compact display', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'Abbreviation'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'SalaryType',
                                                 N'column', 'Description'))
@@ -1814,7 +2075,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'Description'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'Description'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'description as long text for the type of salary, used in the application for detailed informations', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'Description'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'SalaryType',
                                                 N'column', 'SalaryBase'))
@@ -1825,7 +2086,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'SalaryBase'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'SalaryBase'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'id of the salary base which is used for this type of salary (foreign key from SalaryBase)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'SalaryBase'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'SalaryType',
                                                 N'column', 'UrgentValue'))
@@ -1836,7 +2097,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'UrgentValue'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'UrgentValue'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'SalaryType', @level2type = N'COLUMN', @level2name = N'UrgentValue'
 
 IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'TaxClasses', NULL, NULL))
 BEGIN

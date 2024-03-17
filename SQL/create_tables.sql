@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to create tables / views for the project simple person model
- * generated at: 14.03.2024 23:56:52,636 with the adecc Scholar metadata generator
+ * generated at: 17.03.2024 20:08:19,181 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ------------------------------------------------------------------------------------ */
@@ -49,6 +49,13 @@ CREATE TABLE dbo.BankingTypes (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+-- statement to create the table dbo.Contacts
+CREATE TABLE dbo.Contacts (
+   ContactID   INT NOT NULL,
+   CustID      INT NOT NULL,
+   CustLiaison INT NOT NULL
+   );
+
 -- statement to create the table dbo.Countries
 CREATE TABLE dbo.Countries (
    ID             INT NOT NULL,
@@ -75,6 +82,33 @@ BEGIN
 END
 GO
 
+-- statement to create the table dbo.CustClassification
+CREATE TABLE dbo.CustClassification (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.CustLiaison
+CREATE TABLE dbo.CustLiaison (
+   ID           INT NOT NULL,
+   Denotation   VARCHAR(50) NOT NULL,
+   Abbreviation VARCHAR(10),
+   Description  VARCHAR(MAX),
+   Notes        VARCHAR(MAX),
+   UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
+   );
+
+-- statement to create the table dbo.Customers
+CREATE TABLE dbo.Customers (
+   CustID             INT NOT NULL,
+   ServiceAgent       INT NOT NULL,
+   CustClassification INT NOT NULL
+   );
+
 -- statement to create the table dbo.Departments
 CREATE TABLE dbo.Departments (
    ID           INT NOT NULL,
@@ -87,7 +121,8 @@ CREATE TABLE dbo.Departments (
 
 -- statement to create the table dbo.Employees
 CREATE TABLE dbo.Employees (
-   ID              INT NOT NULL,
+   Dummy           INT,
+   EmployeeID      INT NOT NULL,
    PersonNumber    VARCHAR(15) NOT NULL,
    Salary          DECIMAL(10, 2) CHECK (Salary >= 0.0),
    SalaryType      INT,

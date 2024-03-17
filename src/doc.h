@@ -9,6 +9,7 @@
   */
 /**  
   * \include{doc} simple_person_model.dox
+  * \include{doc} Documentation_adecc_Tools.dox
   * \include{doc} Documentation_adecc_Scholar.dox
   * \include{doc} Documentation_adeccDatabase.dox
   * \include{doc} Documentation_MIT_License.dox

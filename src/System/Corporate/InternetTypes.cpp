@@ -2,12 +2,12 @@
 * Project: model with a simple person administration
 * Implementation of the data class TInternetTypes
 * Content: domain / range of values for internet connection types, this is an extension of the relationship between persons and internet connections.
-* Date: 14.03.2024 23:56:53,685  file created with adecc Scholar metadata generator
+* Date: 17.03.2024 20:08:20,382  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
 
-#include "System\Corporate/InternetTypes.h"
+#include "System\Corporate\InternetTypes.h"
 
 #include <typeinfo>
 
