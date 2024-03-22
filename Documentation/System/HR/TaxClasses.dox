@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_TaxClasses
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_TaxClasses
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TTaxClasses
 \brief tax class in germany to use it with employees (not a range, but very similar)
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_TaxClasses
 
 \class myHR::TTaxClasses::primary_key
@@ -67,6 +67,11 @@
 \fn myHR::TTaxClasses::primary_key::operator TTaxClasses () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TTaxClasses
+
+\fn myHR::TTaxClasses::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TTaxClasses::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myHR::TTaxClasses::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TTaxClasses::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TTaxClasses
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -231,37 +236,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TTaxClasses::iID
 \details unique identification number for a record in this domain with tax classes, used as key and attribute for relationships
 \details <b>unique identification number for a record in this domain with tax classes, used as key and attribute for relationships</b>
-\throw std::runtime::error if the attribute myHR::TTaxClasses::iID is empty
+\throws std::runtime::error if the attribute myHR::TTaxClasses::iID is empty
 \returns int const&: Reference to the data element myHR::TTaxClasses::iID
 \fn std::string const& myHR::TTaxClasses::_Denotation() const
 \brief special selector for data element myHR::TTaxClasses::strDenotation
 \details unique identification number for a record in this domain with tax class types, used in the programm to indentify this tax class, as selection in comboboxes and such
 \details <b>unique identification number for a record in this domain with tax class types, used in the programm to indentify this tax class, as selection in comboboxes and such</b>
-\throw std::runtime::error if the attribute myHR::TTaxClasses::strDenotation is empty
+\throws std::runtime::error if the attribute myHR::TTaxClasses::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TTaxClasses::strDenotation
 \fn std::string const& myHR::TTaxClasses::_Abbreviation() const
 \brief special selector for data element myHR::TTaxClasses::strAbbreviation
 \details unique abbreviation of a tax class entity in the domain, used in overviews and reports
 \details <b>unique abbreviation of a tax class entity in the domain, used in overviews and reports</b>
-\throw std::runtime::error if the attribute myHR::TTaxClasses::strAbbreviation is empty
+\throws std::runtime::error if the attribute myHR::TTaxClasses::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TTaxClasses::strAbbreviation
 \fn std::string const& myHR::TTaxClasses::_Description() const
 \brief special selector for data element myHR::TTaxClasses::strDescription
 \details description for this tax class, used for the program
 \details <b>description for this tax class, used for the program</b>
-\throw std::runtime::error if the attribute myHR::TTaxClasses::strDescription is empty
+\throws std::runtime::error if the attribute myHR::TTaxClasses::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TTaxClasses::strDescription
 \fn bool myHR::TTaxClasses::_Coupled() const
 \brief special selector for data element myHR::TTaxClasses::boCoupled
 \details Indicator whether this tax class applies to married couples or registered civil partnerships
 \details <b>Indicator whether this tax class applies to married couples or registered civil partnerships</b>
-\throw std::runtime::error if the attribute myHR::TTaxClasses::boCoupled is empty
+\throws std::runtime::error if the attribute myHR::TTaxClasses::boCoupled is empty
 \returns bool const&: Reference to the data element myHR::TTaxClasses::boCoupled
 \fn bool myHR::TTaxClasses::_UrgentValue() const
 \brief special selector for data element myHR::TTaxClasses::boUrgentValue
 \details boolean value that makes this entity of tax classes to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of tax classes to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myHR::TTaxClasses::boUrgentValue is empty
+\throws std::runtime::error if the attribute myHR::TTaxClasses::boUrgentValue is empty
 \returns bool const&: Reference to the data element myHR::TTaxClasses::boUrgentValue
 
 \}

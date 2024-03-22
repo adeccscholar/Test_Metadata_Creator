@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Phone
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Phone
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TPhone
 \brief phone connections of persons (part of relationship)
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Phone
 
 \class myCorporate::TPhone::primary_key
@@ -80,6 +80,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TPhone
 
+\fn myCorporate::TPhone::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TPhone::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myCorporate::TPhone::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -132,7 +137,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TPhone::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TPhone
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -252,43 +257,43 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TPhone::iID
 \details unique identification number of the person to whom the phone data belongs (foreign key from person)
 \details <b>unique identification number of the person to whom the phone data belongs (foreign key from person)</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::iID is empty
 \returns int const&: Reference to the data element myCorporate::TPhone::iID
 \fn int myCorporate::TPhone::_PhoneType() const
 \brief special selector for data element myCorporate::TPhone::iPhoneType
 \details type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))
 \details <b>type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::iPhoneType is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::iPhoneType is empty
 \returns int const&: Reference to the data element myCorporate::TPhone::iPhoneType
 \fn std::string const& myCorporate::TPhone::_AreaCode() const
 \brief special selector for data element myCorporate::TPhone::strAreaCode
 \details area code or network code of the telephone connection
 \details <b>area code or network code of the telephone connection</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::strAreaCode is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::strAreaCode is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPhone::strAreaCode
 \fn std::string const& myCorporate::TPhone::_CallNumber() const
 \brief special selector for data element myCorporate::TPhone::strCallNumber
 \details call number within the local network or the selected cellphone network
 \details <b>call number within the local network or the selected cellphone network</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::strCallNumber is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::strCallNumber is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPhone::strCallNumber
 \fn int myCorporate::TPhone::_Country() const
 \brief special selector for data element myCorporate::TPhone::iCountry
 \details country id for this data as foreign key in the Countries table. the country code is also located here
 \details <b>country id for this data as foreign key in the Countries table. the country code is also located here</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::iCountry is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::iCountry is empty
 \returns int const&: Reference to the data element myCorporate::TPhone::iCountry
 \fn std::string const& myCorporate::TPhone::_DialingNational() const
 \brief special selector for data element myCorporate::TPhone::strDialingNational
 \details complete telephone number to be dialed in the national network as computed field
 \details <b>complete telephone number to be dialed in the national network as computed field</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::strDialingNational is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::strDialingNational is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPhone::strDialingNational
 \fn std::string const& myCorporate::TPhone::_DialingInternational() const
 \brief special selector for data element myCorporate::TPhone::strDialingInternational
 \details complete telephone number to be dialed in the international network as computed field
 \details <b>complete telephone number to be dialed in the international network as computed field</b>
-\throw std::runtime::error if the attribute myCorporate::TPhone::strDialingInternational is empty
+\throws std::runtime::error if the attribute myCorporate::TPhone::strDialingInternational is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPhone::strDialingInternational
 
 \}

@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWorkingTime
 * Content: entity with the working times for an employee, as a composition for these.
-* Date: 17.03.2024 20:08:25,611  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,176  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,46 @@
 
 namespace myHR {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TWorkingTime
+// ---------------------------------------------------------------------------------------
+TWorkingTime::primary_key::primary_key() : iID {}, dtStartingTime {} { }
+
+TWorkingTime::primary_key::primary_key(int pID, std::chrono::system_clock::time_point pStartingTime) : iID(pID), dtStartingTime(pStartingTime) { }
+
+TWorkingTime::primary_key::primary_key(TWorkingTime const& other) : iID(other._ID()), dtStartingTime(other._StartingTime()) { }
+
+TWorkingTime::primary_key::primary_key(TWorkingTime::primary_key const& other) : iID(other.iID), dtStartingTime(other.dtStartingTime) { }
+
+TWorkingTime::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), dtStartingTime(std::move(other.dtStartingTime)) { }
+
+// conversions operator for this element to the encircling class
+TWorkingTime::primary_key::operator TWorkingTime() const {
+   TWorkingTime ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TWorkingTime::primary_key::write(std::ostream& out) const {
+   out << "elements of class TWorkingTime::primary_key:\n";
+   out << std::left << std::setw(16) << " - ID" << ":" << iID << '\n';
+   out << std::left << std::setw(16) << " - StartingTime" << ":" << dtStartingTime << '\n';
+   return out;
+   }
+
+int TWorkingTime::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   if(auto ret = comp_help(this->dtStartingTime, other.dtStartingTime); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TWorkingTime
+// ---------------------------------------------------------------------------------------
 TWorkingTime::TWorkingTime() {
    _init();
    }
@@ -24,6 +64,8 @@ TWorkingTime::TWorkingTime(TWorkingTime const& other){
 TWorkingTime::TWorkingTime(TWorkingTime&& other) noexcept {
    _swap(other);
    }
+
+TWorkingTime::TWorkingTime(primary_key const& other) : iID(other.ID()), dtStartingTime(other.StartingTime()) { }
 
 TWorkingTime::~TWorkingTime() {   }
 

@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_ReasonDeparture
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_ReasonDeparture
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TReasonDeparture
 \brief doman range with the reason of departure of the employee
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_ReasonDeparture
 
 \class myHR::TReasonDeparture::primary_key
@@ -67,6 +67,11 @@
 \fn myHR::TReasonDeparture::primary_key::operator TReasonDeparture () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TReasonDeparture
+
+\fn myHR::TReasonDeparture::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TReasonDeparture::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myHR::TReasonDeparture::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TReasonDeparture::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TReasonDeparture
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -231,37 +236,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TReasonDeparture::iID
 \details unique identification number / id of the reason of the departure
 \details <b>unique identification number / id of the reason of the departure</b>
-\throw std::runtime::error if the attribute myHR::TReasonDeparture::iID is empty
+\throws std::runtime::error if the attribute myHR::TReasonDeparture::iID is empty
 \returns int const&: Reference to the data element myHR::TReasonDeparture::iID
 \fn std::string const& myHR::TReasonDeparture::_Denotation() const
 \brief special selector for data element myHR::TReasonDeparture::strDenotation
 \details unique denotation for the reason of the departure
 \details <b>unique denotation for the reason of the departure</b>
-\throw std::runtime::error if the attribute myHR::TReasonDeparture::strDenotation is empty
+\throws std::runtime::error if the attribute myHR::TReasonDeparture::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TReasonDeparture::strDenotation
 \fn std::string const& myHR::TReasonDeparture::_Abbreviation() const
 \brief special selector for data element myHR::TReasonDeparture::strAbbreviation
 \details abbreviation for the reason of the departure, used in the application for a compact display
 \details <b>abbreviation for the reason of the departure, used in the application for a compact display</b>
-\throw std::runtime::error if the attribute myHR::TReasonDeparture::strAbbreviation is empty
+\throws std::runtime::error if the attribute myHR::TReasonDeparture::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TReasonDeparture::strAbbreviation
 \fn std::string const& myHR::TReasonDeparture::_Description() const
 \brief special selector for data element myHR::TReasonDeparture::strDescription
 \details description as long text for the reason of the departure, used in the application for detailed informations
 \details <b>description as long text for the reason of the departure, used in the application for detailed informations</b>
-\throw std::runtime::error if the attribute myHR::TReasonDeparture::strDescription is empty
+\throws std::runtime::error if the attribute myHR::TReasonDeparture::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TReasonDeparture::strDescription
 \fn std::string const& myHR::TReasonDeparture::_Notes() const
 \brief special selector for data element myHR::TReasonDeparture::strNotes
 \details notes, with additional / free information for the reason of the departure, not used in the application
 \details <b>notes, with additional / free information for the reason of the departure, not used in the application</b>
-\throw std::runtime::error if the attribute myHR::TReasonDeparture::strNotes is empty
+\throws std::runtime::error if the attribute myHR::TReasonDeparture::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TReasonDeparture::strNotes
 \fn bool myHR::TReasonDeparture::_UrgentValue() const
 \brief special selector for data element myHR::TReasonDeparture::boUrgentValue
 \details boolean value that makes this entity of reason of departure to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of reason of departure to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myHR::TReasonDeparture::boUrgentValue is empty
+\throws std::runtime::error if the attribute myHR::TReasonDeparture::boUrgentValue is empty
 \returns bool const&: Reference to the data element myHR::TReasonDeparture::boUrgentValue
 
 \}

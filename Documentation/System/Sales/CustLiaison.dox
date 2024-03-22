@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_CustLiaison
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_CustLiaison
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class mySales::TCustLiaison
 \brief doman range with the liaisons to use a contact at a customer
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_CustLiaison
 
 \class mySales::TCustLiaison::primary_key
@@ -67,6 +67,11 @@
 \fn mySales::TCustLiaison::primary_key::operator TCustLiaison () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class mySales::TCustLiaison
+
+\fn mySales::TCustLiaison::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class mySales::TCustLiaison::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn mySales::TCustLiaison::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn mySales::TCustLiaison::GetKey() const
 \brief method to get the primary key for this instance
 \returns type mySales::TCustLiaison
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -231,37 +236,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element mySales::TCustLiaison::iID
 \details unique identification number / id of this liaison to use a contact in a customer
 \details <b>unique identification number / id of this liaison to use a contact in a customer</b>
-\throw std::runtime::error if the attribute mySales::TCustLiaison::iID is empty
+\throws std::runtime::error if the attribute mySales::TCustLiaison::iID is empty
 \returns int const&: Reference to the data element mySales::TCustLiaison::iID
 \fn std::string const& mySales::TCustLiaison::_Denotation() const
 \brief special selector for data element mySales::TCustLiaison::strDenotation
 \details unique denotation of this liaison to use a contact in a customer
 \details <b>unique denotation of this liaison to use a contact in a customer</b>
-\throw std::runtime::error if the attribute mySales::TCustLiaison::strDenotation is empty
+\throws std::runtime::error if the attribute mySales::TCustLiaison::strDenotation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strDenotation
 \fn std::string const& mySales::TCustLiaison::_Abbreviation() const
 \brief special selector for data element mySales::TCustLiaison::strAbbreviation
 \details abbreviation of this liaison to use a contact in a customer, used in the application for a compact display
 \details <b>abbreviation of this liaison to use a contact in a customer, used in the application for a compact display</b>
-\throw std::runtime::error if the attribute mySales::TCustLiaison::strAbbreviation is empty
+\throws std::runtime::error if the attribute mySales::TCustLiaison::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strAbbreviation
 \fn std::string const& mySales::TCustLiaison::_Description() const
 \brief special selector for data element mySales::TCustLiaison::strDescription
 \details description as long text of this liaison to use a contact in a customer, used in the application for detailed informations
 \details <b>description as long text of this liaison to use a contact in a customer, used in the application for detailed informations</b>
-\throw std::runtime::error if the attribute mySales::TCustLiaison::strDescription is empty
+\throws std::runtime::error if the attribute mySales::TCustLiaison::strDescription is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strDescription
 \fn std::string const& mySales::TCustLiaison::_Notes() const
 \brief special selector for data element mySales::TCustLiaison::strNotes
 \details notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application
 \details <b>notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application</b>
-\throw std::runtime::error if the attribute mySales::TCustLiaison::strNotes is empty
+\throws std::runtime::error if the attribute mySales::TCustLiaison::strNotes is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strNotes
 \fn bool mySales::TCustLiaison::_UrgentValue() const
 \brief special selector for data element mySales::TCustLiaison::boUrgentValue
 \details boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute mySales::TCustLiaison::boUrgentValue is empty
+\throws std::runtime::error if the attribute mySales::TCustLiaison::boUrgentValue is empty
 \returns bool const&: Reference to the data element mySales::TCustLiaison::boUrgentValue
 
 \}

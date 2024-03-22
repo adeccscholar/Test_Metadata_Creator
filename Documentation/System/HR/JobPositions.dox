@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_JobPositions
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_JobPositions
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TJobPositions
 \brief domain or range of values for different positions for the employee. Important as anchor for additional informations
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_JobPositions
 
 \class myHR::TJobPositions::primary_key
@@ -67,6 +67,11 @@
 \fn myHR::TJobPositions::primary_key::operator TJobPositions () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TJobPositions
+
+\fn myHR::TJobPositions::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TJobPositions::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myHR::TJobPositions::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TJobPositions::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TJobPositions
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -240,43 +245,43 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TJobPositions::iID
 \details unique identification number for a record in this domain with positions in job
 \details <b>unique identification number for a record in this domain with positions in job</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::iID is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::iID is empty
 \returns int const&: Reference to the data element myHR::TJobPositions::iID
 \fn std::string const& myHR::TJobPositions::_Denotation() const
 \brief special selector for data element myHR::TJobPositions::strDenotation
 \details unique denotation for this job position, used in selections, and lists to descripe this position
 \details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::strDenotation is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strDenotation
 \fn std::string const& myHR::TJobPositions::_Abbreviation() const
 \brief special selector for data element myHR::TJobPositions::strAbbreviation
 \details abbreviation for this job position, used in overvies. Can be null and don't need be unique
 \details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::strAbbreviation is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strAbbreviation
 \fn std::string const& myHR::TJobPositions::_Description() const
 \brief special selector for data element myHR::TJobPositions::strDescription
 \details detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
 \details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::strDescription is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strDescription
 \fn int myHR::TJobPositions::_SalaryType() const
 \brief special selector for data element myHR::TJobPositions::iSalaryType
 \details prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
 \details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::iSalaryType is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::iSalaryType is empty
 \returns int const&: Reference to the data element myHR::TJobPositions::iSalaryType
 \fn std::string const& myHR::TJobPositions::_Notes() const
 \brief special selector for data element myHR::TJobPositions::strNotes
 \details notes, with additional / free information for this type of job position, not used in application
 \details <b>notes, with additional / free information for this type of job position, not used in application</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::strNotes is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strNotes
 \fn bool myHR::TJobPositions::_UrgentValue() const
 \brief special selector for data element myHR::TJobPositions::boUrgentValue
 \details boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myHR::TJobPositions::boUrgentValue is empty
+\throws std::runtime::error if the attribute myHR::TJobPositions::boUrgentValue is empty
 \returns bool const&: Reference to the data element myHR::TJobPositions::boUrgentValue
 
 \}

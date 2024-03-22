@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_FormOfAddress
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_FormOfAddress
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TFormOfAddress
 \brief domain with the possible values for form of addresses with additional informations for this
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_FormOfAddress
 
 \class myCorporate::TFormOfAddress::primary_key
@@ -67,6 +67,11 @@
 \fn myCorporate::TFormOfAddress::primary_key::operator TFormOfAddress () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TFormOfAddress
+
+\fn myCorporate::TFormOfAddress::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TFormOfAddress::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myCorporate::TFormOfAddress::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TFormOfAddress::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TFormOfAddress
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -258,55 +263,55 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TFormOfAddress::iID
 \details unique identification number of the form of address to use it in relationships
 \details <b>unique identification number of the form of address to use it in relationships</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::iID is empty
 \returns int const&: Reference to the data element myCorporate::TFormOfAddress::iID
 \fn std::string const& myCorporate::TFormOfAddress::_Denotation() const
 \brief special selector for data element myCorporate::TFormOfAddress::strDenotation
 \details unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)
 \details <b>unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strDenotation is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strDenotation
 \fn std::string const& myCorporate::TFormOfAddress::_Abbreviation() const
 \brief special selector for data element myCorporate::TFormOfAddress::strAbbreviation
 \details non-representative abbreviation that can be used for a short advertisement for this form of address
 \details <b>non-representative abbreviation that can be used for a short advertisement for this form of address</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strAbbreviation is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strAbbreviation
 \fn std::string const& myCorporate::TFormOfAddress::_Description() const
 \brief special selector for data element myCorporate::TFormOfAddress::strDescription
 \details detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm
 \details <b>detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strDescription is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strDescription
 \fn int myCorporate::TFormOfAddress::_TypeSpec() const
 \brief special selector for data element myCorporate::TFormOfAddress::iTypeSpec
 \details value from FamilyTypes who determine the art of persontype (gender, legal form, …)
 \details <b>value from FamilyTypes who determine the art of persontype (gender, legal form, …)</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::iTypeSpec is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::iTypeSpec is empty
 \returns int const&: Reference to the data element myCorporate::TFormOfAddress::iTypeSpec
 \fn std::string const& myCorporate::TFormOfAddress::_Salutation() const
 \brief special selector for data element myCorporate::TFormOfAddress::strSalutation
 \details salutation formula to be used in letters and emails for this salutation type and therefore person type
 \details <b>salutation formula to be used in letters and emails for this salutation type and therefore person type</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strSalutation is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::strSalutation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strSalutation
 \fn std::string const& myCorporate::TFormOfAddress::_Valediction() const
 \brief special selector for data element myCorporate::TFormOfAddress::strValediction
 \details farewell formula to be used in letters and emails for this salutation type and therefore person type
 \details <b>farewell formula to be used in letters and emails for this salutation type and therefore person type</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strValediction is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::strValediction is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strValediction
 \fn std::string const& myCorporate::TFormOfAddress::_Notes() const
 \brief special selector for data element myCorporate::TFormOfAddress::strNotes
 \details notes, with additional / free information for this type of form of address, not used in application
 \details <b>notes, with additional / free information for this type of form of address, not used in application</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::strNotes is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFormOfAddress::strNotes
 \fn bool myCorporate::TFormOfAddress::_UrgentValue() const
 \brief special selector for data element myCorporate::TFormOfAddress::boUrgentValue
 \details boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myCorporate::TFormOfAddress::boUrgentValue is empty
+\throws std::runtime::error if the attribute myCorporate::TFormOfAddress::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TFormOfAddress::boUrgentValue
 
 \}

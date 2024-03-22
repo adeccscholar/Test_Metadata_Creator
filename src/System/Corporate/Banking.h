@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TBanking
 * Content: informations about the account details provided by a person and used in a specific context
-* Date: 17.03.2024 20:08:19,618  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,576  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -18,6 +18,8 @@
 // necessary additional headers for used datatypes
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -43,23 +45,21 @@ class TBanking : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TBanking;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iID;         
             int iBankingType;
 
-            constexpr primary_key() : iID {}, iBankingType {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pID, int pBankingType) : iID(pID), iBankingType(pBankingType) { }
-            primary_key(TBanking const& other) : iID(other._ID()), iBankingType(other._BankingType()) { }
-            constexpr primary_key(primary_key const& other) : iID(other.iID), iBankingType(other.iBankingType) { }
-            constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), iBankingType(std::move(other.iBankingType)) { }
-            constexpr ~primary_key() { }
+            primary_key(int pID, int pBankingType);
+            explicit primary_key(TBanking const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TBanking() const {
-               TBanking ret;
-               return ret.init(*this);
-               }
+            operator TBanking() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -77,15 +77,11 @@ class TBanking : virtual public TSimplePersonBase {
             int        ID(int newVal) { return iID = newVal; }
             int        BankingType(int newVal) { return iBankingType = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
-               if(auto ret = comp_help(this->iBankingType, other.iBankingType); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TBanking>;
@@ -110,6 +106,7 @@ class TBanking : virtual public TSimplePersonBase {
       TBanking();
       TBanking(TBanking const&);
       TBanking(TBanking &&) noexcept;
+      explicit TBanking(primary_key const&);
       virtual ~TBanking();
 
       // ----------------------------------------------------------------------------------------------

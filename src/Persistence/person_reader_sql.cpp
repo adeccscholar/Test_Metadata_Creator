@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Implementation of sql statement for access with class TPersonReader
-* Date: 17.03.2024 20:08:25,650  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,220  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -115,6 +115,26 @@ const std::string strSQLContactsDeleteDetail =
 
 
 // --------------------------------------------------------------------
+//   Statements for table / view: CorporateForm
+// --------------------------------------------------------------------
+const std::string strSQLCorporateFormSelectAll = 
+     "SELECT ID, Denotation, Abbreviation, Description, IsLegalEntrity, UrgentValue\n"
+     "FROM dbo.CorporateForm";
+
+const std::string strSQLCorporateFormSelectDetail = 
+     "SELECT ID, Denotation, Abbreviation, Description, IsLegalEntrity, UrgentValue\n"
+     "FROM dbo.CorporateForm\n"
+     "WHERE ID = :keyID";
+
+const std::string strSQLCorporateFormDeleteAll = 
+     "DELETE FROM dbo.CorporateForm";
+
+const std::string strSQLCorporateFormDeleteDetail = 
+     "DELETE FROM dbo.CorporateForm\n"
+     "WHERE ID = :keyID";
+
+
+// --------------------------------------------------------------------
 //   Statements for table / view: Countries
 // --------------------------------------------------------------------
 const std::string strSQLCountriesSelectAll = 
@@ -180,11 +200,11 @@ const std::string strSQLCustLiaisonDeleteDetail =
 //   Statements for table / view: Customers
 // --------------------------------------------------------------------
 const std::string strSQLCustomersSelectAll = 
-     "SELECT CustID, ServiceAgent, CustClassification\n"
+     "SELECT CustID, ServiceAgent, CustClassification, LegalForm\n"
      "FROM dbo.Customers";
 
 const std::string strSQLCustomersSelectDetail = 
-     "SELECT CustID, ServiceAgent, CustClassification\n"
+     "SELECT CustID, ServiceAgent, CustClassification, LegalForm\n"
      "FROM dbo.Customers\n"
      "WHERE CustID = :keyCustID";
 

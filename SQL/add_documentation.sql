@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to add descriptions for the project simple person model
- * generated at: 17.03.2024 20:08:19,245 with the adecc Scholar metadata generator
+ * generated at: 22.03.2024 15:39:11,191 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ------------------------------------------------------------------------------------ */
@@ -389,6 +389,85 @@ END
 
 EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'liaision for this contact person as range value (from table CustLiasion)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Contacts', @level2type = N'COLUMN', @level2name = N'CustLiaison'
 
+IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'CorporateForm', NULL, NULL))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
+                                    @level0type=N'SCHEMA', @level0name = N'dbo', 
+                                    @level1type = N'TABLE', @level1name = 'CorporateForm'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', 
+              @value = N'This table stores information about various types of legal forms. Each row corresponds to a specific legal form with several informations.', 
+              @level0type=N'SCHEMA', @level0name = N'dbo', 
+              @level1type = N'TABLE', @level1name = 'CorporateForm'
+
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CorporateForm',
+                                                N'column', 'ID'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CorporateForm',
+                                   @level2type = N'COLUMN', @level2name = N'ID'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CorporateForm', @level2type = N'COLUMN', @level2name = N'ID'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CorporateForm',
+                                                N'column', 'Denotation'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CorporateForm',
+                                   @level2type = N'COLUMN', @level2name = N'Denotation'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'unique denotation for this entity. denotes the name or designation of the legal form', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CorporateForm', @level2type = N'COLUMN', @level2name = N'Denotation'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CorporateForm',
+                                                N'column', 'Abbreviation'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CorporateForm',
+                                   @level2type = N'COLUMN', @level2name = N'Abbreviation'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'abbreviated form of the legal form,  used in the application or reports for a compact display', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CorporateForm', @level2type = N'COLUMN', @level2name = N'Abbreviation'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CorporateForm',
+                                                N'column', 'Description'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CorporateForm',
+                                   @level2type = N'COLUMN', @level2name = N'Description'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CorporateForm', @level2type = N'COLUMN', @level2name = N'Description'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CorporateForm',
+                                                N'column', 'IsLegalEntrity'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CorporateForm',
+                                   @level2type = N'COLUMN', @level2name = N'IsLegalEntrity'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'indicates whether the legal form constitutes a legal entity (true/false)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CorporateForm', @level2type = N'COLUMN', @level2name = N'IsLegalEntrity'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'CorporateForm',
+                                                N'column', 'UrgentValue'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'CorporateForm',
+                                   @level2type = N'COLUMN', @level2name = N'UrgentValue'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'indicates whether the legal form has urgent significance (true/false)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'CorporateForm', @level2type = N'COLUMN', @level2name = N'UrgentValue'
+
 IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'Countries', NULL, NULL))
 BEGIN
    EXEC sys.sp_dropextendedproperty @name = N'MS_Description', 
@@ -703,7 +782,7 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'CustID'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'CustID'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'internal id for this client, attribute as foreign key from an attribute ID of a person entity ', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'CustID'
 IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
                                                 N'table', 'Customers',
                                                 N'column', 'ServiceAgent'))
@@ -725,7 +804,18 @@ BEGIN
                                    @level2type = N'COLUMN', @level2name = N'CustClassification'
 END
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'classification of this customer as range value ', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'CustClassification'
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'classification of this customer as range value (from table CustClassification)', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'CustClassification'
+IF EXISTS(SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', 'dbo',
+                                                N'table', 'Customers',
+                                                N'column', 'LegalForm'))
+BEGIN
+   EXEC sys.sp_dropextendedproperty @name = N'MS_Description',
+                                   @level0type=N'SCHEMA', @level0name = N'dbo',
+                                   @level1type = N'TABLE', @level1name = 'Customers',
+                                   @level2type = N'COLUMN', @level2name = N'LegalForm'
+END
+
+EXEC sys.sp_addextendedproperty @name = N'MS_Description', @value = N'legal form of this customer', @level0type=N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = 'Customers', @level2type = N'COLUMN', @level2name = N'LegalForm'
 
 IF EXISTS (SELECT 1 FROM fn_listextendedproperty(N'MS_Description', N'schema', N'dbo', N'table', N'Departments', NULL, NULL))
 BEGIN

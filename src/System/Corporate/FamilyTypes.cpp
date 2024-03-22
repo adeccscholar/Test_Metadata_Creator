@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TFamilyTypes
 * Content: domain / range of values for family types, this is used in form of address to qualifify the person gender
-* Date: 17.03.2024 20:08:20,223  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,270  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myCorporate {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TFamilyTypes
+// ---------------------------------------------------------------------------------------
+TFamilyTypes::primary_key::primary_key() : iID {} { }
+
+TFamilyTypes::primary_key::primary_key(int pID) : iID(pID) { }
+
+TFamilyTypes::primary_key::primary_key(TFamilyTypes const& other) : iID(other._ID()) { }
+
+TFamilyTypes::primary_key::primary_key(TFamilyTypes::primary_key const& other) : iID(other.iID) { }
+
+TFamilyTypes::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TFamilyTypes::primary_key::operator TFamilyTypes() const {
+   TFamilyTypes ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TFamilyTypes::primary_key::write(std::ostream& out) const {
+   out << "elements of class TFamilyTypes::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TFamilyTypes::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TFamilyTypes
+// ---------------------------------------------------------------------------------------
 TFamilyTypes::TFamilyTypes() {
    _init();
    }
@@ -24,6 +62,8 @@ TFamilyTypes::TFamilyTypes(TFamilyTypes const& other){
 TFamilyTypes::TFamilyTypes(TFamilyTypes&& other) noexcept {
    _swap(other);
    }
+
+TFamilyTypes::TFamilyTypes(primary_key const& other) : iID(other.ID()) { }
 
 TFamilyTypes::~TFamilyTypes() {   }
 

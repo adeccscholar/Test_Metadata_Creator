@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TWD_Holidays
 * Content: entities with public holidays, in relation to working days table to determine non working days
-* Date: 17.03.2024 20:08:25,373  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,943  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -19,6 +19,8 @@
 #include <chrono>
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -44,22 +46,20 @@ class TWD_Holidays : virtual public myCorporate::TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TWD_Holidays;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             std::chrono::year_month_day daCalendarDay; 
 
-            constexpr primary_key() : daCalendarDay {} { }
+            primary_key();
          public:
-            constexpr primary_key(std::chrono::year_month_day pCalendarDay) : daCalendarDay(pCalendarDay) { }
-            primary_key(TWD_Holidays const& other) : daCalendarDay(other._CalendarDay()) { }
-            constexpr primary_key(primary_key const& other) : daCalendarDay(other.daCalendarDay) { }
-            constexpr primary_key(primary_key&& other) noexcept : daCalendarDay(std::move(other.daCalendarDay)) { }
-            constexpr ~primary_key() { }
+            explicit primary_key(std::chrono::year_month_day pCalendarDay);
+            explicit primary_key(TWD_Holidays const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TWD_Holidays() const {
-               TWD_Holidays ret;
-               return ret.init(*this);
-               }
+            operator TWD_Holidays() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -75,14 +75,11 @@ class TWD_Holidays : virtual public myCorporate::TSimplePersonBase {
             // manipulators the primary type class
             std::chrono::year_month_day        CalendarDay(std::chrono::year_month_day newVal) { return daCalendarDay = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->daCalendarDay, other.daCalendarDay); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TWD_Holidays>;
@@ -104,6 +101,7 @@ class TWD_Holidays : virtual public myCorporate::TSimplePersonBase {
       TWD_Holidays();
       TWD_Holidays(TWD_Holidays const&);
       TWD_Holidays(TWD_Holidays &&) noexcept;
+      explicit TWD_Holidays(primary_key const&);
       virtual ~TWD_Holidays();
 
       // ----------------------------------------------------------------------------------------------

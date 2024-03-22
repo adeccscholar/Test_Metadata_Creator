@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to prefill the rangevalues for the project simple person model
- * generated at: 17.03.2024 20:08:19,223 with the adecc Scholar metadata generator
+ * generated at: 22.03.2024 15:39:11,163 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -12,6 +12,16 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
 
 INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
     (1, 'Hauptkonto', 'HK', 'Hauptkonto für die Personen in der Anwendung', 1);
+
+INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEntrity, UrgentValue) VALUES
+    (1, 'Gesellschaft mit beschränkter Haftung', 'GmbH', 'Eine GmbH ist eine Kapitalgesellschaft, bei der die Haftung der Gesellschafter auf ihre Einlagen beschränkt ist.', 1, 1), 
+    (2, 'Aktiengesellschaft', 'AG', 'Eine AG ist eine Kapitalgesellschaft, deren Grundkapital in Aktien zerlegt ist und deren Eigentümer (Aktionäre) beschränkt haften.', 1, 1), 
+    (3, 'Unternehmergesellschaft (haftungsbeschränkt)', 'UG', 'Eine UG ist eine haftungsbeschränkte Kapitalgesellschaft, die eine niedrigere Mindesteinlage erfordert als eine GmbH. Sie kann in eine GmbH umgewandelt werden.', 1, 1), 
+    (4, 'Offene Handelsgesellschaft', 'OHG', 'Eine OHG ist eine Personengesellschaft, bei der alle Gesellschafter unbeschränkt und persönlich für die Verbindlichkeiten der Gesellschaft haften.', 1, 1), 
+    (5, 'Kommanditgesellschaft', 'KG', 'Eine KG ist eine Personengesellschaft, bei der es neben den unbeschränkt haftenden Gesellschaftern (Komplementären) auch beschränkt haftende Gesellschafter gibt.', 1, 1), 
+    (6, 'Einzelkaufmann', 'e.K.', 'Ein e.K. ist eine Einzelunternehmung, bei der der Unternehmer allein und unbeschränkt für alle Verbindlichkeiten haftet.', 0, 1), 
+    (7, 'Ges. mit beschr. Haftung & Compagnie Kommanditges.', 'GmbH & Co. KG', 'Eine Gesellschaft mit beschränkter Haftung & Compagnie Kommanditgesellschaft ist eine Kommanditgesellschaft, bei der die Komplementärin eine GmbH ist. Dadurch kann eine GmbH als persönlich haftender Gesellschafter fungieren, während die übrigen Gesellschafter beschränkt haften.', 0, 1), 
+    (8, 'Gesellschaft bürgerlichen Rechts', 'GbR', 'Eine GbR ist eine Personengesellschaft, bei der mindestens zwei natürliche oder juristische Personen gemeinsam ein bestimmtes Ziel verfolgen und gemeinsam handeln.', 0, 1);
 
 INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
     (1, 'Neukunde', 'Neu', 'Ein Kunde, der gerade erst begonnen hat, Geschäfte mit dem Unternehmen zu tätigen und möglicherweise noch nicht viel Erfahrung mit den Produkten oder Dienstleistungen des Unternehmens hat.', 1), 

@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_NonWorking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_NonWorking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_NonWorking
 \brief entity set with non working days. Extensions possible, responsible for this table is HR.
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_NonWorking
 
 \class myHR::TWD_NonWorking::primary_key
@@ -80,6 +80,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TWD_NonWorking
 
+\fn myHR::TWD_NonWorking::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TWD_NonWorking::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myHR::TWD_NonWorking::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -132,7 +137,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TWD_NonWorking::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TWD_NonWorking
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -234,31 +239,31 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TWD_NonWorking::iID
 \details attribute as foreign key from an attribute ID of a employee entity to who as idle this time
 \details <b>attribute as foreign key from an attribute ID of a employee entity to who as idle this time</b>
-\throw std::runtime::error if the attribute myHR::TWD_NonWorking::iID is empty
+\throws std::runtime::error if the attribute myHR::TWD_NonWorking::iID is empty
 \returns int const&: Reference to the data element myHR::TWD_NonWorking::iID
 \fn std::chrono::year_month_day myHR::TWD_NonWorking::_StartAt() const
 \brief special selector for data element myHR::TWD_NonWorking::daStartAt
 \details date when the non working time starts as foreign key from the wokdays table
 \details <b>date when the non working time starts as foreign key from the wokdays table</b>
-\throw std::runtime::error if the attribute myHR::TWD_NonWorking::daStartAt is empty
+\throws std::runtime::error if the attribute myHR::TWD_NonWorking::daStartAt is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_NonWorking::daStartAt
 \fn std::chrono::year_month_day myHR::TWD_NonWorking::_ClosingAt() const
 \brief special selector for data element myHR::TWD_NonWorking::daClosingAt
 \details date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open
 \details <b>date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open</b>
-\throw std::runtime::error if the attribute myHR::TWD_NonWorking::daClosingAt is empty
+\throws std::runtime::error if the attribute myHR::TWD_NonWorking::daClosingAt is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_NonWorking::daClosingAt
 \fn int myHR::TWD_NonWorking::_Reason() const
 \brief special selector for data element myHR::TWD_NonWorking::iReason
 \details reason of non working time, there exist a table, but values are interpreted through the applications
 \details <b>reason of non working time, there exist a table, but values are interpreted through the applications</b>
-\throw std::runtime::error if the attribute myHR::TWD_NonWorking::iReason is empty
+\throws std::runtime::error if the attribute myHR::TWD_NonWorking::iReason is empty
 \returns int const&: Reference to the data element myHR::TWD_NonWorking::iReason
 \fn std::string const& myHR::TWD_NonWorking::_Notes() const
 \brief special selector for data element myHR::TWD_NonWorking::strNotes
 \details free notices to the non-working time
 \details <b>free notices to the non-working time</b>
-\throw std::runtime::error if the attribute myHR::TWD_NonWorking::strNotes is empty
+\throws std::runtime::error if the attribute myHR::TWD_NonWorking::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_NonWorking::strNotes
 
 \}

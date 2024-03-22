@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Banking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Banking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TBanking
 \brief informations about the account details provided by a person and used in a specific context
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Banking
 
 \class myCorporate::TBanking::primary_key
@@ -80,6 +80,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TBanking
 
+\fn myCorporate::TBanking::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TBanking::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myCorporate::TBanking::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -132,7 +137,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TBanking::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TBanking
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -252,43 +257,43 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TBanking::iID
 \details attribute as foreign key from an attribute ID of a person entity to which these account details belong
 \details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::iID is empty
 \returns int const&: Reference to the data element myCorporate::TBanking::iID
 \fn int myCorporate::TBanking::_BankingType() const
 \brief special selector for data element myCorporate::TBanking::iBankingType
 \details extension of the account details key in order to be able to save several / different bank details in a standardized way
 \details <b>extension of the account details key in order to be able to save several / different bank details in a standardized way</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::iBankingType is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::iBankingType is empty
 \returns int const&: Reference to the data element myCorporate::TBanking::iBankingType
 \fn std::string const& myCorporate::TBanking::_BankName() const
 \brief special selector for data element myCorporate::TBanking::strBankName
 \details name of the bank that manages this account (not necessarily required)
 \details <b>name of the bank that manages this account (not necessarily required)</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::strBankName is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::strBankName is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strBankName
 \fn std::string const& myCorporate::TBanking::_IBAN() const
 \brief special selector for data element myCorporate::TBanking::strIBAN
 \details IBAN number (account identification) for this bank account (required)
 \details <b>IBAN number (account identification) for this bank account (required)</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::strIBAN is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::strIBAN is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strIBAN
 \fn std::string const& myCorporate::TBanking::_BIC() const
 \brief special selector for data element myCorporate::TBanking::strBIC
 \details BIC number of the bank that manages this account (not necessarily required for transactions inside europe)
 \details <b>BIC number of the bank that manages this account (not necessarily required for transactions inside europe)</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::strBIC is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::strBIC is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strBIC
 \fn std::string const& myCorporate::TBanking::_BankOwner() const
 \brief special selector for data element myCorporate::TBanking::strBankOwner
 \details optionally the name of the owner of the bank details, if this differs from the assigned person
 \details <b>optionally the name of the owner of the bank details, if this differs from the assigned person</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::strBankOwner is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::strBankOwner is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strBankOwner
 \fn int myCorporate::TBanking::_Country() const
 \brief special selector for data element myCorporate::TBanking::iCountry
 \details ID of the country for the banking entity, key attribute from the Countries entity
 \details <b>ID of the country for the banking entity, key attribute from the Countries entity</b>
-\throw std::runtime::error if the attribute myCorporate::TBanking::iCountry is empty
+\throws std::runtime::error if the attribute myCorporate::TBanking::iCountry is empty
 \returns int const&: Reference to the data element myCorporate::TBanking::iCountry
 
 \}

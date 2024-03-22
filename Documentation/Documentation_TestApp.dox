@@ -1,0 +1,31 @@
+\dir DictionaryTest
+\brief directory with test application for generated sources of the example dictionary
+\note this test application use QT6, QT6 required
+
+\file DictionaryTest/main.cpp
+\brief file with the main function for the project
+\details here the qt system is initialized and the application window get open to start the graphical interface with qt
+
+\file DictionaryTest/TestMain.h
+\brief definition file for the mainwindow TestMain of the \ref pgDictionaryTest 
+
+\file DictionaryTest/TestMain.cpp
+\brief implementation file for the mainwindow of the \ref pgDictionaryTest
+
+\page pgDictionaryTest test application with a simple person management
+\details this is a test application for source code creation with metadata in the project adecc Scholar. the model and the generator
+are developed step by step to show the benefit of a generator, which create source code, database scripts and documentation files.
+
+\details I have chosen a very simplified person management as model for this application, as it is comprehensible for everyone in 
+terms of content and can be sufficiently to show different aspects. We were able to talk about the need for
+qualified data modeling also that allows for gradual expansion. The page \ref spgDesignBlotter shows the first ideas of the design.
+
+\details such projects have the advantage that it not only simplifies, standardizes and accelerates development, 
+but we can also use them to train programming techniques and paradigms, even if we cannot yet use them in the actual 
+production environment. In addition, extensions and corrections can be transferred back to all previous projects.
+
+\details this project use the library \ref pgadeccScholar to wrap the graphical interface and \ref pgadeccDatabase for the access
+to the database. both libraries work with a qt6 implementation. this required C++17, there are implementations of the library
+\ref pgadeccScholar for Visual Studio 2019 / 2022 and Embarcadero C++Builder 10.3. for the database library is C++20 necessary. 
+
+\details we use the MS SQL Server as concrete database server.

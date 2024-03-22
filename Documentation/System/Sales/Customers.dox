@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Customers
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Customers
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -48,7 +48,7 @@
 </tbody></table>
 
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Customers
 
 \class mySales::TCustomers::primary_key
@@ -76,10 +76,10 @@
 
 \fn mySales::TCustomers::primary_key::primary_key(int pCustID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pCustID int  with internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\param [in] pCustID int  with internal id for this client, attribute as foreign key from an attribute ID of a person entity 
 
 \var mySales::TCustomers::primary_key::iCustID
-\brief internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\brief internal id for this client, attribute as foreign key from an attribute ID of a person entity 
 \details Source: key member mySales::TCustomers::primary_key::iCustID in class mySales::TCustomers::primary_key with the type int
 \details Database: primary key attribute "CustID" in entity \ref datamodel_table_Customers with database type INT
 \fn mySales::TCustomers::primary_key::CustID() const
@@ -92,6 +92,11 @@
 \fn mySales::TCustomers::primary_key::operator TCustomers () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class mySales::TCustomers
+
+\fn mySales::TCustomers::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class mySales::TCustomers::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn mySales::TCustomers::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -145,7 +150,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn mySales::TCustomers::GetKey() const
 \brief method to get the primary key for this instance
 \returns type mySales::TCustomers
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 \typedef mySales::TCustomers::contacts_ty
 \brief composed data element for the table \ref datamodel_table_Contacts
@@ -196,7 +201,7 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var mySales::TCustomers::iCustID
-\brief internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+\brief internal id for this client, attribute as foreign key from an attribute ID of a person entity 
 \details Source: member mySales::TCustomers::iCustID in class mySales::TCustomers with the type std::optional<int>
 \details Database: attribute "CustID" in entity \ref datamodel_table_Customers with database type INT
 
@@ -206,9 +211,14 @@ method to copy instances of the hierachie of classes into another
 \details Database: attribute "ServiceAgent" in entity \ref datamodel_table_Customers with database type INT
 
 \var mySales::TCustomers::iCustClassification
-\brief classification of this customer as range value 
+\brief classification of this customer as range value (from table CustClassification)
 \details Source: member mySales::TCustomers::iCustClassification in class mySales::TCustomers with the type std::optional<int>
 \details Database: attribute "CustClassification" in entity \ref datamodel_table_Customers with database type INT
+
+\var mySales::TCustomers::iLegalForm
+\brief legal form of this customer
+\details Source: member mySales::TCustomers::iLegalForm in class mySales::TCustomers with the type std::optional<int>
+\details Database: attribute "LegalForm" in entity \ref datamodel_table_Customers with database type INT
 
 
 \}
@@ -218,7 +228,7 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustomers::CustID() const
 \brief selector for the data element mySales::TCustomers::iCustID
-\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity </b>
 \returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustID
 \fn std::optional<int> const& mySales::TCustomers::ServiceAgent() const
 \brief selector for the data element mySales::TCustomers::iServiceAgent
@@ -226,8 +236,12 @@ method to copy instances of the hierachie of classes into another
 \returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iServiceAgent
 \fn std::optional<int> const& mySales::TCustomers::CustClassification() const
 \brief selector for the data element mySales::TCustomers::iCustClassification
-\details <b>classification of this customer as range value </b>
+\details <b>classification of this customer as range value (from table CustClassification)</b>
 \returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustClassification
+\fn std::optional<int> const& mySales::TCustomers::LegalForm() const
+\brief selector for the data element mySales::TCustomers::iLegalForm
+\details <b>legal form of this customer</b>
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iLegalForm
 
 \}
 
@@ -236,22 +250,28 @@ method to copy instances of the hierachie of classes into another
 
 \fn int mySales::TCustomers::_CustID() const
 \brief special selector for data element mySales::TCustomers::iCustID
-\details internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
-\throw std::runtime::error if the attribute mySales::TCustomers::iCustID is empty
+\details internal id for this client, attribute as foreign key from an attribute ID of a person entity 
+\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity </b>
+\throws std::runtime::error if the attribute mySales::TCustomers::iCustID is empty
 \returns int const&: Reference to the data element mySales::TCustomers::iCustID
 \fn int mySales::TCustomers::_ServiceAgent() const
 \brief special selector for data element mySales::TCustomers::iServiceAgent
 \details employee is  responsible for this client (association with the employys entity)
 \details <b>employee is  responsible for this client (association with the employys entity)</b>
-\throw std::runtime::error if the attribute mySales::TCustomers::iServiceAgent is empty
+\throws std::runtime::error if the attribute mySales::TCustomers::iServiceAgent is empty
 \returns int const&: Reference to the data element mySales::TCustomers::iServiceAgent
 \fn int mySales::TCustomers::_CustClassification() const
 \brief special selector for data element mySales::TCustomers::iCustClassification
-\details classification of this customer as range value 
-\details <b>classification of this customer as range value </b>
-\throw std::runtime::error if the attribute mySales::TCustomers::iCustClassification is empty
+\details classification of this customer as range value (from table CustClassification)
+\details <b>classification of this customer as range value (from table CustClassification)</b>
+\throws std::runtime::error if the attribute mySales::TCustomers::iCustClassification is empty
 \returns int const&: Reference to the data element mySales::TCustomers::iCustClassification
+\fn int mySales::TCustomers::_LegalForm() const
+\brief special selector for data element mySales::TCustomers::iLegalForm
+\details legal form of this customer
+\details <b>legal form of this customer</b>
+\throws std::runtime::error if the attribute mySales::TCustomers::iLegalForm is empty
+\returns int const&: Reference to the data element mySales::TCustomers::iLegalForm
 
 \}
 
@@ -260,7 +280,7 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustomers::CustID(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TCustomers::iCustID
-\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\details <b>internal id for this client, attribute as foreign key from an attribute ID of a person entity </b>
 \param[in] newVal the new Value for the member mySales::TCustomers::iCustID
 \returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustID
 
@@ -272,9 +292,15 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustomers::CustClassification(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TCustomers::iCustClassification
-\details <b>classification of this customer as range value </b>
+\details <b>classification of this customer as range value (from table CustClassification)</b>
 \param[in] newVal the new Value for the member mySales::TCustomers::iCustClassification
 \returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iCustClassification
+
+\fn std::optional<int> const& mySales::TCustomers::LegalForm(std::optional<int> const& newVal)
+\brief manipulator for the data element mySales::TCustomers::iLegalForm
+\details <b>legal form of this customer</b>
+\param[in] newVal the new Value for the member mySales::TCustomers::iLegalForm
+\returns std::optional<int> const&: Reference to the data element mySales::TCustomers::iLegalForm
 
 
 \}

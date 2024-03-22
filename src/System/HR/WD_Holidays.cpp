@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWD_Holidays
 * Content: entities with public holidays, in relation to working days table to determine non working days
-* Date: 17.03.2024 20:08:25,386  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,961  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myHR {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TWD_Holidays
+// ---------------------------------------------------------------------------------------
+TWD_Holidays::primary_key::primary_key() : daCalendarDay {} { }
+
+TWD_Holidays::primary_key::primary_key(std::chrono::year_month_day pCalendarDay) : daCalendarDay(pCalendarDay) { }
+
+TWD_Holidays::primary_key::primary_key(TWD_Holidays const& other) : daCalendarDay(other._CalendarDay()) { }
+
+TWD_Holidays::primary_key::primary_key(TWD_Holidays::primary_key const& other) : daCalendarDay(other.daCalendarDay) { }
+
+TWD_Holidays::primary_key::primary_key(primary_key&& other) noexcept : daCalendarDay(std::move(other.daCalendarDay)) { }
+
+// conversions operator for this element to the encircling class
+TWD_Holidays::primary_key::operator TWD_Holidays() const {
+   TWD_Holidays ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TWD_Holidays::primary_key::write(std::ostream& out) const {
+   out << "elements of class TWD_Holidays::primary_key:\n";
+   out << std::left << std::setw(15) << " - CalendarDay" << ":" << daCalendarDay << '\n';
+   return out;
+   }
+
+int TWD_Holidays::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->daCalendarDay, other.daCalendarDay); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TWD_Holidays
+// ---------------------------------------------------------------------------------------
 TWD_Holidays::TWD_Holidays() {
    _init();
    }
@@ -24,6 +62,8 @@ TWD_Holidays::TWD_Holidays(TWD_Holidays const& other){
 TWD_Holidays::TWD_Holidays(TWD_Holidays&& other) noexcept {
    _swap(other);
    }
+
+TWD_Holidays::TWD_Holidays(primary_key const& other) : daCalendarDay(other.CalendarDay()) { }
 
 TWD_Holidays::~TWD_Holidays() {   }
 

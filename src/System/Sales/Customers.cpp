@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TCustomers
 * Content: information to the data of a client / customer  (inherited from Person)
-* Date: 17.03.2024 20:08:19,995  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,025  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace mySales {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TCustomers
+// ---------------------------------------------------------------------------------------
+TCustomers::primary_key::primary_key() : iCustID {} { }
+
+TCustomers::primary_key::primary_key(int pCustID) : iCustID(pCustID) { }
+
+TCustomers::primary_key::primary_key(TCustomers const& other) : iCustID(other._CustID()) { }
+
+TCustomers::primary_key::primary_key(TCustomers::primary_key const& other) : iCustID(other.iCustID) { }
+
+TCustomers::primary_key::primary_key(primary_key&& other) noexcept : iCustID(std::move(other.iCustID)) { }
+
+// conversions operator for this element to the encircling class
+TCustomers::primary_key::operator TCustomers() const {
+   TCustomers ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TCustomers::primary_key::write(std::ostream& out) const {
+   out << "elements of class TCustomers::primary_key:\n";
+   out << std::left << std::setw(10) << " - CustID" << ":" << iCustID << '\n';
+   return out;
+   }
+
+int TCustomers::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iCustID, other.iCustID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TCustomers
+// ---------------------------------------------------------------------------------------
 TCustomers::TCustomers() : myCorporate::TPerson() {
    _init();
    }
@@ -24,6 +62,8 @@ TCustomers::TCustomers(TCustomers const& other) : myCorporate::TPerson(other){
 TCustomers::TCustomers(TCustomers&& other) noexcept : myCorporate::TPerson(std::move(other)) {
    _swap(other);
    }
+
+TCustomers::TCustomers(primary_key const& other) : iCustID(other.CustID()) { }
 
 TCustomers::~TCustomers() {   }
 
@@ -69,6 +109,7 @@ void TCustomers::_swap(TCustomers& other) noexcept {
    std::swap(iCustID, other.iCustID);
    std::swap(iServiceAgent, other.iServiceAgent);
    std::swap(iCustClassification, other.iCustClassification);
+   std::swap(iLegalForm, other.iLegalForm);
    // swapping the composed classes
    std::swap(m_Contacts, other.m_Contacts);
    return;
@@ -80,6 +121,7 @@ void TCustomers::_init() {
    iCustID              = {};
    iServiceAgent        = {};
    iCustClassification  = {};
+   iLegalForm           = {};
    // initializing the composed classes
    m_Contacts           = { };
    return;
@@ -90,8 +132,9 @@ void TCustomers::_copy(TCustomers const& other) {
    CustID(other.CustID());
    ServiceAgent(other.ServiceAgent());
    CustClassification(other.CustClassification());
+   LegalForm(other.LegalForm());
    // copying the composed classes
-   m_Contacts  = m_Contacts;
+   m_Contacts  = other.m_Contacts;
    return;
    }
 

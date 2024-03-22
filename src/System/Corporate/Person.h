@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TPerson
 * Content: informations about a person, base for different kinds of special persons in other areas of the company
-* Date: 17.03.2024 20:08:20,467  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,523  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -25,6 +25,8 @@
 #include <chrono>
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -59,25 +61,23 @@ class TPerson : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TPerson;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iID;                
 
-            constexpr primary_key() : iID {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pID) : iID(pID) { }
-            primary_key(TPerson const& other) : iID(other._ID()) { }
+            explicit primary_key(int pID);
+            explicit primary_key(TPerson const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
             primary_key(mySales::TContacts const& other);
             primary_key(mySales::TCustomers const& other);
             primary_key(myHR::TEmployees const& other);
-            constexpr primary_key(primary_key const& other) : iID(other.iID) { }
-            constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
-            constexpr ~primary_key() { }
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TPerson() const {
-               TPerson ret;
-               return ret.init(*this);
-               }
+            operator TPerson() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -93,14 +93,11 @@ class TPerson : virtual public TSimplePersonBase {
             // manipulators the primary type class
             int        ID(int newVal) { return iID = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TPerson>;
@@ -143,6 +140,7 @@ class TPerson : virtual public TSimplePersonBase {
       TPerson();
       TPerson(TPerson const&);
       TPerson(TPerson &&) noexcept;
+      explicit TPerson(primary_key const&);
       virtual ~TPerson();
 
       // ----------------------------------------------------------------------------------------------

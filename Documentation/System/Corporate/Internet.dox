@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Internet
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Internet
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TInternet
 \brief connections for different kinds of communications about the internet as part of persons (part of relationship)
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Internet
 
 \class myCorporate::TInternet::primary_key
@@ -80,6 +80,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TInternet
 
+\fn myCorporate::TInternet::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TInternet::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myCorporate::TInternet::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -132,7 +137,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TInternet::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TInternet
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -216,19 +221,19 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TInternet::iID
 \details unique identification number of the person to whom the internet connection data belongs (foreign key from person)
 \details <b>unique identification number of the person to whom the internet connection data belongs (foreign key from person)</b>
-\throw std::runtime::error if the attribute myCorporate::TInternet::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TInternet::iID is empty
 \returns int const&: Reference to the data element myCorporate::TInternet::iID
 \fn int myCorporate::TInternet::_InternetType() const
 \brief special selector for data element myCorporate::TInternet::iInternetType
 \details type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
 \details <b>type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))</b>
-\throw std::runtime::error if the attribute myCorporate::TInternet::iInternetType is empty
+\throws std::runtime::error if the attribute myCorporate::TInternet::iInternetType is empty
 \returns int const&: Reference to the data element myCorporate::TInternet::iInternetType
 \fn std::string const& myCorporate::TInternet::_Adresse() const
 \brief special selector for data element myCorporate::TInternet::strAdresse
 \details internet address for this connection, possible to split the protocol to the value table InternetTypes
 \details <b>internet address for this connection, possible to split the protocol to the value table InternetTypes</b>
-\throw std::runtime::error if the attribute myCorporate::TInternet::strAdresse is empty
+\throws std::runtime::error if the attribute myCorporate::TInternet::strAdresse is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternet::strAdresse
 
 \}

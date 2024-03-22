@@ -6,7 +6,7 @@
 \see table \ref datamodel_table_Person
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -20,7 +20,7 @@
 \see table \ref datamodel_table_Person
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -76,7 +76,7 @@
 </tbody></table>
 
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Person
 
 \class myCorporate::TPerson::primary_key
@@ -139,6 +139,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TPerson
 
+\fn myCorporate::TPerson::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TPerson::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myCorporate::TPerson::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -191,7 +196,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TPerson::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TPerson
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 \typedef myCorporate::TPerson::address_ty
 \brief composed data element for the table \ref datamodel_table_Address
@@ -365,55 +370,55 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TPerson::iID
 \details unique identification number for a entity of person
 \details <b>unique identification number for a entity of person</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::iID is empty
 \returns int const&: Reference to the data element myCorporate::TPerson::iID
 \fn std::string const& myCorporate::TPerson::_Name() const
 \brief special selector for data element myCorporate::TPerson::strName
 \details family name of the natural person respectively the name for a legal entity
 \details <b>family name of the natural person respectively the name for a legal entity</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::strName is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::strName is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPerson::strName
 \fn std::string const& myCorporate::TPerson::_Firstname() const
 \brief special selector for data element myCorporate::TPerson::strFirstname
 \details first name of the natural person respectively a name extenstion for a legal entity
 \details <b>first name of the natural person respectively a name extenstion for a legal entity</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::strFirstname is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::strFirstname is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPerson::strFirstname
 \fn int myCorporate::TPerson::_FormOfAddress() const
 \brief special selector for data element myCorporate::TPerson::iFormOfAddress
 \details form of address for this person. this attribute control the kind of a person too
 \details <b>form of address for this person. this attribute control the kind of a person too</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::iFormOfAddress is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::iFormOfAddress is empty
 \returns int const&: Reference to the data element myCorporate::TPerson::iFormOfAddress
 \fn int myCorporate::TPerson::_FamilyStatus() const
 \brief special selector for data element myCorporate::TPerson::iFamilyStatus
 \details family status for the person
 \details <b>family status for the person</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::iFamilyStatus is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::iFamilyStatus is empty
 \returns int const&: Reference to the data element myCorporate::TPerson::iFamilyStatus
 \fn std::chrono::year_month_day myCorporate::TPerson::_FamilyStatusSince() const
 \brief special selector for data element myCorporate::TPerson::daFamilyStatusSince
 \details the date from which the current family status applies.
 \details <b>the date from which the current family status applies.</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::daFamilyStatusSince is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::daFamilyStatusSince is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myCorporate::TPerson::daFamilyStatusSince
 \fn std::chrono::year_month_day myCorporate::TPerson::_Birthday() const
 \brief special selector for data element myCorporate::TPerson::daBirthday
 \details birthday of a natural person. This attribute is unused for legal entrities
 \details <b>birthday of a natural person. This attribute is unused for legal entrities</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::daBirthday is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::daBirthday is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myCorporate::TPerson::daBirthday
 \fn std::string const& myCorporate::TPerson::_Notes() const
 \brief special selector for data element myCorporate::TPerson::strNotes
 \details notes, with additional / free information for this tperson, not used in application
 \details <b>notes, with additional / free information for this tperson, not used in application</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::strNotes is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPerson::strNotes
 \fn std::string const& myCorporate::TPerson::_FullName() const
 \brief special selector for data element myCorporate::TPerson::strFullName
 \details calculated field for displaying the full name for use in the program, for example, if a person is to be selected
 \details <b>calculated field for displaying the full name for use in the program, for example, if a person is to be selected</b>
-\throw std::runtime::error if the attribute myCorporate::TPerson::strFullName is empty
+\throws std::runtime::error if the attribute myCorporate::TPerson::strFullName is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TPerson::strFullName
 
 \}

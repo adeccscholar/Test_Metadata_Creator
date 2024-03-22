@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TEmployees
 * Content: information about the employees in the company (generalization of a person)
-* Date: 17.03.2024 20:08:20,088  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,126  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -23,6 +23,8 @@
 #include <chrono>
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -48,22 +50,20 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TEmployees;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iEmployeeID;     
 
-            constexpr primary_key() : iEmployeeID {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pEmployeeID) : iEmployeeID(pEmployeeID) { }
-            primary_key(TEmployees const& other) : iEmployeeID(other._EmployeeID()) { }
-            constexpr primary_key(primary_key const& other) : iEmployeeID(other.iEmployeeID) { }
-            constexpr primary_key(primary_key&& other) noexcept : iEmployeeID(std::move(other.iEmployeeID)) { }
-            constexpr ~primary_key() { }
+            explicit primary_key(int pEmployeeID);
+            explicit primary_key(TEmployees const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TEmployees() const {
-               TEmployees ret;
-               return ret.init(*this);
-               }
+            operator TEmployees() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -79,14 +79,11 @@ class TEmployees: public myCorporate::TPerson {
             // manipulators the primary type class
             int        EmployeeID(int newVal) { return iEmployeeID = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iEmployeeID, other.iEmployeeID); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TEmployees>;
@@ -131,6 +128,7 @@ class TEmployees: public myCorporate::TPerson {
       TEmployees();
       TEmployees(TEmployees const&);
       TEmployees(TEmployees &&) noexcept;
+      explicit TEmployees(primary_key const&);
       virtual ~TEmployees();
 
       // ----------------------------------------------------------------------------------------------

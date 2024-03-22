@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TReasonDeparture
 * Content: doman range with the reason of departure of the employee
-* Date: 17.03.2024 20:08:25,177  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,708  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myHR {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TReasonDeparture
+// ---------------------------------------------------------------------------------------
+TReasonDeparture::primary_key::primary_key() : iID {} { }
+
+TReasonDeparture::primary_key::primary_key(int pID) : iID(pID) { }
+
+TReasonDeparture::primary_key::primary_key(TReasonDeparture const& other) : iID(other._ID()) { }
+
+TReasonDeparture::primary_key::primary_key(TReasonDeparture::primary_key const& other) : iID(other.iID) { }
+
+TReasonDeparture::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TReasonDeparture::primary_key::operator TReasonDeparture() const {
+   TReasonDeparture ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TReasonDeparture::primary_key::write(std::ostream& out) const {
+   out << "elements of class TReasonDeparture::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TReasonDeparture::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TReasonDeparture
+// ---------------------------------------------------------------------------------------
 TReasonDeparture::TReasonDeparture() {
    _init();
    }
@@ -24,6 +62,8 @@ TReasonDeparture::TReasonDeparture(TReasonDeparture const& other){
 TReasonDeparture::TReasonDeparture(TReasonDeparture&& other) noexcept {
    _swap(other);
    }
+
+TReasonDeparture::TReasonDeparture(primary_key const& other) : iID(other.ID()) { }
 
 TReasonDeparture::~TReasonDeparture() {   }
 

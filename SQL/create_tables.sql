@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to create tables / views for the project simple person model
- * generated at: 17.03.2024 20:08:19,181 with the adecc Scholar metadata generator
+ * generated at: 22.03.2024 15:39:11,123 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ------------------------------------------------------------------------------------ */
@@ -56,6 +56,16 @@ CREATE TABLE dbo.Contacts (
    CustLiaison INT NOT NULL
    );
 
+-- statement to create the table dbo.CorporateForm
+CREATE TABLE dbo.CorporateForm (
+   ID             INT NOT NULL,
+   Denotation     VARCHAR(50) NOT NULL,
+   Abbreviation   VARCHAR(15) NOT NULL,
+   Description    VARCHAR(MAX),
+   IsLegalEntrity TINYINT NOT NULL CHECK (IsLegalEntrity IN (0, 1)),
+   UrgentValue    INT
+   );
+
 -- statement to create the table dbo.Countries
 CREATE TABLE dbo.Countries (
    ID             INT NOT NULL,
@@ -106,7 +116,8 @@ CREATE TABLE dbo.CustLiaison (
 CREATE TABLE dbo.Customers (
    CustID             INT NOT NULL,
    ServiceAgent       INT NOT NULL,
-   CustClassification INT NOT NULL
+   CustClassification INT NOT NULL,
+   LegalForm          INT NOT NULL
    );
 
 -- statement to create the table dbo.Departments

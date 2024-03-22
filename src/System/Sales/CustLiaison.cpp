@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TCustLiaison
 * Content: doman range with the liaisons to use a contact at a customer
-* Date: 17.03.2024 20:08:19,947  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,960  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace mySales {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TCustLiaison
+// ---------------------------------------------------------------------------------------
+TCustLiaison::primary_key::primary_key() : iID {} { }
+
+TCustLiaison::primary_key::primary_key(int pID) : iID(pID) { }
+
+TCustLiaison::primary_key::primary_key(TCustLiaison const& other) : iID(other._ID()) { }
+
+TCustLiaison::primary_key::primary_key(TCustLiaison::primary_key const& other) : iID(other.iID) { }
+
+TCustLiaison::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TCustLiaison::primary_key::operator TCustLiaison() const {
+   TCustLiaison ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TCustLiaison::primary_key::write(std::ostream& out) const {
+   out << "elements of class TCustLiaison::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TCustLiaison::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TCustLiaison
+// ---------------------------------------------------------------------------------------
 TCustLiaison::TCustLiaison() {
    _init();
    }
@@ -24,6 +62,8 @@ TCustLiaison::TCustLiaison(TCustLiaison const& other){
 TCustLiaison::TCustLiaison(TCustLiaison&& other) noexcept {
    _swap(other);
    }
+
+TCustLiaison::TCustLiaison(primary_key const& other) : iID(other.ID()) { }
 
 TCustLiaison::~TCustLiaison() {   }
 

@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Address
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Address
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TAddress
 \brief information on the addresses where a person lives, works or has any other relationship with them.
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Address
 
 \class myCorporate::TAddress::primary_key
@@ -80,6 +80,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TAddress
 
+\fn myCorporate::TAddress::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TAddress::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myCorporate::TAddress::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -132,7 +137,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TAddress::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TAddress
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -252,43 +257,43 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TAddress::iID
 \details attribute as Foreign key from an attribute ID of the person entity to whom the address belongs
 \details <b>attribute as Foreign key from an attribute ID of the person entity to whom the address belongs</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::iID is empty
 \returns int const&: Reference to the data element myCorporate::TAddress::iID
 \fn int myCorporate::TAddress::_AddressType() const
 \brief special selector for data element myCorporate::TAddress::iAddressType
 \details extension of the key by the address type to manage different addresses for one person
 \details <b>extension of the key by the address type to manage different addresses for one person</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::iAddressType is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::iAddressType is empty
 \returns int const&: Reference to the data element myCorporate::TAddress::iAddressType
 \fn std::string const& myCorporate::TAddress::_Zipcode() const
 \brief special selector for data element myCorporate::TAddress::strZipcode
 \details Zip code for the address
 \details <b>Zip code for the address</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::strZipcode is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::strZipcode is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddress::strZipcode
 \fn std::string const& myCorporate::TAddress::_City() const
 \brief special selector for data element myCorporate::TAddress::strCity
 \details name of the city/county (possibly with district) for this address
 \details <b>name of the city/county (possibly with district) for this address</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::strCity is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::strCity is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddress::strCity
 \fn std::string const& myCorporate::TAddress::_Street() const
 \brief special selector for data element myCorporate::TAddress::strStreet
 \details name of the street belonging to this address
 \details <b>name of the street belonging to this address</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::strStreet is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::strStreet is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddress::strStreet
 \fn std::string const& myCorporate::TAddress::_StreetNumber() const
 \brief special selector for data element myCorporate::TAddress::strStreetNumber
 \details house number with addition for this address
 \details <b>house number with addition for this address</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::strStreetNumber is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::strStreetNumber is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddress::strStreetNumber
 \fn int myCorporate::TAddress::_Country() const
 \brief special selector for data element myCorporate::TAddress::iCountry
 \details ID of the country for the address, key attribute from the Countries entity
 \details <b>ID of the country for the address, key attribute from the Countries entity</b>
-\throw std::runtime::error if the attribute myCorporate::TAddress::iCountry is empty
+\throws std::runtime::error if the attribute myCorporate::TAddress::iCountry is empty
 \returns int const&: Reference to the data element myCorporate::TAddress::iCountry
 
 \}

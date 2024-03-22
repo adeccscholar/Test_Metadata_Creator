@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_FamilyTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_FamilyTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TFamilyTypes
 \brief domain / range of values for family types, this is used in form of address to qualifify the person gender
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_FamilyTypes
 
 \class myCorporate::TFamilyTypes::primary_key
@@ -67,6 +67,11 @@
 \fn myCorporate::TFamilyTypes::primary_key::operator TFamilyTypes () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TFamilyTypes
+
+\fn myCorporate::TFamilyTypes::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TFamilyTypes::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myCorporate::TFamilyTypes::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TFamilyTypes::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TFamilyTypes
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -240,43 +245,43 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TFamilyTypes::iID
 \details unique identification number for a record in this domain with family types
 \details <b>unique identification number for a record in this domain with family types</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::iID is empty
 \returns int const&: Reference to the data element myCorporate::TFamilyTypes::iID
 \fn std::string const& myCorporate::TFamilyTypes::_Denotation() const
 \brief special selector for data element myCorporate::TFamilyTypes::strDenotation
 \details unique description of a family type entity in the domain, used in selections, comboboxes, … (key canditate)
 \details <b>unique description of a family type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::strDenotation is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyTypes::strDenotation
 \fn std::string const& myCorporate::TFamilyTypes::_Abbreviation() const
 \brief special selector for data element myCorporate::TFamilyTypes::strAbbreviation
 \details non-representative abbreviation that can be used for a short advertisement for this banking type
 \details <b>non-representative abbreviation that can be used for a short advertisement for this banking type</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::strAbbreviation is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyTypes::strAbbreviation
 \fn bool myCorporate::TFamilyTypes::_IsNaturalPerson() const
 \brief special selector for data element myCorporate::TFamilyTypes::boIsNaturalPerson
 \details boolean indicator whether this entity is a natural person when true, otherwise ist a legal entity
 \details <b>boolean indicator whether this entity is a natural person when true, otherwise ist a legal entity</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::boIsNaturalPerson is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::boIsNaturalPerson is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyTypes::boIsNaturalPerson
 \fn std::string const& myCorporate::TFamilyTypes::_Description() const
 \brief special selector for data element myCorporate::TFamilyTypes::strDescription
 \details detailed description of these family type,this is a self documentation, possible use as hint or to information in the programm
 \details <b>detailed description of these family type,this is a self documentation, possible use as hint or to information in the programm</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::strDescription is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyTypes::strDescription
 \fn std::string const& myCorporate::TFamilyTypes::_Notes() const
 \brief special selector for data element myCorporate::TFamilyTypes::strNotes
 \details notes, with additional / free information for this type of family status, not used in application
 \details <b>notes, with additional / free information for this type of family status, not used in application</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::strNotes is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyTypes::strNotes
 \fn bool myCorporate::TFamilyTypes::_UrgentValue() const
 \brief special selector for data element myCorporate::TFamilyTypes::boUrgentValue
 \details boolean value that makes this entity of family type to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of family type to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyTypes::boUrgentValue is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyTypes::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyTypes::boUrgentValue
 
 \}

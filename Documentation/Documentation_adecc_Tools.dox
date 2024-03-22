@@ -8,10 +8,10 @@
 
 \page pgadeccTools adecc Tools
 \details This library was developed concurrently with the new library \ref pgadeccDatabase to extract utility routines 
-needed in both libraries, the former developed \ref adeccScholar and the new database interface, and have a more general 
+needed in both libraries, the former developed \ref pgadeccScholar and the new database interface, and have a more general 
 character, in a separate area. Therefore, it actually sits centrally above the two and should contain no platform dependencies.
 
-\details Partially existing methods from the \ref adeccScholar project were outsourced during this process.
+\details Partially existing methods from the \ref pgadeccScholar project were outsourced during this process.
 
 \details The project can be found in the GitHub repository at https://github.com/adeccscholar/adecc_Scholar_Tools
 

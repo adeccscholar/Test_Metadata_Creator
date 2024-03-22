@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TAddress
 * Content: information on the addresses where a person lives, works or has any other relationship with them.
-* Date: 17.03.2024 20:08:19,456  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,423  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -18,6 +18,8 @@
 // necessary additional headers for used datatypes
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -43,23 +45,21 @@ class TAddress : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TAddress;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iID;            
             int iAddressType;   
 
-            constexpr primary_key() : iID {}, iAddressType {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pID, int pAddressType) : iID(pID), iAddressType(pAddressType) { }
-            primary_key(TAddress const& other) : iID(other._ID()), iAddressType(other._AddressType()) { }
-            constexpr primary_key(primary_key const& other) : iID(other.iID), iAddressType(other.iAddressType) { }
-            constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), iAddressType(std::move(other.iAddressType)) { }
-            constexpr ~primary_key() { }
+            primary_key(int pID, int pAddressType);
+            explicit primary_key(TAddress const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TAddress() const {
-               TAddress ret;
-               return ret.init(*this);
-               }
+            operator TAddress() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -77,15 +77,11 @@ class TAddress : virtual public TSimplePersonBase {
             int        ID(int newVal) { return iID = newVal; }
             int        AddressType(int newVal) { return iAddressType = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
-               if(auto ret = comp_help(this->iAddressType, other.iAddressType); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TAddress>;
@@ -110,6 +106,7 @@ class TAddress : virtual public TSimplePersonBase {
       TAddress();
       TAddress(TAddress const&);
       TAddress(TAddress &&) noexcept;
+      explicit TAddress(primary_key const&);
       virtual ~TAddress();
 
       // ----------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_AddressTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_AddressTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TAddressTypes
 \brief domain / range of values for address types, this is an extension of the relationship between persons and addresses.
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_AddressTypes
 
 \class myCorporate::TAddressTypes::primary_key
@@ -67,6 +67,11 @@
 \fn myCorporate::TAddressTypes::primary_key::operator TAddressTypes () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TAddressTypes
+
+\fn myCorporate::TAddressTypes::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TAddressTypes::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myCorporate::TAddressTypes::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TAddressTypes::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TAddressTypes
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -231,37 +236,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TAddressTypes::iID
 \details unique identification number for a record in this domain with address types
 \details <b>unique identification number for a record in this domain with address types</b>
-\throw std::runtime::error if the attribute myCorporate::TAddressTypes::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TAddressTypes::iID is empty
 \returns int const&: Reference to the data element myCorporate::TAddressTypes::iID
 \fn std::string const& myCorporate::TAddressTypes::_Denotation() const
 \brief special selector for data element myCorporate::TAddressTypes::strDenotation
 \details unique description of an entry in the domain, display in selections, comboboxes, … (key canditate)
 \details <b>unique description of an entry in the domain, display in selections, comboboxes, … (key canditate)</b>
-\throw std::runtime::error if the attribute myCorporate::TAddressTypes::strDenotation is empty
+\throws std::runtime::error if the attribute myCorporate::TAddressTypes::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddressTypes::strDenotation
 \fn std::string const& myCorporate::TAddressTypes::_Abbreviation() const
 \brief special selector for data element myCorporate::TAddressTypes::strAbbreviation
 \details non-representative abbreviation that can be used for a short advertisement for this address
 \details <b>non-representative abbreviation that can be used for a short advertisement for this address</b>
-\throw std::runtime::error if the attribute myCorporate::TAddressTypes::strAbbreviation is empty
+\throws std::runtime::error if the attribute myCorporate::TAddressTypes::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddressTypes::strAbbreviation
 \fn std::string const& myCorporate::TAddressTypes::_Description() const
 \brief special selector for data element myCorporate::TAddressTypes::strDescription
 \details detailed description of these address types, what is associated with them. Self documentation, possible use as hint
 \details <b>detailed description of these address types, what is associated with them. Self documentation, possible use as hint</b>
-\throw std::runtime::error if the attribute myCorporate::TAddressTypes::strDescription is empty
+\throws std::runtime::error if the attribute myCorporate::TAddressTypes::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddressTypes::strDescription
 \fn std::string const& myCorporate::TAddressTypes::_Notes() const
 \brief special selector for data element myCorporate::TAddressTypes::strNotes
 \details notes, with additional / free information for this AddressType, not used in application
 \details <b>notes, with additional / free information for this AddressType, not used in application</b>
-\throw std::runtime::error if the attribute myCorporate::TAddressTypes::strNotes is empty
+\throws std::runtime::error if the attribute myCorporate::TAddressTypes::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TAddressTypes::strNotes
 \fn bool myCorporate::TAddressTypes::_UrgentValue() const
 \brief special selector for data element myCorporate::TAddressTypes::boUrgentValue
 \details boolean value that makes this entity of address type to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of address type to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myCorporate::TAddressTypes::boUrgentValue is empty
+\throws std::runtime::error if the attribute myCorporate::TAddressTypes::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TAddressTypes::boUrgentValue
 
 \}

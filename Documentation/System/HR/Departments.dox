@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Departments
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Departments
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TDepartments
 \brief independent entity with the departments in the company, independent identity
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Departments
 
 \class myHR::TDepartments::primary_key
@@ -67,6 +67,11 @@
 \fn myHR::TDepartments::primary_key::operator TDepartments () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TDepartments
+
+\fn myHR::TDepartments::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TDepartments::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myHR::TDepartments::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TDepartments::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TDepartments
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -231,37 +236,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TDepartments::iID
 \details unique identifications number of the department. primary key and used for assoziations
 \details <b>unique identifications number of the department. primary key and used for assoziations</b>
-\throw std::runtime::error if the attribute myHR::TDepartments::iID is empty
+\throws std::runtime::error if the attribute myHR::TDepartments::iID is empty
 \returns int const&: Reference to the data element myHR::TDepartments::iID
 \fn std::string const& myHR::TDepartments::_Denotation() const
 \brief special selector for data element myHR::TDepartments::strDenotation
 \details distinct name of the department in the company. used to identify this and use in application for select
 \details <b>distinct name of the department in the company. used to identify this and use in application for select</b>
-\throw std::runtime::error if the attribute myHR::TDepartments::strDenotation is empty
+\throws std::runtime::error if the attribute myHR::TDepartments::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strDenotation
 \fn std::string const& myHR::TDepartments::_Abbreviation() const
 \brief special selector for data element myHR::TDepartments::strAbbreviation
 \details used abbreviation of the department for list and such
 \details <b>used abbreviation of the department for list and such</b>
-\throw std::runtime::error if the attribute myHR::TDepartments::strAbbreviation is empty
+\throws std::runtime::error if the attribute myHR::TDepartments::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strAbbreviation
 \fn std::string const& myHR::TDepartments::_Description() const
 \brief special selector for data element myHR::TDepartments::strDescription
 \details description for this department, is used in the program, for example as hint 
 \details <b>description for this department, is used in the program, for example as hint </b>
-\throw std::runtime::error if the attribute myHR::TDepartments::strDescription is empty
+\throws std::runtime::error if the attribute myHR::TDepartments::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strDescription
 \fn int myHR::TDepartments::_Officer() const
 \brief special selector for data element myHR::TDepartments::iOfficer
 \details person responsible / head of this department (association with the employys entity)
 \details <b>person responsible / head of this department (association with the employys entity)</b>
-\throw std::runtime::error if the attribute myHR::TDepartments::iOfficer is empty
+\throws std::runtime::error if the attribute myHR::TDepartments::iOfficer is empty
 \returns int const&: Reference to the data element myHR::TDepartments::iOfficer
 \fn std::string const& myHR::TDepartments::_Notes() const
 \brief special selector for data element myHR::TDepartments::strNotes
 \details free notes to record information that is not used in the program
 \details <b>free notes to record information that is not used in the program</b>
-\throw std::runtime::error if the attribute myHR::TDepartments::strNotes is empty
+\throws std::runtime::error if the attribute myHR::TDepartments::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strNotes
 
 \}

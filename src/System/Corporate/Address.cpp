@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TAddress
 * Content: information on the addresses where a person lives, works or has any other relationship with them.
-* Date: 17.03.2024 20:08:19,476  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,438  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,46 @@
 
 namespace myCorporate {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TAddress
+// ---------------------------------------------------------------------------------------
+TAddress::primary_key::primary_key() : iID {}, iAddressType {} { }
+
+TAddress::primary_key::primary_key(int pID, int pAddressType) : iID(pID), iAddressType(pAddressType) { }
+
+TAddress::primary_key::primary_key(TAddress const& other) : iID(other._ID()), iAddressType(other._AddressType()) { }
+
+TAddress::primary_key::primary_key(TAddress::primary_key const& other) : iID(other.iID), iAddressType(other.iAddressType) { }
+
+TAddress::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), iAddressType(std::move(other.iAddressType)) { }
+
+// conversions operator for this element to the encircling class
+TAddress::primary_key::operator TAddress() const {
+   TAddress ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TAddress::primary_key::write(std::ostream& out) const {
+   out << "elements of class TAddress::primary_key:\n";
+   out << std::left << std::setw(15) << " - ID" << ":" << iID << '\n';
+   out << std::left << std::setw(15) << " - AddressType" << ":" << iAddressType << '\n';
+   return out;
+   }
+
+int TAddress::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   if(auto ret = comp_help(this->iAddressType, other.iAddressType); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TAddress
+// ---------------------------------------------------------------------------------------
 TAddress::TAddress() {
    _init();
    }
@@ -24,6 +64,8 @@ TAddress::TAddress(TAddress const& other){
 TAddress::TAddress(TAddress&& other) noexcept {
    _swap(other);
    }
+
+TAddress::TAddress(primary_key const& other) : iID(other.ID()), iAddressType(other.AddressType()) { }
 
 TAddress::~TAddress() {   }
 

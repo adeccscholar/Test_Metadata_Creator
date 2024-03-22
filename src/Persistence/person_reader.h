@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of the persistence class TPersonReader
-* Date: 17.03.2024 20:08:25,666  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,237  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -16,6 +16,7 @@
 #include <System\Corporate\Banking.h>
 #include <System\Corporate\BankingTypes.h>
 #include <System\Sales\Contacts.h>
+#include <System\Corporate\CorporateForm.h>
 #include <System\Corporate\Countries.h>
 #include <System\Sales\CustClassification.h>
 #include <System\Sales\CustLiaison.h>
@@ -93,6 +94,10 @@ class TPersonReader {
       // access methods for class TContacts
       bool Read(mySales::TContacts::container_ty&);
       bool Read(mySales::TContacts::primary_key const&, mySales::TContacts&);
+
+      // access methods for class TCorporateForm
+      bool Read(myCorporate::TCorporateForm::container_ty&);
+      bool Read(myCorporate::TCorporateForm::primary_key const&, myCorporate::TCorporateForm&);
 
       // access methods for class TCountries
       bool Read(myCorporate::TCountries::container_ty&);

@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TFormOfAddress
 * Content: domain with the possible values for form of addresses with additional informations for this
-* Date: 17.03.2024 20:08:20,284  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,324  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myCorporate {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TFormOfAddress
+// ---------------------------------------------------------------------------------------
+TFormOfAddress::primary_key::primary_key() : iID {} { }
+
+TFormOfAddress::primary_key::primary_key(int pID) : iID(pID) { }
+
+TFormOfAddress::primary_key::primary_key(TFormOfAddress const& other) : iID(other._ID()) { }
+
+TFormOfAddress::primary_key::primary_key(TFormOfAddress::primary_key const& other) : iID(other.iID) { }
+
+TFormOfAddress::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TFormOfAddress::primary_key::operator TFormOfAddress() const {
+   TFormOfAddress ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TFormOfAddress::primary_key::write(std::ostream& out) const {
+   out << "elements of class TFormOfAddress::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TFormOfAddress::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TFormOfAddress
+// ---------------------------------------------------------------------------------------
 TFormOfAddress::TFormOfAddress() {
    _init();
    }
@@ -24,6 +62,8 @@ TFormOfAddress::TFormOfAddress(TFormOfAddress const& other){
 TFormOfAddress::TFormOfAddress(TFormOfAddress&& other) noexcept {
    _swap(other);
    }
+
+TFormOfAddress::TFormOfAddress(primary_key const& other) : iID(other.ID()) { }
 
 TFormOfAddress::~TFormOfAddress() {   }
 

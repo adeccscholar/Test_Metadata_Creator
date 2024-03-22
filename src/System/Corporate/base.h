@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of the base class TSimplePersonBase
-* Date: 17.03.2024 20:08:19,443  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,411  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

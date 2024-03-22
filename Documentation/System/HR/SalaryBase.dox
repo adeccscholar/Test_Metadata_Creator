@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_SalaryBase
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_SalaryBase
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TSalaryBase
 \brief fix domain for the calculation, this value determine the base for the salary, used in table SalaryType
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_SalaryBase
 
 \class myHR::TSalaryBase::primary_key
@@ -67,6 +67,11 @@
 \fn myHR::TSalaryBase::primary_key::operator TSalaryBase () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TSalaryBase
+
+\fn myHR::TSalaryBase::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TSalaryBase::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myHR::TSalaryBase::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TSalaryBase::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TSalaryBase
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -222,31 +227,31 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TSalaryBase::iID
 \details ID for this Base of Salary (0 = free, 1 = hourly, 2 = dayly, 3 = monthly). Extentable via model, needed for calculations
 \details <b>ID for this Base of Salary (0 = free, 1 = hourly, 2 = dayly, 3 = monthly). Extentable via model, needed for calculations</b>
-\throw std::runtime::error if the attribute myHR::TSalaryBase::iID is empty
+\throws std::runtime::error if the attribute myHR::TSalaryBase::iID is empty
 \returns int const&: Reference to the data element myHR::TSalaryBase::iID
 \fn std::string const& myHR::TSalaryBase::_Denotation() const
 \brief special selector for data element myHR::TSalaryBase::strDenotation
 \details unique description / donation for this base of salary. The algorithm use the id , the text is for display or select
 \details <b>unique description / donation for this base of salary. The algorithm use the id , the text is for display or select</b>
-\throw std::runtime::error if the attribute myHR::TSalaryBase::strDenotation is empty
+\throws std::runtime::error if the attribute myHR::TSalaryBase::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TSalaryBase::strDenotation
 \fn std::string const& myHR::TSalaryBase::_Abbreviation() const
 \brief special selector for data element myHR::TSalaryBase::strAbbreviation
 \details unique abbreviation for this base of salary. The algorithm use the id , the text is for display or select
 \details <b>unique abbreviation for this base of salary. The algorithm use the id , the text is for display or select</b>
-\throw std::runtime::error if the attribute myHR::TSalaryBase::strAbbreviation is empty
+\throws std::runtime::error if the attribute myHR::TSalaryBase::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TSalaryBase::strAbbreviation
 \fn std::string const& myHR::TSalaryBase::_Description() const
 \brief special selector for data element myHR::TSalaryBase::strDescription
 \details a longer description for this base to use as hint or for display
 \details <b>a longer description for this base to use as hint or for display</b>
-\throw std::runtime::error if the attribute myHR::TSalaryBase::strDescription is empty
+\throws std::runtime::error if the attribute myHR::TSalaryBase::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TSalaryBase::strDescription
 \fn bool myHR::TSalaryBase::_UrgentValue() const
 \brief special selector for data element myHR::TSalaryBase::boUrgentValue
 \details boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myHR::TSalaryBase::boUrgentValue is empty
+\throws std::runtime::error if the attribute myHR::TSalaryBase::boUrgentValue is empty
 \returns bool const&: Reference to the data element myHR::TSalaryBase::boUrgentValue
 
 \}

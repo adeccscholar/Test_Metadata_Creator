@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWD_NonWorking
 * Content: entity set with non working days. Extensions possible, responsible for this table is HR.
-* Date: 17.03.2024 20:08:25,477  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,048  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,46 @@
 
 namespace myHR {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TWD_NonWorking
+// ---------------------------------------------------------------------------------------
+TWD_NonWorking::primary_key::primary_key() : iID {}, daStartAt {} { }
+
+TWD_NonWorking::primary_key::primary_key(int pID, std::chrono::year_month_day pStartAt) : iID(pID), daStartAt(pStartAt) { }
+
+TWD_NonWorking::primary_key::primary_key(TWD_NonWorking const& other) : iID(other._ID()), daStartAt(other._StartAt()) { }
+
+TWD_NonWorking::primary_key::primary_key(TWD_NonWorking::primary_key const& other) : iID(other.iID), daStartAt(other.daStartAt) { }
+
+TWD_NonWorking::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), daStartAt(std::move(other.daStartAt)) { }
+
+// conversions operator for this element to the encircling class
+TWD_NonWorking::primary_key::operator TWD_NonWorking() const {
+   TWD_NonWorking ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TWD_NonWorking::primary_key::write(std::ostream& out) const {
+   out << "elements of class TWD_NonWorking::primary_key:\n";
+   out << std::left << std::setw(11) << " - ID" << ":" << iID << '\n';
+   out << std::left << std::setw(11) << " - StartAt" << ":" << daStartAt << '\n';
+   return out;
+   }
+
+int TWD_NonWorking::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   if(auto ret = comp_help(this->daStartAt, other.daStartAt); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TWD_NonWorking
+// ---------------------------------------------------------------------------------------
 TWD_NonWorking::TWD_NonWorking() {
    _init();
    }
@@ -24,6 +64,8 @@ TWD_NonWorking::TWD_NonWorking(TWD_NonWorking const& other){
 TWD_NonWorking::TWD_NonWorking(TWD_NonWorking&& other) noexcept {
    _swap(other);
    }
+
+TWD_NonWorking::TWD_NonWorking(primary_key const& other) : iID(other.ID()), daStartAt(other.StartAt()) { }
 
 TWD_NonWorking::~TWD_NonWorking() {   }
 

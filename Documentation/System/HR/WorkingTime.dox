@@ -5,7 +5,7 @@
 \see table \ref datamodel_table_WorkingTime
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -19,7 +19,7 @@
 \see table \ref datamodel_table_WorkingTime
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -31,7 +31,7 @@
 \details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
 \note the relationship with the project tasks is similar as the relationship to the employee, but without existence dependency.
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_WorkingTime
 
 \class myHR::TWorkingTime::primary_key
@@ -88,6 +88,11 @@
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TWorkingTime
 
+\fn myHR::TWorkingTime::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TWorkingTime::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
+
 \fn myHR::TWorkingTime::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
 \details the comparison is performed using a lambda function, "comp_help", which compares two objects and returns -1 if the left - hand side (lhs) is less than the right - hand side(rhs), 1 if lhs is greater than rhs, and 0 if they are equal. the member while compared in the order they are in the dictionary one after the other, so long the values of the both instances are equal.
@@ -140,7 +145,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TWorkingTime::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TWorkingTime
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -251,37 +256,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TWorkingTime::iID
 \details attribute as foreign key from an attribute ID of a employee entity to who as worked these time
 \details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
-\throw std::runtime::error if the attribute myHR::TWorkingTime::iID is empty
+\throws std::runtime::error if the attribute myHR::TWorkingTime::iID is empty
 \returns int const&: Reference to the data element myHR::TWorkingTime::iID
 \fn std::chrono::system_clock::time_point myHR::TWorkingTime::_StartingTime() const
 \brief special selector for data element myHR::TWorkingTime::dtStartingTime
 \details date and time at which this work block started as timestamp
 \details <b>date and time at which this work block started as timestamp</b>
-\throw std::runtime::error if the attribute myHR::TWorkingTime::dtStartingTime is empty
+\throws std::runtime::error if the attribute myHR::TWorkingTime::dtStartingTime is empty
 \returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
 \fn std::chrono::system_clock::time_point myHR::TWorkingTime::_ClosingTime() const
 \brief special selector for data element myHR::TWorkingTime::dtClosingTime
 \details date and time at which this block of work finished as timestamp
 \details <b>date and time at which this block of work finished as timestamp</b>
-\throw std::runtime::error if the attribute myHR::TWorkingTime::dtClosingTime is empty
+\throws std::runtime::error if the attribute myHR::TWorkingTime::dtClosingTime is empty
 \returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
 \fn bool myHR::TWorkingTime::_Processed() const
 \brief special selector for data element myHR::TWorkingTime::boProcessed
 \details boolean indicator that specifies whether this time booking has already been charged
 \details <b>boolean indicator that specifies whether this time booking has already been charged</b>
-\throw std::runtime::error if the attribute myHR::TWorkingTime::boProcessed is empty
+\throws std::runtime::error if the attribute myHR::TWorkingTime::boProcessed is empty
 \returns bool const&: Reference to the data element myHR::TWorkingTime::boProcessed
 \fn std::chrono::system_clock::time_point myHR::TWorkingTime::_ProcessedAt() const
 \brief special selector for data element myHR::TWorkingTime::dtProcessedAt
 \details time at which this data record was settled and posted
 \details <b>time at which this data record was settled and posted</b>
-\throw std::runtime::error if the attribute myHR::TWorkingTime::dtProcessedAt is empty
+\throws std::runtime::error if the attribute myHR::TWorkingTime::dtProcessedAt is empty
 \returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
 \fn std::chrono::year_month_day myHR::TWorkingTime::_DayOfWork() const
 \brief special selector for data element myHR::TWorkingTime::daDayOfWork
 \details calculated day to the timepoint where work started
 \details <b>calculated day to the timepoint where work started</b>
-\throw std::runtime::error if the attribute myHR::TWorkingTime::daDayOfWork is empty
+\throws std::runtime::error if the attribute myHR::TWorkingTime::daDayOfWork is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
 
 \}

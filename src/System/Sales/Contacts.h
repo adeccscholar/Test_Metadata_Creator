@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TContacts
 * Content: information to the data of a contact person at the customer  (inherited from Person)
-* Date: 17.03.2024 20:08:19,731  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,714  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -17,6 +17,8 @@
 
 // necessary additional headers for used datatypes
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -42,22 +44,20 @@ class TContacts: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TContacts;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iContactID;  
 
-            constexpr primary_key() : iContactID {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pContactID) : iContactID(pContactID) { }
-            primary_key(TContacts const& other) : iContactID(other._ContactID()) { }
-            constexpr primary_key(primary_key const& other) : iContactID(other.iContactID) { }
-            constexpr primary_key(primary_key&& other) noexcept : iContactID(std::move(other.iContactID)) { }
-            constexpr ~primary_key() { }
+            explicit primary_key(int pContactID);
+            explicit primary_key(TContacts const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TContacts() const {
-               TContacts ret;
-               return ret.init(*this);
-               }
+            operator TContacts() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -73,14 +73,11 @@ class TContacts: public myCorporate::TPerson {
             // manipulators the primary type class
             int        ContactID(int newVal) { return iContactID = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iContactID, other.iContactID); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TContacts>;
@@ -101,6 +98,7 @@ class TContacts: public myCorporate::TPerson {
       TContacts();
       TContacts(TContacts const&);
       TContacts(TContacts &&) noexcept;
+      explicit TContacts(primary_key const&);
       virtual ~TContacts();
 
       // ----------------------------------------------------------------------------------------------

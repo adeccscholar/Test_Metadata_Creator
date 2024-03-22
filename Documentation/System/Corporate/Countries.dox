@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Countries
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Countries
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TCountries
 \brief table with the countries and additional values for the countries. Used by others for assoziation.
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Countries
 
 \class myCorporate::TCountries::primary_key
@@ -67,6 +67,11 @@
 \fn myCorporate::TCountries::primary_key::operator TCountries () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TCountries
+
+\fn myCorporate::TCountries::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TCountries::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myCorporate::TCountries::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TCountries::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TCountries
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -276,67 +281,67 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TCountries::iID
 \details unique identification number for a record in the table Countries
 \details <b>unique identification number for a record in the table Countries</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::iID is empty
 \returns int const&: Reference to the data element myCorporate::TCountries::iID
 \fn std::string const& myCorporate::TCountries::_Denotation() const
 \brief special selector for data element myCorporate::TCountries::strDenotation
 \details unique, official designation of the country, key candidate
 \details <b>unique, official designation of the country, key candidate</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strDenotation is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strDenotation
 \fn std::string const& myCorporate::TCountries::_Abbreviation() const
 \brief special selector for data element myCorporate::TCountries::strAbbreviation
 \details abbreviation of the country for the program (iso code 3166 - alpha 3)
 \details <b>abbreviation of the country for the program (iso code 3166 - alpha 3)</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strAbbreviation is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strAbbreviation
 \fn std::string const& myCorporate::TCountries::_Description() const
 \brief special selector for data element myCorporate::TCountries::strDescription
 \details text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint
 \details <b>text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strDescription is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strDescription
 \fn std::string const& myCorporate::TCountries::_CountryDialing() const
 \brief special selector for data element myCorporate::TCountries::strCountryDialing
 \details international country code for telephone for this country (not unique)
 \details <b>international country code for telephone for this country (not unique)</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strCountryDialing is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strCountryDialing is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strCountryDialing
 \fn std::string const& myCorporate::TCountries::_ISO_Code() const
 \brief special selector for data element myCorporate::TCountries::strISO_Code
 \details unique, official international code (ISO code 3166 - alpha 2) for the country in the communication
 \details <b>unique, official international code (ISO code 3166 - alpha 2) for the country in the communication</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strISO_Code is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strISO_Code is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strISO_Code
 \fn bool myCorporate::TCountries::_IsEU() const
 \brief special selector for data element myCorporate::TCountries::boIsEU
 \details boolean value which is true when the country part of the european union
 \details <b>boolean value which is true when the country part of the european union</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::boIsEU is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::boIsEU is empty
 \returns bool const&: Reference to the data element myCorporate::TCountries::boIsEU
 \fn std::string const& myCorporate::TCountries::_Capital() const
 \brief special selector for data element myCorporate::TCountries::strCapital
 \details name of the capital of this country 
 \details <b>name of the capital of this country </b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strCapital is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strCapital is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strCapital
 \fn std::string const& myCorporate::TCountries::_Currency() const
 \brief special selector for data element myCorporate::TCountries::strCurrency
 \details currency in this country
 \details <b>currency in this country</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strCurrency is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strCurrency is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strCurrency
 \fn std::string const& myCorporate::TCountries::_Notes() const
 \brief special selector for data element myCorporate::TCountries::strNotes
 \details notes, with additional / free information for this country, not used in application
 \details <b>notes, with additional / free information for this country, not used in application</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::strNotes is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strNotes
 \fn bool myCorporate::TCountries::_UrgentValue() const
 \brief special selector for data element myCorporate::TCountries::boUrgentValue
 \details boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myCorporate::TCountries::boUrgentValue is empty
+\throws std::runtime::error if the attribute myCorporate::TCountries::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TCountries::boUrgentValue
 
 \}

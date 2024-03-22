@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_FamilyStatus
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_FamilyStatus
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TFamilyStatus
 \brief domain / range of values for family status, this is used in person to qualifify the actual status, maybe a date needed too
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_FamilyStatus
 
 \class myCorporate::TFamilyStatus::primary_key
@@ -67,6 +67,11 @@
 \fn myCorporate::TFamilyStatus::primary_key::operator TFamilyStatus () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myCorporate::TFamilyStatus
+
+\fn myCorporate::TFamilyStatus::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myCorporate::TFamilyStatus::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myCorporate::TFamilyStatus::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myCorporate::TFamilyStatus::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myCorporate::TFamilyStatus
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -249,49 +254,49 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myCorporate::TFamilyStatus::iID
 \details unique identification number for a record in this domain with family status
 \details <b>unique identification number for a record in this domain with family status</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::iID is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::iID is empty
 \returns int const&: Reference to the data element myCorporate::TFamilyStatus::iID
 \fn std::string const& myCorporate::TFamilyStatus::_Denotation() const
 \brief special selector for data element myCorporate::TFamilyStatus::strDenotation
 \details unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)
 \details <b>unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::strDenotation is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strDenotation
 \fn std::string const& myCorporate::TFamilyStatus::_Abbreviation() const
 \brief special selector for data element myCorporate::TFamilyStatus::strAbbreviation
 \details non-representative abbreviation that can be used for a short advertisement for this family status
 \details <b>non-representative abbreviation that can be used for a short advertisement for this family status</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::strAbbreviation is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strAbbreviation
 \fn std::string const& myCorporate::TFamilyStatus::_Description() const
 \brief special selector for data element myCorporate::TFamilyStatus::strDescription
 \details detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm
 \details <b>detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::strDescription is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strDescription
 \fn bool myCorporate::TFamilyStatus::_Coupled() const
 \brief special selector for data element myCorporate::TFamilyStatus::boCoupled
 \details boolean value that show if persones with this status are coupled and possibly receive tax relief
 \details <b>boolean value that show if persones with this status are coupled and possibly receive tax relief</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::boCoupled is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::boCoupled is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyStatus::boCoupled
 \fn bool myCorporate::TFamilyStatus::_NeedDate() const
 \brief special selector for data element myCorporate::TFamilyStatus::boNeedDate
 \details boolean value which determine that the date when the person status changed the last time needed. 
 \details <b>boolean value which determine that the date when the person status changed the last time needed. </b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::boNeedDate is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::boNeedDate is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyStatus::boNeedDate
 \fn std::string const& myCorporate::TFamilyStatus::_Notes() const
 \brief special selector for data element myCorporate::TFamilyStatus::strNotes
 \details notes, with additional / free information for this type of family status, not used in application
 \details <b>notes, with additional / free information for this type of family status, not used in application</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::strNotes is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strNotes
 \fn bool myCorporate::TFamilyStatus::_UrgentValue() const
 \brief special selector for data element myCorporate::TFamilyStatus::boUrgentValue
 \details boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute myCorporate::TFamilyStatus::boUrgentValue is empty
+\throws std::runtime::error if the attribute myCorporate::TFamilyStatus::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyStatus::boUrgentValue
 
 \}

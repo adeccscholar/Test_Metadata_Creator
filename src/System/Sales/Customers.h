@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TCustomers
 * Content: information to the data of a client / customer  (inherited from Person)
-* Date: 17.03.2024 20:08:19,978  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,000  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -20,6 +20,8 @@
 
 // necessary additional headers for used datatypes
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -45,22 +47,20 @@ class TCustomers: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TCustomers;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iCustID;            
 
-            constexpr primary_key() : iCustID {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pCustID) : iCustID(pCustID) { }
-            primary_key(TCustomers const& other) : iCustID(other._CustID()) { }
-            constexpr primary_key(primary_key const& other) : iCustID(other.iCustID) { }
-            constexpr primary_key(primary_key&& other) noexcept : iCustID(std::move(other.iCustID)) { }
-            constexpr ~primary_key() { }
+            explicit primary_key(int pCustID);
+            explicit primary_key(TCustomers const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TCustomers() const {
-               TCustomers ret;
-               return ret.init(*this);
-               }
+            operator TCustomers() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -76,14 +76,11 @@ class TCustomers: public myCorporate::TPerson {
             // manipulators the primary type class
             int        CustID(int newVal) { return iCustID = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iCustID, other.iCustID); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TCustomers>;
@@ -101,6 +98,7 @@ class TCustomers: public myCorporate::TPerson {
       std::optional<int> iCustID;            
       std::optional<int> iServiceAgent;      
       std::optional<int> iCustClassification;
+      std::optional<int> iLegalForm;         
 
       // ----------------------------------------------------------------------------------------------
       // data elements for composed tables
@@ -114,6 +112,7 @@ class TCustomers: public myCorporate::TPerson {
       TCustomers();
       TCustomers(TCustomers const&);
       TCustomers(TCustomers &&) noexcept;
+      explicit TCustomers(primary_key const&);
       virtual ~TCustomers();
 
       // ----------------------------------------------------------------------------------------------
@@ -143,6 +142,7 @@ class TCustomers: public myCorporate::TPerson {
       std::optional<int> const& CustID() const { return iCustID; }
       std::optional<int> const& ServiceAgent() const { return iServiceAgent; }
       std::optional<int> const& CustClassification() const { return iCustClassification; }
+      std::optional<int> const& LegalForm() const { return iLegalForm; }
 
       // ----------------------------------------------------------------------------------------------
       // public selectors for direct data access to the values inside std::optional (unboxing)
@@ -150,6 +150,7 @@ class TCustomers: public myCorporate::TPerson {
       int                       _CustID() const;
       int                       _ServiceAgent() const;
       int                       _CustClassification() const;
+      int                       _LegalForm() const;
 
       // ----------------------------------------------------------------------------------------------
       // public selectors for container of composed tables
@@ -162,6 +163,7 @@ class TCustomers: public myCorporate::TPerson {
       std::optional<int> const& CustID(std::optional<int> const& newVal);
       std::optional<int> const& ServiceAgent(std::optional<int> const& newVal);
       std::optional<int> const& CustClassification(std::optional<int> const& newVal);
+      std::optional<int> const& LegalForm(std::optional<int> const& newVal);
 
       // ----------------------------------------------------------------------------------------------
       // public manipulators for container of composed tables
@@ -196,6 +198,11 @@ inline int TCustomers::_CustClassification() const {
    else throw std::runtime_error("value for attribute \"CustClassification\" in class \"TCustomers\" is empty.");;
    }
 
+inline int TCustomers::_LegalForm() const {
+   if(iLegalForm) [[likely]] return iLegalForm.value();
+   else throw std::runtime_error("value for attribute \"LegalForm\" in class \"TCustomers\" is empty.");;
+   }
+
 
 // Implementations of the manipulators
 inline std::optional<int> const& TCustomers::CustID(std::optional<int> const& newVal) {
@@ -208,6 +215,10 @@ inline std::optional<int> const& TCustomers::ServiceAgent(std::optional<int> con
 
 inline std::optional<int> const& TCustomers::CustClassification(std::optional<int> const& newVal) {
    return iCustClassification = newVal;
+   }
+
+inline std::optional<int> const& TCustomers::LegalForm(std::optional<int> const& newVal) {
+   return iLegalForm = newVal;
    }
 
 } // end of namespace mySales

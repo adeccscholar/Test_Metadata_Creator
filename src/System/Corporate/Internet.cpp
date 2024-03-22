@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TInternet
 * Content: connections for different kinds of communications about the internet as part of persons (part of relationship)
-* Date: 17.03.2024 20:08:20,337  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,378  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,46 @@
 
 namespace myCorporate {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TInternet
+// ---------------------------------------------------------------------------------------
+TInternet::primary_key::primary_key() : iID {}, iInternetType {} { }
+
+TInternet::primary_key::primary_key(int pID, int pInternetType) : iID(pID), iInternetType(pInternetType) { }
+
+TInternet::primary_key::primary_key(TInternet const& other) : iID(other._ID()), iInternetType(other._InternetType()) { }
+
+TInternet::primary_key::primary_key(TInternet::primary_key const& other) : iID(other.iID), iInternetType(other.iInternetType) { }
+
+TInternet::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), iInternetType(std::move(other.iInternetType)) { }
+
+// conversions operator for this element to the encircling class
+TInternet::primary_key::operator TInternet() const {
+   TInternet ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TInternet::primary_key::write(std::ostream& out) const {
+   out << "elements of class TInternet::primary_key:\n";
+   out << std::left << std::setw(16) << " - ID" << ":" << iID << '\n';
+   out << std::left << std::setw(16) << " - InternetType" << ":" << iInternetType << '\n';
+   return out;
+   }
+
+int TInternet::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   if(auto ret = comp_help(this->iInternetType, other.iInternetType); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TInternet
+// ---------------------------------------------------------------------------------------
 TInternet::TInternet() {
    _init();
    }
@@ -24,6 +64,8 @@ TInternet::TInternet(TInternet const& other){
 TInternet::TInternet(TInternet&& other) noexcept {
    _swap(other);
    }
+
+TInternet::TInternet(primary_key const& other) : iID(other.ID()), iInternetType(other.InternetType()) { }
 
 TInternet::~TInternet() {   }
 

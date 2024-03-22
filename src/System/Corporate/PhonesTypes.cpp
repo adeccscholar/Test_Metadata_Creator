@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TPhonesTypes
 * Content: domain / range of values for phone types, this is an extension of the relationship between persons and phone.
-* Date: 17.03.2024 20:08:25,137  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,662  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myCorporate {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TPhonesTypes
+// ---------------------------------------------------------------------------------------
+TPhonesTypes::primary_key::primary_key() : iID {} { }
+
+TPhonesTypes::primary_key::primary_key(int pID) : iID(pID) { }
+
+TPhonesTypes::primary_key::primary_key(TPhonesTypes const& other) : iID(other._ID()) { }
+
+TPhonesTypes::primary_key::primary_key(TPhonesTypes::primary_key const& other) : iID(other.iID) { }
+
+TPhonesTypes::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TPhonesTypes::primary_key::operator TPhonesTypes() const {
+   TPhonesTypes ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TPhonesTypes::primary_key::write(std::ostream& out) const {
+   out << "elements of class TPhonesTypes::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TPhonesTypes::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TPhonesTypes
+// ---------------------------------------------------------------------------------------
 TPhonesTypes::TPhonesTypes() {
    _init();
    }
@@ -24,6 +62,8 @@ TPhonesTypes::TPhonesTypes(TPhonesTypes const& other){
 TPhonesTypes::TPhonesTypes(TPhonesTypes&& other) noexcept {
    _swap(other);
    }
+
+TPhonesTypes::TPhonesTypes(primary_key const& other) : iID(other.ID()) { }
 
 TPhonesTypes::~TPhonesTypes() {   }
 

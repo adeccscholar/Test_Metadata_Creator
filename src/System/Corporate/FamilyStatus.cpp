@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TFamilyStatus
 * Content: domain / range of values for family status, this is used in person to qualifify the actual status, maybe a date needed too
-* Date: 17.03.2024 20:08:20,168  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,215  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myCorporate {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TFamilyStatus
+// ---------------------------------------------------------------------------------------
+TFamilyStatus::primary_key::primary_key() : iID {} { }
+
+TFamilyStatus::primary_key::primary_key(int pID) : iID(pID) { }
+
+TFamilyStatus::primary_key::primary_key(TFamilyStatus const& other) : iID(other._ID()) { }
+
+TFamilyStatus::primary_key::primary_key(TFamilyStatus::primary_key const& other) : iID(other.iID) { }
+
+TFamilyStatus::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TFamilyStatus::primary_key::operator TFamilyStatus() const {
+   TFamilyStatus ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TFamilyStatus::primary_key::write(std::ostream& out) const {
+   out << "elements of class TFamilyStatus::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TFamilyStatus::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TFamilyStatus
+// ---------------------------------------------------------------------------------------
 TFamilyStatus::TFamilyStatus() {
    _init();
    }
@@ -24,6 +62,8 @@ TFamilyStatus::TFamilyStatus(TFamilyStatus const& other){
 TFamilyStatus::TFamilyStatus(TFamilyStatus&& other) noexcept {
    _swap(other);
    }
+
+TFamilyStatus::TFamilyStatus(primary_key const& other) : iID(other.ID()) { }
 
 TFamilyStatus::~TFamilyStatus() {   }
 

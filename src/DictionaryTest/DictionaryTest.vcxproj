@@ -63,10 +63,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>..;..\..\adecc_Database;..\..\adecc_Scholar;..\..\adecc_Tools;$(IncludePath)</IncludePath>
+    <IncludePath>..;..\..\adecc_Database;..\..\adecc_Scholar;..\..\adecc_Tools;..\..\adecc_FileDlg\Src\Independed;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)..\..\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>..;..\..\adecc_Database;..\..\adecc_Scholar;..\..\adecc_Tools;$(IncludePath)</IncludePath>
+    <IncludePath>..;..\..\adecc_Database;..\..\adecc_Scholar;..\..\adecc_Tools;..\..\adecc_FileDlg\Src\Independed;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)..\..\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -74,6 +76,12 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
+    <Link>
+      <ImportLibrary>
+      </ImportLibrary>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FileDlg_Qt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -81,6 +89,12 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
+    <Link>
+      <ImportLibrary>
+      </ImportLibrary>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FileDlg_Qt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -116,6 +130,7 @@
     <ClCompile Include="..\System\Corporate\AddressTypes.cpp" />
     <ClCompile Include="..\System\Corporate\Banking.cpp" />
     <ClCompile Include="..\System\Corporate\BankingTypes.cpp" />
+    <ClCompile Include="..\System\Corporate\CorporateForm.cpp" />
     <ClCompile Include="..\System\Corporate\Countries.cpp" />
     <ClCompile Include="..\System\Corporate\FamilyStatus.cpp" />
     <ClCompile Include="..\System\Corporate\FamilyTypes.cpp" />
@@ -153,6 +168,16 @@
     <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseCredentials.h" />
     <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseDefinitions.h" />
     <ClInclude Include="..\..\adecc_Database\adecc_Database\MyDatabaseExceptions.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyAlgorithm.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyConvert.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyForm.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyFramework_Selection.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyFramework_String.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyLogger.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyStdTypes.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyStream.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTools.h" />
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTupleUtils.h" />
     <ClInclude Include="..\Persistence\person_reader.h" />
     <ClInclude Include="..\Persistence\person_reader_sql.h" />
     <ClInclude Include="..\System\Corporate\Address.h" />
@@ -160,6 +185,7 @@
     <ClInclude Include="..\System\Corporate\Banking.h" />
     <ClInclude Include="..\System\Corporate\BankingTypes.h" />
     <ClInclude Include="..\System\Corporate\base.h" />
+    <ClInclude Include="..\System\Corporate\CorporateForm.h" />
     <ClInclude Include="..\System\Corporate\Countries.h" />
     <ClInclude Include="..\System\Corporate\FamilyStatus.h" />
     <ClInclude Include="..\System\Corporate\FamilyTypes.h" />

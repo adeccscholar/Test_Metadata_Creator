@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_CustClassification
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_CustClassification
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class mySales::TCustClassification
 \brief domain / range with the classifications for customers
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_CustClassification
 
 \class mySales::TCustClassification::primary_key
@@ -67,6 +67,11 @@
 \fn mySales::TCustClassification::primary_key::operator TCustClassification () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class mySales::TCustClassification
+
+\fn mySales::TCustClassification::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class mySales::TCustClassification::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn mySales::TCustClassification::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn mySales::TCustClassification::GetKey() const
 \brief method to get the primary key for this instance
 \returns type mySales::TCustClassification
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -231,37 +236,37 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element mySales::TCustClassification::iID
 \details unique identification number / id of this classification of a customer
 \details <b>unique identification number / id of this classification of a customer</b>
-\throw std::runtime::error if the attribute mySales::TCustClassification::iID is empty
+\throws std::runtime::error if the attribute mySales::TCustClassification::iID is empty
 \returns int const&: Reference to the data element mySales::TCustClassification::iID
 \fn std::string const& mySales::TCustClassification::_Denotation() const
 \brief special selector for data element mySales::TCustClassification::strDenotation
 \details unique denotation of this classification of a customer
 \details <b>unique denotation of this classification of a customer</b>
-\throw std::runtime::error if the attribute mySales::TCustClassification::strDenotation is empty
+\throws std::runtime::error if the attribute mySales::TCustClassification::strDenotation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strDenotation
 \fn std::string const& mySales::TCustClassification::_Abbreviation() const
 \brief special selector for data element mySales::TCustClassification::strAbbreviation
 \details abbreviation of this classification of a customer, used in the application for a compact display
 \details <b>abbreviation of this classification of a customer, used in the application for a compact display</b>
-\throw std::runtime::error if the attribute mySales::TCustClassification::strAbbreviation is empty
+\throws std::runtime::error if the attribute mySales::TCustClassification::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strAbbreviation
 \fn std::string const& mySales::TCustClassification::_Description() const
 \brief special selector for data element mySales::TCustClassification::strDescription
 \details description as long text of this classification of a customer, used in the application for detailed informations
 \details <b>description as long text of this classification of a customer, used in the application for detailed informations</b>
-\throw std::runtime::error if the attribute mySales::TCustClassification::strDescription is empty
+\throws std::runtime::error if the attribute mySales::TCustClassification::strDescription is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strDescription
 \fn std::string const& mySales::TCustClassification::_Notes() const
 \brief special selector for data element mySales::TCustClassification::strNotes
 \details notes, with additional / free information of this classification of a customer, not used in the application
 \details <b>notes, with additional / free information of this classification of a customer, not used in the application</b>
-\throw std::runtime::error if the attribute mySales::TCustClassification::strNotes is empty
+\throws std::runtime::error if the attribute mySales::TCustClassification::strNotes is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strNotes
 \fn bool mySales::TCustClassification::_UrgentValue() const
 \brief special selector for data element mySales::TCustClassification::boUrgentValue
 \details boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)
 \details <b>boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)</b>
-\throw std::runtime::error if the attribute mySales::TCustClassification::boUrgentValue is empty
+\throws std::runtime::error if the attribute mySales::TCustClassification::boUrgentValue is empty
 \returns bool const&: Reference to the data element mySales::TCustClassification::boUrgentValue
 
 \}

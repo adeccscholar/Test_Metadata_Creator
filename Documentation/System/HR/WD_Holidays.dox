@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Holidays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Holidays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Holidays
 \brief entities with public holidays, in relation to working days table to determine non working days
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Holidays
 
 \class myHR::TWD_Holidays::primary_key
@@ -67,6 +67,11 @@
 \fn myHR::TWD_Holidays::primary_key::operator TWD_Holidays () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class myHR::TWD_Holidays
+
+\fn myHR::TWD_Holidays::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class myHR::TWD_Holidays::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn myHR::TWD_Holidays::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -120,7 +125,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn myHR::TWD_Holidays::GetKey() const
 \brief method to get the primary key for this instance
 \returns type myHR::TWD_Holidays
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -213,25 +218,25 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element myHR::TWD_Holidays::daCalendarDay
 \details calendar day on which the holiday is
 \details <b>calendar day on which the holiday is</b>
-\throw std::runtime::error if the attribute myHR::TWD_Holidays::daCalendarDay is empty
+\throws std::runtime::error if the attribute myHR::TWD_Holidays::daCalendarDay is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
 \fn std::string const& myHR::TWD_Holidays::_Donation() const
 \brief special selector for data element myHR::TWD_Holidays::strDonation
 \details specification of the holiday as text
 \details <b>specification of the holiday as text</b>
-\throw std::runtime::error if the attribute myHR::TWD_Holidays::strDonation is empty
+\throws std::runtime::error if the attribute myHR::TWD_Holidays::strDonation is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Holidays::strDonation
 \fn int myHR::TWD_Holidays::_Share() const
 \brief special selector for data element myHR::TWD_Holidays::iShare
 \details share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
 \details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
-\throw std::runtime::error if the attribute myHR::TWD_Holidays::iShare is empty
+\throws std::runtime::error if the attribute myHR::TWD_Holidays::iShare is empty
 \returns int const&: Reference to the data element myHR::TWD_Holidays::iShare
 \fn std::string const& myHR::TWD_Holidays::_Description() const
 \brief special selector for data element myHR::TWD_Holidays::strDescription
 \details additional, more detailed description of the holiday. can use as hint in programm or reports
 \details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
-\throw std::runtime::error if the attribute myHR::TWD_Holidays::strDescription is empty
+\throws std::runtime::error if the attribute myHR::TWD_Holidays::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Holidays::strDescription
 
 \}

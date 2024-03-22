@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of the persistence class TPersonReader
-* Date: 17.03.2024 20:08:25,680  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,250  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -9,37 +9,7 @@
 #include <Persistence\person_reader_sql.h>
 #include <Persistence\person_reader.h>
 
-#include <System\Corporate\Address.h>
-#include <System\Corporate\AddressTypes.h>
-#include <System\Corporate\Banking.h>
-#include <System\Corporate\BankingTypes.h>
-#include <System\Sales\Contacts.h>
-#include <System\Corporate\Countries.h>
-#include <System\Sales\CustClassification.h>
-#include <System\Sales\CustLiaison.h>
-#include <System\Sales\Customers.h>
-#include <System\HR\Departments.h>
-#include <System\HR\Employees.h>
-#include <System\Corporate\FamilyStatus.h>
-#include <System\Corporate\FamilyTypes.h>
-#include <System\Corporate\FormOfAddress.h>
-#include <System\Corporate\Internet.h>
-#include <System\Corporate\InternetTypes.h>
-#include <System\HR\JobPositions.h>
-#include <System\Corporate\Person.h>
-#include <System\Corporate\Phone.h>
-#include <System\Corporate\PhonesTypes.h>
-#include <System\HR\ReasonDeparture.h>
-#include <System\HR\ReasonNonWorking.h>
-#include <System\HR\SalaryBase.h>
-#include <System/HR\SalaryType.h>
-#include <System\HR\TaxClasses.h>
-#include <System\HR\WD_Holidays.h>
-#include <System\HR\WD_Months.h>
-#include <System\HR\WD_NonWorking.h>
-#include <System\HR\WD_Weekdays.h>
-#include <System\HR\WD_Workdays.h>
-#include <System\HR\WorkingTime.h>
+#include <adecc_Database\MyDatabaseExceptions.h>
 
 namespace reader {
 
@@ -75,7 +45,7 @@ void TPersonReader::LogoutFromDb() {
 bool TPersonReader::Read(myCorporate::TAddress::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLAddressSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TAddress element;
       element.ID(query.Get<int>("ID", true));
       element.AddressType(query.Get<int>("AddressType", true));
@@ -95,6 +65,7 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
    query.Set("keyID", key_val.ID());
    query.Set("keyAddressType", key_val.AddressType());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.AddressType(query.Get<int>("AddressType", true));
@@ -104,7 +75,14 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
       data.StreetNumber(query.Get<std::string>("StreetNumber"));
       data.Country(query.Get<int>("Country"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TAddress";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLAddressSelectDetail);
+      }
    return true;
    }
 
@@ -113,7 +91,7 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
 bool TPersonReader::Read(myCorporate::TAddressTypes::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLAddressTypesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TAddressTypes element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -131,6 +109,7 @@ bool TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val,
    query.SetSQL(strSQLAddressTypesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -139,7 +118,14 @@ bool TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val,
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TAddressTypes";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLAddressTypesSelectDetail);
+      }
    return true;
    }
 
@@ -148,7 +134,7 @@ bool TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val,
 bool TPersonReader::Read(myCorporate::TBanking::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLBankingSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TBanking element;
       element.ID(query.Get<int>("ID", true));
       element.BankingType(query.Get<int>("BankingType", true));
@@ -168,6 +154,7 @@ bool TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCo
    query.Set("keyID", key_val.ID());
    query.Set("keyBankingType", key_val.BankingType());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.BankingType(query.Get<int>("BankingType", true));
@@ -177,7 +164,14 @@ bool TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCo
       data.BankOwner(query.Get<std::string>("BankOwner"));
       data.Country(query.Get<int>("Country"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TBanking";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLBankingSelectDetail);
+      }
    return true;
    }
 
@@ -186,7 +180,7 @@ bool TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCo
 bool TPersonReader::Read(myCorporate::TBankingTypes::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLBankingTypesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TBankingTypes element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -204,6 +198,7 @@ bool TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val,
    query.SetSQL(strSQLBankingTypesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -212,7 +207,14 @@ bool TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val,
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TBankingTypes";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLBankingTypesSelectDetail);
+      }
    return true;
    }
 
@@ -221,7 +223,7 @@ bool TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val,
 bool TPersonReader::Read(mySales::TContacts::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLContactsSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TContacts element;
       element.ContactID(query.Get<int>("ContactID", true));
       element.CustID(query.Get<int>("CustID"));
@@ -236,12 +238,63 @@ bool TPersonReader::Read(mySales::TContacts::primary_key const& key_val, mySales
    query.SetSQL(strSQLContactsSelectDetail);
    query.Set("keyContactID", key_val.ContactID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ContactID(query.Get<int>("ContactID", true));
       data.CustID(query.Get<int>("CustID"));
       data.CustLiaison(query.Get<int>("CustLiaison"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TContacts";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLContactsSelectDetail);
+      }
+   return true;
+   }
+
+
+// access methods for class TCorporateForm
+bool TPersonReader::Read(myCorporate::TCorporateForm::container_ty& data) {
+   auto query = database.CreateQuery();
+   query.SetSQL(strSQLCorporateFormSelectAll);
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
+      myCorporate::TCorporateForm element;
+      element.ID(query.Get<int>("ID", true));
+      element.Denotation(query.Get<std::string>("Denotation"));
+      element.Abbreviation(query.Get<std::string>("Abbreviation"));
+      element.Description(query.Get<std::string>("Description"));
+      element.IsLegalEntrity(query.Get<bool>("IsLegalEntrity"));
+      element.UrgentValue(query.Get<int>("UrgentValue"));
+      data.insert({ element.GetKey(), element });
+      }
+   return true;
+   }
+
+bool TPersonReader::Read(myCorporate::TCorporateForm::primary_key const& key_val, myCorporate::TCorporateForm& data) {
+   auto query = database.CreateQuery();
+   query.SetSQL(strSQLCorporateFormSelectDetail);
+   query.Set("keyID", key_val.ID());
+   query.Execute();
+   query.First();
+   if(!query.IsEof()) {
+      data.ID(query.Get<int>("ID", true));
+      data.Denotation(query.Get<std::string>("Denotation"));
+      data.Abbreviation(query.Get<std::string>("Abbreviation"));
+      data.Description(query.Get<std::string>("Description"));
+      data.IsLegalEntrity(query.Get<bool>("IsLegalEntrity"));
+      data.UrgentValue(query.Get<int>("UrgentValue"));
+      }
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TCorporateForm";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCorporateFormSelectDetail);
+      }
    return true;
    }
 
@@ -250,7 +303,7 @@ bool TPersonReader::Read(mySales::TContacts::primary_key const& key_val, mySales
 bool TPersonReader::Read(myCorporate::TCountries::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLCountriesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TCountries element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -273,6 +326,7 @@ bool TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, my
    query.SetSQL(strSQLCountriesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -286,7 +340,14 @@ bool TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, my
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TCountries";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCountriesSelectDetail);
+      }
    return true;
    }
 
@@ -295,7 +356,7 @@ bool TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, my
 bool TPersonReader::Read(mySales::TCustClassification::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLCustClassificationSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TCustClassification element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -313,6 +374,7 @@ bool TPersonReader::Read(mySales::TCustClassification::primary_key const& key_va
    query.SetSQL(strSQLCustClassificationSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -321,7 +383,14 @@ bool TPersonReader::Read(mySales::TCustClassification::primary_key const& key_va
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TCustClassification";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCustClassificationSelectDetail);
+      }
    return true;
    }
 
@@ -330,7 +399,7 @@ bool TPersonReader::Read(mySales::TCustClassification::primary_key const& key_va
 bool TPersonReader::Read(mySales::TCustLiaison::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLCustLiaisonSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TCustLiaison element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -348,6 +417,7 @@ bool TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySa
    query.SetSQL(strSQLCustLiaisonSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -356,7 +426,14 @@ bool TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySa
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TCustLiaison";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCustLiaisonSelectDetail);
+      }
    return true;
    }
 
@@ -365,11 +442,12 @@ bool TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySa
 bool TPersonReader::Read(mySales::TCustomers::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLCustomersSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TCustomers element;
       element.CustID(query.Get<int>("CustID", true));
       element.ServiceAgent(query.Get<int>("ServiceAgent"));
       element.CustClassification(query.Get<int>("CustClassification"));
+      element.LegalForm(query.Get<int>("LegalForm"));
       data.insert({ element.GetKey(), element });
       }
    return true;
@@ -380,12 +458,21 @@ bool TPersonReader::Read(mySales::TCustomers::primary_key const& key_val, mySale
    query.SetSQL(strSQLCustomersSelectDetail);
    query.Set("keyCustID", key_val.CustID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.CustID(query.Get<int>("CustID", true));
       data.ServiceAgent(query.Get<int>("ServiceAgent"));
       data.CustClassification(query.Get<int>("CustClassification"));
+      data.LegalForm(query.Get<int>("LegalForm"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TCustomers";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCustomersSelectDetail);
+      }
    return true;
    }
 
@@ -394,7 +481,7 @@ bool TPersonReader::Read(mySales::TCustomers::primary_key const& key_val, mySale
 bool TPersonReader::Read(myHR::TDepartments::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLDepartmentsSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TDepartments element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -412,6 +499,7 @@ bool TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::T
    query.SetSQL(strSQLDepartmentsSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -420,7 +508,14 @@ bool TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::T
       data.Officer(query.Get<int>("Officer"));
       data.Notes(query.Get<std::string>("Notes"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TDepartments";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLDepartmentsSelectDetail);
+      }
    return true;
    }
 
@@ -429,7 +524,7 @@ bool TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::T
 bool TPersonReader::Read(myHR::TEmployees::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLEmployeesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TEmployees element;
       element.Dummy(query.Get<int>("Dummy"));
       element.EmployeeID(query.Get<int>("EmployeeID", true));
@@ -456,6 +551,7 @@ bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEm
    query.SetSQL(strSQLEmployeesSelectDetail);
    query.Set("keyEmployeeID", key_val.EmployeeID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.Dummy(query.Get<int>("Dummy"));
       data.EmployeeID(query.Get<int>("EmployeeID", true));
@@ -473,7 +569,14 @@ bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEm
       data.SocialNummer(query.Get<std::string>("SocialNummer"));
       data.Active(query.Get<bool>("Active"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TEmployees";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLEmployeesSelectDetail);
+      }
    return true;
    }
 
@@ -482,7 +585,7 @@ bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEm
 bool TPersonReader::Read(myCorporate::TFamilyStatus::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLFamilyStatusSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TFamilyStatus element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -502,6 +605,7 @@ bool TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val,
    query.SetSQL(strSQLFamilyStatusSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -512,7 +616,14 @@ bool TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val,
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TFamilyStatus";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLFamilyStatusSelectDetail);
+      }
    return true;
    }
 
@@ -521,7 +632,7 @@ bool TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val,
 bool TPersonReader::Read(myCorporate::TFamilyTypes::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLFamilyTypesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TFamilyTypes element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -540,6 +651,7 @@ bool TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, 
    query.SetSQL(strSQLFamilyTypesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -549,7 +661,14 @@ bool TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, 
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TFamilyTypes";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLFamilyTypesSelectDetail);
+      }
    return true;
    }
 
@@ -558,7 +677,7 @@ bool TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, 
 bool TPersonReader::Read(myCorporate::TFormOfAddress::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLFormOfAddressSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TFormOfAddress element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -579,6 +698,7 @@ bool TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val
    query.SetSQL(strSQLFormOfAddressSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -590,7 +710,14 @@ bool TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TFormOfAddress";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLFormOfAddressSelectDetail);
+      }
    return true;
    }
 
@@ -599,7 +726,7 @@ bool TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val
 bool TPersonReader::Read(myCorporate::TInternet::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLInternetSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TInternet element;
       element.ID(query.Get<int>("ID", true));
       element.InternetType(query.Get<int>("InternetType", true));
@@ -615,12 +742,20 @@ bool TPersonReader::Read(myCorporate::TInternet::primary_key const& key_val, myC
    query.Set("keyID", key_val.ID());
    query.Set("keyInternetType", key_val.InternetType());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.InternetType(query.Get<int>("InternetType", true));
       data.Adresse(query.Get<std::string>("Adresse"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TInternet";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLInternetSelectDetail);
+      }
    return true;
    }
 
@@ -629,7 +764,7 @@ bool TPersonReader::Read(myCorporate::TInternet::primary_key const& key_val, myC
 bool TPersonReader::Read(myCorporate::TInternetTypes::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLInternetTypesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TInternetTypes element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -648,6 +783,7 @@ bool TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val
    query.SetSQL(strSQLInternetTypesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -657,7 +793,14 @@ bool TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TInternetTypes";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLInternetTypesSelectDetail);
+      }
    return true;
    }
 
@@ -666,7 +809,7 @@ bool TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val
 bool TPersonReader::Read(myHR::TJobPositions::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLJobPositionsSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TJobPositions element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -685,6 +828,7 @@ bool TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::
    query.SetSQL(strSQLJobPositionsSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -694,7 +838,14 @@ bool TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TJobPositions";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLJobPositionsSelectDetail);
+      }
    return true;
    }
 
@@ -703,7 +854,7 @@ bool TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::
 bool TPersonReader::Read(myCorporate::TPerson::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLPersonSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TPerson element;
       element.ID(query.Get<int>("ID", true));
       element.Name(query.Get<std::string>("Name"));
@@ -724,6 +875,7 @@ bool TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCor
    query.SetSQL(strSQLPersonSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Name(query.Get<std::string>("Name"));
@@ -735,7 +887,14 @@ bool TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCor
       data.Notes(query.Get<std::string>("Notes"));
       data.FullName(query.Get<std::string>("FullName"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TPerson";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLPersonSelectDetail);
+      }
    return true;
    }
 
@@ -744,7 +903,7 @@ bool TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCor
 bool TPersonReader::Read(myCorporate::TPhone::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLPhoneSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TPhone element;
       element.ID(query.Get<int>("ID", true));
       element.PhoneType(query.Get<int>("PhoneType", true));
@@ -764,6 +923,7 @@ bool TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorp
    query.Set("keyID", key_val.ID());
    query.Set("keyPhoneType", key_val.PhoneType());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.PhoneType(query.Get<int>("PhoneType", true));
@@ -773,7 +933,14 @@ bool TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorp
       data.DialingNational(query.Get<std::string>("DialingNational"));
       data.DialingInternational(query.Get<std::string>("DialingInternational"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TPhone";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLPhoneSelectDetail);
+      }
    return true;
    }
 
@@ -782,7 +949,7 @@ bool TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorp
 bool TPersonReader::Read(myCorporate::TPhonesTypes::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLPhonesTypesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TPhonesTypes element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -800,6 +967,7 @@ bool TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, 
    query.SetSQL(strSQLPhonesTypesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -808,7 +976,14 @@ bool TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, 
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TPhonesTypes";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLPhonesTypesSelectDetail);
+      }
    return true;
    }
 
@@ -817,7 +992,7 @@ bool TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, 
 bool TPersonReader::Read(myHR::TReasonDeparture::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLReasonDepartureSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TReasonDeparture element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -835,6 +1010,7 @@ bool TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myH
    query.SetSQL(strSQLReasonDepartureSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -843,7 +1019,14 @@ bool TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myH
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TReasonDeparture";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLReasonDepartureSelectDetail);
+      }
    return true;
    }
 
@@ -852,7 +1035,7 @@ bool TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myH
 bool TPersonReader::Read(myHR::TReasonNonWorking::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLReasonNonWorkingSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TReasonNonWorking element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -870,6 +1053,7 @@ bool TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, my
    query.SetSQL(strSQLReasonNonWorkingSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -878,7 +1062,14 @@ bool TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, my
       data.Notes(query.Get<std::string>("Notes"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TReasonNonWorking";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLReasonNonWorkingSelectDetail);
+      }
    return true;
    }
 
@@ -887,7 +1078,7 @@ bool TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, my
 bool TPersonReader::Read(myHR::TSalaryBase::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLSalaryBaseSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TSalaryBase element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -904,6 +1095,7 @@ bool TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TS
    query.SetSQL(strSQLSalaryBaseSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -911,7 +1103,14 @@ bool TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TS
       data.Description(query.Get<std::string>("Description"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TSalaryBase";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSalaryBaseSelectDetail);
+      }
    return true;
    }
 
@@ -920,7 +1119,7 @@ bool TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TS
 bool TPersonReader::Read(myHR::TSalaryType::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLSalaryTypeSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TSalaryType element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -938,6 +1137,7 @@ bool TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TS
    query.SetSQL(strSQLSalaryTypeSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -946,7 +1146,14 @@ bool TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TS
       data.SalaryBase(query.Get<int>("SalaryBase"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TSalaryType";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSalaryTypeSelectDetail);
+      }
    return true;
    }
 
@@ -955,7 +1162,7 @@ bool TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TS
 bool TPersonReader::Read(myHR::TTaxClasses::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLTaxClassesSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TTaxClasses element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -973,6 +1180,7 @@ bool TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TT
    query.SetSQL(strSQLTaxClassesSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
@@ -981,7 +1189,14 @@ bool TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TT
       data.Coupled(query.Get<bool>("Coupled"));
       data.UrgentValue(query.Get<bool>("UrgentValue"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TTaxClasses";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLTaxClassesSelectDetail);
+      }
    return true;
    }
 
@@ -990,7 +1205,7 @@ bool TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TT
 bool TPersonReader::Read(myHR::TWD_Holidays::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLWD_HolidaysSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Holidays element;
       element.CalendarDay(query.Get<std::chrono::year_month_day>("CalendarDay", true));
       element.Donation(query.Get<std::string>("Donation"));
@@ -1006,13 +1221,21 @@ bool TPersonReader::Read(myHR::TWD_Holidays::primary_key const& key_val, myHR::T
    query.SetSQL(strSQLWD_HolidaysSelectDetail);
    query.Set("keyCalendarDay", key_val.CalendarDay());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.CalendarDay(query.Get<std::chrono::year_month_day>("CalendarDay", true));
       data.Donation(query.Get<std::string>("Donation"));
       data.Share(query.Get<int>("Share"));
       data.Description(query.Get<std::string>("Description"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TWD_Holidays";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_HolidaysSelectDetail);
+      }
    return true;
    }
 
@@ -1021,7 +1244,7 @@ bool TPersonReader::Read(myHR::TWD_Holidays::primary_key const& key_val, myHR::T
 bool TPersonReader::Read(myHR::TWD_Months::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLWD_MonthsSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Months element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -1037,13 +1260,21 @@ bool TPersonReader::Read(myHR::TWD_Months::primary_key const& key_val, myHR::TWD
    query.SetSQL(strSQLWD_MonthsSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
       data.Abbreviation(query.Get<std::string>("Abbreviation"));
       data.Quarter(query.Get<unsigned int>("Quarter"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TWD_Months";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_MonthsSelectDetail);
+      }
    return true;
    }
 
@@ -1052,7 +1283,7 @@ bool TPersonReader::Read(myHR::TWD_Months::primary_key const& key_val, myHR::TWD
 bool TPersonReader::Read(myHR::TWD_NonWorking::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLWD_NonWorkingSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_NonWorking element;
       element.ID(query.Get<int>("ID", true));
       element.StartAt(query.Get<std::chrono::year_month_day>("StartAt", true));
@@ -1070,6 +1301,7 @@ bool TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR:
    query.Set("keyID", key_val.ID());
    query.Set("keyStartAt", key_val.StartAt());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.StartAt(query.Get<std::chrono::year_month_day>("StartAt", true));
@@ -1077,7 +1309,14 @@ bool TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR:
       data.Reason(query.Get<int>("Reason"));
       data.Notes(query.Get<std::string>("Notes"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TWD_NonWorking";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_NonWorkingSelectDetail);
+      }
    return true;
    }
 
@@ -1086,7 +1325,7 @@ bool TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR:
 bool TPersonReader::Read(myHR::TWD_Weekdays::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLWD_WeekdaysSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Weekdays element;
       element.ID(query.Get<int>("ID", true));
       element.Denotation(query.Get<std::string>("Denotation"));
@@ -1102,13 +1341,21 @@ bool TPersonReader::Read(myHR::TWD_Weekdays::primary_key const& key_val, myHR::T
    query.SetSQL(strSQLWD_WeekdaysSelectDetail);
    query.Set("keyID", key_val.ID());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Denotation(query.Get<std::string>("Denotation"));
       data.Abbreviation(query.Get<std::string>("Abbreviation"));
       data.Workday(query.Get<bool>("Workday"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TWD_Weekdays";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_WeekdaysSelectDetail);
+      }
    return true;
    }
 
@@ -1117,7 +1364,7 @@ bool TPersonReader::Read(myHR::TWD_Weekdays::primary_key const& key_val, myHR::T
 bool TPersonReader::Read(myHR::TWD_Workdays::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLWD_WorkdaysSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Workdays element;
       element.CalendarDay(query.Get<std::chrono::year_month_day>("CalendarDay", true));
       element.CalendarWeekday(query.Get<int>("CalendarWeekday"));
@@ -1138,6 +1385,7 @@ bool TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::T
    query.SetSQL(strSQLWD_WorkdaysSelectDetail);
    query.Set("keyCalendarDay", key_val.CalendarDay());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.CalendarDay(query.Get<std::chrono::year_month_day>("CalendarDay", true));
       data.CalendarWeekday(query.Get<int>("CalendarWeekday"));
@@ -1149,7 +1397,14 @@ bool TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::T
       data.CalendarQuarter(query.Get<int>("CalendarQuarter"));
       data.Workday(query.Get<bool>("Workday"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TWD_Workdays";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_WorkdaysSelectDetail);
+      }
    return true;
    }
 
@@ -1158,7 +1413,7 @@ bool TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::T
 bool TPersonReader::Read(myHR::TWorkingTime::container_ty& data) {
    auto query = database.CreateQuery();
    query.SetSQL(strSQLWorkingTimeSelectAll);
-   for(query.Execute();!query.IsEof();query.Next()) {
+   for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWorkingTime element;
       element.ID(query.Get<int>("ID", true));
       element.StartingTime(query.Get<std::chrono::system_clock::time_point>("StartingTime", true));
@@ -1177,6 +1432,7 @@ bool TPersonReader::Read(myHR::TWorkingTime::primary_key const& key_val, myHR::T
    query.Set("keyID", key_val.ID());
    query.Set("keyStartingTime", key_val.StartingTime());
    query.Execute();
+   query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.StartingTime(query.Get<std::chrono::system_clock::time_point>("StartingTime", true));
@@ -1185,7 +1441,14 @@ bool TPersonReader::Read(myHR::TWorkingTime::primary_key const& key_val, myHR::T
       data.ProcessedAt(query.Get<std::chrono::system_clock::time_point>("ProcessedAt"));
       data.DayOfWork(query.Get<std::chrono::year_month_day>("DayOfWork"));
       }
-   else throw std::runtime_error("...");
+   else return false;
+   if(query.Next(); !query.IsEof()) {
+      std::ostringstream os1, os2;
+      os1 << "error while reading data for TWorkingTime";
+      os2 << "couldn't read unique data for primary key element\n";
+      key_val.write(os2);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWorkingTimeSelectDetail);
+      }
    return true;
    }
 

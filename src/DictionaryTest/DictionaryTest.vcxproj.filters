@@ -42,6 +42,9 @@
     <Filter Include="Source Files\Sales">
       <UniqueIdentifier>{35ef88e6-3287-4d25-b80a-fb381c1db5ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\adecc_Scholar">
+      <UniqueIdentifier>{2beb2a77-81d8-4518-8d1c-172bce891874}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="TestMain.qrc">
@@ -166,6 +169,9 @@
     <ClCompile Include="..\System\Sales\CustLiaison.cpp">
       <Filter>Source Files\Sales</Filter>
     </ClCompile>
+    <ClCompile Include="..\System\Corporate\CorporateForm.cpp">
+      <Filter>Source Files\Corporate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\System\Corporate\base.h">
@@ -281,6 +287,39 @@
     </ClInclude>
     <ClInclude Include="..\System\Sales\CustLiaison.h">
       <Filter>Header Files\Sales</Filter>
+    </ClInclude>
+    <ClInclude Include="..\System\Corporate\CorporateForm.h">
+      <Filter>Header Files\Corporate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyAlgorithm.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyConvert.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyForm.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyFramework_Selection.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyFramework_String.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyLogger.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyStdTypes.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyStream.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTools.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTupleUtils.h">
+      <Filter>Header Files\adecc_Scholar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

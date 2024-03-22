@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TCustLiaison
 * Content: doman range with the liaisons to use a contact at a customer
-* Date: 17.03.2024 20:08:19,931  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:11,943  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -18,6 +18,8 @@
 // necessary additional headers for used datatypes
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -43,22 +45,20 @@ class TCustLiaison : virtual public myCorporate::TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TCustLiaison;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iID;            
 
-            constexpr primary_key() : iID {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pID) : iID(pID) { }
-            primary_key(TCustLiaison const& other) : iID(other._ID()) { }
-            constexpr primary_key(primary_key const& other) : iID(other.iID) { }
-            constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
-            constexpr ~primary_key() { }
+            explicit primary_key(int pID);
+            explicit primary_key(TCustLiaison const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TCustLiaison() const {
-               TCustLiaison ret;
-               return ret.init(*this);
-               }
+            operator TCustLiaison() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -74,14 +74,11 @@ class TCustLiaison : virtual public myCorporate::TSimplePersonBase {
             // manipulators the primary type class
             int        ID(int newVal) { return iID = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TCustLiaison>;
@@ -105,6 +102,7 @@ class TCustLiaison : virtual public myCorporate::TSimplePersonBase {
       TCustLiaison();
       TCustLiaison(TCustLiaison const&);
       TCustLiaison(TCustLiaison &&) noexcept;
+      explicit TCustLiaison(primary_key const&);
       virtual ~TCustLiaison();
 
       // ----------------------------------------------------------------------------------------------

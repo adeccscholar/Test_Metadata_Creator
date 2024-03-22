@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of sql statement for access with class TPersonReader
-* Date: 17.03.2024 20:08:25,637  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,207  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -32,6 +32,10 @@ extern const std::string strSQLContactsSelectAll;
 extern const std::string strSQLContactsSelectDetail;
 extern const std::string strSQLContactsDeleteAll;
 extern const std::string strSQLContactsDeleteDetail;
+extern const std::string strSQLCorporateFormSelectAll;
+extern const std::string strSQLCorporateFormSelectDetail;
+extern const std::string strSQLCorporateFormDeleteAll;
+extern const std::string strSQLCorporateFormDeleteDetail;
 extern const std::string strSQLCountriesSelectAll;
 extern const std::string strSQLCountriesSelectDetail;
 extern const std::string strSQLCountriesDeleteAll;

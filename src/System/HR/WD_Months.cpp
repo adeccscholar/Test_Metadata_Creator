@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWD_Months
 * Content: domain with months for human resources, actually used for working time, later for processes too. This range make it possible additional informations to adding later. This isn't a typical range value.
-* Date: 17.03.2024 20:08:25,429  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:13,006  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myHR {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TWD_Months
+// ---------------------------------------------------------------------------------------
+TWD_Months::primary_key::primary_key() : iID {} { }
+
+TWD_Months::primary_key::primary_key(int pID) : iID(pID) { }
+
+TWD_Months::primary_key::primary_key(TWD_Months const& other) : iID(other._ID()) { }
+
+TWD_Months::primary_key::primary_key(TWD_Months::primary_key const& other) : iID(other.iID) { }
+
+TWD_Months::primary_key::primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)) { }
+
+// conversions operator for this element to the encircling class
+TWD_Months::primary_key::operator TWD_Months() const {
+   TWD_Months ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TWD_Months::primary_key::write(std::ostream& out) const {
+   out << "elements of class TWD_Months::primary_key:\n";
+   out << std::left << std::setw(6) << " - ID" << ":" << iID << '\n';
+   return out;
+   }
+
+int TWD_Months::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TWD_Months
+// ---------------------------------------------------------------------------------------
 TWD_Months::TWD_Months() {
    _init();
    }
@@ -24,6 +62,8 @@ TWD_Months::TWD_Months(TWD_Months const& other){
 TWD_Months::TWD_Months(TWD_Months&& other) noexcept {
    _swap(other);
    }
+
+TWD_Months::TWD_Months(primary_key const& other) : iID(other.ID()) { }
 
 TWD_Months::~TWD_Months() {   }
 

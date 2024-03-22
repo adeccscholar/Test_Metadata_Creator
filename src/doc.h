@@ -13,12 +13,12 @@
   * \include{doc} Documentation_adecc_Scholar.dox
   * \include{doc} Documentation_adeccDatabase.dox
   * \include{doc} Documentation_MIT_License.dox
+  * \include{doc} Documentation_TestApp.dox
   * \include{doc} Documentations_Testdata.dox
 */
 
 
 /**
-
 \page spgDesignBlotter first impressions of the application
 \section spgDesignBlotter_Brainstorming from the idea of a training program to the first draft
 \details You can find the first impressions of the project "simple person management" at this page. 

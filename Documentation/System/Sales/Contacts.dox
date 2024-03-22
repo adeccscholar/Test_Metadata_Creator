@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Contacts
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Contacts
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024  file created with adecc Scholar metadata generator
+\date 22.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -28,7 +28,7 @@
 <tr><td>myCorporate::TPerson</td>    <td>\ref datamodel_table_Person</td>    <td>System\Corporate/Person.h</td></tr></table>
 
 \author Volker Hillmann (adecc Scholar)
-\date 17.03.2024 documentation for this project created
+\date 22.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_Contacts
 
 \class mySales::TContacts::primary_key
@@ -72,6 +72,11 @@
 \fn mySales::TContacts::primary_key::operator TContacts () const
 \brief conversion operator for the encircling class
 \returns value of an instance of the encircling class mySales::TContacts
+
+\fn mySales::TContacts::primary_key::write(std::ostream& out) const
+\brief method to write all elements of the instance to an std::ostream
+\param[in] out reference to a std::ostream as target to write data for this instance of the class mySales::TContacts::primary_key
+\returns reference to the std::ostream to continue writing after call of this function
 
 \fn mySales::TContacts::primary_key::_compare(primary_key const&) const
 \brief internal help function to compare the current instance with to another instance of the same class.
@@ -125,7 +130,7 @@ This means that the same rules apply in the database and the program, and the da
 \fn mySales::TContacts::GetKey() const
 \brief method to get the primary key for this instance
 \returns type mySales::TContacts
-\throw std::runtime::error if the attribute(s) of the primary key are empty.
+\throws std::runtime::error if the attribute(s) of the primary key are empty.
 
 
 \name constructors and destructor for this class
@@ -209,19 +214,19 @@ method to copy instances of the hierachie of classes into another
 \brief special selector for data element mySales::TContacts::iContactID
 \details internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
 \details <b>internal id for this contact, attribute as foreign key from an attribute ID of a person entity </b>
-\throw std::runtime::error if the attribute mySales::TContacts::iContactID is empty
+\throws std::runtime::error if the attribute mySales::TContacts::iContactID is empty
 \returns int const&: Reference to the data element mySales::TContacts::iContactID
 \fn int mySales::TContacts::_CustID() const
 \brief special selector for data element mySales::TContacts::iCustID
 \details Customer identification number of the contact associated customer.
 \details <b>Customer identification number of the contact associated customer.</b>
-\throw std::runtime::error if the attribute mySales::TContacts::iCustID is empty
+\throws std::runtime::error if the attribute mySales::TContacts::iCustID is empty
 \returns int const&: Reference to the data element mySales::TContacts::iCustID
 \fn int mySales::TContacts::_CustLiaison() const
 \brief special selector for data element mySales::TContacts::iCustLiaison
 \details liaision for this contact person as range value (from table CustLiasion)
 \details <b>liaision for this contact person as range value (from table CustLiasion)</b>
-\throw std::runtime::error if the attribute mySales::TContacts::iCustLiaison is empty
+\throws std::runtime::error if the attribute mySales::TContacts::iCustLiaison is empty
 \returns int const&: Reference to the data element mySales::TContacts::iCustLiaison
 
 \}

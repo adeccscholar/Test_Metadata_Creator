@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with keys, references and indices for the project simple person model
- * generated at: 17.03.2024 20:08:19,201 with the adecc Scholar metadata generator
+ * generated at: 22.03.2024 15:39:11,143 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -29,6 +29,8 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT pk_Banking PRIMARY KEY (ID, BankingType);
 ALTER TABLE dbo.BankingTypes ADD CONSTRAINT pk_BankingTypes PRIMARY KEY (ID);
 
 ALTER TABLE dbo.Contacts ADD CONSTRAINT pk_Contacts PRIMARY KEY (ContactID);
+
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT pk_CorporateForm PRIMARY KEY (ID);
 
 ALTER TABLE dbo.Countries ADD CONSTRAINT pk_Countries PRIMARY KEY (ID);
 
@@ -91,6 +93,9 @@ ALTER TABLE dbo.AddressTypes ADD CONSTRAINT uk_AddressType_Denotation UNIQUE (Ab
 
 ALTER TABLE dbo.BankingTypes ADD CONSTRAINT uk_BankingTypes_Denotation UNIQUE (Denotation);
 
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT uk_CorporateForm_Donation UNIQUE (Denotation);
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT uk_CorporateForm_Abbreviation UNIQUE (ID);
+
 ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_Denotation UNIQUE (Denotation);
 ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
 
@@ -151,6 +156,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Person FOREIGN KEY (CustID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Classification FOREIGN KEY (CustClassification) REFERENCES dbo.CustClassification (ID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Employees_SA FOREIGN KEY (ServiceAgent) REFERENCES dbo.Employees (EmployeeID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (LegalForm) REFERENCES dbo.CorporateForm (ID);
 
 ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (EmployeeID);
 

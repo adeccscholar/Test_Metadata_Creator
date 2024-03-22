@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TEmployees
 * Content: information about the employees in the company (generalization of a person)
-* Date: 17.03.2024 20:08:20,110  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,154  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,6 +13,44 @@
 
 namespace myHR {
 
+// ---------------------------------------------------------------------------------------
+// implementation for the primary_key class inside of TEmployees
+// ---------------------------------------------------------------------------------------
+TEmployees::primary_key::primary_key() : iEmployeeID {} { }
+
+TEmployees::primary_key::primary_key(int pEmployeeID) : iEmployeeID(pEmployeeID) { }
+
+TEmployees::primary_key::primary_key(TEmployees const& other) : iEmployeeID(other._EmployeeID()) { }
+
+TEmployees::primary_key::primary_key(TEmployees::primary_key const& other) : iEmployeeID(other.iEmployeeID) { }
+
+TEmployees::primary_key::primary_key(primary_key&& other) noexcept : iEmployeeID(std::move(other.iEmployeeID)) { }
+
+// conversions operator for this element to the encircling class
+TEmployees::primary_key::operator TEmployees() const {
+   TEmployees ret;
+   return ret.init(*this);
+   }
+
+// write method for this primary_key element
+std::ostream& TEmployees::primary_key::write(std::ostream& out) const {
+   out << "elements of class TEmployees::primary_key:\n";
+   out << std::left << std::setw(14) << " - EmployeeID" << ":" << iEmployeeID << '\n';
+   return out;
+   }
+
+int TEmployees::primary_key::_compare(primary_key const& other) const {
+   static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
+      return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
+      };
+
+   if(auto ret = comp_help(this->iEmployeeID, other.iEmployeeID); ret != 0) return ret;
+   return 0;
+   }
+
+// ---------------------------------------------------------------------------------------
+// implementation of the class TEmployees
+// ---------------------------------------------------------------------------------------
 TEmployees::TEmployees() : myCorporate::TPerson() {
    _init();
    }
@@ -24,6 +62,8 @@ TEmployees::TEmployees(TEmployees const& other) : myCorporate::TPerson(other){
 TEmployees::TEmployees(TEmployees&& other) noexcept : myCorporate::TPerson(std::move(other)) {
    _swap(other);
    }
+
+TEmployees::TEmployees(primary_key const& other) : iEmployeeID(other.EmployeeID()) { }
 
 TEmployees::~TEmployees() {   }
 
@@ -129,8 +169,8 @@ void TEmployees::_copy(TEmployees const& other) {
    SocialNummer(other.SocialNummer());
    Active(other.Active());
    // copying the composed classes
-   m_WD_NonWorking  = m_WD_NonWorking;
-   m_WorkingTime    = m_WorkingTime;
+   m_WD_NonWorking  = other.m_WD_NonWorking;
+   m_WorkingTime    = other.m_WorkingTime;
    return;
    }
 

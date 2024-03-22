@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script to drop relationships and tables for the project simple person model
- * generated at: 17.03.2024 20:08:19,236 with the adecc Scholar metadata generator
+ * generated at: 22.03.2024 15:39:11,176 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -21,6 +21,7 @@ ALTER TABLE dbo.Contacts DROP CONSTRAINT refContacts2Liaison;
 ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2Person;
 ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2Classification;
 ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2Employees_SA;
+ALTER TABLE dbo.Customers DROP CONSTRAINT refCustomers2LegalForms;
 
 ALTER TABLE dbo.Departments DROP CONSTRAINT refDepartments2Employee;
 
@@ -66,6 +67,7 @@ DROP TABLE dbo.AddressTypes;
 DROP TABLE dbo.Banking;
 DROP TABLE dbo.BankingTypes;
 DROP TABLE dbo.Contacts;
+DROP TABLE dbo.CorporateForm;
 DROP TABLE dbo.Countries;
 DROP TABLE dbo.CustClassification;
 DROP TABLE dbo.CustLiaison;

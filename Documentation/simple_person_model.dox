@@ -30,6 +30,7 @@
 \include{doc} System\Corporate/Banking.dox
 \include{doc} System\Corporate/BankingTypes.dox
 \include{doc} System\Sales/Contacts.dox
+\include{doc} System\Corporate/CorporateForm.dox
 \include{doc} System\Corporate/Countries.dox
 \include{doc} System\Sales/CustClassification.dox
 \include{doc} System\Sales/CustLiaison.dox
@@ -118,6 +119,9 @@
 \details The example project \ref pgadeccDatabase is use to implement the access to the concrete database.
 \details The used sql database server is from type TMyMSSQL.
 
+\typedef reader::TPersonReader::concrete_db_server
+\brief credentials type to connect to a concrete database server (used for credentials and type of server)\details checked about a the concept my_db_credentials. could be actually TMyMSSQL, TMyMySQL, TMyOracle, TMyInterbase or TMySQLite.
+
 \var reader::strSQLAddressSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Address.
 
@@ -128,7 +132,16 @@
 \brief method to read all data of the table \ref datamodel_table_Address in a container.
 \details the method use the const std::string reader::strSQLAddressAll to read the data.
 \param[out] data reference to myCorporate::TAddress::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCorporate::TAddress& data)
+\brief method to read a tuple of the table \ref datamodel_table_Address in a container with the primary key.
+\details the method use the const std::string reader::strSQLAddressDetail to read the data.
+\param[in] key_val const reference to myCorporate::TAddress::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TAddress with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLAddressTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_AddressTypes.
@@ -140,7 +153,16 @@
 \brief method to read all data of the table \ref datamodel_table_AddressTypes in a container.
 \details the method use the const std::string reader::strSQLAddressTypesAll to read the data.
 \param[out] data reference to myCorporate::TAddressTypes::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val, myCorporate::TAddressTypes& data)
+\brief method to read a tuple of the table \ref datamodel_table_AddressTypes in a container with the primary key.
+\details the method use the const std::string reader::strSQLAddressTypesDetail to read the data.
+\param[in] key_val const reference to myCorporate::TAddressTypes::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TAddressTypes with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLBankingSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Banking.
@@ -152,7 +174,16 @@
 \brief method to read all data of the table \ref datamodel_table_Banking in a container.
 \details the method use the const std::string reader::strSQLBankingAll to read the data.
 \param[out] data reference to myCorporate::TBanking::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCorporate::TBanking& data)
+\brief method to read a tuple of the table \ref datamodel_table_Banking in a container with the primary key.
+\details the method use the const std::string reader::strSQLBankingDetail to read the data.
+\param[in] key_val const reference to myCorporate::TBanking::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TBanking with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLBankingTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_BankingTypes.
@@ -164,7 +195,16 @@
 \brief method to read all data of the table \ref datamodel_table_BankingTypes in a container.
 \details the method use the const std::string reader::strSQLBankingTypesAll to read the data.
 \param[out] data reference to myCorporate::TBankingTypes::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val, myCorporate::TBankingTypes& data)
+\brief method to read a tuple of the table \ref datamodel_table_BankingTypes in a container with the primary key.
+\details the method use the const std::string reader::strSQLBankingTypesDetail to read the data.
+\param[in] key_val const reference to myCorporate::TBankingTypes::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TBankingTypes with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLContactsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Contacts.
@@ -176,7 +216,37 @@
 \brief method to read all data of the table \ref datamodel_table_Contacts in a container.
 \details the method use the const std::string reader::strSQLContactsAll to read the data.
 \param[out] data reference to mySales::TContacts::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(mySales::TContacts::primary_key const& key_val, mySales::TContacts& data)
+\brief method to read a tuple of the table \ref datamodel_table_Contacts in a container with the primary key.
+\details the method use the const std::string reader::strSQLContactsDetail to read the data.
+\param[in] key_val const reference to mySales::TContacts::primary_key with the primary key vals to identify the data.
+\param[out] data reference to mySales::TContacts with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
+
+\var reader::strSQLCorporateFormSelectAll
+\brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_CorporateForm.
+
+\var reader::strSQLCorporateFormSelectDetail
+\brief constant std string with the sql statement to read a tuple from table \ref datamodel_table_CorporateForm with the primary key.
+
+\fn reader::TPersonReader::Read(myCorporate::TCorporateForm::container_ty& data)
+\brief method to read all data of the table \ref datamodel_table_CorporateForm in a container.
+\details the method use the const std::string reader::strSQLCorporateFormAll to read the data.
+\param[out] data reference to myCorporate::TCorporateForm::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TCorporateForm::primary_key const& key_val, myCorporate::TCorporateForm& data)
+\brief method to read a tuple of the table \ref datamodel_table_CorporateForm in a container with the primary key.
+\details the method use the const std::string reader::strSQLCorporateFormDetail to read the data.
+\param[in] key_val const reference to myCorporate::TCorporateForm::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TCorporateForm with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLCountriesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Countries.
@@ -188,7 +258,16 @@
 \brief method to read all data of the table \ref datamodel_table_Countries in a container.
 \details the method use the const std::string reader::strSQLCountriesAll to read the data.
 \param[out] data reference to myCorporate::TCountries::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, myCorporate::TCountries& data)
+\brief method to read a tuple of the table \ref datamodel_table_Countries in a container with the primary key.
+\details the method use the const std::string reader::strSQLCountriesDetail to read the data.
+\param[in] key_val const reference to myCorporate::TCountries::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TCountries with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLCustClassificationSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_CustClassification.
@@ -200,7 +279,16 @@
 \brief method to read all data of the table \ref datamodel_table_CustClassification in a container.
 \details the method use the const std::string reader::strSQLCustClassificationAll to read the data.
 \param[out] data reference to mySales::TCustClassification::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(mySales::TCustClassification::primary_key const& key_val, mySales::TCustClassification& data)
+\brief method to read a tuple of the table \ref datamodel_table_CustClassification in a container with the primary key.
+\details the method use the const std::string reader::strSQLCustClassificationDetail to read the data.
+\param[in] key_val const reference to mySales::TCustClassification::primary_key with the primary key vals to identify the data.
+\param[out] data reference to mySales::TCustClassification with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLCustLiaisonSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_CustLiaison.
@@ -212,7 +300,16 @@
 \brief method to read all data of the table \ref datamodel_table_CustLiaison in a container.
 \details the method use the const std::string reader::strSQLCustLiaisonAll to read the data.
 \param[out] data reference to mySales::TCustLiaison::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySales::TCustLiaison& data)
+\brief method to read a tuple of the table \ref datamodel_table_CustLiaison in a container with the primary key.
+\details the method use the const std::string reader::strSQLCustLiaisonDetail to read the data.
+\param[in] key_val const reference to mySales::TCustLiaison::primary_key with the primary key vals to identify the data.
+\param[out] data reference to mySales::TCustLiaison with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLCustomersSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Customers.
@@ -224,7 +321,16 @@
 \brief method to read all data of the table \ref datamodel_table_Customers in a container.
 \details the method use the const std::string reader::strSQLCustomersAll to read the data.
 \param[out] data reference to mySales::TCustomers::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(mySales::TCustomers::primary_key const& key_val, mySales::TCustomers& data)
+\brief method to read a tuple of the table \ref datamodel_table_Customers in a container with the primary key.
+\details the method use the const std::string reader::strSQLCustomersDetail to read the data.
+\param[in] key_val const reference to mySales::TCustomers::primary_key with the primary key vals to identify the data.
+\param[out] data reference to mySales::TCustomers with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLDepartmentsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Departments.
@@ -236,7 +342,16 @@
 \brief method to read all data of the table \ref datamodel_table_Departments in a container.
 \details the method use the const std::string reader::strSQLDepartmentsAll to read the data.
 \param[out] data reference to myHR::TDepartments::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::TDepartments& data)
+\brief method to read a tuple of the table \ref datamodel_table_Departments in a container with the primary key.
+\details the method use the const std::string reader::strSQLDepartmentsDetail to read the data.
+\param[in] key_val const reference to myHR::TDepartments::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TDepartments with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLEmployeesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Employees.
@@ -248,7 +363,16 @@
 \brief method to read all data of the table \ref datamodel_table_Employees in a container.
 \details the method use the const std::string reader::strSQLEmployeesAll to read the data.
 \param[out] data reference to myHR::TEmployees::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEmployees& data)
+\brief method to read a tuple of the table \ref datamodel_table_Employees in a container with the primary key.
+\details the method use the const std::string reader::strSQLEmployeesDetail to read the data.
+\param[in] key_val const reference to myHR::TEmployees::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TEmployees with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLFamilyStatusSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_FamilyStatus.
@@ -260,7 +384,16 @@
 \brief method to read all data of the table \ref datamodel_table_FamilyStatus in a container.
 \details the method use the const std::string reader::strSQLFamilyStatusAll to read the data.
 \param[out] data reference to myCorporate::TFamilyStatus::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val, myCorporate::TFamilyStatus& data)
+\brief method to read a tuple of the table \ref datamodel_table_FamilyStatus in a container with the primary key.
+\details the method use the const std::string reader::strSQLFamilyStatusDetail to read the data.
+\param[in] key_val const reference to myCorporate::TFamilyStatus::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TFamilyStatus with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLFamilyTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_FamilyTypes.
@@ -272,7 +405,16 @@
 \brief method to read all data of the table \ref datamodel_table_FamilyTypes in a container.
 \details the method use the const std::string reader::strSQLFamilyTypesAll to read the data.
 \param[out] data reference to myCorporate::TFamilyTypes::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, myCorporate::TFamilyTypes& data)
+\brief method to read a tuple of the table \ref datamodel_table_FamilyTypes in a container with the primary key.
+\details the method use the const std::string reader::strSQLFamilyTypesDetail to read the data.
+\param[in] key_val const reference to myCorporate::TFamilyTypes::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TFamilyTypes with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLFormOfAddressSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_FormOfAddress.
@@ -284,7 +426,16 @@
 \brief method to read all data of the table \ref datamodel_table_FormOfAddress in a container.
 \details the method use the const std::string reader::strSQLFormOfAddressAll to read the data.
 \param[out] data reference to myCorporate::TFormOfAddress::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val, myCorporate::TFormOfAddress& data)
+\brief method to read a tuple of the table \ref datamodel_table_FormOfAddress in a container with the primary key.
+\details the method use the const std::string reader::strSQLFormOfAddressDetail to read the data.
+\param[in] key_val const reference to myCorporate::TFormOfAddress::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TFormOfAddress with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLInternetSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Internet.
@@ -296,7 +447,16 @@
 \brief method to read all data of the table \ref datamodel_table_Internet in a container.
 \details the method use the const std::string reader::strSQLInternetAll to read the data.
 \param[out] data reference to myCorporate::TInternet::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TInternet::primary_key const& key_val, myCorporate::TInternet& data)
+\brief method to read a tuple of the table \ref datamodel_table_Internet in a container with the primary key.
+\details the method use the const std::string reader::strSQLInternetDetail to read the data.
+\param[in] key_val const reference to myCorporate::TInternet::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TInternet with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLInternetTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_InternetTypes.
@@ -308,7 +468,16 @@
 \brief method to read all data of the table \ref datamodel_table_InternetTypes in a container.
 \details the method use the const std::string reader::strSQLInternetTypesAll to read the data.
 \param[out] data reference to myCorporate::TInternetTypes::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val, myCorporate::TInternetTypes& data)
+\brief method to read a tuple of the table \ref datamodel_table_InternetTypes in a container with the primary key.
+\details the method use the const std::string reader::strSQLInternetTypesDetail to read the data.
+\param[in] key_val const reference to myCorporate::TInternetTypes::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TInternetTypes with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLJobPositionsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_JobPositions.
@@ -320,7 +489,16 @@
 \brief method to read all data of the table \ref datamodel_table_JobPositions in a container.
 \details the method use the const std::string reader::strSQLJobPositionsAll to read the data.
 \param[out] data reference to myHR::TJobPositions::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::TJobPositions& data)
+\brief method to read a tuple of the table \ref datamodel_table_JobPositions in a container with the primary key.
+\details the method use the const std::string reader::strSQLJobPositionsDetail to read the data.
+\param[in] key_val const reference to myHR::TJobPositions::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TJobPositions with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLPersonSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Person.
@@ -332,7 +510,16 @@
 \brief method to read all data of the table \ref datamodel_table_Person in a container.
 \details the method use the const std::string reader::strSQLPersonAll to read the data.
 \param[out] data reference to myCorporate::TPerson::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCorporate::TPerson& data)
+\brief method to read a tuple of the table \ref datamodel_table_Person in a container with the primary key.
+\details the method use the const std::string reader::strSQLPersonDetail to read the data.
+\param[in] key_val const reference to myCorporate::TPerson::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TPerson with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLPhoneSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_Phone.
@@ -344,7 +531,16 @@
 \brief method to read all data of the table \ref datamodel_table_Phone in a container.
 \details the method use the const std::string reader::strSQLPhoneAll to read the data.
 \param[out] data reference to myCorporate::TPhone::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorporate::TPhone& data)
+\brief method to read a tuple of the table \ref datamodel_table_Phone in a container with the primary key.
+\details the method use the const std::string reader::strSQLPhoneDetail to read the data.
+\param[in] key_val const reference to myCorporate::TPhone::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TPhone with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLPhonesTypesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_PhonesTypes.
@@ -356,7 +552,16 @@
 \brief method to read all data of the table \ref datamodel_table_PhonesTypes in a container.
 \details the method use the const std::string reader::strSQLPhonesTypesAll to read the data.
 \param[out] data reference to myCorporate::TPhonesTypes::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, myCorporate::TPhonesTypes& data)
+\brief method to read a tuple of the table \ref datamodel_table_PhonesTypes in a container with the primary key.
+\details the method use the const std::string reader::strSQLPhonesTypesDetail to read the data.
+\param[in] key_val const reference to myCorporate::TPhonesTypes::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myCorporate::TPhonesTypes with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLReasonDepartureSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_ReasonDeparture.
@@ -368,7 +573,16 @@
 \brief method to read all data of the table \ref datamodel_table_ReasonDeparture in a container.
 \details the method use the const std::string reader::strSQLReasonDepartureAll to read the data.
 \param[out] data reference to myHR::TReasonDeparture::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myHR::TReasonDeparture& data)
+\brief method to read a tuple of the table \ref datamodel_table_ReasonDeparture in a container with the primary key.
+\details the method use the const std::string reader::strSQLReasonDepartureDetail to read the data.
+\param[in] key_val const reference to myHR::TReasonDeparture::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TReasonDeparture with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLReasonNonWorkingSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_ReasonNonWorking.
@@ -380,7 +594,16 @@
 \brief method to read all data of the table \ref datamodel_table_ReasonNonWorking in a container.
 \details the method use the const std::string reader::strSQLReasonNonWorkingAll to read the data.
 \param[out] data reference to myHR::TReasonNonWorking::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, myHR::TReasonNonWorking& data)
+\brief method to read a tuple of the table \ref datamodel_table_ReasonNonWorking in a container with the primary key.
+\details the method use the const std::string reader::strSQLReasonNonWorkingDetail to read the data.
+\param[in] key_val const reference to myHR::TReasonNonWorking::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TReasonNonWorking with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLSalaryBaseSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_SalaryBase.
@@ -392,7 +615,16 @@
 \brief method to read all data of the table \ref datamodel_table_SalaryBase in a container.
 \details the method use the const std::string reader::strSQLSalaryBaseAll to read the data.
 \param[out] data reference to myHR::TSalaryBase::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TSalaryBase& data)
+\brief method to read a tuple of the table \ref datamodel_table_SalaryBase in a container with the primary key.
+\details the method use the const std::string reader::strSQLSalaryBaseDetail to read the data.
+\param[in] key_val const reference to myHR::TSalaryBase::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TSalaryBase with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLSalaryTypeSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_SalaryType.
@@ -404,7 +636,16 @@
 \brief method to read all data of the table \ref datamodel_table_SalaryType in a container.
 \details the method use the const std::string reader::strSQLSalaryTypeAll to read the data.
 \param[out] data reference to myHR::TSalaryType::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TSalaryType& data)
+\brief method to read a tuple of the table \ref datamodel_table_SalaryType in a container with the primary key.
+\details the method use the const std::string reader::strSQLSalaryTypeDetail to read the data.
+\param[in] key_val const reference to myHR::TSalaryType::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TSalaryType with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLTaxClassesSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_TaxClasses.
@@ -416,7 +657,16 @@
 \brief method to read all data of the table \ref datamodel_table_TaxClasses in a container.
 \details the method use the const std::string reader::strSQLTaxClassesAll to read the data.
 \param[out] data reference to myHR::TTaxClasses::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TTaxClasses& data)
+\brief method to read a tuple of the table \ref datamodel_table_TaxClasses in a container with the primary key.
+\details the method use the const std::string reader::strSQLTaxClassesDetail to read the data.
+\param[in] key_val const reference to myHR::TTaxClasses::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TTaxClasses with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLWD_HolidaysSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Holidays.
@@ -428,7 +678,16 @@
 \brief method to read all data of the table \ref datamodel_table_WD_Holidays in a container.
 \details the method use the const std::string reader::strSQLWD_HolidaysAll to read the data.
 \param[out] data reference to myHR::TWD_Holidays::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TWD_Holidays::primary_key const& key_val, myHR::TWD_Holidays& data)
+\brief method to read a tuple of the table \ref datamodel_table_WD_Holidays in a container with the primary key.
+\details the method use the const std::string reader::strSQLWD_HolidaysDetail to read the data.
+\param[in] key_val const reference to myHR::TWD_Holidays::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TWD_Holidays with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLWD_MonthsSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Months.
@@ -440,7 +699,16 @@
 \brief method to read all data of the table \ref datamodel_table_WD_Months in a container.
 \details the method use the const std::string reader::strSQLWD_MonthsAll to read the data.
 \param[out] data reference to myHR::TWD_Months::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TWD_Months::primary_key const& key_val, myHR::TWD_Months& data)
+\brief method to read a tuple of the table \ref datamodel_table_WD_Months in a container with the primary key.
+\details the method use the const std::string reader::strSQLWD_MonthsDetail to read the data.
+\param[in] key_val const reference to myHR::TWD_Months::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TWD_Months with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLWD_NonWorkingSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_NonWorking.
@@ -452,7 +720,16 @@
 \brief method to read all data of the table \ref datamodel_table_WD_NonWorking in a container.
 \details the method use the const std::string reader::strSQLWD_NonWorkingAll to read the data.
 \param[out] data reference to myHR::TWD_NonWorking::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR::TWD_NonWorking& data)
+\brief method to read a tuple of the table \ref datamodel_table_WD_NonWorking in a container with the primary key.
+\details the method use the const std::string reader::strSQLWD_NonWorkingDetail to read the data.
+\param[in] key_val const reference to myHR::TWD_NonWorking::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TWD_NonWorking with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLWD_WeekdaysSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Weekdays.
@@ -464,7 +741,16 @@
 \brief method to read all data of the table \ref datamodel_table_WD_Weekdays in a container.
 \details the method use the const std::string reader::strSQLWD_WeekdaysAll to read the data.
 \param[out] data reference to myHR::TWD_Weekdays::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TWD_Weekdays::primary_key const& key_val, myHR::TWD_Weekdays& data)
+\brief method to read a tuple of the table \ref datamodel_table_WD_Weekdays in a container with the primary key.
+\details the method use the const std::string reader::strSQLWD_WeekdaysDetail to read the data.
+\param[in] key_val const reference to myHR::TWD_Weekdays::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TWD_Weekdays with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLWD_WorkdaysSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WD_Workdays.
@@ -476,7 +762,16 @@
 \brief method to read all data of the table \ref datamodel_table_WD_Workdays in a container.
 \details the method use the const std::string reader::strSQLWD_WorkdaysAll to read the data.
 \param[out] data reference to myHR::TWD_Workdays::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::TWD_Workdays& data)
+\brief method to read a tuple of the table \ref datamodel_table_WD_Workdays in a container with the primary key.
+\details the method use the const std::string reader::strSQLWD_WorkdaysDetail to read the data.
+\param[in] key_val const reference to myHR::TWD_Workdays::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TWD_Workdays with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 \var reader::strSQLWorkingTimeSelectAll
 \brief constant std string with the sql statement to read all tuples from table \ref datamodel_table_WorkingTime.
@@ -488,7 +783,16 @@
 \brief method to read all data of the table \ref datamodel_table_WorkingTime in a container.
 \details the method use the const std::string reader::strSQLWorkingTimeAll to read the data.
 \param[out] data reference to myHR::TWorkingTime::container_ty with the container to take the data.
+\throws TMy_Db_Exception when a database error occurs.
 \returns bool when data readed successfull (0 .. n)
+
+\fn reader::TPersonReader::Read(myHR::TWorkingTime::primary_key const& key_val, myHR::TWorkingTime& data)
+\brief method to read a tuple of the table \ref datamodel_table_WorkingTime in a container with the primary key.
+\details the method use the const std::string reader::strSQLWorkingTimeDetail to read the data.
+\param[in] key_val const reference to myHR::TWorkingTime::primary_key with the primary key vals to identify the data.
+\param[out] data reference to myHR::TWorkingTime with the instance to take the data.
+\throws TMy_Db_Exception when a database error occurs.
+\returns bool when data readed successfull (exactly one)
 
 
 \mainpage model with a simple person administration
@@ -496,24 +800,7 @@
 <a id = "top_of_mainpage"></a>
 
 \section secMainDescription project description / preamble
-\details Model for a simple management of personal data for testing and presenting the use of metadata with a generator and for discussing the possibilities of using metadata.
-\details The model is implemented using the adecc Scholar metadata class TMyDictionary and the associated classes TMyDatatype, TMyAttribute, TMyTable, TMyReferences and TMyIndices.
-\details In addition to the necessary C++ source code for the classes of the system layer, this generator also creates scripts for creating the database with conditions and value tables and the basis for detailed documentation with Doxygen in separate files. In addition, methods are created that enable access using the database interface of the adeccDatabase library developed in this stream.
-\details The advantage of using generators that work on the basis of metadata is not only the enormous time saving, but also the correctness. This means that all parts are up-to-date and 100% aligned with each other.
-\details The basis for this model was taken from a training project by adecc Systemhaus GmbH and expanded once again.
-\details The following image show a draft paper / scratch pad of the background for this trainings project.
-\details \image html Kladde.jpg
-\details \image latex Kladde.jpg
-\details The following model diagram is created with the Embarcader E/R Studio and show the initial model from the former project.
-\details \image html ER-Model.jpg
-\details \image latex ERModelLS.tif
-\details This model was created to show and discuss the potential of metadata and the generation of source code, database scripts and documentation.
-\details In the model, in addition to the is - a relationship between the Person and Employee tables, there is a part - of relationship to employee working hours and an association to the departments in which employees work.
-\details In addition, there are a number of extended value tables to show that these do not only have to consist of an ID and name, but can also contain other data.
-\details The project, including all additional files and documentations, are part of the source code of the "adecc Scholar" project. The purpose of this project is to impart know-how on architecture and technology when using the programming language C++. The MIT license applies unless otherwise stated or other licenses must be used due to legal requirements.
 
-\note There are many discussions about programming guidelines, names of identifiers, the pros and cons of notations (Hungarian notation, all lowercase, first letter uppercase, ...). These discussions also fade against the background of programming with metadata and can easily be adapted to any standard without any significant effort.
-\note Finally, please note that these sources are only training materials and explicitly not productive sources. You can use them according to the license in your own application, but there is no claim to correctness or any form of warranty.
 
 \section secMainDatatypes used datatypes
 \details the following table show datatypes and the transformation into types for the used sql server and the programming language. hungarian notation is used in the program. the table contain prefixes which are used for the data types.
@@ -651,6 +938,11 @@
     <td>Entity</td>
     <td>mySales::TContacts</td></tr>
 <tr><td colspan="3">information to the data of a contact person at the customer  (inherited from Person)</td>
+</tr><tr><td rowspan="2" valign="top">\ref datamodel_table_CorporateForm</td>
+    <td>dbo.CorporateForm</td>
+    <td>Domain</td>
+    <td>myCorporate::TCorporateForm</td></tr>
+<tr><td colspan="3">This table stores information about various types of legal forms. Each row corresponds to a specific legal form with several informations.</td>
 </tr><tr><td rowspan="2" valign="top">\ref datamodel_table_Countries</td>
     <td>dbo.Countries</td>
     <td>Entity</td>
@@ -794,6 +1086,7 @@ graph ER {
    Banking [label="Banking", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Banking"];
    BankingTypes [label="BankingTypes", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_BankingTypes"];
    Contacts [label="Contacts", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Contacts"];
+   CorporateForm [label="CorporateForm", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_CorporateForm"];
    Countries [label="Countries", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_Countries"];
    CustClassification [label="CustClassification", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_CustClassification"];
    CustLiaison [label="CustLiaison", shape=box, fontname="Helvetica", fontsize=8, fillcolor = "white", style = "filled", URL="\ref datamodel_table_CustLiaison"];
@@ -832,6 +1125,7 @@ graph ER {
    Customers -- Person [label="is-a",  headlabel = "1",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Customers -- CustClassification [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Customers -- Employees [label="works in",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
+   Customers -- CorporateForm [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Departments -- Employees [label="responsible",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Employees -- Person [label="is-a",  headlabel = "1",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
    Employees -- SalaryType [label="has values",  headlabel = "n",  taillabel = "1", color="darkorchid3", style="solid", fontname="Helvetica", fontsize=8, fontcolor="grey"];
@@ -1527,6 +1821,147 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
 
 <hr><a href = "#top_of_mainpage">top of the page</a>
 <hr>
+\subsection datamodel_table_CorporateForm CorporateForm
+\details <b>This table stores information about various types of legal forms. Each row corresponds to a specific legal form with several informations.</b>
+\details the system class which represent this table in source is \ref myCorporate::TCorporateForm.
+
+\subsubsection datamodel_table_CorporateForm_attributes attributes
+\details <table>
+<tr><th rowspan="2" valign="center">name
+    <th>type
+    <th>db type
+    <th>size
+    <th>not null
+    <th>primary
+    <th>check
+    <th>init seq
+    <th>computed
+    <th>source name
+    <th>source type
+</tr><tr><th colspan="11">description
+</tr>
+<tr><td rowspan="2" valign ="top">ID
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">true
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iID
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
+</tr><tr><td rowspan="2" valign ="top">Denotation
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(50)
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strDenotation
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">unique denotation for this entity. denotes the name or designation of the legal form
+</tr><tr><td rowspan="2" valign ="top">Abbreviation
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(15)
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strAbbreviation
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">abbreviated form of the legal form,  used in the application or reports for a compact display
+</tr><tr><td rowspan="2" valign ="top">Description
+    <td valign = "top"><a href ="#datatyp_text">text</a>
+    <td valign = "top">VARCHAR(MAX)
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strDescription
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top">provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations
+</tr><tr><td rowspan="2" valign ="top">IsLegalEntrity
+    <td valign = "top"><a href ="#datatyp_bool">bool</a>
+    <td valign = "top">TINYINT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">IN (0, 1)    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">boIsLegalEntrity
+    <td valign = "top">bool</td></tr>
+<tr><td colspan="11" valign = "top">indicates whether the legal form constitutes a legal entity (true/false)
+</tr><tr><td rowspan="2" valign ="top">UrgentValue
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iUrgentValue
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">indicates whether the legal form has urgent significance (true/false)
+</tr></table>
+
+
+\subsubsection datamodel_table_CorporateForm_relationships_to relationships to CorporateForm
+\details <table>
+<tr><th>from table
+    <th>type
+    <th>related
+    <th>description
+</tr>
+<tr><td valign ="top"> \ref datamodel_table_Customers
+    <td valign ="top">range
+    <td valign ="top">has values
+    <td valign ="top">range values as domain for the attribute LegalForms
+</tr></table>
+
+
+\subsubsection datamodel_table_CorporateForm_create create statement
+\code{.sql}
+-- statement to create the table dbo.CorporateForm
+CREATE TABLE dbo.CorporateForm (
+   ID             INT NOT NULL,
+   Denotation     VARCHAR(50) NOT NULL,
+   Abbreviation   VARCHAR(15) NOT NULL,
+   Description    VARCHAR(MAX),
+   IsLegalEntrity TINYINT NOT NULL CHECK (IsLegalEntrity IN (0, 1)),
+   UrgentValue    INT
+   );
+
+
+
+
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT pk_CorporateForm PRIMARY KEY (ID);
+
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT uk_CorporateForm_Donation UNIQUE (Denotation);
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT uk_CorporateForm_Abbreviation UNIQUE (ID);
+
+
+\endcode
+
+
+\subsubsection datamodel_table_CorporateForm_values insert values
+\code{.sql}
+INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEntrity, UrgentValue) VALUES
+    (1, 'Gesellschaft mit beschränkter Haftung', 'GmbH', 'Eine GmbH ist eine Kapitalgesellschaft, bei der die Haftung der Gesellschafter auf ihre Einlagen beschränkt ist.', 1, 1), 
+    (2, 'Aktiengesellschaft', 'AG', 'Eine AG ist eine Kapitalgesellschaft, deren Grundkapital in Aktien zerlegt ist und deren Eigentümer (Aktionäre) beschränkt haften.', 1, 1), 
+    (3, 'Unternehmergesellschaft (haftungsbeschränkt)', 'UG', 'Eine UG ist eine haftungsbeschränkte Kapitalgesellschaft, die eine niedrigere Mindesteinlage erfordert als eine GmbH. Sie kann in eine GmbH umgewandelt werden.', 1, 1), 
+    (4, 'Offene Handelsgesellschaft', 'OHG', 'Eine OHG ist eine Personengesellschaft, bei der alle Gesellschafter unbeschränkt und persönlich für die Verbindlichkeiten der Gesellschaft haften.', 1, 1), 
+    (5, 'Kommanditgesellschaft', 'KG', 'Eine KG ist eine Personengesellschaft, bei der es neben den unbeschränkt haftenden Gesellschaftern (Komplementären) auch beschränkt haftende Gesellschafter gibt.', 1, 1), 
+    (6, 'Einzelkaufmann', 'e.K.', 'Ein e.K. ist eine Einzelunternehmung, bei der der Unternehmer allein und unbeschränkt für alle Verbindlichkeiten haftet.', 0, 1), 
+    (7, 'Ges. mit beschr. Haftung & Compagnie Kommanditges.', 'GmbH & Co. KG', 'Eine Gesellschaft mit beschränkter Haftung & Compagnie Kommanditgesellschaft ist eine Kommanditgesellschaft, bei der die Komplementärin eine GmbH ist. Dadurch kann eine GmbH als persönlich haftender Gesellschafter fungieren, während die übrigen Gesellschafter beschränkt haften.', 0, 1), 
+    (8, 'Gesellschaft bürgerlichen Rechts', 'GbR', 'Eine GbR ist eine Personengesellschaft, bei der mindestens zwei natürliche oder juristische Personen gemeinsam ein bestimmtes Ziel verfolgen und gemeinsam handeln.', 0, 1);
+
+\endcode
+<hr><a href = "#top_of_mainpage">top of the page</a>
+<hr>
 \subsection datamodel_table_Countries Countries
 \details <b>table with the countries and additional values for the countries. Used by others for assoziation.</b>
 \details the system class which represent this table in source is \ref myCorporate::TCountries.
@@ -2035,7 +2470,7 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iCustID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">internal id for this client, attribute as foreign key from an attribute ID of a person entity to which these account details belong
+<tr><td colspan="11" valign = "top">internal id for this client, attribute as foreign key from an attribute ID of a person entity 
 </tr><tr><td rowspan="2" valign ="top">ServiceAgent
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2057,7 +2492,18 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iCustClassification
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">classification of this customer as range value 
+<tr><td colspan="11" valign = "top">classification of this customer as range value (from table CustClassification)
+</tr><tr><td rowspan="2" valign ="top">LegalForm
+    <td valign = "top"><a href ="#datatyp_integer">integer</a>
+    <td valign = "top">INT
+    <td valign = "top">
+    <td valign = "top">true
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">iLegalForm
+    <td valign = "top">int</td></tr>
+<tr><td colspan="11" valign = "top">legal form of this customer
 </tr></table>
 
 
@@ -2080,6 +2526,10 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign ="top">works in
     <td valign ="top"> \ref datamodel_table_Employees
     <td valign ="top">assoziations between an customer to the the employee who act as service agent
+</tr><tr><td valign ="top">range
+    <td valign ="top">has values
+    <td valign ="top"> \ref datamodel_table_CorporateForm
+    <td valign ="top">range values as domain for the attribute LegalForms
 </tr></table>
 
 
@@ -2103,7 +2553,8 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
 CREATE TABLE dbo.Customers (
    CustID             INT NOT NULL,
    ServiceAgent       INT NOT NULL,
-   CustClassification INT NOT NULL
+   CustClassification INT NOT NULL,
+   LegalForm          INT NOT NULL
    );
 
 
@@ -2115,6 +2566,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT pk_Customers PRIMARY KEY (CustID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Person FOREIGN KEY (CustID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Classification FOREIGN KEY (CustClassification) REFERENCES dbo.CustClassification (ID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Employees_SA FOREIGN KEY (ServiceAgent) REFERENCES dbo.Employees (EmployeeID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (LegalForm) REFERENCES dbo.CorporateForm (ID);
 
 \endcode
 
@@ -5449,5 +5901,5 @@ ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID)
 This project is released under the MIT License.
 \author Volker Hillmann (adecc Scholar)
 \version 1.0
-\date 17.03.2024
+\date 22.03.2024
 \copyright adecc Systemhaus GmbH 2024, All rights reserved.

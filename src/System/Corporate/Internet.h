@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TInternet
 * Content: connections for different kinds of communications about the internet as part of persons (part of relationship)
-* Date: 17.03.2024 20:08:20,322  file created with adecc Scholar metadata generator
+* Date: 22.03.2024 15:39:12,362  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -18,6 +18,8 @@
 // necessary additional headers for used datatypes
 #include <string>
 
+#include <iostream>
+#include <iomanip>
 #include <optional>
 #include <stdexcept>
 #include <map>
@@ -43,23 +45,21 @@ class TInternet : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       class primary_key {
          friend class TInternet;
+         friend std::ostream& operator << (std::ostream& out, primary_key const& data) { return data.write(out); }
          private:
             int iID;          
             int iInternetType;
 
-            constexpr primary_key() : iID {}, iInternetType {} { }
+            primary_key();
          public:
-            constexpr primary_key(int pID, int pInternetType) : iID(pID), iInternetType(pInternetType) { }
-            primary_key(TInternet const& other) : iID(other._ID()), iInternetType(other._InternetType()) { }
-            constexpr primary_key(primary_key const& other) : iID(other.iID), iInternetType(other.iInternetType) { }
-            constexpr primary_key(primary_key&& other) noexcept : iID(std::move(other.iID)), iInternetType(std::move(other.iInternetType)) { }
-            constexpr ~primary_key() { }
+            primary_key(int pID, int pInternetType);
+            explicit primary_key(TInternet const& other);
+            primary_key(primary_key const& other);
+            primary_key(primary_key&& other) noexcept;
+            ~primary_key() { }
 
             // conversions operator for this element to the encircling class
-            operator TInternet() const {
-               TInternet ret;
-               return ret.init(*this);
-               }
+            operator TInternet() const;
 
             // relational operators of the primary type class
             bool operator == (primary_key const& other) const { return _compare(other) == 0; }
@@ -77,15 +77,11 @@ class TInternet : virtual public TSimplePersonBase {
             int        ID(int newVal) { return iID = newVal; }
             int        InternetType(int newVal) { return iInternetType = newVal; }
 
+            // method to write elements of the primary key type class to a stream
+            std::ostream& write(std::ostream& out) const;
+
          private:
-            int _compare(primary_key const& other) const {
-               static auto constexpr comp_help = [](auto const& lhs, auto const& rhs) -> int {
-                  return (lhs < rhs ? -1 : (lhs > rhs ? 1 : 0));
-                  };
-               if(auto ret = comp_help(this->iID, other.iID); ret != 0) return ret;
-               if(auto ret = comp_help(this->iInternetType, other.iInternetType); ret != 0) return ret;
-               return 0;
-               }
+            int _compare(primary_key const& other) const;
          };
 
       using container_ty = std::map<primary_key, TInternet>;
@@ -106,6 +102,7 @@ class TInternet : virtual public TSimplePersonBase {
       TInternet();
       TInternet(TInternet const&);
       TInternet(TInternet &&) noexcept;
+      explicit TInternet(primary_key const&);
       virtual ~TInternet();
 
       // ----------------------------------------------------------------------------------------------
