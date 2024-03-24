@@ -89,7 +89,11 @@ void TestMain::Connect() {
    auto [boLogin, strUser, strPwd, boIntegrated] = TMyFileDlg::UserLoginDlg(database.GetDatabaseInformations(), true, { "volkerh" }, false);
    if (boLogin) {
       auto [boSuccess, strMessage] = database.LoginToDb(TMyCredential{ strUser.value_or(""), strPwd.value_or(""), boIntegrated.value_or(false) });
-      if(boSuccess) std::clog << "connected to : " << database.GetDatabaseInformations() << '\n';
+      if (boSuccess) {
+         TMyFileDlg::Message(EMyMessageType::information, "application Simple Person Management",
+                             std::format("You connected successfully to the database {}", database.GetDatabaseInformations()));
+         std::clog << "connected to : " << database.GetDatabaseInformations() << '\n';
+         }
       else {
          if (strPwd) 
             if (size_t pos = strMessage.rfind(*strPwd); pos != std::string::npos) strMessage.replace(pos, (*strPwd).length(), "*****");
@@ -141,7 +145,7 @@ void TestMain::Show() {
          std::ranges::for_each(data, [&status, &salutation](auto const& value) {
               auto const& [_, person] = value;
 
-              std::cout << *std::get<1>(value).ID() << '\t'
+              std::cout << person.ID().value_or(0) << '\t'
                         << lookup(salutation, person.FormOfAddress()) << '\t'
                         << person.Name().value_or("") << '\t'
                         << person.Firstname().value_or("") << '\t'
@@ -155,12 +159,10 @@ void TestMain::Show() {
          }
       }
    catch(TMy_Db_Exception& ex) {
-      std::cerr << "error while reading all persons:\n"
-                << ex.information() << '\n';
+      TMyFileDlg::Message(EMyMessageType::error, "application Simple Person Management", "Error while reading person data", ex.information());
       }
    catch(std::exception& ex) {
-      std::cerr << "error while reading all persons:\n"
-                << ex.what() << '\n';
+      TMyFileDlg::Message(EMyMessageType::error, "application Simple Person Management", "Error while reading person data", ex.what());
       }
    }
 
@@ -178,7 +180,8 @@ void TestMain::Action() {
          os << person.FullName().value_or("") << '\n'
             << address.Zipcode().value_or("") << ' ' << address.City().value_or("") << '\n'
             << address.Street().value_or("") << ' ' << address.StreetNumber().value_or("");
-         frm.Message(EMyMessageType::information, "test outbout", os.str());
+         //frm.Message(EMyMessageType::information, "test outbout", os.str());
+         TMyFileDlg::Message(EMyMessageType::information, "simple person management", os.str());
          }
       }
    catch (TMy_Db_Exception& ex) {

@@ -76,7 +76,7 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
       data.Country(query.Get<int>("Country"));
       }
    else return false;
-   if(query.Next(); !query.IsEof()) {
+   if (query.Next(); !query.IsEof()) {
       std::ostringstream os1, os2;
       os1 << "error while reading data for TAddress";
       os2 << "couldn't read unique data for primary key element\n";

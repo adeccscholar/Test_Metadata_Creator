@@ -68,14 +68,14 @@
        <item>
         <widget class="QPushButton" name="btnConnect">
          <property name="text">
-          <string>PushButton</string>
+          <string>btnConnect</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnShow">
          <property name="text">
-          <string>PushButton</string>
+          <string>btnShow</string>
          </property>
         </widget>
        </item>
