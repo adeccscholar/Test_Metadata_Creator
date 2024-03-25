@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TAddress
 * Content: information on the addresses where a person lives, works or has any other relationship with them.
-* Date: 22.03.2024 15:39:11,423  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:39,565  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

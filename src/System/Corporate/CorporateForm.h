@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TCorporateForm
 * Content: This table stores information about various types of legal forms. Each row corresponds to a specific legal form with several informations.
-* Date: 22.03.2024 15:39:11,767  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:39,893  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

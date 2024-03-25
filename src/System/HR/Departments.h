@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TDepartments
 * Content: independent entity with the departments in the company, independent identity
-* Date: 22.03.2024 15:39:12,072  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:40,182  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

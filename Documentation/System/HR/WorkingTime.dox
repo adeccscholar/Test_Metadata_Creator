@@ -5,7 +5,7 @@
 \see table \ref datamodel_table_WorkingTime
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 22.03.2024  file created with adecc Scholar metadata generator
+\date 25.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -19,7 +19,7 @@
 \see table \ref datamodel_table_WorkingTime
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 22.03.2024  file created with adecc Scholar metadata generator
+\date 25.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -31,7 +31,7 @@
 \details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
 \note the relationship with the project tasks is similar as the relationship to the employee, but without existence dependency.
 \author Volker Hillmann (adecc Scholar)
-\date 22.03.2024 documentation for this project created
+\date 25.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_WorkingTime
 
 \class myHR::TWorkingTime::primary_key

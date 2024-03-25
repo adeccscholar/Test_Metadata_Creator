@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of the persistence class TPersonReader
-* Date: 22.03.2024 15:39:13,250  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:41,399  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -76,7 +76,7 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
       data.Country(query.Get<int>("Country"));
       }
    else return false;
-   if (query.Next(); !query.IsEof()) {
+   if(query.Next(); !query.IsEof()) {
       std::ostringstream os1, os2;
       os1 << "error while reading data for TAddress";
       os2 << "couldn't read unique data for primary key element\n";

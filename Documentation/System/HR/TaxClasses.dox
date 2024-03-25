@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_TaxClasses
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 22.03.2024  file created with adecc Scholar metadata generator
+\date 25.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_TaxClasses
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 22.03.2024  file created with adecc Scholar metadata generator
+\date 25.03.2024  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TTaxClasses
 \brief tax class in germany to use it with employees (not a range, but very similar)
 \author Volker Hillmann (adecc Scholar)
-\date 22.03.2024 documentation for this project created
+\date 25.03.2024 documentation for this project created
 \see system class for the table \ref datamodel_table_TaxClasses
 
 \class myHR::TTaxClasses::primary_key

@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWD_Weekdays
 * Content: domain for days of week, used for table working time. Possible to extent with informations. In area HR only
-* Date: 22.03.2024 15:39:13,086  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:41,211  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

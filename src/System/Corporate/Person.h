@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TPerson
 * Content: informations about a person, base for different kinds of special persons in other areas of the company
-* Date: 22.03.2024 15:39:12,523  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:40,638  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

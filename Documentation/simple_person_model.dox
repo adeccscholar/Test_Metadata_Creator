@@ -5901,5 +5901,5 @@ ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID)
 This project is released under the MIT License.
 \author Volker Hillmann (adecc Scholar)
 \version 1.0
-\date 22.03.2024
+\date 25.03.2024
 \copyright adecc Systemhaus GmbH 2024, All rights reserved.

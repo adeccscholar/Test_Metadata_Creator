@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TEmployees
 * Content: information about the employees in the company (generalization of a person)
-* Date: 22.03.2024 15:39:12,154  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:40,277  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

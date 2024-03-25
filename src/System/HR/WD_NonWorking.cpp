@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWD_NonWorking
 * Content: entity set with non working days. Extensions possible, responsible for this table is HR.
-* Date: 22.03.2024 15:39:13,048  file created with adecc Scholar metadata generator
+* Date: 25.03.2024 19:08:41,166  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

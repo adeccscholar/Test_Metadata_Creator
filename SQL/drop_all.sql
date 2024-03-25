@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script to drop relationships and tables for the project simple person model
- * generated at: 22.03.2024 15:39:11,176 with the adecc Scholar metadata generator
+ * generated at: 25.03.2024 19:08:39,316 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
