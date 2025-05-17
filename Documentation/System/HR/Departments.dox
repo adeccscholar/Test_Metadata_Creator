@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Departments
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Departments
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TDepartments
 \brief independent entity with the departments in the company, independent identity
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_Departments
 
 \class myHR::TDepartments::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TDepartments::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identifications number of the department. primary key and used for assoziations
+\param [in] pID int  with 
 
 \var myHR::TDepartments::primary_key::iID
-\brief unique identifications number of the department. primary key and used for assoziations
-\details Source: key member myHR::TDepartments::primary_key::iID in class myHR::TDepartments::primary_key with the type int
+\brief Source: key member myHR::TDepartments::primary_key::iID in class myHR::TDepartments::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_Departments with database type INT
 \fn myHR::TDepartments::primary_key::ID() const
 \brief selector for the data element myHR::TDepartments::primary_key::iID
@@ -167,34 +166,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TDepartments::iID
-\brief unique identifications number of the department. primary key and used for assoziations
-\details Source: member myHR::TDepartments::iID in class myHR::TDepartments with the type std::optional<int>
+\brief Source: member myHR::TDepartments::iID in class myHR::TDepartments with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_Departments with database type INT
+\details unique identifications number of the department. primary key and used for assoziations
 
 \var myHR::TDepartments::strDenotation
-\brief distinct name of the department in the company. used to identify this and use in application for select
-\details Source: member myHR::TDepartments::strDenotation in class myHR::TDepartments with the type std::optional<std::string>
+\brief Source: member myHR::TDepartments::strDenotation in class myHR::TDepartments with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_Departments with database type VARCHAR
+\details distinct name of the department in the company. used to identify this and use in application for select
 
 \var myHR::TDepartments::strAbbreviation
-\brief used abbreviation of the department for list and such
-\details Source: member myHR::TDepartments::strAbbreviation in class myHR::TDepartments with the type std::optional<std::string>
+\brief Source: member myHR::TDepartments::strAbbreviation in class myHR::TDepartments with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_Departments with database type VARCHAR
+\details used abbreviation of the department for list and such
 
 \var myHR::TDepartments::strDescription
-\brief description for this department, is used in the program, for example as hint 
-\details Source: member myHR::TDepartments::strDescription in class myHR::TDepartments with the type std::optional<std::string>
+\brief Source: member myHR::TDepartments::strDescription in class myHR::TDepartments with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_Departments with database type VARCHAR(MAX)
+\details description for this department, is used in the program, for example as hint 
 
 \var myHR::TDepartments::iOfficer
-\brief person responsible / head of this department (association with the employys entity)
-\details Source: member myHR::TDepartments::iOfficer in class myHR::TDepartments with the type std::optional<int>
+\brief Source: member myHR::TDepartments::iOfficer in class myHR::TDepartments with the type std::optional<int>
 \details Database: attribute "Officer" in entity \ref datamodel_table_Departments with database type INT
+\details person responsible / head of this department (association with the employys entity)
 
 \var myHR::TDepartments::strNotes
-\brief free notes to record information that is not used in the program
-\details Source: member myHR::TDepartments::strNotes in class myHR::TDepartments with the type std::optional<std::string>
+\brief Source: member myHR::TDepartments::strNotes in class myHR::TDepartments with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_Departments with database type VARCHAR(MAX)
+\details free notes to record information that is not used in the program
 
 
 \}
@@ -204,27 +203,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TDepartments::ID() const
 \brief selector for the data element myHR::TDepartments::iID
-\details <b>unique identifications number of the department. primary key and used for assoziations</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TDepartments::iID
 \fn std::optional<std::string> const& myHR::TDepartments::Denotation() const
 \brief selector for the data element myHR::TDepartments::strDenotation
-\details <b>distinct name of the department in the company. used to identify this and use in application for select</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strDenotation
 \fn std::optional<std::string> const& myHR::TDepartments::Abbreviation() const
 \brief selector for the data element myHR::TDepartments::strAbbreviation
-\details <b>used abbreviation of the department for list and such</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strAbbreviation
 \fn std::optional<std::string> const& myHR::TDepartments::Description() const
 \brief selector for the data element myHR::TDepartments::strDescription
-\details <b>description for this department, is used in the program, for example as hint </b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strDescription
 \fn std::optional<int> const& myHR::TDepartments::Officer() const
 \brief selector for the data element myHR::TDepartments::iOfficer
-\details <b>person responsible / head of this department (association with the employys entity)</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TDepartments::iOfficer
 \fn std::optional<std::string> const& myHR::TDepartments::Notes() const
 \brief selector for the data element myHR::TDepartments::strNotes
-\details <b>free notes to record information that is not used in the program</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strNotes
 
 \}
@@ -234,38 +227,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TDepartments::_ID() const
 \brief special selector for data element myHR::TDepartments::iID
-\details unique identifications number of the department. primary key and used for assoziations
-\details <b>unique identifications number of the department. primary key and used for assoziations</b>
+\details attribute "ID" in entity "Departments"
 \throws std::runtime::error if the attribute myHR::TDepartments::iID is empty
 \returns int const&: Reference to the data element myHR::TDepartments::iID
 \fn std::string const& myHR::TDepartments::_Denotation() const
 \brief special selector for data element myHR::TDepartments::strDenotation
-\details distinct name of the department in the company. used to identify this and use in application for select
-\details <b>distinct name of the department in the company. used to identify this and use in application for select</b>
+\details attribute "Denotation" in entity "Departments"
 \throws std::runtime::error if the attribute myHR::TDepartments::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strDenotation
 \fn std::string const& myHR::TDepartments::_Abbreviation() const
 \brief special selector for data element myHR::TDepartments::strAbbreviation
-\details used abbreviation of the department for list and such
-\details <b>used abbreviation of the department for list and such</b>
+\details attribute "Abbreviation" in entity "Departments"
 \throws std::runtime::error if the attribute myHR::TDepartments::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strAbbreviation
 \fn std::string const& myHR::TDepartments::_Description() const
 \brief special selector for data element myHR::TDepartments::strDescription
-\details description for this department, is used in the program, for example as hint 
-\details <b>description for this department, is used in the program, for example as hint </b>
+\details attribute "Description" in entity "Departments"
 \throws std::runtime::error if the attribute myHR::TDepartments::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strDescription
 \fn int myHR::TDepartments::_Officer() const
 \brief special selector for data element myHR::TDepartments::iOfficer
-\details person responsible / head of this department (association with the employys entity)
-\details <b>person responsible / head of this department (association with the employys entity)</b>
+\details attribute "Officer" in entity "Departments"
 \throws std::runtime::error if the attribute myHR::TDepartments::iOfficer is empty
 \returns int const&: Reference to the data element myHR::TDepartments::iOfficer
 \fn std::string const& myHR::TDepartments::_Notes() const
 \brief special selector for data element myHR::TDepartments::strNotes
-\details free notes to record information that is not used in the program
-\details <b>free notes to record information that is not used in the program</b>
+\details attribute "Notes" in entity "Departments"
 \throws std::runtime::error if the attribute myHR::TDepartments::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TDepartments::strNotes
 
@@ -276,37 +263,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TDepartments::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TDepartments::iID
-\details <b>unique identifications number of the department. primary key and used for assoziations</b>
 \param[in] newVal the new Value for the member myHR::TDepartments::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TDepartments::iID
 
 \fn std::optional<std::string> const& myHR::TDepartments::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TDepartments::strDenotation
-\details <b>distinct name of the department in the company. used to identify this and use in application for select</b>
 \param[in] newVal the new Value for the member myHR::TDepartments::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strDenotation
 
 \fn std::optional<std::string> const& myHR::TDepartments::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TDepartments::strAbbreviation
-\details <b>used abbreviation of the department for list and such</b>
 \param[in] newVal the new Value for the member myHR::TDepartments::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strAbbreviation
 
 \fn std::optional<std::string> const& myHR::TDepartments::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TDepartments::strDescription
-\details <b>description for this department, is used in the program, for example as hint </b>
 \param[in] newVal the new Value for the member myHR::TDepartments::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strDescription
 
 \fn std::optional<int> const& myHR::TDepartments::Officer(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TDepartments::iOfficer
-\details <b>person responsible / head of this department (association with the employys entity)</b>
 \param[in] newVal the new Value for the member myHR::TDepartments::iOfficer
 \returns std::optional<int> const&: Reference to the data element myHR::TDepartments::iOfficer
 
 \fn std::optional<std::string> const& myHR::TDepartments::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TDepartments::strNotes
-\details <b>free notes to record information that is not used in the program</b>
 \param[in] newVal the new Value for the member myHR::TDepartments::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myHR::TDepartments::strNotes
 

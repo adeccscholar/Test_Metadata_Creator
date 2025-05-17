@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TWD_Workdays
 * Content: domain with all days, additional informations and as owner of all recorded working time and non-working times
-* Date: 25.03.2024 19:08:41,254  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:56,896  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

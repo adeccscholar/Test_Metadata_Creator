@@ -1,37 +1,37 @@
 ﻿\file System\HR/WorkingTime.h
-\brief definition of dataclass myHR::TWorkingTime of table \ref datamodel_table_WorkingTime with entity with the working times for an employee, as a composition for these. in dictionary "simple person model"
+\brief definition of dataclass myHR::TWorkingTime of table \ref datamodel_table_WorkingTime with entity set with working hours performed and booked by employees in dictionary "simple person model"
 \details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
 \details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
 \see table \ref datamodel_table_WorkingTime
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
 
 
 \file System\HR/WorkingTime.cpp
-\brief implementation of dataclass myHR::TWorkingTime of table \ref datamodel_table_WorkingTime with entity with the working times for an employee, as a composition for these. in dictionary "simple person model"
+\brief implementation of dataclass myHR::TWorkingTime of table \ref datamodel_table_WorkingTime with entity set with working hours performed and booked by employees in dictionary "simple person model"
 \details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
 \details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
 \note the relationship with the project tasks is similar as the relationship to the employee, but without existence dependency.
 \see table \ref datamodel_table_WorkingTime
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
 
 
 \class myHR::TWorkingTime
-\brief entity with the working times for an employee, as a composition for these.
+\brief entity set with working hours performed and booked by employees
 \details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
 \details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
 \note the relationship with the project tasks is similar as the relationship to the employee, but without existence dependency.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_WorkingTime
 
 \class myHR::TWorkingTime::primary_key
@@ -59,12 +59,11 @@
 
 \fn myHR::TWorkingTime::primary_key::primary_key(int pID, std::chrono::system_clock::time_point pStartingTime)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with attribute as foreign key from an attribute ID of a employee entity to who as worked these time
-\param [in] pStartingTime std::chrono::system_clock::time_point  with date and time at which this work block started as timestamp
+\param [in] pID int  with 
+\param [in] pStartingTime std::chrono::system_clock::time_point  with 
 
 \var myHR::TWorkingTime::primary_key::iID
-\brief attribute as foreign key from an attribute ID of a employee entity to who as worked these time
-\details Source: key member myHR::TWorkingTime::primary_key::iID in class myHR::TWorkingTime::primary_key with the type int
+\brief Source: key member myHR::TWorkingTime::primary_key::iID in class myHR::TWorkingTime::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_WorkingTime with database type INT
 \fn myHR::TWorkingTime::primary_key::ID() const
 \brief selector for the data element myHR::TWorkingTime::primary_key::iID
@@ -74,8 +73,7 @@
 \param[in] newVal int with the value of the member.
 \returns int with the new value for this member.
 \var myHR::TWorkingTime::primary_key::dtStartingTime
-\brief date and time at which this work block started as timestamp
-\details Source: key member myHR::TWorkingTime::primary_key::dtStartingTime in class myHR::TWorkingTime::primary_key with the type std::chrono::system_clock::time_point
+\brief Source: key member myHR::TWorkingTime::primary_key::dtStartingTime in class myHR::TWorkingTime::primary_key with the type std::chrono::system_clock::time_point
 \details Database: primary key attribute "StartingTime" in entity \ref datamodel_table_WorkingTime with database type DATE
 \fn myHR::TWorkingTime::primary_key::StartingTime() const
 \brief selector for the data element myHR::TWorkingTime::primary_key::dtStartingTime
@@ -187,34 +185,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TWorkingTime::iID
-\brief attribute as foreign key from an attribute ID of a employee entity to who as worked these time
-\details Source: member myHR::TWorkingTime::iID in class myHR::TWorkingTime with the type std::optional<int>
+\brief Source: member myHR::TWorkingTime::iID in class myHR::TWorkingTime with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_WorkingTime with database type INT
+\details attribute as foreign key from an attribute ID of a employee entity to who as worked these time
 
 \var myHR::TWorkingTime::dtStartingTime
-\brief date and time at which this work block started as timestamp
-\details Source: member myHR::TWorkingTime::dtStartingTime in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
+\brief Source: member myHR::TWorkingTime::dtStartingTime in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
 \details Database: attribute "StartingTime" in entity \ref datamodel_table_WorkingTime with database type DATE
+\details date and time at which this work block started as timestamp
 
 \var myHR::TWorkingTime::dtClosingTime
-\brief date and time at which this block of work finished as timestamp
-\details Source: member myHR::TWorkingTime::dtClosingTime in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
+\brief Source: member myHR::TWorkingTime::dtClosingTime in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
 \details Database: attribute "ClosingTime" in entity \ref datamodel_table_WorkingTime with database type DATE
+\details date and time at which this block of work finished as timestamp
 
 \var myHR::TWorkingTime::boProcessed
-\brief boolean indicator that specifies whether this time booking has already been charged
-\details Source: member myHR::TWorkingTime::boProcessed in class myHR::TWorkingTime with the type std::optional<bool>
+\brief Source: member myHR::TWorkingTime::boProcessed in class myHR::TWorkingTime with the type std::optional<bool>
 \details Database: attribute "Processed " in entity \ref datamodel_table_WorkingTime with database type TINYINT
+\details boolean indicator that specifies whether this time booking has already been charged
 
 \var myHR::TWorkingTime::dtProcessedAt
-\brief time at which this data record was settled and posted
-\details Source: member myHR::TWorkingTime::dtProcessedAt in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
+\brief Source: member myHR::TWorkingTime::dtProcessedAt in class myHR::TWorkingTime with the type std::optional<std::chrono::system_clock::time_point>
 \details Database: attribute "ProcessedAt" in entity \ref datamodel_table_WorkingTime with database type DATE
+\details time at which this data record was settled and posted
 
 \var myHR::TWorkingTime::daDayOfWork
-\brief calculated day to the timepoint where work started
-\details Source: member myHR::TWorkingTime::daDayOfWork in class myHR::TWorkingTime with the type std::optional<std::chrono::year_month_day>
+\brief Source: member myHR::TWorkingTime::daDayOfWork in class myHR::TWorkingTime with the type std::optional<std::chrono::year_month_day>
 \details Database: attribute "DayOfWork" in entity \ref datamodel_table_WorkingTime with database type DATE
+\details calculated day to the timepoint where work started
 
 
 \}
@@ -224,27 +222,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWorkingTime::ID() const
 \brief selector for the data element myHR::TWorkingTime::iID
-\details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWorkingTime::iID
 \fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::StartingTime() const
 \brief selector for the data element myHR::TWorkingTime::dtStartingTime
-\details <b>date and time at which this work block started as timestamp</b>
 \returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
 \fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ClosingTime() const
 \brief selector for the data element myHR::TWorkingTime::dtClosingTime
-\details <b>date and time at which this block of work finished as timestamp</b>
 \returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
 \fn std::optional<bool> const& myHR::TWorkingTime::Processed() const
 \brief selector for the data element myHR::TWorkingTime::boProcessed
-\details <b>boolean indicator that specifies whether this time booking has already been charged</b>
 \returns std::optional<bool> const&: Reference to the data element myHR::TWorkingTime::boProcessed
 \fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ProcessedAt() const
 \brief selector for the data element myHR::TWorkingTime::dtProcessedAt
-\details <b>time at which this data record was settled and posted</b>
 \returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWorkingTime::DayOfWork() const
 \brief selector for the data element myHR::TWorkingTime::daDayOfWork
-\details <b>calculated day to the timepoint where work started</b>
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
 
 \}
@@ -254,38 +246,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TWorkingTime::_ID() const
 \brief special selector for data element myHR::TWorkingTime::iID
-\details attribute as foreign key from an attribute ID of a employee entity to who as worked these time
-\details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
+\details attribute "ID" in entity "WorkingTime"
 \throws std::runtime::error if the attribute myHR::TWorkingTime::iID is empty
 \returns int const&: Reference to the data element myHR::TWorkingTime::iID
 \fn std::chrono::system_clock::time_point myHR::TWorkingTime::_StartingTime() const
 \brief special selector for data element myHR::TWorkingTime::dtStartingTime
-\details date and time at which this work block started as timestamp
-\details <b>date and time at which this work block started as timestamp</b>
+\details attribute "StartingTime" in entity "WorkingTime"
 \throws std::runtime::error if the attribute myHR::TWorkingTime::dtStartingTime is empty
 \returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
 \fn std::chrono::system_clock::time_point myHR::TWorkingTime::_ClosingTime() const
 \brief special selector for data element myHR::TWorkingTime::dtClosingTime
-\details date and time at which this block of work finished as timestamp
-\details <b>date and time at which this block of work finished as timestamp</b>
+\details attribute "ClosingTime" in entity "WorkingTime"
 \throws std::runtime::error if the attribute myHR::TWorkingTime::dtClosingTime is empty
 \returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
 \fn bool myHR::TWorkingTime::_Processed() const
 \brief special selector for data element myHR::TWorkingTime::boProcessed
-\details boolean indicator that specifies whether this time booking has already been charged
-\details <b>boolean indicator that specifies whether this time booking has already been charged</b>
+\details attribute "Processed" in entity "WorkingTime"
 \throws std::runtime::error if the attribute myHR::TWorkingTime::boProcessed is empty
 \returns bool const&: Reference to the data element myHR::TWorkingTime::boProcessed
 \fn std::chrono::system_clock::time_point myHR::TWorkingTime::_ProcessedAt() const
 \brief special selector for data element myHR::TWorkingTime::dtProcessedAt
-\details time at which this data record was settled and posted
-\details <b>time at which this data record was settled and posted</b>
+\details attribute "ProcessedAt" in entity "WorkingTime"
 \throws std::runtime::error if the attribute myHR::TWorkingTime::dtProcessedAt is empty
 \returns std::chrono::system_clock::time_point const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
 \fn std::chrono::year_month_day myHR::TWorkingTime::_DayOfWork() const
 \brief special selector for data element myHR::TWorkingTime::daDayOfWork
-\details calculated day to the timepoint where work started
-\details <b>calculated day to the timepoint where work started</b>
+\details attribute "DayOfWork" in entity "WorkingTime"
 \throws std::runtime::error if the attribute myHR::TWorkingTime::daDayOfWork is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
 
@@ -296,31 +282,26 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWorkingTime::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWorkingTime::iID
-\details <b>attribute as foreign key from an attribute ID of a employee entity to who as worked these time</b>
 \param[in] newVal the new Value for the member myHR::TWorkingTime::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TWorkingTime::iID
 
 \fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::StartingTime(std::optional<std::chrono::system_clock::time_point> const& newVal)
 \brief manipulator for the data element myHR::TWorkingTime::dtStartingTime
-\details <b>date and time at which this work block started as timestamp</b>
 \param[in] newVal the new Value for the member myHR::TWorkingTime::dtStartingTime
 \returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtStartingTime
 
 \fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ClosingTime(std::optional<std::chrono::system_clock::time_point> const& newVal)
 \brief manipulator for the data element myHR::TWorkingTime::dtClosingTime
-\details <b>date and time at which this block of work finished as timestamp</b>
 \param[in] newVal the new Value for the member myHR::TWorkingTime::dtClosingTime
 \returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtClosingTime
 
 \fn std::optional<bool> const& myHR::TWorkingTime::Processed(std::optional<bool> const& newVal)
 \brief manipulator for the data element myHR::TWorkingTime::boProcessed
-\details <b>boolean indicator that specifies whether this time booking has already been charged</b>
 \param[in] newVal the new Value for the member myHR::TWorkingTime::boProcessed
 \returns std::optional<bool> const&: Reference to the data element myHR::TWorkingTime::boProcessed
 
 \fn std::optional<std::chrono::system_clock::time_point> const& myHR::TWorkingTime::ProcessedAt(std::optional<std::chrono::system_clock::time_point> const& newVal)
 \brief manipulator for the data element myHR::TWorkingTime::dtProcessedAt
-\details <b>time at which this data record was settled and posted</b>
 \param[in] newVal the new Value for the member myHR::TWorkingTime::dtProcessedAt
 \returns std::optional<std::chrono::system_clock::time_point> const&: Reference to the data element myHR::TWorkingTime::dtProcessedAt
 
@@ -332,7 +313,6 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWorkingTime::DayOfWork(std::optional<std::chrono::year_month_day> const& newVal)
 \brief manipulator for the data element myHR::TWorkingTime::daDayOfWork
-\details <b>calculated day to the timepoint where work started</b>
 \param[in] newVal the new Value for the member myHR::TWorkingTime::daDayOfWork
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWorkingTime::daDayOfWork
 

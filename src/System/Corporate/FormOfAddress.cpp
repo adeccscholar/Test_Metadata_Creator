@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TFormOfAddress
 * Content: domain with the possible values for form of addresses with additional informations for this
-* Date: 25.03.2024 19:08:40,441  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:56,049  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

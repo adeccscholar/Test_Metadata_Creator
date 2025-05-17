@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TFamilyStatus
 * Content: domain / range of values for family status, this is used in person to qualifify the actual status, maybe a date needed too
-* Date: 25.03.2024 19:08:40,336  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,945  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TPerson
 * Content: informations about a person, base for different kinds of special persons in other areas of the company
-* Date: 25.03.2024 19:08:40,638  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:56,234  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,7 +13,7 @@
 
 
 // includes for common  virtual base class
-#include "System\Corporate\base.h"
+#include "Base\BaseClass.h"
 
 // includes for required header files for part of relationships
 #include "System\Corporate\Address.h"
@@ -29,12 +29,14 @@
 #include <iomanip>
 #include <optional>
 #include <stdexcept>
+#include <functional>
 #include <map>
 #include <vector>
 #include <tuple>
 #include <memory>
 
 namespace reader {
+   class DataAccess; // helper class, later changing
    class TPersonReader;
    }
 
@@ -54,7 +56,7 @@ namespace myCorporate {
 // - informations about a person, base for different kinds of special persons in other areas of the company
 // -------------------------------------------------------------------------------------------------
 class TPerson : virtual public TSimplePersonBase {
-   friend class reader::TPersonReader;
+   friend class reader::DataAccess;   friend class reader::TPersonReader;
    public:
       // ----------------------------------------------------------------------------------------------
       // public datatypes for this table
@@ -67,7 +69,7 @@ class TPerson : virtual public TSimplePersonBase {
 
             primary_key();
          public:
-            explicit primary_key(int pID);
+            /* explicit */primary_key(int pID);
             explicit primary_key(TPerson const& other);
             primary_key(primary_key const& other);
             primary_key(primary_key&& other) noexcept;
@@ -100,6 +102,7 @@ class TPerson : virtual public TSimplePersonBase {
             int _compare(primary_key const& other) const;
          };
 
+      using func_ty = std::function<bool(TPerson&&)>;
       using container_ty = std::map<primary_key, TPerson>;
       using vector_ty    = std::vector<TPerson>;
 
@@ -117,7 +120,8 @@ class TPerson : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       std::optional<int>                         iID;                
       std::optional<std::string>                 strName;            
-      std::optional<std::string>                 strFirstname;       
+      std::optional<std::string>                 strFirstName;       
+      std::optional<std::string>                 strBirthname;       
       std::optional<int>                         iFormOfAddress;     
       std::optional<int>                         iFamilyStatus;      
       std::optional<std::chrono::year_month_day> daFamilyStatusSince;
@@ -169,7 +173,8 @@ class TPerson : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       std::optional<int> const&                         ID() const { return iID; }
       std::optional<std::string> const&                 Name() const { return strName; }
-      std::optional<std::string> const&                 Firstname() const { return strFirstname; }
+      std::optional<std::string> const&                 FirstName() const { return strFirstName; }
+      std::optional<std::string> const&                 Birthname() const { return strBirthname; }
       std::optional<int> const&                         FormOfAddress() const { return iFormOfAddress; }
       std::optional<int> const&                         FamilyStatus() const { return iFamilyStatus; }
       std::optional<std::chrono::year_month_day> const& FamilyStatusSince() const { return daFamilyStatusSince; }
@@ -182,7 +187,8 @@ class TPerson : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       int                                               _ID() const;
       std::string const&                                _Name() const;
-      std::string const&                                _Firstname() const;
+      std::string const&                                _FirstName() const;
+      std::string const&                                _Birthname() const;
       int                                               _FormOfAddress() const;
       int                                               _FamilyStatus() const;
       std::chrono::year_month_day                       _FamilyStatusSince() const;
@@ -203,7 +209,8 @@ class TPerson : virtual public TSimplePersonBase {
       // ----------------------------------------------------------------------------------------------
       std::optional<int> const&                         ID(std::optional<int> const& newVal);
       std::optional<std::string> const&                 Name(std::optional<std::string> const& newVal);
-      std::optional<std::string> const&                 Firstname(std::optional<std::string> const& newVal);
+      std::optional<std::string> const&                 FirstName(std::optional<std::string> const& newVal);
+      std::optional<std::string> const&                 Birthname(std::optional<std::string> const& newVal);
       std::optional<int> const&                         FormOfAddress(std::optional<int> const& newVal);
       std::optional<int> const&                         FamilyStatus(std::optional<int> const& newVal);
       std::optional<std::chrono::year_month_day> const& FamilyStatusSince(std::optional<std::chrono::year_month_day> const& newVal);
@@ -246,9 +253,14 @@ inline std::string const& TPerson::_Name() const {
    else throw std::runtime_error("value for attribute \"Name\" in class \"TPerson\" is empty.");;
    }
 
-inline std::string const& TPerson::_Firstname() const {
-   if(strFirstname) [[likely]] return strFirstname.value();
-   else throw std::runtime_error("value for attribute \"Firstname\" in class \"TPerson\" is empty.");;
+inline std::string const& TPerson::_FirstName() const {
+   if(strFirstName) [[likely]] return strFirstName.value();
+   else throw std::runtime_error("value for attribute \"FirstName\" in class \"TPerson\" is empty.");;
+   }
+
+inline std::string const& TPerson::_Birthname() const {
+   if(strBirthname) [[likely]] return strBirthname.value();
+   else throw std::runtime_error("value for attribute \"Birthname\" in class \"TPerson\" is empty.");;
    }
 
 inline int TPerson::_FormOfAddress() const {
@@ -291,8 +303,12 @@ inline std::optional<std::string> const& TPerson::Name(std::optional<std::string
    return strName = newVal;
    }
 
-inline std::optional<std::string> const& TPerson::Firstname(std::optional<std::string> const& newVal) {
-   return strFirstname = newVal;
+inline std::optional<std::string> const& TPerson::FirstName(std::optional<std::string> const& newVal) {
+   return strFirstName = newVal;
+   }
+
+inline std::optional<std::string> const& TPerson::Birthname(std::optional<std::string> const& newVal) {
+   return strBirthname = newVal;
    }
 
 inline std::optional<int> const& TPerson::FormOfAddress(std::optional<int> const& newVal) {

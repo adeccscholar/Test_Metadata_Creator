@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_FamilyStatus
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_FamilyStatus
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TFamilyStatus
 \brief domain / range of values for family status, this is used in person to qualifify the actual status, maybe a date needed too
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_FamilyStatus
 
 \class myCorporate::TFamilyStatus::primary_key
@@ -51,11 +51,10 @@
 
 \fn myCorporate::TFamilyStatus::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in this domain with family status
+\param [in] pID int  with 
 
 \var myCorporate::TFamilyStatus::primary_key::iID
-\brief unique identification number for a record in this domain with family status
-\details Source: key member myCorporate::TFamilyStatus::primary_key::iID in class myCorporate::TFamilyStatus::primary_key with the type int
+\brief Source: key member myCorporate::TFamilyStatus::primary_key::iID in class myCorporate::TFamilyStatus::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_FamilyStatus with database type INT
 \fn myCorporate::TFamilyStatus::primary_key::ID() const
 \brief selector for the data element myCorporate::TFamilyStatus::primary_key::iID
@@ -167,44 +166,44 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TFamilyStatus::iID
-\brief unique identification number for a record in this domain with family status
-\details Source: member myCorporate::TFamilyStatus::iID in class myCorporate::TFamilyStatus with the type std::optional<int>
+\brief Source: member myCorporate::TFamilyStatus::iID in class myCorporate::TFamilyStatus with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_FamilyStatus with database type INT
+\details unique identification number for a record in this domain with family status
 
 \var myCorporate::TFamilyStatus::strDenotation
-\brief unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)
-\details Source: member myCorporate::TFamilyStatus::strDenotation in class myCorporate::TFamilyStatus with the type std::optional<std::string>
+\brief Source: member myCorporate::TFamilyStatus::strDenotation in class myCorporate::TFamilyStatus with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_FamilyStatus with database type VARCHAR
+\details unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)
 
 \var myCorporate::TFamilyStatus::strAbbreviation
-\brief non-representative abbreviation that can be used for a short advertisement for this family status
-\details Source: member myCorporate::TFamilyStatus::strAbbreviation in class myCorporate::TFamilyStatus with the type std::optional<std::string>
+\brief Source: member myCorporate::TFamilyStatus::strAbbreviation in class myCorporate::TFamilyStatus with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_FamilyStatus with database type VARCHAR
+\details non-representative abbreviation that can be used for a short advertisement for this family status
 
 \var myCorporate::TFamilyStatus::strDescription
-\brief detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm
-\details Source: member myCorporate::TFamilyStatus::strDescription in class myCorporate::TFamilyStatus with the type std::optional<std::string>
+\brief Source: member myCorporate::TFamilyStatus::strDescription in class myCorporate::TFamilyStatus with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_FamilyStatus with database type VARCHAR(MAX)
+\details detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm
 
 \var myCorporate::TFamilyStatus::boCoupled
-\brief boolean value that show if persones with this status are coupled and possibly receive tax relief
-\details Source: member myCorporate::TFamilyStatus::boCoupled in class myCorporate::TFamilyStatus with the type std::optional<bool>
+\brief Source: member myCorporate::TFamilyStatus::boCoupled in class myCorporate::TFamilyStatus with the type std::optional<bool>
 \details Database: attribute "Coupled" in entity \ref datamodel_table_FamilyStatus with database type TINYINT
+\details boolean value that show if persones with this status are coupled and possibly receive tax relief
 
 \var myCorporate::TFamilyStatus::boNeedDate
-\brief boolean value which determine that the date when the person status changed the last time needed. 
-\details Source: member myCorporate::TFamilyStatus::boNeedDate in class myCorporate::TFamilyStatus with the type std::optional<bool>
+\brief Source: member myCorporate::TFamilyStatus::boNeedDate in class myCorporate::TFamilyStatus with the type std::optional<bool>
 \details Database: attribute "NeedDate" in entity \ref datamodel_table_FamilyStatus with database type TINYINT
+\details boolean value which determine that the date when the person status changed the last time needed. 
 
 \var myCorporate::TFamilyStatus::strNotes
-\brief notes, with additional / free information for this type of family status, not used in application
-\details Source: member myCorporate::TFamilyStatus::strNotes in class myCorporate::TFamilyStatus with the type std::optional<std::string>
+\brief Source: member myCorporate::TFamilyStatus::strNotes in class myCorporate::TFamilyStatus with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_FamilyStatus with database type VARCHAR(MAX)
+\details notes, with additional / free information for this type of family status, not used in application
 
 \var myCorporate::TFamilyStatus::boUrgentValue
-\brief boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)
-\details Source: member myCorporate::TFamilyStatus::boUrgentValue in class myCorporate::TFamilyStatus with the type std::optional<bool>
+\brief Source: member myCorporate::TFamilyStatus::boUrgentValue in class myCorporate::TFamilyStatus with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_FamilyStatus with database type TINYINT
+\details boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -214,35 +213,27 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TFamilyStatus::ID() const
 \brief selector for the data element myCorporate::TFamilyStatus::iID
-\details <b>unique identification number for a record in this domain with family status</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TFamilyStatus::iID
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Denotation() const
 \brief selector for the data element myCorporate::TFamilyStatus::strDenotation
-\details <b>unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strDenotation
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Abbreviation() const
 \brief selector for the data element myCorporate::TFamilyStatus::strAbbreviation
-\details <b>non-representative abbreviation that can be used for a short advertisement for this family status</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strAbbreviation
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Description() const
 \brief selector for the data element myCorporate::TFamilyStatus::strDescription
-\details <b>detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strDescription
 \fn std::optional<bool> const& myCorporate::TFamilyStatus::Coupled() const
 \brief selector for the data element myCorporate::TFamilyStatus::boCoupled
-\details <b>boolean value that show if persones with this status are coupled and possibly receive tax relief</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TFamilyStatus::boCoupled
 \fn std::optional<bool> const& myCorporate::TFamilyStatus::NeedDate() const
 \brief selector for the data element myCorporate::TFamilyStatus::boNeedDate
-\details <b>boolean value which determine that the date when the person status changed the last time needed. </b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TFamilyStatus::boNeedDate
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Notes() const
 \brief selector for the data element myCorporate::TFamilyStatus::strNotes
-\details <b>notes, with additional / free information for this type of family status, not used in application</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strNotes
 \fn std::optional<bool> const& myCorporate::TFamilyStatus::UrgentValue() const
 \brief selector for the data element myCorporate::TFamilyStatus::boUrgentValue
-\details <b>boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TFamilyStatus::boUrgentValue
 
 \}
@@ -252,50 +243,42 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TFamilyStatus::_ID() const
 \brief special selector for data element myCorporate::TFamilyStatus::iID
-\details unique identification number for a record in this domain with family status
-\details <b>unique identification number for a record in this domain with family status</b>
+\details attribute "ID" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::iID is empty
 \returns int const&: Reference to the data element myCorporate::TFamilyStatus::iID
 \fn std::string const& myCorporate::TFamilyStatus::_Denotation() const
 \brief special selector for data element myCorporate::TFamilyStatus::strDenotation
-\details unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)
-\details <b>unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)</b>
+\details attribute "Denotation" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strDenotation
 \fn std::string const& myCorporate::TFamilyStatus::_Abbreviation() const
 \brief special selector for data element myCorporate::TFamilyStatus::strAbbreviation
-\details non-representative abbreviation that can be used for a short advertisement for this family status
-\details <b>non-representative abbreviation that can be used for a short advertisement for this family status</b>
+\details attribute "Abbreviation" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strAbbreviation
 \fn std::string const& myCorporate::TFamilyStatus::_Description() const
 \brief special selector for data element myCorporate::TFamilyStatus::strDescription
-\details detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm
-\details <b>detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm</b>
+\details attribute "Description" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strDescription
 \fn bool myCorporate::TFamilyStatus::_Coupled() const
 \brief special selector for data element myCorporate::TFamilyStatus::boCoupled
-\details boolean value that show if persones with this status are coupled and possibly receive tax relief
-\details <b>boolean value that show if persones with this status are coupled and possibly receive tax relief</b>
+\details attribute "Coupled" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::boCoupled is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyStatus::boCoupled
 \fn bool myCorporate::TFamilyStatus::_NeedDate() const
 \brief special selector for data element myCorporate::TFamilyStatus::boNeedDate
-\details boolean value which determine that the date when the person status changed the last time needed. 
-\details <b>boolean value which determine that the date when the person status changed the last time needed. </b>
+\details attribute "NeedDate" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::boNeedDate is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyStatus::boNeedDate
 \fn std::string const& myCorporate::TFamilyStatus::_Notes() const
 \brief special selector for data element myCorporate::TFamilyStatus::strNotes
-\details notes, with additional / free information for this type of family status, not used in application
-\details <b>notes, with additional / free information for this type of family status, not used in application</b>
+\details attribute "Notes" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TFamilyStatus::strNotes
 \fn bool myCorporate::TFamilyStatus::_UrgentValue() const
 \brief special selector for data element myCorporate::TFamilyStatus::boUrgentValue
-\details boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "FamilyStatus"
 \throws std::runtime::error if the attribute myCorporate::TFamilyStatus::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TFamilyStatus::boUrgentValue
 
@@ -306,49 +289,41 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TFamilyStatus::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::iID
-\details <b>unique identification number for a record in this domain with family status</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TFamilyStatus::iID
 
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::strDenotation
-\details <b>unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strDenotation
 
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::strAbbreviation
-\details <b>non-representative abbreviation that can be used for a short advertisement for this family status</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strAbbreviation
 
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::strDescription
-\details <b>detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strDescription
 
 \fn std::optional<bool> const& myCorporate::TFamilyStatus::Coupled(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::boCoupled
-\details <b>boolean value that show if persones with this status are coupled and possibly receive tax relief</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::boCoupled
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TFamilyStatus::boCoupled
 
 \fn std::optional<bool> const& myCorporate::TFamilyStatus::NeedDate(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::boNeedDate
-\details <b>boolean value which determine that the date when the person status changed the last time needed. </b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::boNeedDate
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TFamilyStatus::boNeedDate
 
 \fn std::optional<std::string> const& myCorporate::TFamilyStatus::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::strNotes
-\details <b>notes, with additional / free information for this type of family status, not used in application</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TFamilyStatus::strNotes
 
 \fn std::optional<bool> const& myCorporate::TFamilyStatus::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TFamilyStatus::boUrgentValue
-\details <b>boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member myCorporate::TFamilyStatus::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TFamilyStatus::boUrgentValue
 

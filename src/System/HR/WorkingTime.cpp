@@ -1,8 +1,8 @@
 ﻿/*
 * Project: model with a simple person administration
 * Implementation of the data class TWorkingTime
-* Content: entity with the working times for an employee, as a composition for these.
-* Date: 25.03.2024 19:08:41,304  file created with adecc Scholar metadata generator
+* Content: entity set with working hours performed and booked by employees
+* Date: 22.04.2025 22:26:56,947  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

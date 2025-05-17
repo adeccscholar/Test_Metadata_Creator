@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_CorporateForm
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_CorporateForm
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TCorporateForm
 \brief This table stores information about various types of legal forms. Each row corresponds to a specific legal form with several informations.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_CorporateForm
 
 \class myCorporate::TCorporateForm::primary_key
@@ -51,11 +51,10 @@
 
 \fn myCorporate::TCorporateForm::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
+\param [in] pID int  with 
 
 \var myCorporate::TCorporateForm::primary_key::iID
-\brief unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
-\details Source: key member myCorporate::TCorporateForm::primary_key::iID in class myCorporate::TCorporateForm::primary_key with the type int
+\brief Source: key member myCorporate::TCorporateForm::primary_key::iID in class myCorporate::TCorporateForm::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_CorporateForm with database type INT
 \fn myCorporate::TCorporateForm::primary_key::ID() const
 \brief selector for the data element myCorporate::TCorporateForm::primary_key::iID
@@ -167,34 +166,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TCorporateForm::iID
-\brief unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
-\details Source: member myCorporate::TCorporateForm::iID in class myCorporate::TCorporateForm with the type std::optional<int>
+\brief Source: member myCorporate::TCorporateForm::iID in class myCorporate::TCorporateForm with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_CorporateForm with database type INT
+\details unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
 
 \var myCorporate::TCorporateForm::strDenotation
-\brief unique denotation for this entity. denotes the name or designation of the legal form
-\details Source: member myCorporate::TCorporateForm::strDenotation in class myCorporate::TCorporateForm with the type std::optional<std::string>
+\brief Source: member myCorporate::TCorporateForm::strDenotation in class myCorporate::TCorporateForm with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_CorporateForm with database type VARCHAR
+\details unique denotation for this entity. denotes the name or designation of the legal form
 
 \var myCorporate::TCorporateForm::strAbbreviation
-\brief abbreviated form of the legal form,  used in the application or reports for a compact display
-\details Source: member myCorporate::TCorporateForm::strAbbreviation in class myCorporate::TCorporateForm with the type std::optional<std::string>
+\brief Source: member myCorporate::TCorporateForm::strAbbreviation in class myCorporate::TCorporateForm with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_CorporateForm with database type VARCHAR
+\details Abbreviated form of the legal form,  used in the application or reports for a compact display
 
 \var myCorporate::TCorporateForm::strDescription
-\brief provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations
-\details Source: member myCorporate::TCorporateForm::strDescription in class myCorporate::TCorporateForm with the type std::optional<std::string>
+\brief Source: member myCorporate::TCorporateForm::strDescription in class myCorporate::TCorporateForm with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_CorporateForm with database type VARCHAR(MAX)
+\details provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations
 
 \var myCorporate::TCorporateForm::boIsLegalEntrity
-\brief indicates whether the legal form constitutes a legal entity (true/false)
-\details Source: member myCorporate::TCorporateForm::boIsLegalEntrity in class myCorporate::TCorporateForm with the type std::optional<bool>
+\brief Source: member myCorporate::TCorporateForm::boIsLegalEntrity in class myCorporate::TCorporateForm with the type std::optional<bool>
 \details Database: attribute "IsLegalEntrity" in entity \ref datamodel_table_CorporateForm with database type TINYINT
+\details indicates whether the legal form constitutes a legal entity (true/false)
 
 \var myCorporate::TCorporateForm::iUrgentValue
-\brief indicates whether the legal form has urgent significance (true/false)
-\details Source: member myCorporate::TCorporateForm::iUrgentValue in class myCorporate::TCorporateForm with the type std::optional<int>
+\brief Source: member myCorporate::TCorporateForm::iUrgentValue in class myCorporate::TCorporateForm with the type std::optional<int>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_CorporateForm with database type INT
+\details indicates whether the legal form has urgent significance (true/false)
 
 
 \}
@@ -204,27 +203,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TCorporateForm::ID() const
 \brief selector for the data element myCorporate::TCorporateForm::iID
-\details <b>unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TCorporateForm::iID
 \fn std::optional<std::string> const& myCorporate::TCorporateForm::Denotation() const
 \brief selector for the data element myCorporate::TCorporateForm::strDenotation
-\details <b>unique denotation for this entity. denotes the name or designation of the legal form</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCorporateForm::strDenotation
 \fn std::optional<std::string> const& myCorporate::TCorporateForm::Abbreviation() const
 \brief selector for the data element myCorporate::TCorporateForm::strAbbreviation
-\details <b>abbreviated form of the legal form,  used in the application or reports for a compact display</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCorporateForm::strAbbreviation
 \fn std::optional<std::string> const& myCorporate::TCorporateForm::Description() const
 \brief selector for the data element myCorporate::TCorporateForm::strDescription
-\details <b>provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCorporateForm::strDescription
 \fn std::optional<bool> const& myCorporate::TCorporateForm::IsLegalEntrity() const
 \brief selector for the data element myCorporate::TCorporateForm::boIsLegalEntrity
-\details <b>indicates whether the legal form constitutes a legal entity (true/false)</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TCorporateForm::boIsLegalEntrity
 \fn std::optional<int> const& myCorporate::TCorporateForm::UrgentValue() const
 \brief selector for the data element myCorporate::TCorporateForm::iUrgentValue
-\details <b>indicates whether the legal form has urgent significance (true/false)</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TCorporateForm::iUrgentValue
 
 \}
@@ -234,38 +227,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TCorporateForm::_ID() const
 \brief special selector for data element myCorporate::TCorporateForm::iID
-\details unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
-\details <b>unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships</b>
+\details attribute "ID" in entity "CorporateForm"
 \throws std::runtime::error if the attribute myCorporate::TCorporateForm::iID is empty
 \returns int const&: Reference to the data element myCorporate::TCorporateForm::iID
 \fn std::string const& myCorporate::TCorporateForm::_Denotation() const
 \brief special selector for data element myCorporate::TCorporateForm::strDenotation
-\details unique denotation for this entity. denotes the name or designation of the legal form
-\details <b>unique denotation for this entity. denotes the name or designation of the legal form</b>
+\details attribute "Denotation" in entity "CorporateForm"
 \throws std::runtime::error if the attribute myCorporate::TCorporateForm::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCorporateForm::strDenotation
 \fn std::string const& myCorporate::TCorporateForm::_Abbreviation() const
 \brief special selector for data element myCorporate::TCorporateForm::strAbbreviation
-\details abbreviated form of the legal form,  used in the application or reports for a compact display
-\details <b>abbreviated form of the legal form,  used in the application or reports for a compact display</b>
+\details attribute "Abbreviation" in entity "CorporateForm"
 \throws std::runtime::error if the attribute myCorporate::TCorporateForm::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCorporateForm::strAbbreviation
 \fn std::string const& myCorporate::TCorporateForm::_Description() const
 \brief special selector for data element myCorporate::TCorporateForm::strDescription
-\details provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations
-\details <b>provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations</b>
+\details attribute "Description" in entity "CorporateForm"
 \throws std::runtime::error if the attribute myCorporate::TCorporateForm::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCorporateForm::strDescription
 \fn bool myCorporate::TCorporateForm::_IsLegalEntrity() const
 \brief special selector for data element myCorporate::TCorporateForm::boIsLegalEntrity
-\details indicates whether the legal form constitutes a legal entity (true/false)
-\details <b>indicates whether the legal form constitutes a legal entity (true/false)</b>
+\details attribute "IsLegalEntrity" in entity "CorporateForm"
 \throws std::runtime::error if the attribute myCorporate::TCorporateForm::boIsLegalEntrity is empty
 \returns bool const&: Reference to the data element myCorporate::TCorporateForm::boIsLegalEntrity
 \fn int myCorporate::TCorporateForm::_UrgentValue() const
 \brief special selector for data element myCorporate::TCorporateForm::iUrgentValue
-\details indicates whether the legal form has urgent significance (true/false)
-\details <b>indicates whether the legal form has urgent significance (true/false)</b>
+\details attribute "UrgentValue" in entity "CorporateForm"
 \throws std::runtime::error if the attribute myCorporate::TCorporateForm::iUrgentValue is empty
 \returns int const&: Reference to the data element myCorporate::TCorporateForm::iUrgentValue
 
@@ -276,37 +263,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TCorporateForm::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TCorporateForm::iID
-\details <b>unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships</b>
 \param[in] newVal the new Value for the member myCorporate::TCorporateForm::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TCorporateForm::iID
 
 \fn std::optional<std::string> const& myCorporate::TCorporateForm::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCorporateForm::strDenotation
-\details <b>unique denotation for this entity. denotes the name or designation of the legal form</b>
 \param[in] newVal the new Value for the member myCorporate::TCorporateForm::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCorporateForm::strDenotation
 
 \fn std::optional<std::string> const& myCorporate::TCorporateForm::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCorporateForm::strAbbreviation
-\details <b>abbreviated form of the legal form,  used in the application or reports for a compact display</b>
 \param[in] newVal the new Value for the member myCorporate::TCorporateForm::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCorporateForm::strAbbreviation
 
 \fn std::optional<std::string> const& myCorporate::TCorporateForm::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCorporateForm::strDescription
-\details <b>provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations</b>
 \param[in] newVal the new Value for the member myCorporate::TCorporateForm::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCorporateForm::strDescription
 
 \fn std::optional<bool> const& myCorporate::TCorporateForm::IsLegalEntrity(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TCorporateForm::boIsLegalEntrity
-\details <b>indicates whether the legal form constitutes a legal entity (true/false)</b>
 \param[in] newVal the new Value for the member myCorporate::TCorporateForm::boIsLegalEntrity
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TCorporateForm::boIsLegalEntrity
 
 \fn std::optional<int> const& myCorporate::TCorporateForm::UrgentValue(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TCorporateForm::iUrgentValue
-\details <b>indicates whether the legal form has urgent significance (true/false)</b>
 \param[in] newVal the new Value for the member myCorporate::TCorporateForm::iUrgentValue
 \returns std::optional<int> const&: Reference to the data element myCorporate::TCorporateForm::iUrgentValue
 

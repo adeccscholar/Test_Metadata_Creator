@@ -172,11 +172,11 @@
     <ClCompile Include="..\System\Corporate\CorporateForm.cpp">
       <Filter>Source Files\Corporate</Filter>
     </ClCompile>
+    <ClCompile Include="PersonDlgClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\System\Corporate\base.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\System\Corporate\Address.h">
       <Filter>Header Files\Corporate</Filter>
     </ClInclude>
@@ -321,5 +321,24 @@
     <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTupleUtils.h">
       <Filter>Header Files\adecc_Scholar</Filter>
     </ClInclude>
+    <ClInclude Include="..\Base\BaseClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Base\BaseDefinitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="PersonDlgClass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="PersonDlgClass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TestForm1.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

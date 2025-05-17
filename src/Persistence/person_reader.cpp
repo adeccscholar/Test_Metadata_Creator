@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of the persistence class TPersonReader
-* Date: 25.03.2024 19:08:41,399  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:57,201  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -44,7 +44,7 @@ void TPersonReader::LogoutFromDb() {
 // access methods for class TAddress
 bool TPersonReader::Read(myCorporate::TAddress::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLAddressSelectAll);
+   query.SetSQL(strSQLSelectAddress_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TAddress element;
       element.ID(query.Get<int>("ID", true));
@@ -61,7 +61,7 @@ bool TPersonReader::Read(myCorporate::TAddress::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCorporate::TAddress& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLAddressSelectDetail);
+   query.SetSQL(strSQLSelectAddress_Detail);
    query.Set("keyID", key_val.ID());
    query.Set("keyAddressType", key_val.AddressType());
    query.Execute();
@@ -81,7 +81,7 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
       os1 << "error while reading data for TAddress";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLAddressSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectAddress_Detail);
       }
    return true;
    }
@@ -90,7 +90,7 @@ bool TPersonReader::Read(myCorporate::TAddress::primary_key const& key_val, myCo
 // access methods for class TAddressTypes
 bool TPersonReader::Read(myCorporate::TAddressTypes::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLAddressTypesSelectAll);
+   query.SetSQL(strSQLSelectAddressTypes_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TAddressTypes element;
       element.ID(query.Get<int>("ID", true));
@@ -106,7 +106,7 @@ bool TPersonReader::Read(myCorporate::TAddressTypes::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val, myCorporate::TAddressTypes& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLAddressTypesSelectDetail);
+   query.SetSQL(strSQLSelectAddressTypes_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -124,7 +124,7 @@ bool TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val,
       os1 << "error while reading data for TAddressTypes";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLAddressTypesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectAddressTypes_Detail);
       }
    return true;
    }
@@ -133,7 +133,7 @@ bool TPersonReader::Read(myCorporate::TAddressTypes::primary_key const& key_val,
 // access methods for class TBanking
 bool TPersonReader::Read(myCorporate::TBanking::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLBankingSelectAll);
+   query.SetSQL(strSQLSelectBanking_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TBanking element;
       element.ID(query.Get<int>("ID", true));
@@ -150,7 +150,7 @@ bool TPersonReader::Read(myCorporate::TBanking::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCorporate::TBanking& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLBankingSelectDetail);
+   query.SetSQL(strSQLSelectBanking_Detail);
    query.Set("keyID", key_val.ID());
    query.Set("keyBankingType", key_val.BankingType());
    query.Execute();
@@ -170,7 +170,7 @@ bool TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCo
       os1 << "error while reading data for TBanking";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLBankingSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectBanking_Detail);
       }
    return true;
    }
@@ -179,7 +179,7 @@ bool TPersonReader::Read(myCorporate::TBanking::primary_key const& key_val, myCo
 // access methods for class TBankingTypes
 bool TPersonReader::Read(myCorporate::TBankingTypes::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLBankingTypesSelectAll);
+   query.SetSQL(strSQLSelectBankingTypes_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TBankingTypes element;
       element.ID(query.Get<int>("ID", true));
@@ -195,7 +195,7 @@ bool TPersonReader::Read(myCorporate::TBankingTypes::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val, myCorporate::TBankingTypes& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLBankingTypesSelectDetail);
+   query.SetSQL(strSQLSelectBankingTypes_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -213,7 +213,7 @@ bool TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val,
       os1 << "error while reading data for TBankingTypes";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLBankingTypesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectBankingTypes_Detail);
       }
    return true;
    }
@@ -222,7 +222,7 @@ bool TPersonReader::Read(myCorporate::TBankingTypes::primary_key const& key_val,
 // access methods for class TContacts
 bool TPersonReader::Read(mySales::TContacts::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLContactsSelectAll);
+   query.SetSQL(strSQLSelectContacts_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TContacts element;
       element.ContactID(query.Get<int>("ContactID", true));
@@ -235,7 +235,7 @@ bool TPersonReader::Read(mySales::TContacts::container_ty& data) {
 
 bool TPersonReader::Read(mySales::TContacts::primary_key const& key_val, mySales::TContacts& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLContactsSelectDetail);
+   query.SetSQL(strSQLSelectContacts_Detail);
    query.Set("keyContactID", key_val.ContactID());
    query.Execute();
    query.First();
@@ -250,7 +250,7 @@ bool TPersonReader::Read(mySales::TContacts::primary_key const& key_val, mySales
       os1 << "error while reading data for TContacts";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLContactsSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectContacts_Detail);
       }
    return true;
    }
@@ -259,7 +259,7 @@ bool TPersonReader::Read(mySales::TContacts::primary_key const& key_val, mySales
 // access methods for class TCorporateForm
 bool TPersonReader::Read(myCorporate::TCorporateForm::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCorporateFormSelectAll);
+   query.SetSQL(strSQLSelectCorporateForm_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TCorporateForm element;
       element.ID(query.Get<int>("ID", true));
@@ -275,7 +275,7 @@ bool TPersonReader::Read(myCorporate::TCorporateForm::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TCorporateForm::primary_key const& key_val, myCorporate::TCorporateForm& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCorporateFormSelectDetail);
+   query.SetSQL(strSQLSelectCorporateForm_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -293,7 +293,7 @@ bool TPersonReader::Read(myCorporate::TCorporateForm::primary_key const& key_val
       os1 << "error while reading data for TCorporateForm";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCorporateFormSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectCorporateForm_Detail);
       }
    return true;
    }
@@ -302,7 +302,7 @@ bool TPersonReader::Read(myCorporate::TCorporateForm::primary_key const& key_val
 // access methods for class TCountries
 bool TPersonReader::Read(myCorporate::TCountries::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCountriesSelectAll);
+   query.SetSQL(strSQLSelectCountries_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TCountries element;
       element.ID(query.Get<int>("ID", true));
@@ -323,7 +323,7 @@ bool TPersonReader::Read(myCorporate::TCountries::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, myCorporate::TCountries& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCountriesSelectDetail);
+   query.SetSQL(strSQLSelectCountries_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -346,7 +346,7 @@ bool TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, my
       os1 << "error while reading data for TCountries";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCountriesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectCountries_Detail);
       }
    return true;
    }
@@ -355,7 +355,7 @@ bool TPersonReader::Read(myCorporate::TCountries::primary_key const& key_val, my
 // access methods for class TCustClassification
 bool TPersonReader::Read(mySales::TCustClassification::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCustClassificationSelectAll);
+   query.SetSQL(strSQLSelectCustClassification_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TCustClassification element;
       element.ID(query.Get<int>("ID", true));
@@ -371,7 +371,7 @@ bool TPersonReader::Read(mySales::TCustClassification::container_ty& data) {
 
 bool TPersonReader::Read(mySales::TCustClassification::primary_key const& key_val, mySales::TCustClassification& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCustClassificationSelectDetail);
+   query.SetSQL(strSQLSelectCustClassification_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -389,7 +389,7 @@ bool TPersonReader::Read(mySales::TCustClassification::primary_key const& key_va
       os1 << "error while reading data for TCustClassification";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCustClassificationSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectCustClassification_Detail);
       }
    return true;
    }
@@ -398,7 +398,7 @@ bool TPersonReader::Read(mySales::TCustClassification::primary_key const& key_va
 // access methods for class TCustLiaison
 bool TPersonReader::Read(mySales::TCustLiaison::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCustLiaisonSelectAll);
+   query.SetSQL(strSQLSelectCustLiaison_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TCustLiaison element;
       element.ID(query.Get<int>("ID", true));
@@ -414,7 +414,7 @@ bool TPersonReader::Read(mySales::TCustLiaison::container_ty& data) {
 
 bool TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySales::TCustLiaison& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCustLiaisonSelectDetail);
+   query.SetSQL(strSQLSelectCustLiaison_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -432,7 +432,7 @@ bool TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySa
       os1 << "error while reading data for TCustLiaison";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCustLiaisonSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectCustLiaison_Detail);
       }
    return true;
    }
@@ -441,7 +441,7 @@ bool TPersonReader::Read(mySales::TCustLiaison::primary_key const& key_val, mySa
 // access methods for class TCustomers
 bool TPersonReader::Read(mySales::TCustomers::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCustomersSelectAll);
+   query.SetSQL(strSQLSelectCustomers_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       mySales::TCustomers element;
       element.CustID(query.Get<int>("CustID", true));
@@ -455,7 +455,7 @@ bool TPersonReader::Read(mySales::TCustomers::container_ty& data) {
 
 bool TPersonReader::Read(mySales::TCustomers::primary_key const& key_val, mySales::TCustomers& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLCustomersSelectDetail);
+   query.SetSQL(strSQLSelectCustomers_Detail);
    query.Set("keyCustID", key_val.CustID());
    query.Execute();
    query.First();
@@ -471,7 +471,7 @@ bool TPersonReader::Read(mySales::TCustomers::primary_key const& key_val, mySale
       os1 << "error while reading data for TCustomers";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLCustomersSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectCustomers_Detail);
       }
    return true;
    }
@@ -480,7 +480,7 @@ bool TPersonReader::Read(mySales::TCustomers::primary_key const& key_val, mySale
 // access methods for class TDepartments
 bool TPersonReader::Read(myHR::TDepartments::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLDepartmentsSelectAll);
+   query.SetSQL(strSQLSelectDepartments_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TDepartments element;
       element.ID(query.Get<int>("ID", true));
@@ -496,7 +496,7 @@ bool TPersonReader::Read(myHR::TDepartments::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::TDepartments& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLDepartmentsSelectDetail);
+   query.SetSQL(strSQLSelectDepartments_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -514,7 +514,7 @@ bool TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::T
       os1 << "error while reading data for TDepartments";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLDepartmentsSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectDepartments_Detail);
       }
    return true;
    }
@@ -523,10 +523,9 @@ bool TPersonReader::Read(myHR::TDepartments::primary_key const& key_val, myHR::T
 // access methods for class TEmployees
 bool TPersonReader::Read(myHR::TEmployees::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLEmployeesSelectAll);
+   query.SetSQL(strSQLSelectEmployees_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TEmployees element;
-      element.Dummy(query.Get<int>("Dummy"));
       element.EmployeeID(query.Get<int>("EmployeeID", true));
       element.PersonNumber(query.Get<std::string>("PersonNumber"));
       element.Salary(query.Get<double>("Salary"));
@@ -539,6 +538,7 @@ bool TPersonReader::Read(myHR::TEmployees::container_ty& data) {
       element.JobSpec(query.Get<std::string>("JobSpec"));
       element.VacationDays(query.Get<unsigned int>("VacationDays"));
       element.Department(query.Get<int>("Department"));
+      element.TaxNumber(query.Get<std::string>("TaxNumber"));
       element.SocialNummer(query.Get<std::string>("SocialNummer"));
       element.Active(query.Get<bool>("Active"));
       data.insert({ element.GetKey(), element });
@@ -548,12 +548,11 @@ bool TPersonReader::Read(myHR::TEmployees::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEmployees& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLEmployeesSelectDetail);
+   query.SetSQL(strSQLSelectEmployees_Detail);
    query.Set("keyEmployeeID", key_val.EmployeeID());
    query.Execute();
    query.First();
    if(!query.IsEof()) {
-      data.Dummy(query.Get<int>("Dummy"));
       data.EmployeeID(query.Get<int>("EmployeeID", true));
       data.PersonNumber(query.Get<std::string>("PersonNumber"));
       data.Salary(query.Get<double>("Salary"));
@@ -566,6 +565,7 @@ bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEm
       data.JobSpec(query.Get<std::string>("JobSpec"));
       data.VacationDays(query.Get<unsigned int>("VacationDays"));
       data.Department(query.Get<int>("Department"));
+      data.TaxNumber(query.Get<std::string>("TaxNumber"));
       data.SocialNummer(query.Get<std::string>("SocialNummer"));
       data.Active(query.Get<bool>("Active"));
       }
@@ -575,7 +575,7 @@ bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEm
       os1 << "error while reading data for TEmployees";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLEmployeesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectEmployees_Detail);
       }
    return true;
    }
@@ -584,7 +584,7 @@ bool TPersonReader::Read(myHR::TEmployees::primary_key const& key_val, myHR::TEm
 // access methods for class TFamilyStatus
 bool TPersonReader::Read(myCorporate::TFamilyStatus::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLFamilyStatusSelectAll);
+   query.SetSQL(strSQLSelectFamilyStatus_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TFamilyStatus element;
       element.ID(query.Get<int>("ID", true));
@@ -602,7 +602,7 @@ bool TPersonReader::Read(myCorporate::TFamilyStatus::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val, myCorporate::TFamilyStatus& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLFamilyStatusSelectDetail);
+   query.SetSQL(strSQLSelectFamilyStatus_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -622,7 +622,7 @@ bool TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val,
       os1 << "error while reading data for TFamilyStatus";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLFamilyStatusSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectFamilyStatus_Detail);
       }
    return true;
    }
@@ -631,7 +631,7 @@ bool TPersonReader::Read(myCorporate::TFamilyStatus::primary_key const& key_val,
 // access methods for class TFamilyTypes
 bool TPersonReader::Read(myCorporate::TFamilyTypes::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLFamilyTypesSelectAll);
+   query.SetSQL(strSQLSelectFamilyTypes_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TFamilyTypes element;
       element.ID(query.Get<int>("ID", true));
@@ -648,7 +648,7 @@ bool TPersonReader::Read(myCorporate::TFamilyTypes::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, myCorporate::TFamilyTypes& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLFamilyTypesSelectDetail);
+   query.SetSQL(strSQLSelectFamilyTypes_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -667,7 +667,7 @@ bool TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, 
       os1 << "error while reading data for TFamilyTypes";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLFamilyTypesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectFamilyTypes_Detail);
       }
    return true;
    }
@@ -676,7 +676,7 @@ bool TPersonReader::Read(myCorporate::TFamilyTypes::primary_key const& key_val, 
 // access methods for class TFormOfAddress
 bool TPersonReader::Read(myCorporate::TFormOfAddress::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLFormOfAddressSelectAll);
+   query.SetSQL(strSQLSelectFormOfAddress_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TFormOfAddress element;
       element.ID(query.Get<int>("ID", true));
@@ -695,7 +695,7 @@ bool TPersonReader::Read(myCorporate::TFormOfAddress::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val, myCorporate::TFormOfAddress& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLFormOfAddressSelectDetail);
+   query.SetSQL(strSQLSelectFormOfAddress_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -716,7 +716,7 @@ bool TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val
       os1 << "error while reading data for TFormOfAddress";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLFormOfAddressSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectFormOfAddress_Detail);
       }
    return true;
    }
@@ -725,7 +725,7 @@ bool TPersonReader::Read(myCorporate::TFormOfAddress::primary_key const& key_val
 // access methods for class TInternet
 bool TPersonReader::Read(myCorporate::TInternet::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLInternetSelectAll);
+   query.SetSQL(strSQLSelectInternet_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TInternet element;
       element.ID(query.Get<int>("ID", true));
@@ -738,7 +738,7 @@ bool TPersonReader::Read(myCorporate::TInternet::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TInternet::primary_key const& key_val, myCorporate::TInternet& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLInternetSelectDetail);
+   query.SetSQL(strSQLSelectInternet_Detail);
    query.Set("keyID", key_val.ID());
    query.Set("keyInternetType", key_val.InternetType());
    query.Execute();
@@ -754,7 +754,7 @@ bool TPersonReader::Read(myCorporate::TInternet::primary_key const& key_val, myC
       os1 << "error while reading data for TInternet";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLInternetSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectInternet_Detail);
       }
    return true;
    }
@@ -763,7 +763,7 @@ bool TPersonReader::Read(myCorporate::TInternet::primary_key const& key_val, myC
 // access methods for class TInternetTypes
 bool TPersonReader::Read(myCorporate::TInternetTypes::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLInternetTypesSelectAll);
+   query.SetSQL(strSQLSelectInternetTypes_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TInternetTypes element;
       element.ID(query.Get<int>("ID", true));
@@ -780,7 +780,7 @@ bool TPersonReader::Read(myCorporate::TInternetTypes::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val, myCorporate::TInternetTypes& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLInternetTypesSelectDetail);
+   query.SetSQL(strSQLSelectInternetTypes_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -799,7 +799,7 @@ bool TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val
       os1 << "error while reading data for TInternetTypes";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLInternetTypesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectInternetTypes_Detail);
       }
    return true;
    }
@@ -808,7 +808,7 @@ bool TPersonReader::Read(myCorporate::TInternetTypes::primary_key const& key_val
 // access methods for class TJobPositions
 bool TPersonReader::Read(myHR::TJobPositions::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLJobPositionsSelectAll);
+   query.SetSQL(strSQLSelectJobPositions_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TJobPositions element;
       element.ID(query.Get<int>("ID", true));
@@ -825,7 +825,7 @@ bool TPersonReader::Read(myHR::TJobPositions::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::TJobPositions& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLJobPositionsSelectDetail);
+   query.SetSQL(strSQLSelectJobPositions_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -844,7 +844,7 @@ bool TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::
       os1 << "error while reading data for TJobPositions";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLJobPositionsSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectJobPositions_Detail);
       }
    return true;
    }
@@ -853,12 +853,13 @@ bool TPersonReader::Read(myHR::TJobPositions::primary_key const& key_val, myHR::
 // access methods for class TPerson
 bool TPersonReader::Read(myCorporate::TPerson::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLPersonSelectAll);
+   query.SetSQL(strSQLSelectPerson_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TPerson element;
       element.ID(query.Get<int>("ID", true));
       element.Name(query.Get<std::string>("Name"));
-      element.Firstname(query.Get<std::string>("Firstname"));
+      element.FirstName(query.Get<std::string>("FirstName"));
+      element.Birthname(query.Get<std::string>("Birthname"));
       element.FormOfAddress(query.Get<int>("FormOfAddress"));
       element.FamilyStatus(query.Get<int>("FamilyStatus"));
       element.FamilyStatusSince(query.Get<std::chrono::year_month_day>("FamilyStatusSince"));
@@ -872,14 +873,15 @@ bool TPersonReader::Read(myCorporate::TPerson::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCorporate::TPerson& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLPersonSelectDetail);
+   query.SetSQL(strSQLSelectPerson_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
    if(!query.IsEof()) {
       data.ID(query.Get<int>("ID", true));
       data.Name(query.Get<std::string>("Name"));
-      data.Firstname(query.Get<std::string>("Firstname"));
+      data.FirstName(query.Get<std::string>("FirstName"));
+      data.Birthname(query.Get<std::string>("Birthname"));
       data.FormOfAddress(query.Get<int>("FormOfAddress"));
       data.FamilyStatus(query.Get<int>("FamilyStatus"));
       data.FamilyStatusSince(query.Get<std::chrono::year_month_day>("FamilyStatusSince"));
@@ -893,7 +895,7 @@ bool TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCor
       os1 << "error while reading data for TPerson";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLPersonSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectPerson_Detail);
       }
    return true;
    }
@@ -902,7 +904,7 @@ bool TPersonReader::Read(myCorporate::TPerson::primary_key const& key_val, myCor
 // access methods for class TPhone
 bool TPersonReader::Read(myCorporate::TPhone::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLPhoneSelectAll);
+   query.SetSQL(strSQLSelectPhone_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TPhone element;
       element.ID(query.Get<int>("ID", true));
@@ -919,7 +921,7 @@ bool TPersonReader::Read(myCorporate::TPhone::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorporate::TPhone& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLPhoneSelectDetail);
+   query.SetSQL(strSQLSelectPhone_Detail);
    query.Set("keyID", key_val.ID());
    query.Set("keyPhoneType", key_val.PhoneType());
    query.Execute();
@@ -939,7 +941,7 @@ bool TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorp
       os1 << "error while reading data for TPhone";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLPhoneSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectPhone_Detail);
       }
    return true;
    }
@@ -948,7 +950,7 @@ bool TPersonReader::Read(myCorporate::TPhone::primary_key const& key_val, myCorp
 // access methods for class TPhonesTypes
 bool TPersonReader::Read(myCorporate::TPhonesTypes::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLPhonesTypesSelectAll);
+   query.SetSQL(strSQLSelectPhonesTypes_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myCorporate::TPhonesTypes element;
       element.ID(query.Get<int>("ID", true));
@@ -964,7 +966,7 @@ bool TPersonReader::Read(myCorporate::TPhonesTypes::container_ty& data) {
 
 bool TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, myCorporate::TPhonesTypes& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLPhonesTypesSelectDetail);
+   query.SetSQL(strSQLSelectPhonesTypes_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -982,7 +984,7 @@ bool TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, 
       os1 << "error while reading data for TPhonesTypes";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLPhonesTypesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectPhonesTypes_Detail);
       }
    return true;
    }
@@ -991,7 +993,7 @@ bool TPersonReader::Read(myCorporate::TPhonesTypes::primary_key const& key_val, 
 // access methods for class TReasonDeparture
 bool TPersonReader::Read(myHR::TReasonDeparture::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLReasonDepartureSelectAll);
+   query.SetSQL(strSQLSelectReasonDeparture_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TReasonDeparture element;
       element.ID(query.Get<int>("ID", true));
@@ -1007,7 +1009,7 @@ bool TPersonReader::Read(myHR::TReasonDeparture::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myHR::TReasonDeparture& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLReasonDepartureSelectDetail);
+   query.SetSQL(strSQLSelectReasonDeparture_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1025,7 +1027,7 @@ bool TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myH
       os1 << "error while reading data for TReasonDeparture";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLReasonDepartureSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectReasonDeparture_Detail);
       }
    return true;
    }
@@ -1034,7 +1036,7 @@ bool TPersonReader::Read(myHR::TReasonDeparture::primary_key const& key_val, myH
 // access methods for class TReasonNonWorking
 bool TPersonReader::Read(myHR::TReasonNonWorking::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLReasonNonWorkingSelectAll);
+   query.SetSQL(strSQLSelectReasonNonWorking_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TReasonNonWorking element;
       element.ID(query.Get<int>("ID", true));
@@ -1050,7 +1052,7 @@ bool TPersonReader::Read(myHR::TReasonNonWorking::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, myHR::TReasonNonWorking& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLReasonNonWorkingSelectDetail);
+   query.SetSQL(strSQLSelectReasonNonWorking_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1068,7 +1070,7 @@ bool TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, my
       os1 << "error while reading data for TReasonNonWorking";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLReasonNonWorkingSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectReasonNonWorking_Detail);
       }
    return true;
    }
@@ -1077,7 +1079,7 @@ bool TPersonReader::Read(myHR::TReasonNonWorking::primary_key const& key_val, my
 // access methods for class TSalaryBase
 bool TPersonReader::Read(myHR::TSalaryBase::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLSalaryBaseSelectAll);
+   query.SetSQL(strSQLSelectSalaryBase_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TSalaryBase element;
       element.ID(query.Get<int>("ID", true));
@@ -1092,7 +1094,7 @@ bool TPersonReader::Read(myHR::TSalaryBase::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TSalaryBase& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLSalaryBaseSelectDetail);
+   query.SetSQL(strSQLSelectSalaryBase_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1109,7 +1111,7 @@ bool TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TS
       os1 << "error while reading data for TSalaryBase";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSalaryBaseSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectSalaryBase_Detail);
       }
    return true;
    }
@@ -1118,7 +1120,7 @@ bool TPersonReader::Read(myHR::TSalaryBase::primary_key const& key_val, myHR::TS
 // access methods for class TSalaryType
 bool TPersonReader::Read(myHR::TSalaryType::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLSalaryTypeSelectAll);
+   query.SetSQL(strSQLSelectSalaryType_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TSalaryType element;
       element.ID(query.Get<int>("ID", true));
@@ -1134,7 +1136,7 @@ bool TPersonReader::Read(myHR::TSalaryType::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TSalaryType& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLSalaryTypeSelectDetail);
+   query.SetSQL(strSQLSelectSalaryType_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1152,7 +1154,7 @@ bool TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TS
       os1 << "error while reading data for TSalaryType";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSalaryTypeSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectSalaryType_Detail);
       }
    return true;
    }
@@ -1161,7 +1163,7 @@ bool TPersonReader::Read(myHR::TSalaryType::primary_key const& key_val, myHR::TS
 // access methods for class TTaxClasses
 bool TPersonReader::Read(myHR::TTaxClasses::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLTaxClassesSelectAll);
+   query.SetSQL(strSQLSelectTaxClasses_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TTaxClasses element;
       element.ID(query.Get<int>("ID", true));
@@ -1177,7 +1179,7 @@ bool TPersonReader::Read(myHR::TTaxClasses::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TTaxClasses& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLTaxClassesSelectDetail);
+   query.SetSQL(strSQLSelectTaxClasses_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1195,7 +1197,7 @@ bool TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TT
       os1 << "error while reading data for TTaxClasses";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLTaxClassesSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectTaxClasses_Detail);
       }
    return true;
    }
@@ -1204,7 +1206,7 @@ bool TPersonReader::Read(myHR::TTaxClasses::primary_key const& key_val, myHR::TT
 // access methods for class TWD_Holidays
 bool TPersonReader::Read(myHR::TWD_Holidays::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_HolidaysSelectAll);
+   query.SetSQL(strSQLSelectWD_Holidays_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Holidays element;
       element.CalendarDay(query.Get<std::chrono::year_month_day>("CalendarDay", true));
@@ -1218,7 +1220,7 @@ bool TPersonReader::Read(myHR::TWD_Holidays::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TWD_Holidays::primary_key const& key_val, myHR::TWD_Holidays& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_HolidaysSelectDetail);
+   query.SetSQL(strSQLSelectWD_Holidays_Detail);
    query.Set("keyCalendarDay", key_val.CalendarDay());
    query.Execute();
    query.First();
@@ -1234,7 +1236,7 @@ bool TPersonReader::Read(myHR::TWD_Holidays::primary_key const& key_val, myHR::T
       os1 << "error while reading data for TWD_Holidays";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_HolidaysSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectWD_Holidays_Detail);
       }
    return true;
    }
@@ -1243,7 +1245,7 @@ bool TPersonReader::Read(myHR::TWD_Holidays::primary_key const& key_val, myHR::T
 // access methods for class TWD_Months
 bool TPersonReader::Read(myHR::TWD_Months::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_MonthsSelectAll);
+   query.SetSQL(strSQLSelectWD_Months_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Months element;
       element.ID(query.Get<int>("ID", true));
@@ -1257,7 +1259,7 @@ bool TPersonReader::Read(myHR::TWD_Months::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TWD_Months::primary_key const& key_val, myHR::TWD_Months& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_MonthsSelectDetail);
+   query.SetSQL(strSQLSelectWD_Months_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1273,7 +1275,7 @@ bool TPersonReader::Read(myHR::TWD_Months::primary_key const& key_val, myHR::TWD
       os1 << "error while reading data for TWD_Months";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_MonthsSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectWD_Months_Detail);
       }
    return true;
    }
@@ -1282,7 +1284,7 @@ bool TPersonReader::Read(myHR::TWD_Months::primary_key const& key_val, myHR::TWD
 // access methods for class TWD_NonWorking
 bool TPersonReader::Read(myHR::TWD_NonWorking::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_NonWorkingSelectAll);
+   query.SetSQL(strSQLSelectWD_NonWorking_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_NonWorking element;
       element.ID(query.Get<int>("ID", true));
@@ -1297,7 +1299,7 @@ bool TPersonReader::Read(myHR::TWD_NonWorking::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR::TWD_NonWorking& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_NonWorkingSelectDetail);
+   query.SetSQL(strSQLSelectWD_NonWorking_Detail);
    query.Set("keyID", key_val.ID());
    query.Set("keyStartAt", key_val.StartAt());
    query.Execute();
@@ -1315,7 +1317,7 @@ bool TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR:
       os1 << "error while reading data for TWD_NonWorking";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_NonWorkingSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectWD_NonWorking_Detail);
       }
    return true;
    }
@@ -1324,7 +1326,7 @@ bool TPersonReader::Read(myHR::TWD_NonWorking::primary_key const& key_val, myHR:
 // access methods for class TWD_Weekdays
 bool TPersonReader::Read(myHR::TWD_Weekdays::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_WeekdaysSelectAll);
+   query.SetSQL(strSQLSelectWD_Weekdays_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Weekdays element;
       element.ID(query.Get<int>("ID", true));
@@ -1338,7 +1340,7 @@ bool TPersonReader::Read(myHR::TWD_Weekdays::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TWD_Weekdays::primary_key const& key_val, myHR::TWD_Weekdays& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_WeekdaysSelectDetail);
+   query.SetSQL(strSQLSelectWD_Weekdays_Detail);
    query.Set("keyID", key_val.ID());
    query.Execute();
    query.First();
@@ -1354,7 +1356,7 @@ bool TPersonReader::Read(myHR::TWD_Weekdays::primary_key const& key_val, myHR::T
       os1 << "error while reading data for TWD_Weekdays";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_WeekdaysSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectWD_Weekdays_Detail);
       }
    return true;
    }
@@ -1363,7 +1365,7 @@ bool TPersonReader::Read(myHR::TWD_Weekdays::primary_key const& key_val, myHR::T
 // access methods for class TWD_Workdays
 bool TPersonReader::Read(myHR::TWD_Workdays::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_WorkdaysSelectAll);
+   query.SetSQL(strSQLSelectWD_Workdays_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWD_Workdays element;
       element.CalendarDay(query.Get<std::chrono::year_month_day>("CalendarDay", true));
@@ -1382,7 +1384,7 @@ bool TPersonReader::Read(myHR::TWD_Workdays::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::TWD_Workdays& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWD_WorkdaysSelectDetail);
+   query.SetSQL(strSQLSelectWD_Workdays_Detail);
    query.Set("keyCalendarDay", key_val.CalendarDay());
    query.Execute();
    query.First();
@@ -1403,7 +1405,7 @@ bool TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::T
       os1 << "error while reading data for TWD_Workdays";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWD_WorkdaysSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectWD_Workdays_Detail);
       }
    return true;
    }
@@ -1412,7 +1414,7 @@ bool TPersonReader::Read(myHR::TWD_Workdays::primary_key const& key_val, myHR::T
 // access methods for class TWorkingTime
 bool TPersonReader::Read(myHR::TWorkingTime::container_ty& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWorkingTimeSelectAll);
+   query.SetSQL(strSQLSelectWorkingTime_All);
    for(query.Execute(), query.First();!query.IsEof();query.Next()) {
       myHR::TWorkingTime element;
       element.ID(query.Get<int>("ID", true));
@@ -1428,7 +1430,7 @@ bool TPersonReader::Read(myHR::TWorkingTime::container_ty& data) {
 
 bool TPersonReader::Read(myHR::TWorkingTime::primary_key const& key_val, myHR::TWorkingTime& data) {
    auto query = database.CreateQuery();
-   query.SetSQL(strSQLWorkingTimeSelectDetail);
+   query.SetSQL(strSQLSelectWorkingTime_Detail);
    query.Set("keyID", key_val.ID());
    query.Set("keyStartingTime", key_val.StartingTime());
    query.Execute();
@@ -1447,7 +1449,7 @@ bool TPersonReader::Read(myHR::TWorkingTime::primary_key const& key_val, myHR::T
       os1 << "error while reading data for TWorkingTime";
       os2 << "couldn't read unique data for primary key element\n";
       key_val.write(os2);
-      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLWorkingTimeSelectDetail);
+      throw TMy_Db_Exception(os1.str(), os2.str(), database.Status(), strSQLSelectWorkingTime_Detail);
       }
    return true;
    }

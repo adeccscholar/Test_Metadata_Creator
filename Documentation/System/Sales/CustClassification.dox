@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_CustClassification
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_CustClassification
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class mySales::TCustClassification
 \brief domain / range with the classifications for customers
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_CustClassification
 
 \class mySales::TCustClassification::primary_key
@@ -51,11 +51,10 @@
 
 \fn mySales::TCustClassification::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number / id of this classification of a customer
+\param [in] pID int  with 
 
 \var mySales::TCustClassification::primary_key::iID
-\brief unique identification number / id of this classification of a customer
-\details Source: key member mySales::TCustClassification::primary_key::iID in class mySales::TCustClassification::primary_key with the type int
+\brief Source: key member mySales::TCustClassification::primary_key::iID in class mySales::TCustClassification::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_CustClassification with database type INT
 \fn mySales::TCustClassification::primary_key::ID() const
 \brief selector for the data element mySales::TCustClassification::primary_key::iID
@@ -167,34 +166,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var mySales::TCustClassification::iID
-\brief unique identification number / id of this classification of a customer
-\details Source: member mySales::TCustClassification::iID in class mySales::TCustClassification with the type std::optional<int>
+\brief Source: member mySales::TCustClassification::iID in class mySales::TCustClassification with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_CustClassification with database type INT
+\details unique identification number / id of this classification of a customer
 
 \var mySales::TCustClassification::strDenotation
-\brief unique denotation of this classification of a customer
-\details Source: member mySales::TCustClassification::strDenotation in class mySales::TCustClassification with the type std::optional<std::string>
+\brief Source: member mySales::TCustClassification::strDenotation in class mySales::TCustClassification with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_CustClassification with database type VARCHAR
+\details unique denotation of this classification of a customer
 
 \var mySales::TCustClassification::strAbbreviation
-\brief abbreviation of this classification of a customer, used in the application for a compact display
-\details Source: member mySales::TCustClassification::strAbbreviation in class mySales::TCustClassification with the type std::optional<std::string>
+\brief Source: member mySales::TCustClassification::strAbbreviation in class mySales::TCustClassification with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_CustClassification with database type VARCHAR
+\details abbreviation of this classification of a customer, used in the application for a compact display
 
 \var mySales::TCustClassification::strDescription
-\brief description as long text of this classification of a customer, used in the application for detailed informations
-\details Source: member mySales::TCustClassification::strDescription in class mySales::TCustClassification with the type std::optional<std::string>
+\brief Source: member mySales::TCustClassification::strDescription in class mySales::TCustClassification with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_CustClassification with database type VARCHAR(MAX)
+\details description as long text of this classification of a customer, used in the application for detailed informations
 
 \var mySales::TCustClassification::strNotes
-\brief notes, with additional / free information of this classification of a customer, not used in the application
-\details Source: member mySales::TCustClassification::strNotes in class mySales::TCustClassification with the type std::optional<std::string>
+\brief Source: member mySales::TCustClassification::strNotes in class mySales::TCustClassification with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_CustClassification with database type VARCHAR(MAX)
+\details notes, with additional / free information of this classification of a customer, not used in the application
 
 \var mySales::TCustClassification::boUrgentValue
-\brief boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)
-\details Source: member mySales::TCustClassification::boUrgentValue in class mySales::TCustClassification with the type std::optional<bool>
+\brief Source: member mySales::TCustClassification::boUrgentValue in class mySales::TCustClassification with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_CustClassification with database type TINYINT
+\details boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -204,27 +203,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustClassification::ID() const
 \brief selector for the data element mySales::TCustClassification::iID
-\details <b>unique identification number / id of this classification of a customer</b>
 \returns std::optional<int> const&: Reference to the data element mySales::TCustClassification::iID
 \fn std::optional<std::string> const& mySales::TCustClassification::Denotation() const
 \brief selector for the data element mySales::TCustClassification::strDenotation
-\details <b>unique denotation of this classification of a customer</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strDenotation
 \fn std::optional<std::string> const& mySales::TCustClassification::Abbreviation() const
 \brief selector for the data element mySales::TCustClassification::strAbbreviation
-\details <b>abbreviation of this classification of a customer, used in the application for a compact display</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strAbbreviation
 \fn std::optional<std::string> const& mySales::TCustClassification::Description() const
 \brief selector for the data element mySales::TCustClassification::strDescription
-\details <b>description as long text of this classification of a customer, used in the application for detailed informations</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strDescription
 \fn std::optional<std::string> const& mySales::TCustClassification::Notes() const
 \brief selector for the data element mySales::TCustClassification::strNotes
-\details <b>notes, with additional / free information of this classification of a customer, not used in the application</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strNotes
 \fn std::optional<bool> const& mySales::TCustClassification::UrgentValue() const
 \brief selector for the data element mySales::TCustClassification::boUrgentValue
-\details <b>boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element mySales::TCustClassification::boUrgentValue
 
 \}
@@ -234,38 +227,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int mySales::TCustClassification::_ID() const
 \brief special selector for data element mySales::TCustClassification::iID
-\details unique identification number / id of this classification of a customer
-\details <b>unique identification number / id of this classification of a customer</b>
+\details attribute "ID" in entity "CustClassification"
 \throws std::runtime::error if the attribute mySales::TCustClassification::iID is empty
 \returns int const&: Reference to the data element mySales::TCustClassification::iID
 \fn std::string const& mySales::TCustClassification::_Denotation() const
 \brief special selector for data element mySales::TCustClassification::strDenotation
-\details unique denotation of this classification of a customer
-\details <b>unique denotation of this classification of a customer</b>
+\details attribute "Denotation" in entity "CustClassification"
 \throws std::runtime::error if the attribute mySales::TCustClassification::strDenotation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strDenotation
 \fn std::string const& mySales::TCustClassification::_Abbreviation() const
 \brief special selector for data element mySales::TCustClassification::strAbbreviation
-\details abbreviation of this classification of a customer, used in the application for a compact display
-\details <b>abbreviation of this classification of a customer, used in the application for a compact display</b>
+\details attribute "Abbreviation" in entity "CustClassification"
 \throws std::runtime::error if the attribute mySales::TCustClassification::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strAbbreviation
 \fn std::string const& mySales::TCustClassification::_Description() const
 \brief special selector for data element mySales::TCustClassification::strDescription
-\details description as long text of this classification of a customer, used in the application for detailed informations
-\details <b>description as long text of this classification of a customer, used in the application for detailed informations</b>
+\details attribute "Description" in entity "CustClassification"
 \throws std::runtime::error if the attribute mySales::TCustClassification::strDescription is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strDescription
 \fn std::string const& mySales::TCustClassification::_Notes() const
 \brief special selector for data element mySales::TCustClassification::strNotes
-\details notes, with additional / free information of this classification of a customer, not used in the application
-\details <b>notes, with additional / free information of this classification of a customer, not used in the application</b>
+\details attribute "Notes" in entity "CustClassification"
 \throws std::runtime::error if the attribute mySales::TCustClassification::strNotes is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustClassification::strNotes
 \fn bool mySales::TCustClassification::_UrgentValue() const
 \brief special selector for data element mySales::TCustClassification::boUrgentValue
-\details boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "CustClassification"
 \throws std::runtime::error if the attribute mySales::TCustClassification::boUrgentValue is empty
 \returns bool const&: Reference to the data element mySales::TCustClassification::boUrgentValue
 
@@ -276,37 +263,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustClassification::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TCustClassification::iID
-\details <b>unique identification number / id of this classification of a customer</b>
 \param[in] newVal the new Value for the member mySales::TCustClassification::iID
 \returns std::optional<int> const&: Reference to the data element mySales::TCustClassification::iID
 
 \fn std::optional<std::string> const& mySales::TCustClassification::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustClassification::strDenotation
-\details <b>unique denotation of this classification of a customer</b>
 \param[in] newVal the new Value for the member mySales::TCustClassification::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strDenotation
 
 \fn std::optional<std::string> const& mySales::TCustClassification::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustClassification::strAbbreviation
-\details <b>abbreviation of this classification of a customer, used in the application for a compact display</b>
 \param[in] newVal the new Value for the member mySales::TCustClassification::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strAbbreviation
 
 \fn std::optional<std::string> const& mySales::TCustClassification::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustClassification::strDescription
-\details <b>description as long text of this classification of a customer, used in the application for detailed informations</b>
 \param[in] newVal the new Value for the member mySales::TCustClassification::strDescription
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strDescription
 
 \fn std::optional<std::string> const& mySales::TCustClassification::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustClassification::strNotes
-\details <b>notes, with additional / free information of this classification of a customer, not used in the application</b>
 \param[in] newVal the new Value for the member mySales::TCustClassification::strNotes
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustClassification::strNotes
 
 \fn std::optional<bool> const& mySales::TCustClassification::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element mySales::TCustClassification::boUrgentValue
-\details <b>boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member mySales::TCustClassification::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element mySales::TCustClassification::boUrgentValue
 

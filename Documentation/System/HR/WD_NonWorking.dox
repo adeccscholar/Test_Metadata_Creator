@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_NonWorking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_NonWorking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_NonWorking
 \brief entity set with non working days. Extensions possible, responsible for this table is HR.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_NonWorking
 
 \class myHR::TWD_NonWorking::primary_key
@@ -51,12 +51,11 @@
 
 \fn myHR::TWD_NonWorking::primary_key::primary_key(int pID, std::chrono::year_month_day pStartAt)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with attribute as foreign key from an attribute ID of a employee entity to who as idle this time
-\param [in] pStartAt std::chrono::year_month_day  with date when the non working time starts as foreign key from the wokdays table
+\param [in] pID int  with 
+\param [in] pStartAt std::chrono::year_month_day  with 
 
 \var myHR::TWD_NonWorking::primary_key::iID
-\brief attribute as foreign key from an attribute ID of a employee entity to who as idle this time
-\details Source: key member myHR::TWD_NonWorking::primary_key::iID in class myHR::TWD_NonWorking::primary_key with the type int
+\brief Source: key member myHR::TWD_NonWorking::primary_key::iID in class myHR::TWD_NonWorking::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_WD_NonWorking with database type INT
 \fn myHR::TWD_NonWorking::primary_key::ID() const
 \brief selector for the data element myHR::TWD_NonWorking::primary_key::iID
@@ -66,8 +65,7 @@
 \param[in] newVal int with the value of the member.
 \returns int with the new value for this member.
 \var myHR::TWD_NonWorking::primary_key::daStartAt
-\brief date when the non working time starts as foreign key from the wokdays table
-\details Source: key member myHR::TWD_NonWorking::primary_key::daStartAt in class myHR::TWD_NonWorking::primary_key with the type std::chrono::year_month_day
+\brief Source: key member myHR::TWD_NonWorking::primary_key::daStartAt in class myHR::TWD_NonWorking::primary_key with the type std::chrono::year_month_day
 \details Database: primary key attribute "StartAt" in entity \ref datamodel_table_WD_NonWorking with database type DATE
 \fn myHR::TWD_NonWorking::primary_key::StartAt() const
 \brief selector for the data element myHR::TWD_NonWorking::primary_key::daStartAt
@@ -179,29 +177,29 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TWD_NonWorking::iID
-\brief attribute as foreign key from an attribute ID of a employee entity to who as idle this time
-\details Source: member myHR::TWD_NonWorking::iID in class myHR::TWD_NonWorking with the type std::optional<int>
+\brief Source: member myHR::TWD_NonWorking::iID in class myHR::TWD_NonWorking with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_WD_NonWorking with database type INT
+\details attribute as foreign key from an attribute ID of a employee entity to who as idle this time
 
 \var myHR::TWD_NonWorking::daStartAt
-\brief date when the non working time starts as foreign key from the wokdays table
-\details Source: member myHR::TWD_NonWorking::daStartAt in class myHR::TWD_NonWorking with the type std::optional<std::chrono::year_month_day>
+\brief Source: member myHR::TWD_NonWorking::daStartAt in class myHR::TWD_NonWorking with the type std::optional<std::chrono::year_month_day>
 \details Database: attribute "StartAt" in entity \ref datamodel_table_WD_NonWorking with database type DATE
+\details date when the non working time starts as foreign key from the wokdays table
 
 \var myHR::TWD_NonWorking::daClosingAt
-\brief date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open
-\details Source: member myHR::TWD_NonWorking::daClosingAt in class myHR::TWD_NonWorking with the type std::optional<std::chrono::year_month_day>
+\brief Source: member myHR::TWD_NonWorking::daClosingAt in class myHR::TWD_NonWorking with the type std::optional<std::chrono::year_month_day>
 \details Database: attribute "ClosingAt" in entity \ref datamodel_table_WD_NonWorking with database type DATE
+\details date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open
 
 \var myHR::TWD_NonWorking::iReason
-\brief reason of non working time, there exist a table, but values are interpreted through the applications
-\details Source: member myHR::TWD_NonWorking::iReason in class myHR::TWD_NonWorking with the type std::optional<int>
+\brief Source: member myHR::TWD_NonWorking::iReason in class myHR::TWD_NonWorking with the type std::optional<int>
 \details Database: attribute "Reason" in entity \ref datamodel_table_WD_NonWorking with database type INT
+\details reason of non working time, there exist a table, but values are interpreted through the applications
 
 \var myHR::TWD_NonWorking::strNotes
-\brief free notices to the non-working time
-\details Source: member myHR::TWD_NonWorking::strNotes in class myHR::TWD_NonWorking with the type std::optional<std::string>
+\brief Source: member myHR::TWD_NonWorking::strNotes in class myHR::TWD_NonWorking with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_WD_NonWorking with database type VARCHAR(MAX)
+\details free notices to the non-working time
 
 
 \}
@@ -211,23 +209,18 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_NonWorking::ID() const
 \brief selector for the data element myHR::TWD_NonWorking::iID
-\details <b>attribute as foreign key from an attribute ID of a employee entity to who as idle this time</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_NonWorking::iID
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_NonWorking::StartAt() const
 \brief selector for the data element myHR::TWD_NonWorking::daStartAt
-\details <b>date when the non working time starts as foreign key from the wokdays table</b>
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_NonWorking::daStartAt
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_NonWorking::ClosingAt() const
 \brief selector for the data element myHR::TWD_NonWorking::daClosingAt
-\details <b>date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open</b>
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_NonWorking::daClosingAt
 \fn std::optional<int> const& myHR::TWD_NonWorking::Reason() const
 \brief selector for the data element myHR::TWD_NonWorking::iReason
-\details <b>reason of non working time, there exist a table, but values are interpreted through the applications</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_NonWorking::iReason
 \fn std::optional<std::string> const& myHR::TWD_NonWorking::Notes() const
 \brief selector for the data element myHR::TWD_NonWorking::strNotes
-\details <b>free notices to the non-working time</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_NonWorking::strNotes
 
 \}
@@ -237,32 +230,27 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TWD_NonWorking::_ID() const
 \brief special selector for data element myHR::TWD_NonWorking::iID
-\details attribute as foreign key from an attribute ID of a employee entity to who as idle this time
-\details <b>attribute as foreign key from an attribute ID of a employee entity to who as idle this time</b>
+\details attribute "ID" in entity "WD_NonWorking"
 \throws std::runtime::error if the attribute myHR::TWD_NonWorking::iID is empty
 \returns int const&: Reference to the data element myHR::TWD_NonWorking::iID
 \fn std::chrono::year_month_day myHR::TWD_NonWorking::_StartAt() const
 \brief special selector for data element myHR::TWD_NonWorking::daStartAt
-\details date when the non working time starts as foreign key from the wokdays table
-\details <b>date when the non working time starts as foreign key from the wokdays table</b>
+\details attribute "StartAt" in entity "WD_NonWorking"
 \throws std::runtime::error if the attribute myHR::TWD_NonWorking::daStartAt is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_NonWorking::daStartAt
 \fn std::chrono::year_month_day myHR::TWD_NonWorking::_ClosingAt() const
 \brief special selector for data element myHR::TWD_NonWorking::daClosingAt
-\details date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open
-\details <b>date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open</b>
+\details attribute "ClosingAt" in entity "WD_NonWorking"
 \throws std::runtime::error if the attribute myHR::TWD_NonWorking::daClosingAt is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_NonWorking::daClosingAt
 \fn int myHR::TWD_NonWorking::_Reason() const
 \brief special selector for data element myHR::TWD_NonWorking::iReason
-\details reason of non working time, there exist a table, but values are interpreted through the applications
-\details <b>reason of non working time, there exist a table, but values are interpreted through the applications</b>
+\details attribute "Reason" in entity "WD_NonWorking"
 \throws std::runtime::error if the attribute myHR::TWD_NonWorking::iReason is empty
 \returns int const&: Reference to the data element myHR::TWD_NonWorking::iReason
 \fn std::string const& myHR::TWD_NonWorking::_Notes() const
 \brief special selector for data element myHR::TWD_NonWorking::strNotes
-\details free notices to the non-working time
-\details <b>free notices to the non-working time</b>
+\details attribute "Notes" in entity "WD_NonWorking"
 \throws std::runtime::error if the attribute myHR::TWD_NonWorking::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_NonWorking::strNotes
 
@@ -273,31 +261,26 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_NonWorking::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_NonWorking::iID
-\details <b>attribute as foreign key from an attribute ID of a employee entity to who as idle this time</b>
 \param[in] newVal the new Value for the member myHR::TWD_NonWorking::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_NonWorking::iID
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_NonWorking::StartAt(std::optional<std::chrono::year_month_day> const& newVal)
 \brief manipulator for the data element myHR::TWD_NonWorking::daStartAt
-\details <b>date when the non working time starts as foreign key from the wokdays table</b>
 \param[in] newVal the new Value for the member myHR::TWD_NonWorking::daStartAt
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_NonWorking::daStartAt
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_NonWorking::ClosingAt(std::optional<std::chrono::year_month_day> const& newVal)
 \brief manipulator for the data element myHR::TWD_NonWorking::daClosingAt
-\details <b>date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open</b>
 \param[in] newVal the new Value for the member myHR::TWD_NonWorking::daClosingAt
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_NonWorking::daClosingAt
 
 \fn std::optional<int> const& myHR::TWD_NonWorking::Reason(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_NonWorking::iReason
-\details <b>reason of non working time, there exist a table, but values are interpreted through the applications</b>
 \param[in] newVal the new Value for the member myHR::TWD_NonWorking::iReason
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_NonWorking::iReason
 
 \fn std::optional<std::string> const& myHR::TWD_NonWorking::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_NonWorking::strNotes
-\details <b>free notices to the non-working time</b>
 \param[in] newVal the new Value for the member myHR::TWD_NonWorking::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_NonWorking::strNotes
 

@@ -1,8 +1,8 @@
 ﻿/*
 * Project: model with a simple person administration
 * Implementation of the data class TReasonDeparture
-* Content: doman range with the reason of departure of the employee
-* Date: 25.03.2024 19:08:40,834  file created with adecc Scholar metadata generator
+* Content: domain / range with the reasons of departure of the employee
+* Date: 22.04.2025 22:26:56,431  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

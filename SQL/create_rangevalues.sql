@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to prefill the rangevalues for the project simple person model
- * generated at: 25.03.2024 19:08:39,302 with the adecc Scholar metadata generator
+ * generated at: 22.04.2025 22:26:54,843 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */

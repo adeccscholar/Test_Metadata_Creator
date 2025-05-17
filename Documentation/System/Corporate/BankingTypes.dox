@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_BankingTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_BankingTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TBankingTypes
 \brief domain / range of values for banking types, this is an extension of the relationship between persons and banking accounts.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_BankingTypes
 
 \class myCorporate::TBankingTypes::primary_key
@@ -51,11 +51,10 @@
 
 \fn myCorporate::TBankingTypes::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in this domain with banking types
+\param [in] pID int  with 
 
 \var myCorporate::TBankingTypes::primary_key::iID
-\brief unique identification number for a record in this domain with banking types
-\details Source: key member myCorporate::TBankingTypes::primary_key::iID in class myCorporate::TBankingTypes::primary_key with the type int
+\brief Source: key member myCorporate::TBankingTypes::primary_key::iID in class myCorporate::TBankingTypes::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_BankingTypes with database type INT
 \fn myCorporate::TBankingTypes::primary_key::ID() const
 \brief selector for the data element myCorporate::TBankingTypes::primary_key::iID
@@ -167,34 +166,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TBankingTypes::iID
-\brief unique identification number for a record in this domain with banking types
-\details Source: member myCorporate::TBankingTypes::iID in class myCorporate::TBankingTypes with the type std::optional<int>
+\brief Source: member myCorporate::TBankingTypes::iID in class myCorporate::TBankingTypes with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_BankingTypes with database type INT
+\details unique identification number for a record in this domain with banking types
 
 \var myCorporate::TBankingTypes::strDenotation
-\brief unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)
-\details Source: member myCorporate::TBankingTypes::strDenotation in class myCorporate::TBankingTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TBankingTypes::strDenotation in class myCorporate::TBankingTypes with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_BankingTypes with database type VARCHAR
+\details unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)
 
 \var myCorporate::TBankingTypes::strAbbreviation
-\brief non-representative abbreviation that can be used for a short advertisement for this banking type
-\details Source: member myCorporate::TBankingTypes::strAbbreviation in class myCorporate::TBankingTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TBankingTypes::strAbbreviation in class myCorporate::TBankingTypes with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_BankingTypes with database type VARCHAR
+\details non-representative abbreviation that can be used for a short advertisement for this banking type
 
 \var myCorporate::TBankingTypes::strDescription
-\brief detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm
-\details Source: member myCorporate::TBankingTypes::strDescription in class myCorporate::TBankingTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TBankingTypes::strDescription in class myCorporate::TBankingTypes with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_BankingTypes with database type VARCHAR(MAX)
+\details detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm
 
 \var myCorporate::TBankingTypes::strNotes
-\brief notes, with additional / free information for this type of banking, not used in application
-\details Source: member myCorporate::TBankingTypes::strNotes in class myCorporate::TBankingTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TBankingTypes::strNotes in class myCorporate::TBankingTypes with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_BankingTypes with database type VARCHAR(MAX)
+\details notes, with additional / free information for this type of banking, not used in application
 
 \var myCorporate::TBankingTypes::boUrgentValue
-\brief boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)
-\details Source: member myCorporate::TBankingTypes::boUrgentValue in class myCorporate::TBankingTypes with the type std::optional<bool>
+\brief Source: member myCorporate::TBankingTypes::boUrgentValue in class myCorporate::TBankingTypes with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_BankingTypes with database type TINYINT
+\details boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -204,27 +203,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TBankingTypes::ID() const
 \brief selector for the data element myCorporate::TBankingTypes::iID
-\details <b>unique identification number for a record in this domain with banking types</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBankingTypes::iID
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Denotation() const
 \brief selector for the data element myCorporate::TBankingTypes::strDenotation
-\details <b>unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strDenotation
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Abbreviation() const
 \brief selector for the data element myCorporate::TBankingTypes::strAbbreviation
-\details <b>non-representative abbreviation that can be used for a short advertisement for this banking type</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strAbbreviation
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Description() const
 \brief selector for the data element myCorporate::TBankingTypes::strDescription
-\details <b>detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strDescription
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Notes() const
 \brief selector for the data element myCorporate::TBankingTypes::strNotes
-\details <b>notes, with additional / free information for this type of banking, not used in application</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strNotes
 \fn std::optional<bool> const& myCorporate::TBankingTypes::UrgentValue() const
 \brief selector for the data element myCorporate::TBankingTypes::boUrgentValue
-\details <b>boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TBankingTypes::boUrgentValue
 
 \}
@@ -234,38 +227,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TBankingTypes::_ID() const
 \brief special selector for data element myCorporate::TBankingTypes::iID
-\details unique identification number for a record in this domain with banking types
-\details <b>unique identification number for a record in this domain with banking types</b>
+\details attribute "ID" in entity "BankingTypes"
 \throws std::runtime::error if the attribute myCorporate::TBankingTypes::iID is empty
 \returns int const&: Reference to the data element myCorporate::TBankingTypes::iID
 \fn std::string const& myCorporate::TBankingTypes::_Denotation() const
 \brief special selector for data element myCorporate::TBankingTypes::strDenotation
-\details unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)
-\details <b>unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
+\details attribute "Denotation" in entity "BankingTypes"
 \throws std::runtime::error if the attribute myCorporate::TBankingTypes::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBankingTypes::strDenotation
 \fn std::string const& myCorporate::TBankingTypes::_Abbreviation() const
 \brief special selector for data element myCorporate::TBankingTypes::strAbbreviation
-\details non-representative abbreviation that can be used for a short advertisement for this banking type
-\details <b>non-representative abbreviation that can be used for a short advertisement for this banking type</b>
+\details attribute "Abbreviation" in entity "BankingTypes"
 \throws std::runtime::error if the attribute myCorporate::TBankingTypes::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBankingTypes::strAbbreviation
 \fn std::string const& myCorporate::TBankingTypes::_Description() const
 \brief special selector for data element myCorporate::TBankingTypes::strDescription
-\details detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm
-\details <b>detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm</b>
+\details attribute "Description" in entity "BankingTypes"
 \throws std::runtime::error if the attribute myCorporate::TBankingTypes::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBankingTypes::strDescription
 \fn std::string const& myCorporate::TBankingTypes::_Notes() const
 \brief special selector for data element myCorporate::TBankingTypes::strNotes
-\details notes, with additional / free information for this type of banking, not used in application
-\details <b>notes, with additional / free information for this type of banking, not used in application</b>
+\details attribute "Notes" in entity "BankingTypes"
 \throws std::runtime::error if the attribute myCorporate::TBankingTypes::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBankingTypes::strNotes
 \fn bool myCorporate::TBankingTypes::_UrgentValue() const
 \brief special selector for data element myCorporate::TBankingTypes::boUrgentValue
-\details boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "BankingTypes"
 \throws std::runtime::error if the attribute myCorporate::TBankingTypes::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TBankingTypes::boUrgentValue
 
@@ -276,37 +263,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TBankingTypes::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TBankingTypes::iID
-\details <b>unique identification number for a record in this domain with banking types</b>
 \param[in] newVal the new Value for the member myCorporate::TBankingTypes::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBankingTypes::iID
 
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBankingTypes::strDenotation
-\details <b>unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
 \param[in] newVal the new Value for the member myCorporate::TBankingTypes::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strDenotation
 
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBankingTypes::strAbbreviation
-\details <b>non-representative abbreviation that can be used for a short advertisement for this banking type</b>
 \param[in] newVal the new Value for the member myCorporate::TBankingTypes::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strAbbreviation
 
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBankingTypes::strDescription
-\details <b>detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm</b>
 \param[in] newVal the new Value for the member myCorporate::TBankingTypes::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strDescription
 
 \fn std::optional<std::string> const& myCorporate::TBankingTypes::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBankingTypes::strNotes
-\details <b>notes, with additional / free information for this type of banking, not used in application</b>
 \param[in] newVal the new Value for the member myCorporate::TBankingTypes::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBankingTypes::strNotes
 
 \fn std::optional<bool> const& myCorporate::TBankingTypes::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TBankingTypes::boUrgentValue
-\details <b>boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member myCorporate::TBankingTypes::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TBankingTypes::boUrgentValue
 

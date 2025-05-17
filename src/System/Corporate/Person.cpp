@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TPerson
 * Content: informations about a person, base for different kinds of special persons in other areas of the company
-* Date: 25.03.2024 19:08:40,661  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:56,257  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -115,7 +115,8 @@ void TPerson::_swap(TPerson& other) noexcept {
    // swapping own data elements
    std::swap(iID, other.iID);
    std::swap(strName, other.strName);
-   std::swap(strFirstname, other.strFirstname);
+   std::swap(strFirstName, other.strFirstName);
+   std::swap(strBirthname, other.strBirthname);
    std::swap(iFormOfAddress, other.iFormOfAddress);
    std::swap(iFamilyStatus, other.iFamilyStatus);
    std::swap(daFamilyStatusSince, other.daFamilyStatusSince);
@@ -135,7 +136,8 @@ void TPerson::_init() {
    // initializing own data elements
    iID                  = {};
    strName              = {};
-   strFirstname         = {};
+   strFirstName         = {};
+   strBirthname         = {};
    iFormOfAddress       = {};
    iFamilyStatus        = {};
    daFamilyStatusSince  = {};
@@ -154,7 +156,8 @@ void TPerson::_init() {
 void TPerson::_copy(TPerson const& other) {
    ID(other.ID());
    Name(other.Name());
-   Firstname(other.Firstname());
+   FirstName(other.FirstName());
+   Birthname(other.Birthname());
    FormOfAddress(other.FormOfAddress());
    FamilyStatus(other.FamilyStatus());
    FamilyStatusSince(other.FamilyStatusSince());

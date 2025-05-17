@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script with statements to create tables / views for the project simple person model
- * generated at: 25.03.2024 19:08:39,261 with the adecc Scholar metadata generator
+ * generated at: 22.04.2025 22:26:54,798 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ------------------------------------------------------------------------------------ */
@@ -132,8 +132,7 @@ CREATE TABLE dbo.Departments (
 
 -- statement to create the table dbo.Employees
 CREATE TABLE dbo.Employees (
-   Dummy           INT,
-   EmployeeID      INT NOT NULL,
+   EmployID        INT NOT NULL,
    PersonNumber    VARCHAR(15) NOT NULL,
    Salary          DECIMAL(10, 2) CHECK (Salary >= 0.0),
    SalaryType      INT,
@@ -145,6 +144,7 @@ CREATE TABLE dbo.Employees (
    JobSpec         VARCHAR(100),
    VacationDays    INT CHECK (VacationDays >= 0),
    Department      INT NOT NULL,
+   TaxNumber       VARCHAR(11),
    SocialNummer    VARCHAR(20) NOT NULL,
 
    );
@@ -218,7 +218,8 @@ CREATE TABLE dbo.JobPositions (
 CREATE TABLE dbo.Person (
    ID                INT NOT NULL,
    Name              VARCHAR(30) NOT NULL,
-   Firstname         VARCHAR(30),
+   FirstName         VARCHAR(30),
+   Birthname         VARCHAR(30),
    FormOfAddress     INT NOT NULL,
    FamilyStatus      INT NOT NULL,
    FamilyStatusSince DATE,
@@ -231,7 +232,7 @@ CREATE TABLE dbo.Person (
 CREATE TABLE dbo.Phone (
    ID              INT NOT NULL,
    PhoneType       INT NOT NULL,
-   AreaCode        VARCHAR(10) NOT NULL,
+   AreaCode        VARCHAR(10) NOT NULL CHECK (AreaCode NOT LIKE '%[^0-9]%'),
    CallNumber      VARCHAR(13) NOT NULL CHECK (CallNumber NOT LIKE '%[^0-9 -]%'),
    Country         INT NOT NULL,
    DialingNational AS AreaCode + REPLACE(REPLACE(CallNumber, ' ', ''), '-', ''),
@@ -346,7 +347,7 @@ CREATE TABLE dbo.WD_NonWorking (
 
 -- statement to create the table dbo.WD_Weekdays
 CREATE TABLE dbo.WD_Weekdays (
-   ID           INT NOT NULL,
+   ID           INT NOT NULL CHECK (ID BETWEEN 0 AND 6),
    Denotation   VARCHAR(20) NOT NULL,
    Abbreviation VARCHAR(5) NOT NULL,
    Workday      TINYINT NOT NULL CHECK (Workday IN (0, 1))

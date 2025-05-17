@@ -122,6 +122,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="TestMain.qrc" />
+    <QtUic Include="PersonDlgClass.ui" />
+    <QtUic Include="TestForm1.ui" />
     <QtUic Include="TestMain.ui" />
     <QtMoc Include="TestMain.h" />
     <ClCompile Include="..\Persistence\person_reader.cpp" />
@@ -158,6 +160,7 @@
     <ClCompile Include="..\System\Sales\CustClassification.cpp" />
     <ClCompile Include="..\System\Sales\CustLiaison.cpp" />
     <ClCompile Include="..\System\Sales\Customers.cpp" />
+    <ClCompile Include="PersonDlgClass.cpp" />
     <ClCompile Include="TestMain.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="DictionaryTest.ico" />
@@ -178,13 +181,14 @@
     <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyStream.h" />
     <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTools.h" />
     <ClInclude Include="..\..\adecc_Scholar\adecc_Scholar\MyTupleUtils.h" />
+    <ClInclude Include="..\Base\BaseClass.h" />
+    <ClInclude Include="..\Base\BaseDefinitions.h" />
     <ClInclude Include="..\Persistence\person_reader.h" />
     <ClInclude Include="..\Persistence\person_reader_sql.h" />
     <ClInclude Include="..\System\Corporate\Address.h" />
     <ClInclude Include="..\System\Corporate\AddressTypes.h" />
     <ClInclude Include="..\System\Corporate\Banking.h" />
     <ClInclude Include="..\System\Corporate\BankingTypes.h" />
-    <ClInclude Include="..\System\Corporate\base.h" />
     <ClInclude Include="..\System\Corporate\CorporateForm.h" />
     <ClInclude Include="..\System\Corporate\Countries.h" />
     <ClInclude Include="..\System\Corporate\FamilyStatus.h" />
@@ -213,6 +217,7 @@
     <ClInclude Include="..\System\Sales\CustClassification.h" />
     <ClInclude Include="..\System\Sales\CustLiaison.h" />
     <ClInclude Include="..\System\Sales\Customers.h" />
+    <QtMoc Include="PersonDlgClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

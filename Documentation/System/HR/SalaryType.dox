@@ -1,29 +1,29 @@
-﻿\file System/HR/SalaryType.h
-\brief definition of dataclass myHR::TSalaryType of table \ref datamodel_table_SalaryType with kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...) in dictionary "simple person model"
+﻿\file System\HR/SalaryType.h
+\brief definition of dataclass myHR::TSalaryType of table \ref datamodel_table_SalaryType with kind of salary as range value and base for calculations (fix, bonus, hourly, dayly, monthly, ...) in dictionary "simple person model"
 \see table \ref datamodel_table_SalaryType
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
 
 
-\file System/HR/SalaryType.cpp
-\brief implementation of dataclass myHR::TSalaryType of table \ref datamodel_table_SalaryType with kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...) in dictionary "simple person model"
+\file System\HR/SalaryType.cpp
+\brief implementation of dataclass myHR::TSalaryType of table \ref datamodel_table_SalaryType with kind of salary as range value and base for calculations (fix, bonus, hourly, dayly, monthly, ...) in dictionary "simple person model"
 \see table \ref datamodel_table_SalaryType
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
 
 
 \class myHR::TSalaryType
-\brief kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...)
+\brief kind of salary as range value and base for calculations (fix, bonus, hourly, dayly, monthly, ...)
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_SalaryType
 
 \class myHR::TSalaryType::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TSalaryType::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number / id of the type of salary
+\param [in] pID int  with 
 
 \var myHR::TSalaryType::primary_key::iID
-\brief unique identification number / id of the type of salary
-\details Source: key member myHR::TSalaryType::primary_key::iID in class myHR::TSalaryType::primary_key with the type int
+\brief Source: key member myHR::TSalaryType::primary_key::iID in class myHR::TSalaryType::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_SalaryType with database type INT
 \fn myHR::TSalaryType::primary_key::ID() const
 \brief selector for the data element myHR::TSalaryType::primary_key::iID
@@ -167,34 +166,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TSalaryType::iID
-\brief unique identification number / id of the type of salary
-\details Source: member myHR::TSalaryType::iID in class myHR::TSalaryType with the type std::optional<int>
+\brief Source: member myHR::TSalaryType::iID in class myHR::TSalaryType with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_SalaryType with database type INT
+\details unique identification number / id of the type of salary
 
 \var myHR::TSalaryType::strDenotation
-\brief unique denotation for the type of salary
-\details Source: member myHR::TSalaryType::strDenotation in class myHR::TSalaryType with the type std::optional<std::string>
+\brief Source: member myHR::TSalaryType::strDenotation in class myHR::TSalaryType with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_SalaryType with database type VARCHAR
+\details unique denotation for the type of salary
 
 \var myHR::TSalaryType::strAbbreviation
-\brief abbreviation for thetype of salary, used in the application for a compact display
-\details Source: member myHR::TSalaryType::strAbbreviation in class myHR::TSalaryType with the type std::optional<std::string>
+\brief Source: member myHR::TSalaryType::strAbbreviation in class myHR::TSalaryType with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_SalaryType with database type VARCHAR
+\details abbreviation for thetype of salary, used in the application for a compact display
 
 \var myHR::TSalaryType::strDescription
-\brief description as long text for the type of salary, used in the application for detailed informations
-\details Source: member myHR::TSalaryType::strDescription in class myHR::TSalaryType with the type std::optional<std::string>
+\brief Source: member myHR::TSalaryType::strDescription in class myHR::TSalaryType with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_SalaryType with database type VARCHAR(MAX)
+\details description as long text for the type of salary, used in the application for detailed informations
 
 \var myHR::TSalaryType::iSalaryBase
-\brief id of the salary base which is used for this type of salary (foreign key from SalaryBase)
-\details Source: member myHR::TSalaryType::iSalaryBase in class myHR::TSalaryType with the type std::optional<int>
+\brief Source: member myHR::TSalaryType::iSalaryBase in class myHR::TSalaryType with the type std::optional<int>
 \details Database: attribute "SalaryBase" in entity \ref datamodel_table_SalaryType with database type INT
+\details id of the salary base which is used for this type of salary (foreign key from SalaryBase)
 
 \var myHR::TSalaryType::boUrgentValue
-\brief boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
-\details Source: member myHR::TSalaryType::boUrgentValue in class myHR::TSalaryType with the type std::optional<bool>
+\brief Source: member myHR::TSalaryType::boUrgentValue in class myHR::TSalaryType with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_SalaryType with database type TINYINT
+\details boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -204,27 +203,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TSalaryType::ID() const
 \brief selector for the data element myHR::TSalaryType::iID
-\details <b>unique identification number / id of the type of salary</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iID
 \fn std::optional<std::string> const& myHR::TSalaryType::Denotation() const
 \brief selector for the data element myHR::TSalaryType::strDenotation
-\details <b>unique denotation for the type of salary</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDenotation
 \fn std::optional<std::string> const& myHR::TSalaryType::Abbreviation() const
 \brief selector for the data element myHR::TSalaryType::strAbbreviation
-\details <b>abbreviation for thetype of salary, used in the application for a compact display</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strAbbreviation
 \fn std::optional<std::string> const& myHR::TSalaryType::Description() const
 \brief selector for the data element myHR::TSalaryType::strDescription
-\details <b>description as long text for the type of salary, used in the application for detailed informations</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDescription
 \fn std::optional<int> const& myHR::TSalaryType::SalaryBase() const
 \brief selector for the data element myHR::TSalaryType::iSalaryBase
-\details <b>id of the salary base which is used for this type of salary (foreign key from SalaryBase)</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iSalaryBase
 \fn std::optional<bool> const& myHR::TSalaryType::UrgentValue() const
 \brief selector for the data element myHR::TSalaryType::boUrgentValue
-\details <b>boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element myHR::TSalaryType::boUrgentValue
 
 \}
@@ -234,38 +227,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TSalaryType::_ID() const
 \brief special selector for data element myHR::TSalaryType::iID
-\details unique identification number / id of the type of salary
-\details <b>unique identification number / id of the type of salary</b>
+\details attribute "ID" in entity "SalaryType"
 \throws std::runtime::error if the attribute myHR::TSalaryType::iID is empty
 \returns int const&: Reference to the data element myHR::TSalaryType::iID
 \fn std::string const& myHR::TSalaryType::_Denotation() const
 \brief special selector for data element myHR::TSalaryType::strDenotation
-\details unique denotation for the type of salary
-\details <b>unique denotation for the type of salary</b>
+\details attribute "Denotation" in entity "SalaryType"
 \throws std::runtime::error if the attribute myHR::TSalaryType::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TSalaryType::strDenotation
 \fn std::string const& myHR::TSalaryType::_Abbreviation() const
 \brief special selector for data element myHR::TSalaryType::strAbbreviation
-\details abbreviation for thetype of salary, used in the application for a compact display
-\details <b>abbreviation for thetype of salary, used in the application for a compact display</b>
+\details attribute "Abbreviation" in entity "SalaryType"
 \throws std::runtime::error if the attribute myHR::TSalaryType::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TSalaryType::strAbbreviation
 \fn std::string const& myHR::TSalaryType::_Description() const
 \brief special selector for data element myHR::TSalaryType::strDescription
-\details description as long text for the type of salary, used in the application for detailed informations
-\details <b>description as long text for the type of salary, used in the application for detailed informations</b>
+\details attribute "Description" in entity "SalaryType"
 \throws std::runtime::error if the attribute myHR::TSalaryType::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TSalaryType::strDescription
 \fn int myHR::TSalaryType::_SalaryBase() const
 \brief special selector for data element myHR::TSalaryType::iSalaryBase
-\details id of the salary base which is used for this type of salary (foreign key from SalaryBase)
-\details <b>id of the salary base which is used for this type of salary (foreign key from SalaryBase)</b>
+\details attribute "SalaryBase" in entity "SalaryType"
 \throws std::runtime::error if the attribute myHR::TSalaryType::iSalaryBase is empty
 \returns int const&: Reference to the data element myHR::TSalaryType::iSalaryBase
 \fn bool myHR::TSalaryType::_UrgentValue() const
 \brief special selector for data element myHR::TSalaryType::boUrgentValue
-\details boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "SalaryType"
 \throws std::runtime::error if the attribute myHR::TSalaryType::boUrgentValue is empty
 \returns bool const&: Reference to the data element myHR::TSalaryType::boUrgentValue
 
@@ -276,37 +263,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TSalaryType::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TSalaryType::iID
-\details <b>unique identification number / id of the type of salary</b>
 \param[in] newVal the new Value for the member myHR::TSalaryType::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iID
 
 \fn std::optional<std::string> const& myHR::TSalaryType::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TSalaryType::strDenotation
-\details <b>unique denotation for the type of salary</b>
 \param[in] newVal the new Value for the member myHR::TSalaryType::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDenotation
 
 \fn std::optional<std::string> const& myHR::TSalaryType::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TSalaryType::strAbbreviation
-\details <b>abbreviation for thetype of salary, used in the application for a compact display</b>
 \param[in] newVal the new Value for the member myHR::TSalaryType::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strAbbreviation
 
 \fn std::optional<std::string> const& myHR::TSalaryType::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TSalaryType::strDescription
-\details <b>description as long text for the type of salary, used in the application for detailed informations</b>
 \param[in] newVal the new Value for the member myHR::TSalaryType::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myHR::TSalaryType::strDescription
 
 \fn std::optional<int> const& myHR::TSalaryType::SalaryBase(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TSalaryType::iSalaryBase
-\details <b>id of the salary base which is used for this type of salary (foreign key from SalaryBase)</b>
 \param[in] newVal the new Value for the member myHR::TSalaryType::iSalaryBase
 \returns std::optional<int> const&: Reference to the data element myHR::TSalaryType::iSalaryBase
 
 \fn std::optional<bool> const& myHR::TSalaryType::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element myHR::TSalaryType::boUrgentValue
-\details <b>boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member myHR::TSalaryType::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element myHR::TSalaryType::boUrgentValue
 

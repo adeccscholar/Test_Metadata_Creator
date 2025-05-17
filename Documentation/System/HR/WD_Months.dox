@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Months
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Months
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Months
 \brief domain with months for human resources, actually used for working time, later for processes too. This range make it possible additional informations to adding later. This isn't a typical range value.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Months
 
 \class myHR::TWD_Months::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TWD_Months::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in this domain with monthes for human resources
+\param [in] pID int  with 
 
 \var myHR::TWD_Months::primary_key::iID
-\brief unique identification number for a record in this domain with monthes for human resources
-\details Source: key member myHR::TWD_Months::primary_key::iID in class myHR::TWD_Months::primary_key with the type int
+\brief Source: key member myHR::TWD_Months::primary_key::iID in class myHR::TWD_Months::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_WD_Months with database type INT
 \fn myHR::TWD_Months::primary_key::ID() const
 \brief selector for the data element myHR::TWD_Months::primary_key::iID
@@ -167,24 +166,24 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TWD_Months::iID
-\brief unique identification number for a record in this domain with monthes for human resources
-\details Source: member myHR::TWD_Months::iID in class myHR::TWD_Months with the type std::optional<int>
+\brief Source: member myHR::TWD_Months::iID in class myHR::TWD_Months with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_WD_Months with database type INT
+\details unique identification number for a record in this domain with monthes for human resources
 
 \var myHR::TWD_Months::strDenotation
-\brief unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such
-\details Source: member myHR::TWD_Months::strDenotation in class myHR::TWD_Months with the type std::optional<std::string>
+\brief Source: member myHR::TWD_Months::strDenotation in class myHR::TWD_Months with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_WD_Months with database type VARCHAR
+\details unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such
 
 \var myHR::TWD_Months::strAbbreviation
-\brief unique abbreviation of a month in the domain, used in overviews and reports
-\details Source: member myHR::TWD_Months::strAbbreviation in class myHR::TWD_Months with the type std::optional<std::string>
+\brief Source: member myHR::TWD_Months::strAbbreviation in class myHR::TWD_Months with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_WD_Months with database type VARCHAR
+\details unique abbreviation of a month in the domain, used in overviews and reports
 
 \var myHR::TWD_Months::uQuarter
-\brief unsigned value with the number auf the quarter, values in 1 - 4
-\details Source: member myHR::TWD_Months::uQuarter in class myHR::TWD_Months with the type std::optional<unsigned int>
+\brief Source: member myHR::TWD_Months::uQuarter in class myHR::TWD_Months with the type std::optional<unsigned int>
 \details Database: attribute "Quarter" in entity \ref datamodel_table_WD_Months with database type INT
+\details unsigned value with the number auf the quarter, values in 1 - 4
 
 
 \}
@@ -194,19 +193,15 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_Months::ID() const
 \brief selector for the data element myHR::TWD_Months::iID
-\details <b>unique identification number for a record in this domain with monthes for human resources</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Months::iID
 \fn std::optional<std::string> const& myHR::TWD_Months::Denotation() const
 \brief selector for the data element myHR::TWD_Months::strDenotation
-\details <b>unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Months::strDenotation
 \fn std::optional<std::string> const& myHR::TWD_Months::Abbreviation() const
 \brief selector for the data element myHR::TWD_Months::strAbbreviation
-\details <b>unique abbreviation of a month in the domain, used in overviews and reports</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Months::strAbbreviation
 \fn std::optional<unsigned int> const& myHR::TWD_Months::Quarter() const
 \brief selector for the data element myHR::TWD_Months::uQuarter
-\details <b>unsigned value with the number auf the quarter, values in 1 - 4</b>
 \returns std::optional<unsigned int> const&: Reference to the data element myHR::TWD_Months::uQuarter
 
 \}
@@ -216,26 +211,22 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TWD_Months::_ID() const
 \brief special selector for data element myHR::TWD_Months::iID
-\details unique identification number for a record in this domain with monthes for human resources
-\details <b>unique identification number for a record in this domain with monthes for human resources</b>
+\details attribute "ID" in entity "WD_Months"
 \throws std::runtime::error if the attribute myHR::TWD_Months::iID is empty
 \returns int const&: Reference to the data element myHR::TWD_Months::iID
 \fn std::string const& myHR::TWD_Months::_Denotation() const
 \brief special selector for data element myHR::TWD_Months::strDenotation
-\details unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such
-\details <b>unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such</b>
+\details attribute "Denotation" in entity "WD_Months"
 \throws std::runtime::error if the attribute myHR::TWD_Months::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Months::strDenotation
 \fn std::string const& myHR::TWD_Months::_Abbreviation() const
 \brief special selector for data element myHR::TWD_Months::strAbbreviation
-\details unique abbreviation of a month in the domain, used in overviews and reports
-\details <b>unique abbreviation of a month in the domain, used in overviews and reports</b>
+\details attribute "Abbreviation" in entity "WD_Months"
 \throws std::runtime::error if the attribute myHR::TWD_Months::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Months::strAbbreviation
 \fn unsigned int myHR::TWD_Months::_Quarter() const
 \brief special selector for data element myHR::TWD_Months::uQuarter
-\details unsigned value with the number auf the quarter, values in 1 - 4
-\details <b>unsigned value with the number auf the quarter, values in 1 - 4</b>
+\details attribute "Quarter" in entity "WD_Months"
 \throws std::runtime::error if the attribute myHR::TWD_Months::uQuarter is empty
 \returns unsigned int const&: Reference to the data element myHR::TWD_Months::uQuarter
 
@@ -246,25 +237,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_Months::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Months::iID
-\details <b>unique identification number for a record in this domain with monthes for human resources</b>
 \param[in] newVal the new Value for the member myHR::TWD_Months::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Months::iID
 
 \fn std::optional<std::string> const& myHR::TWD_Months::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_Months::strDenotation
-\details <b>unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such</b>
 \param[in] newVal the new Value for the member myHR::TWD_Months::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Months::strDenotation
 
 \fn std::optional<std::string> const& myHR::TWD_Months::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_Months::strAbbreviation
-\details <b>unique abbreviation of a month in the domain, used in overviews and reports</b>
 \param[in] newVal the new Value for the member myHR::TWD_Months::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Months::strAbbreviation
 
 \fn std::optional<unsigned int> const& myHR::TWD_Months::Quarter(std::optional<unsigned int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Months::uQuarter
-\details <b>unsigned value with the number auf the quarter, values in 1 - 4</b>
 \param[in] newVal the new Value for the member myHR::TWD_Months::uQuarter
 \returns std::optional<unsigned int> const&: Reference to the data element myHR::TWD_Months::uQuarter
 

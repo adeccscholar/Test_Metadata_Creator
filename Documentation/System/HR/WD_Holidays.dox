@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Holidays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Holidays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Holidays
 \brief entities with public holidays, in relation to working days table to determine non working days
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Holidays
 
 \class myHR::TWD_Holidays::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TWD_Holidays::primary_key::primary_key(std::chrono::year_month_day pCalendarDay)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pCalendarDay std::chrono::year_month_day  with calendar day on which the holiday is
+\param [in] pCalendarDay std::chrono::year_month_day  with 
 
 \var myHR::TWD_Holidays::primary_key::daCalendarDay
-\brief calendar day on which the holiday is
-\details Source: key member myHR::TWD_Holidays::primary_key::daCalendarDay in class myHR::TWD_Holidays::primary_key with the type std::chrono::year_month_day
+\brief Source: key member myHR::TWD_Holidays::primary_key::daCalendarDay in class myHR::TWD_Holidays::primary_key with the type std::chrono::year_month_day
 \details Database: primary key attribute "CalendarDay" in entity \ref datamodel_table_WD_Holidays with database type DATE
 \fn myHR::TWD_Holidays::primary_key::CalendarDay() const
 \brief selector for the data element myHR::TWD_Holidays::primary_key::daCalendarDay
@@ -167,24 +166,24 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TWD_Holidays::daCalendarDay
-\brief calendar day on which the holiday is
-\details Source: member myHR::TWD_Holidays::daCalendarDay in class myHR::TWD_Holidays with the type std::optional<std::chrono::year_month_day>
+\brief Source: member myHR::TWD_Holidays::daCalendarDay in class myHR::TWD_Holidays with the type std::optional<std::chrono::year_month_day>
 \details Database: attribute "CalendarDay" in entity \ref datamodel_table_WD_Holidays with database type DATE
+\details calendar day on which the holiday is
 
 \var myHR::TWD_Holidays::strDonation
-\brief specification of the holiday as text
-\details Source: member myHR::TWD_Holidays::strDonation in class myHR::TWD_Holidays with the type std::optional<std::string>
+\brief Source: member myHR::TWD_Holidays::strDonation in class myHR::TWD_Holidays with the type std::optional<std::string>
 \details Database: attribute "Donation" in entity \ref datamodel_table_WD_Holidays with database type VARCHAR
+\details specification of the holiday as text
 
 \var myHR::TWD_Holidays::iShare
-\brief share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
-\details Source: member myHR::TWD_Holidays::iShare in class myHR::TWD_Holidays with the type std::optional<int>
+\brief Source: member myHR::TWD_Holidays::iShare in class myHR::TWD_Holidays with the type std::optional<int>
 \details Database: attribute "Share" in entity \ref datamodel_table_WD_Holidays with database type INT
+\details share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
 
 \var myHR::TWD_Holidays::strDescription
-\brief additional, more detailed description of the holiday. can use as hint in programm or reports
-\details Source: member myHR::TWD_Holidays::strDescription in class myHR::TWD_Holidays with the type std::optional<std::string>
+\brief Source: member myHR::TWD_Holidays::strDescription in class myHR::TWD_Holidays with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_WD_Holidays with database type VARCHAR(MAX)
+\details additional, more detailed description of the holiday. can use as hint in programm or reports
 
 
 \}
@@ -194,19 +193,15 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_Holidays::CalendarDay() const
 \brief selector for the data element myHR::TWD_Holidays::daCalendarDay
-\details <b>calendar day on which the holiday is</b>
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
 \fn std::optional<std::string> const& myHR::TWD_Holidays::Donation() const
 \brief selector for the data element myHR::TWD_Holidays::strDonation
-\details <b>specification of the holiday as text</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDonation
 \fn std::optional<int> const& myHR::TWD_Holidays::Share() const
 \brief selector for the data element myHR::TWD_Holidays::iShare
-\details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Holidays::iShare
 \fn std::optional<std::string> const& myHR::TWD_Holidays::Description() const
 \brief selector for the data element myHR::TWD_Holidays::strDescription
-\details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDescription
 
 \}
@@ -216,26 +211,22 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::chrono::year_month_day myHR::TWD_Holidays::_CalendarDay() const
 \brief special selector for data element myHR::TWD_Holidays::daCalendarDay
-\details calendar day on which the holiday is
-\details <b>calendar day on which the holiday is</b>
+\details attribute "CalendarDay" in entity "WD_Holidays"
 \throws std::runtime::error if the attribute myHR::TWD_Holidays::daCalendarDay is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
 \fn std::string const& myHR::TWD_Holidays::_Donation() const
 \brief special selector for data element myHR::TWD_Holidays::strDonation
-\details specification of the holiday as text
-\details <b>specification of the holiday as text</b>
+\details attribute "Donation" in entity "WD_Holidays"
 \throws std::runtime::error if the attribute myHR::TWD_Holidays::strDonation is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Holidays::strDonation
 \fn int myHR::TWD_Holidays::_Share() const
 \brief special selector for data element myHR::TWD_Holidays::iShare
-\details share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
-\details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
+\details attribute "Share" in entity "WD_Holidays"
 \throws std::runtime::error if the attribute myHR::TWD_Holidays::iShare is empty
 \returns int const&: Reference to the data element myHR::TWD_Holidays::iShare
 \fn std::string const& myHR::TWD_Holidays::_Description() const
 \brief special selector for data element myHR::TWD_Holidays::strDescription
-\details additional, more detailed description of the holiday. can use as hint in programm or reports
-\details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
+\details attribute "Description" in entity "WD_Holidays"
 \throws std::runtime::error if the attribute myHR::TWD_Holidays::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Holidays::strDescription
 
@@ -246,25 +237,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_Holidays::CalendarDay(std::optional<std::chrono::year_month_day> const& newVal)
 \brief manipulator for the data element myHR::TWD_Holidays::daCalendarDay
-\details <b>calendar day on which the holiday is</b>
 \param[in] newVal the new Value for the member myHR::TWD_Holidays::daCalendarDay
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_Holidays::daCalendarDay
 
 \fn std::optional<std::string> const& myHR::TWD_Holidays::Donation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_Holidays::strDonation
-\details <b>specification of the holiday as text</b>
 \param[in] newVal the new Value for the member myHR::TWD_Holidays::strDonation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDonation
 
 \fn std::optional<int> const& myHR::TWD_Holidays::Share(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Holidays::iShare
-\details <b>share of the holiday (addition for later extension, e.g. holy eve as a half holiday)</b>
 \param[in] newVal the new Value for the member myHR::TWD_Holidays::iShare
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Holidays::iShare
 
 \fn std::optional<std::string> const& myHR::TWD_Holidays::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_Holidays::strDescription
-\details <b>additional, more detailed description of the holiday. can use as hint in programm or reports</b>
 \param[in] newVal the new Value for the member myHR::TWD_Holidays::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Holidays::strDescription
 

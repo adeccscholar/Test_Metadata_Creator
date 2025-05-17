@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TCountries
 * Content: table with the countries and additional values for the countries. Used by others for assoziation.
-* Date: 25.03.2024 19:08:39,974  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,593  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

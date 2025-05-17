@@ -1,7 +1,7 @@
 ﻿/*
 * Project: model with a simple person administration
 * Definition of sql statement for access with class TPersonReader
-* Date: 25.03.2024 19:08:41,334  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:56,981  file created with adecc Scholar metadata generator
 * copyright (c) adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,291 +13,404 @@
 namespace reader {
 
 // sql statements for table dbo.Address
-extern const std::string strSQLAddressSelectAll;
-extern const std::string strSQLAddressSelectDetail;
-extern const std::string strSQLAddressDeleteAll;
-extern const std::string strSQLAddressDeleteDetail;
-extern const std::string strSQLAddressInsert;
-extern const std::string strSQLAddressUpdateWithPrim;
-extern const std::string strSQLAddressUpdateWithoutPrim;
+extern const std::string strSQLSelectAddress_All;
+extern const std::string strSQLSelectAddress_Detail;
+extern const std::string strSQLSelectAddress_IdxAddress_City_Street;
+extern const std::string strSQLSelectAddress_RefAddress2Person;
+extern const std::string strSQLSelectPerson_RevRefAddress2Person;
+extern const std::string strSQLSelectAddress_RefAddress2AddressType;
+extern const std::string strSQLSelectAddressTypes_RevRefAddress2AddressType;
+extern const std::string strSQLSelectAddress_RefAddress2Countries;
+extern const std::string strSQLSelectCountries_RevRefAddress2Countries;
+extern const std::string strSQLInsertAddress;
+extern const std::string strSQLUpdateAddress_WithPrim;
+extern const std::string strSQLUpdateAddress_WithoutPrim;
+extern const std::string strSQLDeleteAddress_All;
+extern const std::string strSQLDeleteAddress_Detail;
 
 // sql statements for table dbo.AddressTypes
-extern const std::string strSQLAddressTypesSelectAll;
-extern const std::string strSQLAddressTypesSelectDetail;
-extern const std::string strSQLAddressTypesDeleteAll;
-extern const std::string strSQLAddressTypesDeleteDetail;
-extern const std::string strSQLAddressTypesInsert;
-extern const std::string strSQLAddressTypesUpdateWithPrim;
-extern const std::string strSQLAddressTypesUpdateWithoutPrim;
+extern const std::string strSQLSelectAddressTypes_All;
+extern const std::string strSQLSelectAddressTypes_Detail;
+extern const std::string strSQLSelectAddressTypes_UnqAddressType_Denotation;
+extern const std::string strSQLInsertAddressTypes;
+extern const std::string strSQLUpdateAddressTypes_WithPrim;
+extern const std::string strSQLUpdateAddressTypes_WithoutPrim;
+extern const std::string strSQLDeleteAddressTypes_All;
+extern const std::string strSQLDeleteAddressTypes_Detail;
 
 // sql statements for table dbo.Banking
-extern const std::string strSQLBankingSelectAll;
-extern const std::string strSQLBankingSelectDetail;
-extern const std::string strSQLBankingDeleteAll;
-extern const std::string strSQLBankingDeleteDetail;
-extern const std::string strSQLBankingInsert;
-extern const std::string strSQLBankingUpdateWithPrim;
-extern const std::string strSQLBankingUpdateWithoutPrim;
+extern const std::string strSQLSelectBanking_All;
+extern const std::string strSQLSelectBanking_Detail;
+extern const std::string strSQLSelectBanking_IdxBanking_IBAN;
+extern const std::string strSQLSelectBanking_IdxBanking_BIC;
+extern const std::string strSQLSelectBanking_RefBanking2Person;
+extern const std::string strSQLSelectPerson_RevRefBanking2Person;
+extern const std::string strSQLSelectBanking_RefBanking2Type;
+extern const std::string strSQLSelectBankingTypes_RevRefBanking2Type;
+extern const std::string strSQLSelectBanking_RefBanking2Countries;
+extern const std::string strSQLSelectCountries_RevRefBanking2Countries;
+extern const std::string strSQLInsertBanking;
+extern const std::string strSQLUpdateBanking_WithPrim;
+extern const std::string strSQLUpdateBanking_WithoutPrim;
+extern const std::string strSQLDeleteBanking_All;
+extern const std::string strSQLDeleteBanking_Detail;
 
 // sql statements for table dbo.BankingTypes
-extern const std::string strSQLBankingTypesSelectAll;
-extern const std::string strSQLBankingTypesSelectDetail;
-extern const std::string strSQLBankingTypesDeleteAll;
-extern const std::string strSQLBankingTypesDeleteDetail;
-extern const std::string strSQLBankingTypesInsert;
-extern const std::string strSQLBankingTypesUpdateWithPrim;
-extern const std::string strSQLBankingTypesUpdateWithoutPrim;
+extern const std::string strSQLSelectBankingTypes_All;
+extern const std::string strSQLSelectBankingTypes_Detail;
+extern const std::string strSQLSelectBankingTypes_UnqBankingTypes_Denotation;
+extern const std::string strSQLInsertBankingTypes;
+extern const std::string strSQLUpdateBankingTypes_WithPrim;
+extern const std::string strSQLUpdateBankingTypes_WithoutPrim;
+extern const std::string strSQLDeleteBankingTypes_All;
+extern const std::string strSQLDeleteBankingTypes_Detail;
 
 // sql statements for table dbo.Contacts
-extern const std::string strSQLContactsSelectAll;
-extern const std::string strSQLContactsSelectDetail;
-extern const std::string strSQLContactsDeleteAll;
-extern const std::string strSQLContactsDeleteDetail;
-extern const std::string strSQLContactsInsert;
-extern const std::string strSQLContactsUpdateWithPrim;
-extern const std::string strSQLContactsUpdateWithoutPrim;
+extern const std::string strSQLSelectContacts_All;
+extern const std::string strSQLSelectContacts_Detail;
+extern const std::string strSQLSelectContacts_RefContacts2Person;
+extern const std::string strSQLSelectPerson_RevRefContacts2Person;
+extern const std::string strSQLSelectContacts_RefContacts2Customer;
+extern const std::string strSQLSelectCustomers_RevRefContacts2Customer;
+extern const std::string strSQLSelectContacts_RefContacts2Liaison;
+extern const std::string strSQLSelectCustLiaison_RevRefContacts2Liaison;
+extern const std::string strSQLInsertContacts;
+extern const std::string strSQLUpdateContacts_WithPrim;
+extern const std::string strSQLUpdateContacts_WithoutPrim;
+extern const std::string strSQLDeleteContacts_All;
+extern const std::string strSQLDeleteContacts_Detail;
 
 // sql statements for table dbo.CorporateForm
-extern const std::string strSQLCorporateFormSelectAll;
-extern const std::string strSQLCorporateFormSelectDetail;
-extern const std::string strSQLCorporateFormDeleteAll;
-extern const std::string strSQLCorporateFormDeleteDetail;
-extern const std::string strSQLCorporateFormInsert;
-extern const std::string strSQLCorporateFormUpdateWithPrim;
-extern const std::string strSQLCorporateFormUpdateWithoutPrim;
+extern const std::string strSQLSelectCorporateForm_All;
+extern const std::string strSQLSelectCorporateForm_Detail;
+extern const std::string strSQLSelectCorporateForm_UnqCorporateForm_Donation;
+extern const std::string strSQLSelectCorporateForm_UnqCorporateForm_Abbreviation;
+extern const std::string strSQLInsertCorporateForm;
+extern const std::string strSQLUpdateCorporateForm_WithPrim;
+extern const std::string strSQLUpdateCorporateForm_WithoutPrim;
+extern const std::string strSQLDeleteCorporateForm_All;
+extern const std::string strSQLDeleteCorporateForm_Detail;
 
 // sql statements for table dbo.Countries
-extern const std::string strSQLCountriesSelectAll;
-extern const std::string strSQLCountriesSelectDetail;
-extern const std::string strSQLCountriesDeleteAll;
-extern const std::string strSQLCountriesDeleteDetail;
-extern const std::string strSQLCountriesInsert;
-extern const std::string strSQLCountriesUpdateWithPrim;
-extern const std::string strSQLCountriesUpdateWithoutPrim;
+extern const std::string strSQLSelectCountries_All;
+extern const std::string strSQLSelectCountries_Detail;
+extern const std::string strSQLSelectCountries_UnqCountries_Denotation;
+extern const std::string strSQLSelectCountries_UnqCountries_ISOCode;
+extern const std::string strSQLInsertCountries;
+extern const std::string strSQLUpdateCountries_WithPrim;
+extern const std::string strSQLUpdateCountries_WithoutPrim;
+extern const std::string strSQLDeleteCountries_All;
+extern const std::string strSQLDeleteCountries_Detail;
 
 // sql statements for table dbo.CustClassification
-extern const std::string strSQLCustClassificationSelectAll;
-extern const std::string strSQLCustClassificationSelectDetail;
-extern const std::string strSQLCustClassificationDeleteAll;
-extern const std::string strSQLCustClassificationDeleteDetail;
-extern const std::string strSQLCustClassificationInsert;
-extern const std::string strSQLCustClassificationUpdateWithPrim;
-extern const std::string strSQLCustClassificationUpdateWithoutPrim;
+extern const std::string strSQLSelectCustClassification_All;
+extern const std::string strSQLSelectCustClassification_Detail;
+extern const std::string strSQLSelectCustClassification_UnqCustClass_Donation;
+extern const std::string strSQLInsertCustClassification;
+extern const std::string strSQLUpdateCustClassification_WithPrim;
+extern const std::string strSQLUpdateCustClassification_WithoutPrim;
+extern const std::string strSQLDeleteCustClassification_All;
+extern const std::string strSQLDeleteCustClassification_Detail;
 
 // sql statements for table dbo.CustLiaison
-extern const std::string strSQLCustLiaisonSelectAll;
-extern const std::string strSQLCustLiaisonSelectDetail;
-extern const std::string strSQLCustLiaisonDeleteAll;
-extern const std::string strSQLCustLiaisonDeleteDetail;
-extern const std::string strSQLCustLiaisonInsert;
-extern const std::string strSQLCustLiaisonUpdateWithPrim;
-extern const std::string strSQLCustLiaisonUpdateWithoutPrim;
+extern const std::string strSQLSelectCustLiaison_All;
+extern const std::string strSQLSelectCustLiaison_Detail;
+extern const std::string strSQLSelectCustLiaison_UnqCustLiaison_Donation;
+extern const std::string strSQLInsertCustLiaison;
+extern const std::string strSQLUpdateCustLiaison_WithPrim;
+extern const std::string strSQLUpdateCustLiaison_WithoutPrim;
+extern const std::string strSQLDeleteCustLiaison_All;
+extern const std::string strSQLDeleteCustLiaison_Detail;
 
 // sql statements for table dbo.Customers
-extern const std::string strSQLCustomersSelectAll;
-extern const std::string strSQLCustomersSelectDetail;
-extern const std::string strSQLCustomersDeleteAll;
-extern const std::string strSQLCustomersDeleteDetail;
-extern const std::string strSQLCustomersInsert;
-extern const std::string strSQLCustomersUpdateWithPrim;
-extern const std::string strSQLCustomersUpdateWithoutPrim;
+extern const std::string strSQLSelectCustomers_All;
+extern const std::string strSQLSelectCustomers_Detail;
+extern const std::string strSQLSelectCustomers_RefCustomers2Person;
+extern const std::string strSQLSelectPerson_RevRefCustomers2Person;
+extern const std::string strSQLSelectCustomers_RefCustomers2Classification;
+extern const std::string strSQLSelectCustClassification_RevRefCustomers2Classification;
+extern const std::string strSQLSelectCustomers_RefCustomers2Employees_SA;
+extern const std::string strSQLSelectEmployees_RevRefCustomers2Employees_SA;
+extern const std::string strSQLSelectCustomers_RefCustomers2LegalForms;
+extern const std::string strSQLSelectCorporateForm_RevRefCustomers2LegalForms;
+extern const std::string strSQLInsertCustomers;
+extern const std::string strSQLUpdateCustomers_WithPrim;
+extern const std::string strSQLUpdateCustomers_WithoutPrim;
+extern const std::string strSQLDeleteCustomers_All;
+extern const std::string strSQLDeleteCustomers_Detail;
 
 // sql statements for table dbo.Departments
-extern const std::string strSQLDepartmentsSelectAll;
-extern const std::string strSQLDepartmentsSelectDetail;
-extern const std::string strSQLDepartmentsDeleteAll;
-extern const std::string strSQLDepartmentsDeleteDetail;
-extern const std::string strSQLDepartmentsInsert;
-extern const std::string strSQLDepartmentsUpdateWithPrim;
-extern const std::string strSQLDepartmentsUpdateWithoutPrim;
+extern const std::string strSQLSelectDepartments_All;
+extern const std::string strSQLSelectDepartments_Detail;
+extern const std::string strSQLSelectDepartments_UnqDepartments_Denotation;
+extern const std::string strSQLSelectDepartments_IdxDepartments_Abbr;
+extern const std::string strSQLSelectDepartments_RefDepartments2Employee;
+extern const std::string strSQLSelectEmployees_RevRefDepartments2Employee;
+extern const std::string strSQLInsertDepartments;
+extern const std::string strSQLUpdateDepartments_WithPrim;
+extern const std::string strSQLUpdateDepartments_WithoutPrim;
+extern const std::string strSQLDeleteDepartments_All;
+extern const std::string strSQLDeleteDepartments_Detail;
 
 // sql statements for table dbo.Employees
-extern const std::string strSQLEmployeesSelectAll;
-extern const std::string strSQLEmployeesSelectDetail;
-extern const std::string strSQLEmployeesDeleteAll;
-extern const std::string strSQLEmployeesDeleteDetail;
-extern const std::string strSQLEmployeesInsert;
-extern const std::string strSQLEmployeesUpdateWithPrim;
-extern const std::string strSQLEmployeesUpdateWithoutPrim;
+extern const std::string strSQLSelectEmployees_All;
+extern const std::string strSQLSelectEmployees_Detail;
+extern const std::string strSQLSelectEmployees_UnqEmployees_PersonNumber;
+extern const std::string strSQLSelectEmployees_UnqEmployees_SocialNumber;
+extern const std::string strSQLSelectEmployees_IdxEmployees_JobSpec;
+extern const std::string strSQLSelectEmployees_IdxEmployees_Active;
+extern const std::string strSQLSelectEmployees_RefEmployees2Person;
+extern const std::string strSQLSelectPerson_RevRefEmployees2Person;
+extern const std::string strSQLSelectEmployees_RefEmployees2SalaryType;
+extern const std::string strSQLSelectSalaryType_RevRefEmployees2SalaryType;
+extern const std::string strSQLSelectEmployees_RefEmployees2TaxClass;
+extern const std::string strSQLSelectTaxClasses_RevRefEmployees2TaxClass;
+extern const std::string strSQLSelectEmployees_RefEmployees2ReasonDeparture;
+extern const std::string strSQLSelectReasonDeparture_RevRefEmployees2ReasonDeparture;
+extern const std::string strSQLSelectEmployees_RefEmployees2JobPositions;
+extern const std::string strSQLSelectJobPositions_RevRefEmployees2JobPositions;
+extern const std::string strSQLSelectEmployees_RefEmployees2Department;
+extern const std::string strSQLSelectDepartments_RevRefEmployees2Department;
+extern const std::string strSQLInsertEmployees;
+extern const std::string strSQLUpdateEmployees_WithPrim;
+extern const std::string strSQLUpdateEmployees_WithoutPrim;
+extern const std::string strSQLDeleteEmployees_All;
+extern const std::string strSQLDeleteEmployees_Detail;
 
 // sql statements for table dbo.FamilyStatus
-extern const std::string strSQLFamilyStatusSelectAll;
-extern const std::string strSQLFamilyStatusSelectDetail;
-extern const std::string strSQLFamilyStatusDeleteAll;
-extern const std::string strSQLFamilyStatusDeleteDetail;
-extern const std::string strSQLFamilyStatusInsert;
-extern const std::string strSQLFamilyStatusUpdateWithPrim;
-extern const std::string strSQLFamilyStatusUpdateWithoutPrim;
+extern const std::string strSQLSelectFamilyStatus_All;
+extern const std::string strSQLSelectFamilyStatus_Detail;
+extern const std::string strSQLSelectFamilyStatus_UnqFamilyStatus_Denotation;
+extern const std::string strSQLInsertFamilyStatus;
+extern const std::string strSQLUpdateFamilyStatus_WithPrim;
+extern const std::string strSQLUpdateFamilyStatus_WithoutPrim;
+extern const std::string strSQLDeleteFamilyStatus_All;
+extern const std::string strSQLDeleteFamilyStatus_Detail;
 
 // sql statements for table dbo.FamilyTypes
-extern const std::string strSQLFamilyTypesSelectAll;
-extern const std::string strSQLFamilyTypesSelectDetail;
-extern const std::string strSQLFamilyTypesDeleteAll;
-extern const std::string strSQLFamilyTypesDeleteDetail;
-extern const std::string strSQLFamilyTypesInsert;
-extern const std::string strSQLFamilyTypesUpdateWithPrim;
-extern const std::string strSQLFamilyTypesUpdateWithoutPrim;
+extern const std::string strSQLSelectFamilyTypes_All;
+extern const std::string strSQLSelectFamilyTypes_Detail;
+extern const std::string strSQLSelectFamilyTypes_UnqFamilyTypes_Denotation;
+extern const std::string strSQLInsertFamilyTypes;
+extern const std::string strSQLUpdateFamilyTypes_WithPrim;
+extern const std::string strSQLUpdateFamilyTypes_WithoutPrim;
+extern const std::string strSQLDeleteFamilyTypes_All;
+extern const std::string strSQLDeleteFamilyTypes_Detail;
 
 // sql statements for table dbo.FormOfAddress
-extern const std::string strSQLFormOfAddressSelectAll;
-extern const std::string strSQLFormOfAddressSelectDetail;
-extern const std::string strSQLFormOfAddressDeleteAll;
-extern const std::string strSQLFormOfAddressDeleteDetail;
-extern const std::string strSQLFormOfAddressInsert;
-extern const std::string strSQLFormOfAddressUpdateWithPrim;
-extern const std::string strSQLFormOfAddressUpdateWithoutPrim;
+extern const std::string strSQLSelectFormOfAddress_All;
+extern const std::string strSQLSelectFormOfAddress_Detail;
+extern const std::string strSQLSelectFormOfAddress_UnqFormOfAddress_Denotation;
+extern const std::string strSQLSelectFormOfAddress_RefFormOfAddress2Type;
+extern const std::string strSQLSelectFamilyTypes_RevRefFormOfAddress2Type;
+extern const std::string strSQLInsertFormOfAddress;
+extern const std::string strSQLUpdateFormOfAddress_WithPrim;
+extern const std::string strSQLUpdateFormOfAddress_WithoutPrim;
+extern const std::string strSQLDeleteFormOfAddress_All;
+extern const std::string strSQLDeleteFormOfAddress_Detail;
 
 // sql statements for table dbo.Internet
-extern const std::string strSQLInternetSelectAll;
-extern const std::string strSQLInternetSelectDetail;
-extern const std::string strSQLInternetDeleteAll;
-extern const std::string strSQLInternetDeleteDetail;
-extern const std::string strSQLInternetInsert;
-extern const std::string strSQLInternetUpdateWithPrim;
-extern const std::string strSQLInternetUpdateWithoutPrim;
+extern const std::string strSQLSelectInternet_All;
+extern const std::string strSQLSelectInternet_Detail;
+extern const std::string strSQLSelectInternet_IdxInternet_Address;
+extern const std::string strSQLSelectInternet_RefInternet2Person;
+extern const std::string strSQLSelectPerson_RevRefInternet2Person;
+extern const std::string strSQLSelectInternet_RefInternet2Type;
+extern const std::string strSQLSelectInternetTypes_RevRefInternet2Type;
+extern const std::string strSQLInsertInternet;
+extern const std::string strSQLUpdateInternet_WithPrim;
+extern const std::string strSQLUpdateInternet_WithoutPrim;
+extern const std::string strSQLDeleteInternet_All;
+extern const std::string strSQLDeleteInternet_Detail;
 
 // sql statements for table dbo.InternetTypes
-extern const std::string strSQLInternetTypesSelectAll;
-extern const std::string strSQLInternetTypesSelectDetail;
-extern const std::string strSQLInternetTypesDeleteAll;
-extern const std::string strSQLInternetTypesDeleteDetail;
-extern const std::string strSQLInternetTypesInsert;
-extern const std::string strSQLInternetTypesUpdateWithPrim;
-extern const std::string strSQLInternetTypesUpdateWithoutPrim;
+extern const std::string strSQLSelectInternetTypes_All;
+extern const std::string strSQLSelectInternetTypes_Detail;
+extern const std::string strSQLSelectInternetTypes_UnqInternetTypes_Denotation;
+extern const std::string strSQLInsertInternetTypes;
+extern const std::string strSQLUpdateInternetTypes_WithPrim;
+extern const std::string strSQLUpdateInternetTypes_WithoutPrim;
+extern const std::string strSQLDeleteInternetTypes_All;
+extern const std::string strSQLDeleteInternetTypes_Detail;
 
 // sql statements for table dbo.JobPositions
-extern const std::string strSQLJobPositionsSelectAll;
-extern const std::string strSQLJobPositionsSelectDetail;
-extern const std::string strSQLJobPositionsDeleteAll;
-extern const std::string strSQLJobPositionsDeleteDetail;
-extern const std::string strSQLJobPositionsInsert;
-extern const std::string strSQLJobPositionsUpdateWithPrim;
-extern const std::string strSQLJobPositionsUpdateWithoutPrim;
+extern const std::string strSQLSelectJobPositions_All;
+extern const std::string strSQLSelectJobPositions_Detail;
+extern const std::string strSQLSelectJobPositions_UnqJobPositions_Denotation;
+extern const std::string strSQLSelectJobPositions_RefJobPosition2SalaryType;
+extern const std::string strSQLSelectSalaryType_RevRefJobPosition2SalaryType;
+extern const std::string strSQLInsertJobPositions;
+extern const std::string strSQLUpdateJobPositions_WithPrim;
+extern const std::string strSQLUpdateJobPositions_WithoutPrim;
+extern const std::string strSQLDeleteJobPositions_All;
+extern const std::string strSQLDeleteJobPositions_Detail;
 
 // sql statements for table dbo.Person
-extern const std::string strSQLPersonSelectAll;
-extern const std::string strSQLPersonSelectDetail;
-extern const std::string strSQLPersonDeleteAll;
-extern const std::string strSQLPersonDeleteDetail;
-extern const std::string strSQLPersonInsert;
-extern const std::string strSQLPersonUpdateWithPrim;
-extern const std::string strSQLPersonUpdateWithoutPrim;
+extern const std::string strSQLSelectPerson_All;
+extern const std::string strSQLSelectPerson_Detail;
+extern const std::string strSQLSelectPerson_IdxPerson_Name_Firstname;
+extern const std::string strSQLSelectPerson_RefPerson2FormOfAddress;
+extern const std::string strSQLSelectFormOfAddress_RevRefPerson2FormOfAddress;
+extern const std::string strSQLSelectPerson_RefPerson2FamilyStatus;
+extern const std::string strSQLSelectFamilyStatus_RevRefPerson2FamilyStatus;
+extern const std::string strSQLInsertPerson;
+extern const std::string strSQLUpdatePerson_WithPrim;
+extern const std::string strSQLUpdatePerson_WithoutPrim;
+extern const std::string strSQLDeletePerson_All;
+extern const std::string strSQLDeletePerson_Detail;
 
 // sql statements for table dbo.Phone
-extern const std::string strSQLPhoneSelectAll;
-extern const std::string strSQLPhoneSelectDetail;
-extern const std::string strSQLPhoneDeleteAll;
-extern const std::string strSQLPhoneDeleteDetail;
-extern const std::string strSQLPhoneInsert;
-extern const std::string strSQLPhoneUpdateWithPrim;
-extern const std::string strSQLPhoneUpdateWithoutPrim;
+extern const std::string strSQLSelectPhone_All;
+extern const std::string strSQLSelectPhone_Detail;
+extern const std::string strSQLSelectPhone_IdxPhone_Number;
+extern const std::string strSQLSelectPhone_RefPhone2Person;
+extern const std::string strSQLSelectPerson_RevRefPhone2Person;
+extern const std::string strSQLSelectPhone_RefPhone2Type;
+extern const std::string strSQLSelectPhonesTypes_RevRefPhone2Type;
+extern const std::string strSQLSelectPhone_RefPhone2Countries;
+extern const std::string strSQLSelectCountries_RevRefPhone2Countries;
+extern const std::string strSQLInsertPhone;
+extern const std::string strSQLUpdatePhone_WithPrim;
+extern const std::string strSQLUpdatePhone_WithoutPrim;
+extern const std::string strSQLDeletePhone_All;
+extern const std::string strSQLDeletePhone_Detail;
 
 // sql statements for table dbo.PhoneTypes
-extern const std::string strSQLPhonesTypesSelectAll;
-extern const std::string strSQLPhonesTypesSelectDetail;
-extern const std::string strSQLPhonesTypesDeleteAll;
-extern const std::string strSQLPhonesTypesDeleteDetail;
-extern const std::string strSQLPhonesTypesInsert;
-extern const std::string strSQLPhonesTypesUpdateWithPrim;
-extern const std::string strSQLPhonesTypesUpdateWithoutPrim;
+extern const std::string strSQLSelectPhonesTypes_All;
+extern const std::string strSQLSelectPhonesTypes_Detail;
+extern const std::string strSQLSelectPhonesTypes_UnqPhonesTypes_Denotation;
+extern const std::string strSQLInsertPhonesTypes;
+extern const std::string strSQLUpdatePhonesTypes_WithPrim;
+extern const std::string strSQLUpdatePhonesTypes_WithoutPrim;
+extern const std::string strSQLDeletePhonesTypes_All;
+extern const std::string strSQLDeletePhonesTypes_Detail;
 
 // sql statements for table dbo.ReasonDeparture
-extern const std::string strSQLReasonDepartureSelectAll;
-extern const std::string strSQLReasonDepartureSelectDetail;
-extern const std::string strSQLReasonDepartureDeleteAll;
-extern const std::string strSQLReasonDepartureDeleteDetail;
-extern const std::string strSQLReasonDepartureInsert;
-extern const std::string strSQLReasonDepartureUpdateWithPrim;
-extern const std::string strSQLReasonDepartureUpdateWithoutPrim;
+extern const std::string strSQLSelectReasonDeparture_All;
+extern const std::string strSQLSelectReasonDeparture_Detail;
+extern const std::string strSQLSelectReasonDeparture_UnqReasonDeparture_Denotation;
+extern const std::string strSQLInsertReasonDeparture;
+extern const std::string strSQLUpdateReasonDeparture_WithPrim;
+extern const std::string strSQLUpdateReasonDeparture_WithoutPrim;
+extern const std::string strSQLDeleteReasonDeparture_All;
+extern const std::string strSQLDeleteReasonDeparture_Detail;
 
 // sql statements for table dbo.ReasonNonWorking
-extern const std::string strSQLReasonNonWorkingSelectAll;
-extern const std::string strSQLReasonNonWorkingSelectDetail;
-extern const std::string strSQLReasonNonWorkingDeleteAll;
-extern const std::string strSQLReasonNonWorkingDeleteDetail;
-extern const std::string strSQLReasonNonWorkingInsert;
-extern const std::string strSQLReasonNonWorkingUpdateWithPrim;
-extern const std::string strSQLReasonNonWorkingUpdateWithoutPrim;
+extern const std::string strSQLSelectReasonNonWorking_All;
+extern const std::string strSQLSelectReasonNonWorking_Detail;
+extern const std::string strSQLSelectReasonNonWorking_UnqReasonNonWorking_Denotation;
+extern const std::string strSQLInsertReasonNonWorking;
+extern const std::string strSQLUpdateReasonNonWorking_WithPrim;
+extern const std::string strSQLUpdateReasonNonWorking_WithoutPrim;
+extern const std::string strSQLDeleteReasonNonWorking_All;
+extern const std::string strSQLDeleteReasonNonWorking_Detail;
 
 // sql statements for table dbo.SalaryBase
-extern const std::string strSQLSalaryBaseSelectAll;
-extern const std::string strSQLSalaryBaseSelectDetail;
-extern const std::string strSQLSalaryBaseDeleteAll;
-extern const std::string strSQLSalaryBaseDeleteDetail;
-extern const std::string strSQLSalaryBaseInsert;
-extern const std::string strSQLSalaryBaseUpdateWithPrim;
-extern const std::string strSQLSalaryBaseUpdateWithoutPrim;
+extern const std::string strSQLSelectSalaryBase_All;
+extern const std::string strSQLSelectSalaryBase_Detail;
+extern const std::string strSQLSelectSalaryBase_UnqSalaryBase_Denotation;
+extern const std::string strSQLSelectSalaryBase_UnqSalaryBase_Abbreviation;
+extern const std::string strSQLInsertSalaryBase;
+extern const std::string strSQLUpdateSalaryBase_WithPrim;
+extern const std::string strSQLUpdateSalaryBase_WithoutPrim;
+extern const std::string strSQLDeleteSalaryBase_All;
+extern const std::string strSQLDeleteSalaryBase_Detail;
 
 // sql statements for table dbo.SalaryType
-extern const std::string strSQLSalaryTypeSelectAll;
-extern const std::string strSQLSalaryTypeSelectDetail;
-extern const std::string strSQLSalaryTypeDeleteAll;
-extern const std::string strSQLSalaryTypeDeleteDetail;
-extern const std::string strSQLSalaryTypeInsert;
-extern const std::string strSQLSalaryTypeUpdateWithPrim;
-extern const std::string strSQLSalaryTypeUpdateWithoutPrim;
+extern const std::string strSQLSelectSalaryType_All;
+extern const std::string strSQLSelectSalaryType_Detail;
+extern const std::string strSQLSelectSalaryType_RefSalaryType2SalaryBase;
+extern const std::string strSQLSelectSalaryBase_RevRefSalaryType2SalaryBase;
+extern const std::string strSQLInsertSalaryType;
+extern const std::string strSQLUpdateSalaryType_WithPrim;
+extern const std::string strSQLUpdateSalaryType_WithoutPrim;
+extern const std::string strSQLDeleteSalaryType_All;
+extern const std::string strSQLDeleteSalaryType_Detail;
 
 // sql statements for table dbo.TaxClasses
-extern const std::string strSQLTaxClassesSelectAll;
-extern const std::string strSQLTaxClassesSelectDetail;
-extern const std::string strSQLTaxClassesDeleteAll;
-extern const std::string strSQLTaxClassesDeleteDetail;
-extern const std::string strSQLTaxClassesInsert;
-extern const std::string strSQLTaxClassesUpdateWithPrim;
-extern const std::string strSQLTaxClassesUpdateWithoutPrim;
+extern const std::string strSQLSelectTaxClasses_All;
+extern const std::string strSQLSelectTaxClasses_Detail;
+extern const std::string strSQLSelectTaxClasses_UnqTaxClasses_Denotation;
+extern const std::string strSQLSelectTaxClasses_UnqTaxClasses_Abbreviation;
+extern const std::string strSQLInsertTaxClasses;
+extern const std::string strSQLUpdateTaxClasses_WithPrim;
+extern const std::string strSQLUpdateTaxClasses_WithoutPrim;
+extern const std::string strSQLDeleteTaxClasses_All;
+extern const std::string strSQLDeleteTaxClasses_Detail;
 
 // sql statements for table dbo.WD_Holidays
-extern const std::string strSQLWD_HolidaysSelectAll;
-extern const std::string strSQLWD_HolidaysSelectDetail;
-extern const std::string strSQLWD_HolidaysDeleteAll;
-extern const std::string strSQLWD_HolidaysDeleteDetail;
-extern const std::string strSQLWD_HolidaysInsert;
-extern const std::string strSQLWD_HolidaysUpdateWithPrim;
-extern const std::string strSQLWD_HolidaysUpdateWithoutPrim;
+extern const std::string strSQLSelectWD_Holidays_All;
+extern const std::string strSQLSelectWD_Holidays_Detail;
+extern const std::string strSQLSelectWD_Holidays_RefWD_Holidays_Workdays;
+extern const std::string strSQLSelectWD_Workdays_RevRefWD_Holidays_Workdays;
+extern const std::string strSQLInsertWD_Holidays;
+extern const std::string strSQLUpdateWD_Holidays_WithPrim;
+extern const std::string strSQLUpdateWD_Holidays_WithoutPrim;
+extern const std::string strSQLDeleteWD_Holidays_All;
+extern const std::string strSQLDeleteWD_Holidays_Detail;
 
 // sql statements for table dbo.WD_Months
-extern const std::string strSQLWD_MonthsSelectAll;
-extern const std::string strSQLWD_MonthsSelectDetail;
-extern const std::string strSQLWD_MonthsDeleteAll;
-extern const std::string strSQLWD_MonthsDeleteDetail;
-extern const std::string strSQLWD_MonthsInsert;
-extern const std::string strSQLWD_MonthsUpdateWithPrim;
-extern const std::string strSQLWD_MonthsUpdateWithoutPrim;
+extern const std::string strSQLSelectWD_Months_All;
+extern const std::string strSQLSelectWD_Months_Detail;
+extern const std::string strSQLSelectWD_Months_UnqWD_Months_Denotation;
+extern const std::string strSQLSelectWD_Months_UnqWD_Months_Abbreviation;
+extern const std::string strSQLInsertWD_Months;
+extern const std::string strSQLUpdateWD_Months_WithPrim;
+extern const std::string strSQLUpdateWD_Months_WithoutPrim;
+extern const std::string strSQLDeleteWD_Months_All;
+extern const std::string strSQLDeleteWD_Months_Detail;
 
 // sql statements for table dbo.WD_NonWorking
-extern const std::string strSQLWD_NonWorkingSelectAll;
-extern const std::string strSQLWD_NonWorkingSelectDetail;
-extern const std::string strSQLWD_NonWorkingDeleteAll;
-extern const std::string strSQLWD_NonWorkingDeleteDetail;
-extern const std::string strSQLWD_NonWorkingInsert;
-extern const std::string strSQLWD_NonWorkingUpdateWithPrim;
-extern const std::string strSQLWD_NonWorkingUpdateWithoutPrim;
+extern const std::string strSQLSelectWD_NonWorking_All;
+extern const std::string strSQLSelectWD_NonWorking_Detail;
+extern const std::string strSQLSelectWD_NonWorking_RefNonWorking2Employee;
+extern const std::string strSQLSelectEmployees_RevRefNonWorking2Employee;
+extern const std::string strSQLSelectWD_NonWorking_RefNonWorking2Workday_Start;
+extern const std::string strSQLSelectWD_Workdays_RevRefNonWorking2Workday_Start;
+extern const std::string strSQLSelectWD_NonWorking_RefNonWorking2Workday_Finishing;
+extern const std::string strSQLSelectWD_Workdays_RevRefNonWorking2Workday_Finishing;
+extern const std::string strSQLSelectWD_NonWorking_RefNonWorking2Reason;
+extern const std::string strSQLSelectReasonNonWorking_RevRefNonWorking2Reason;
+extern const std::string strSQLInsertWD_NonWorking;
+extern const std::string strSQLUpdateWD_NonWorking_WithPrim;
+extern const std::string strSQLUpdateWD_NonWorking_WithoutPrim;
+extern const std::string strSQLDeleteWD_NonWorking_All;
+extern const std::string strSQLDeleteWD_NonWorking_Detail;
 
 // sql statements for table dbo.WD_Weekdays
-extern const std::string strSQLWD_WeekdaysSelectAll;
-extern const std::string strSQLWD_WeekdaysSelectDetail;
-extern const std::string strSQLWD_WeekdaysDeleteAll;
-extern const std::string strSQLWD_WeekdaysDeleteDetail;
-extern const std::string strSQLWD_WeekdaysInsert;
-extern const std::string strSQLWD_WeekdaysUpdateWithPrim;
-extern const std::string strSQLWD_WeekdaysUpdateWithoutPrim;
+extern const std::string strSQLSelectWD_Weekdays_All;
+extern const std::string strSQLSelectWD_Weekdays_Detail;
+extern const std::string strSQLSelectWD_Weekdays_UnqWD_Weekdays_Denotation;
+extern const std::string strSQLSelectWD_Weekdays_UnqWD_Weekdays_Abbreviation;
+extern const std::string strSQLInsertWD_Weekdays;
+extern const std::string strSQLUpdateWD_Weekdays_WithPrim;
+extern const std::string strSQLUpdateWD_Weekdays_WithoutPrim;
+extern const std::string strSQLDeleteWD_Weekdays_All;
+extern const std::string strSQLDeleteWD_Weekdays_Detail;
 
 // sql statements for table dbo.WD_Workdays
-extern const std::string strSQLWD_WorkdaysSelectAll;
-extern const std::string strSQLWD_WorkdaysSelectDetail;
-extern const std::string strSQLWD_WorkdaysDeleteAll;
-extern const std::string strSQLWD_WorkdaysDeleteDetail;
-extern const std::string strSQLWD_WorkdaysInsert;
-extern const std::string strSQLWD_WorkdaysUpdateWithPrim;
-extern const std::string strSQLWD_WorkdaysUpdateWithoutPrim;
+extern const std::string strSQLSelectWD_Workdays_All;
+extern const std::string strSQLSelectWD_Workdays_Detail;
+extern const std::string strSQLSelectWD_Workdays_IdxWD_Workdays_Years_Month;
+extern const std::string strSQLSelectWD_Workdays_RefWD_Workdays2WeekDay;
+extern const std::string strSQLSelectWD_Weekdays_RevRefWD_Workdays2WeekDay;
+extern const std::string strSQLSelectWD_Workdays_RefWD_Workdays2Month;
+extern const std::string strSQLSelectWD_Months_RevRefWD_Workdays2Month;
+extern const std::string strSQLInsertWD_Workdays;
+extern const std::string strSQLUpdateWD_Workdays_WithPrim;
+extern const std::string strSQLUpdateWD_Workdays_WithoutPrim;
+extern const std::string strSQLDeleteWD_Workdays_All;
+extern const std::string strSQLDeleteWD_Workdays_Detail;
 
 // sql statements for table dbo.WorkingTime
-extern const std::string strSQLWorkingTimeSelectAll;
-extern const std::string strSQLWorkingTimeSelectDetail;
-extern const std::string strSQLWorkingTimeDeleteAll;
-extern const std::string strSQLWorkingTimeDeleteDetail;
-extern const std::string strSQLWorkingTimeInsert;
-extern const std::string strSQLWorkingTimeUpdateWithPrim;
-extern const std::string strSQLWorkingTimeUpdateWithoutPrim;
+extern const std::string strSQLSelectWorkingTime_All;
+extern const std::string strSQLSelectWorkingTime_Detail;
+extern const std::string strSQLSelectWorkingTime_RefWorkTime2Employee;
+extern const std::string strSQLSelectEmployees_RevRefWorkTime2Employee;
+extern const std::string strSQLInsertWorkingTime;
+extern const std::string strSQLUpdateWorkingTime_WithPrim;
+extern const std::string strSQLUpdateWorkingTime_WithoutPrim;
+extern const std::string strSQLDeleteWorkingTime_All;
+extern const std::string strSQLDeleteWorkingTime_Detail;
 
 } // close namespace reader

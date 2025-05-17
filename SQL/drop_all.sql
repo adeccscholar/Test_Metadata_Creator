@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------------------
  * script to drop relationships and tables for the project simple person model
- * generated at: 25.03.2024 19:08:39,316 with the adecc Scholar metadata generator
+ * generated at: 22.04.2025 22:26:54,855 with the adecc Scholar metadata generator
  * author:       Volker Hillmann (adecc Scholar)
  * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
  * ----------------------------------------------------------------------------------- */
@@ -94,6 +94,8 @@ DROP TABLE dbo.WD_NonWorking;
 DROP TABLE dbo.WD_Weekdays;
 DROP TABLE dbo.WD_Workdays;
 DROP TABLE dbo.WorkingTime;
+
+-- drop all tables
 
 -- run cleanings for added informations
 DROP FUNCTION [dbo].[Country_Dialing];

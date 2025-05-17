@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Workdays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Workdays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Workdays
 \brief domain with all days, additional informations and as owner of all recorded working time and non-working times
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Workdays
 
 \class myHR::TWD_Workdays::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TWD_Workdays::primary_key::primary_key(std::chrono::year_month_day pCalendarDay)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pCalendarDay std::chrono::year_month_day  with calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also
+\param [in] pCalendarDay std::chrono::year_month_day  with 
 
 \var myHR::TWD_Workdays::primary_key::daCalendarDay
-\brief calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also
-\details Source: key member myHR::TWD_Workdays::primary_key::daCalendarDay in class myHR::TWD_Workdays::primary_key with the type std::chrono::year_month_day
+\brief Source: key member myHR::TWD_Workdays::primary_key::daCalendarDay in class myHR::TWD_Workdays::primary_key with the type std::chrono::year_month_day
 \details Database: primary key attribute "CalendarDay" in entity \ref datamodel_table_WD_Workdays with database type DATE
 \fn myHR::TWD_Workdays::primary_key::CalendarDay() const
 \brief selector for the data element myHR::TWD_Workdays::primary_key::daCalendarDay
@@ -167,49 +166,49 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TWD_Workdays::daCalendarDay
-\brief calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also
-\details Source: member myHR::TWD_Workdays::daCalendarDay in class myHR::TWD_Workdays with the type std::optional<std::chrono::year_month_day>
+\brief Source: member myHR::TWD_Workdays::daCalendarDay in class myHR::TWD_Workdays with the type std::optional<std::chrono::year_month_day>
 \details Database: attribute "CalendarDay" in entity \ref datamodel_table_WD_Workdays with database type DATE
+\details calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also
 
 \var myHR::TWD_Workdays::iCalendarWeekday
-\brief day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards
-\details Source: member myHR::TWD_Workdays::iCalendarWeekday in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarWeekday in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarWeekday" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards
 
 \var myHR::TWD_Workdays::iCalendarWeek
-\brief calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards
-\details Source: member myHR::TWD_Workdays::iCalendarWeek in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarWeek in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarWeek" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards
 
 \var myHR::TWD_Workdays::iCalendarYear
-\brief calculated field for the year of the calendar day
-\details Source: member myHR::TWD_Workdays::iCalendarYear in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarYear in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarYear" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details calculated field for the year of the calendar day
 
 \var myHR::TWD_Workdays::iCalendarMonth
-\brief calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months
-\details Source: member myHR::TWD_Workdays::iCalendarMonth in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarMonth in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarMonth" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months
 
 \var myHR::TWD_Workdays::iCalendarDayInWeek
-\brief calculated field for the year of the calendar day
-\details Source: member myHR::TWD_Workdays::iCalendarDayInWeek in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarDayInWeek in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarDayInWeek" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details calculated field for the year of the calendar day
 
 \var myHR::TWD_Workdays::iCalendarDayInYear
-\brief calculated field for the year of the calendar day
-\details Source: member myHR::TWD_Workdays::iCalendarDayInYear in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarDayInYear in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarDayInYear" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details calculated field for the year of the calendar day
 
 \var myHR::TWD_Workdays::iCalendarQuarter
-\brief calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter
-\details Source: member myHR::TWD_Workdays::iCalendarQuarter in class myHR::TWD_Workdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Workdays::iCalendarQuarter in class myHR::TWD_Workdays with the type std::optional<int>
 \details Database: attribute "CalendarQuarter" in entity \ref datamodel_table_WD_Workdays with database type INT
+\details calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter
 
 \var myHR::TWD_Workdays::boWorkday
-\brief boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays
-\details Source: member myHR::TWD_Workdays::boWorkday in class myHR::TWD_Workdays with the type std::optional<bool>
+\brief Source: member myHR::TWD_Workdays::boWorkday in class myHR::TWD_Workdays with the type std::optional<bool>
 \details Database: attribute "Workday" in entity \ref datamodel_table_WD_Workdays with database type TINYINT
+\details boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays
 
 
 \}
@@ -219,39 +218,30 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_Workdays::CalendarDay() const
 \brief selector for the data element myHR::TWD_Workdays::daCalendarDay
-\details <b>calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also</b>
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_Workdays::daCalendarDay
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarWeekday() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarWeekday
-\details <b>day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarWeekday
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarWeek() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarWeek
-\details <b>calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarWeek
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarYear() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarYear
-\details <b>calculated field for the year of the calendar day</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarYear
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarMonth() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarMonth
-\details <b>calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarMonth
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarDayInWeek() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarDayInWeek
-\details <b>calculated field for the year of the calendar day</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarDayInWeek
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarDayInYear() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarDayInYear
-\details <b>calculated field for the year of the calendar day</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarDayInYear
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarQuarter() const
 \brief selector for the data element myHR::TWD_Workdays::iCalendarQuarter
-\details <b>calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarQuarter
 \fn std::optional<bool> const& myHR::TWD_Workdays::Workday() const
 \brief selector for the data element myHR::TWD_Workdays::boWorkday
-\details <b>boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays</b>
 \returns std::optional<bool> const&: Reference to the data element myHR::TWD_Workdays::boWorkday
 
 \}
@@ -261,56 +251,47 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::chrono::year_month_day myHR::TWD_Workdays::_CalendarDay() const
 \brief special selector for data element myHR::TWD_Workdays::daCalendarDay
-\details calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also
-\details <b>calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also</b>
+\details attribute "CalendarDay" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::daCalendarDay is empty
 \returns std::chrono::year_month_day const&: Reference to the data element myHR::TWD_Workdays::daCalendarDay
 \fn int myHR::TWD_Workdays::_CalendarWeekday() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarWeekday
-\details day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards
-\details <b>day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards</b>
+\details attribute "CalendarWeekday" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarWeekday is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarWeekday
 \fn int myHR::TWD_Workdays::_CalendarWeek() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarWeek
-\details calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards
-\details <b>calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards</b>
+\details attribute "CalendarWeek" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarWeek is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarWeek
 \fn int myHR::TWD_Workdays::_CalendarYear() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarYear
-\details calculated field for the year of the calendar day
-\details <b>calculated field for the year of the calendar day</b>
+\details attribute "CalendarYear" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarYear is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarYear
 \fn int myHR::TWD_Workdays::_CalendarMonth() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarMonth
-\details calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months
-\details <b>calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months</b>
+\details attribute "CalendarMonth" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarMonth is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarMonth
 \fn int myHR::TWD_Workdays::_CalendarDayInWeek() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarDayInWeek
-\details calculated field for the year of the calendar day
-\details <b>calculated field for the year of the calendar day</b>
+\details attribute "CalendarDayInWeek" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarDayInWeek is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarDayInWeek
 \fn int myHR::TWD_Workdays::_CalendarDayInYear() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarDayInYear
-\details calculated field for the year of the calendar day
-\details <b>calculated field for the year of the calendar day</b>
+\details attribute "CalendarDayInYear" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarDayInYear is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarDayInYear
 \fn int myHR::TWD_Workdays::_CalendarQuarter() const
 \brief special selector for data element myHR::TWD_Workdays::iCalendarQuarter
-\details calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter
-\details <b>calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter</b>
+\details attribute "CalendarQuarter" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::iCalendarQuarter is empty
 \returns int const&: Reference to the data element myHR::TWD_Workdays::iCalendarQuarter
 \fn bool myHR::TWD_Workdays::_Workday() const
 \brief special selector for data element myHR::TWD_Workdays::boWorkday
-\details boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays
-\details <b>boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays</b>
+\details attribute "Workday" in entity "WD_Workdays"
 \throws std::runtime::error if the attribute myHR::TWD_Workdays::boWorkday is empty
 \returns bool const&: Reference to the data element myHR::TWD_Workdays::boWorkday
 
@@ -321,19 +302,16 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<std::chrono::year_month_day> const& myHR::TWD_Workdays::CalendarDay(std::optional<std::chrono::year_month_day> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::daCalendarDay
-\details <b>calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::daCalendarDay
 \returns std::optional<std::chrono::year_month_day> const&: Reference to the data element myHR::TWD_Workdays::daCalendarDay
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarWeekday(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarWeekday
-\details <b>day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarWeekday
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarWeekday
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarWeek(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarWeek
-\details <b>calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarWeek
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarWeek
 
@@ -345,37 +323,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarYear(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarYear
-\details <b>calculated field for the year of the calendar day</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarYear
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarYear
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarMonth(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarMonth
-\details <b>calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarMonth
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarMonth
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarDayInWeek(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarDayInWeek
-\details <b>calculated field for the year of the calendar day</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarDayInWeek
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarDayInWeek
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarDayInYear(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarDayInYear
-\details <b>calculated field for the year of the calendar day</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarDayInYear
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarDayInYear
 
 \fn std::optional<int> const& myHR::TWD_Workdays::CalendarQuarter(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::iCalendarQuarter
-\details <b>calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::iCalendarQuarter
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Workdays::iCalendarQuarter
 
 \fn std::optional<bool> const& myHR::TWD_Workdays::Workday(std::optional<bool> const& newVal)
 \brief manipulator for the data element myHR::TWD_Workdays::boWorkday
-\details <b>boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays</b>
 \param[in] newVal the new Value for the member myHR::TWD_Workdays::boWorkday
 \returns std::optional<bool> const&: Reference to the data element myHR::TWD_Workdays::boWorkday
 

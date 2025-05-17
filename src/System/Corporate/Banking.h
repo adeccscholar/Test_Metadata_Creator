@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TBanking
 * Content: informations about the account details provided by a person and used in a specific context
-* Date: 25.03.2024 19:08:39,719  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,297  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,7 +13,7 @@
 
 
 // includes for common  virtual base class
-#include "System\Corporate\base.h"
+#include "Base\BaseClass.h"
 
 // necessary additional headers for used datatypes
 #include <string>
@@ -22,12 +22,14 @@
 #include <iomanip>
 #include <optional>
 #include <stdexcept>
+#include <functional>
 #include <map>
 #include <vector>
 #include <tuple>
 #include <memory>
 
 namespace reader {
+   class DataAccess; // helper class, later changing
    class TPersonReader;
    }
 
@@ -38,7 +40,7 @@ namespace myCorporate {
 // - informations about the account details provided by a person and used in a specific context
 // -------------------------------------------------------------------------------------------------
 class TBanking : virtual public TSimplePersonBase {
-   friend class reader::TPersonReader;
+   friend class reader::DataAccess;   friend class reader::TPersonReader;
    public:
       // ----------------------------------------------------------------------------------------------
       // public datatypes for this table
@@ -84,6 +86,7 @@ class TBanking : virtual public TSimplePersonBase {
             int _compare(primary_key const& other) const;
          };
 
+      using func_ty = std::function<bool(TBanking&&)>;
       using container_ty = std::map<primary_key, TBanking>;
       using vector_ty    = std::vector<TBanking>;
 

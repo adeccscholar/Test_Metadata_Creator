@@ -49,7 +49,7 @@
 \include{doc} System\HR/ReasonDeparture.dox
 \include{doc} System\HR/ReasonNonWorking.dox
 \include{doc} System\HR/SalaryBase.dox
-\include{doc} System/HR/SalaryType.dox
+\include{doc} System\HR/SalaryType.dox
 \include{doc} System\HR/TaxClasses.dox
 \include{doc} System\HR/WD_Holidays.dox
 \include{doc} System\HR/WD_Months.dox
@@ -82,7 +82,7 @@
 
 
 
-\file System\Corporate\base.h
+\file Base
 \brief definition auf the common base class myCorporate::TSimplePersonBase for the project model with a simple person administration.
 
 \class myCorporate::TSimplePersonBase
@@ -800,7 +800,23 @@
 <a id = "top_of_mainpage"></a>
 
 \section secMainDescription project description / preamble
+\details Model for a simple management of personal data for testing and presenting the use of metadata with a generator and for discussing the possibilities of using metadata.
+\details The model is implemented using the adecc Scholar metadata class TMyDictionary and the associated classes TMyDatatype, TMyAttribute, TMyTable, TMyReferences and TMyIndices.
+\details In addition to the necessary C++ source code for the classes of the system layer, this generator also creates scripts for creating the database with conditions and value tables and the basis for detailed documentation with Doxygen in separate files. In addition, methods are created that enable access using the database interface of the adeccDatabase library developed in this stream.
+\details The advantage of using generators that work on the basis of metadata is not only the enormous time saving, but also the correctness. This means that all parts are up-to-date and 100% aligned with each other.
+\details The basis for this model was taken from a training project by adecc Systemhaus GmbH and expanded once again.
+\details The following image show a draft paper / scratch pad of the background for this trainings project.
+\details \image html Kladde.jpg
+\details \image latex Kladde.jpg
+\details The following model diagram is created with the Embarcader E/R Studio and show the initial model from the former project.
+\details \image html ER-Model.jpg<br>\image latex ERModelLS.tif
+\details This model was created to show and discuss the potential of metadata and the generation of source code, database scripts and documentation.
+\details In the model, in addition to the is - a relationship between the Person and Employee tables, there is a part - of relationship to employee working hours and an association to the departments in which employees work.
+\details In addition, there are a number of extended value tables to show that these do not only have to consist of an ID and name, but can also contain other data.
+\details The project, including all additional files and documentations, are part of the source code of the "adecc Scholar" project. The purpose of this project is to impart know-how on architecture and technology when using the programming language C++. The MIT license applies unless otherwise stated or other licenses must be used due to legal requirements.
 
+\note There are many discussions about programming guidelines, names of identifiers, the pros and cons of notations (Hungarian notation, all lowercase, first letter uppercase, ...). These discussions also fade against the background of programming with metadata and can easily be adapted to any standard without any significant effort.
+\note Finally, please note that these sources are only training materials and explicitly not productive sources. You can use them according to the license in your own application, but there is no claim to correctness or any form of warranty.
 
 \section secMainDatatypes used datatypes
 \details the following table show datatypes and the transformation into types for the used sql server and the programming language. hungarian notation is used in the program. the table contain prefixes which are used for the data types.
@@ -917,7 +933,7 @@
     <td>dbo.Address</td>
     <td>Entity</td>
     <td>myCorporate::TAddress</td></tr>
-<tr><td colspan="3">information on the addresses where a person lives, works or has any other relationship with them.</td>
+<tr><td colspan="3">information on the addresses where a person lives, works or has any other relationship with them</td>
 </tr><tr><td rowspan="2" valign="top">\ref datamodel_table_AddressTypes</td>
     <td>dbo.AddressTypes</td>
     <td>Domain</td>
@@ -1022,7 +1038,7 @@
     <td>dbo.ReasonDeparture</td>
     <td>Domain</td>
     <td>myHR::TReasonDeparture</td></tr>
-<tr><td colspan="3">doman range with the reason of departure of the employee</td>
+<tr><td colspan="3">domain / range with the reasons of departure of the employee</td>
 </tr><tr><td rowspan="2" valign="top">\ref datamodel_table_ReasonNonWorking</td>
     <td>dbo.ReasonNonWorking</td>
     <td>Domain</td>
@@ -1037,7 +1053,7 @@
     <td>dbo.SalaryType</td>
     <td>Domain</td>
     <td>myHR::TSalaryType</td></tr>
-<tr><td colspan="3">kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...)</td>
+<tr><td colspan="3">kind of salary as range value and base for calculations (fix, bonus, hourly, dayly, monthly, ...)</td>
 </tr><tr><td rowspan="2" valign="top">\ref datamodel_table_TaxClasses</td>
     <td>dbo.TaxClasses</td>
     <td>Entity</td>
@@ -1072,7 +1088,7 @@
     <td>dbo.WorkingTime</td>
     <td>Entity</td>
     <td>myHR::TWorkingTime</td></tr>
-<tr><td colspan="3">entity with the working times for an employee, as a composition for these.</td>
+<tr><td colspan="3">entity set with working hours performed and booked by employees</td>
 </tr></tbody></table>
 
 <hr><a href = "top_of_mainpage">top of the page</a>
@@ -1157,7 +1173,7 @@ graph ER {
 
 \section datamodel_all_attributes all attributes and relationships in tables
 \subsection datamodel_table_Address Address
-\details <b>information on the addresses where a person lives, works or has any other relationship with them.</b>
+\details <b>information on the addresses where a person lives, works or has any other relationship with them</b>
 \details the system class which represent this table in source is \ref myCorporate::TAddress.
 
 \subsubsection datamodel_table_Address_attributes attributes
@@ -1185,7 +1201,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">attribute as Foreign key from an attribute ID of the person entity to whom the address belongs
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">AddressType
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1196,7 +1212,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">iAddressType
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">extension of the key by the address type to manage different addresses for one person
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Zipcode
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1207,7 +1223,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">strZipcode
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">Zip code for the address
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">City
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1218,7 +1234,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">strCity
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">name of the city/county (possibly with district) for this address
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Street
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1229,7 +1245,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">strStreet
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">name of the street belonging to this address
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">StreetNumber
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1240,7 +1256,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">strStreetNumber
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">house number with addition for this address
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Country
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1251,7 +1267,7 @@ graph ER {
     <td valign = "top"> &nbsp;
     <td valign = "top">iCountry
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">ID of the country for the address, key attribute from the Countries entity
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -1290,15 +1306,12 @@ CREATE TABLE dbo.Address (
    Country      INT NOT NULL
    );
 
-
-
-
-ALTER TABLE dbo.Address ADD CONSTRAINT pk_Address PRIMARY KEY (ID, AddressType);
-
+ALTER TABLE dbo.Address ADD CONSTRAINT pkAddress PRIMARY KEY (ID, AddressType);
 
 ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2AddressType FOREIGN KEY (AddressType) REFERENCES dbo.AddressTypes (ID);
 ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
+
 
 \endcode
 
@@ -1333,7 +1346,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with address types
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1344,7 +1357,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of an entry in the domain, display in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1355,7 +1368,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this address
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -1366,7 +1379,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these address types, what is associated with them. Self documentation, possible use as hint
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -1377,7 +1390,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this AddressType, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -1388,7 +1401,7 @@ ALTER TABLE dbo.Address ADD CONSTRAINT refAddress2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of address type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -1418,12 +1431,9 @@ CREATE TABLE dbo.AddressTypes (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.AddressTypes ADD CONSTRAINT pkAddressTypes PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.AddressTypes ADD CONSTRAINT pk_AddressTypes PRIMARY KEY (ID);
-
-ALTER TABLE dbo.AddressTypes ADD CONSTRAINT uk_AddressType_Denotation UNIQUE (Abbreviation);
+ALTER TABLE dbo.AddressTypes ADD CONSTRAINT ukAddressType_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -1436,6 +1446,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     (2, 'Rechnungsadresse', 'RA', 'Rechnungsadresse für die Anwendung', 0), 
     (3, 'Lieferadresse', 'LA', 'Lieferadresse für die Trainingsanwendung', 0), 
     (4, 'Urlaubsadresse', 'UA', 'eine Adresse, in der die Person im Urlaub erreichbar ist', 0);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -1469,7 +1480,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">attribute as foreign key from an attribute ID of a person entity to which these account details belong
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">BankingType
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1480,7 +1491,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">iBankingType
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">extension of the account details key in order to be able to save several / different bank details in a standardized way
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">BankName
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1491,7 +1502,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">strBankName
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">name of the bank that manages this account (not necessarily required)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">IBAN
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1502,7 +1513,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">strIBAN
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">IBAN number (account identification) for this bank account (required)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">BIC
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1513,7 +1524,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">strBIC
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">BIC number of the bank that manages this account (not necessarily required for transactions inside europe)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">BankOwner
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1524,7 +1535,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">strBankOwner
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">optionally the name of the owner of the bank details, if this differs from the assigned person
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Country
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1535,7 +1546,7 @@ INSERT INTO AddressTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">iCountry
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">ID of the country for the banking entity, key attribute from the Countries entity
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -1574,15 +1585,12 @@ CREATE TABLE dbo.Banking (
    Country     INT
    );
 
-
-
-
-ALTER TABLE dbo.Banking ADD CONSTRAINT pk_Banking PRIMARY KEY (ID, BankingType);
-
+ALTER TABLE dbo.Banking ADD CONSTRAINT pkBanking PRIMARY KEY (ID, BankingType);
 
 ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Type FOREIGN KEY (BankingType) REFERENCES dbo.BankingTypes (ID);
 ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
+
 
 \endcode
 
@@ -1617,7 +1625,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with banking types
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1628,7 +1636,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of an banking type entity in the domain, used in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1639,7 +1647,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this banking type
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -1650,7 +1658,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these banking type,this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -1661,7 +1669,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of banking, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -1672,7 +1680,7 @@ ALTER TABLE dbo.Banking ADD CONSTRAINT refBanking2Countries FOREIGN KEY (Country
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of banking type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -1702,12 +1710,9 @@ CREATE TABLE dbo.BankingTypes (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.BankingTypes ADD CONSTRAINT pkBankingTypes PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.BankingTypes ADD CONSTRAINT pk_BankingTypes PRIMARY KEY (ID);
-
-ALTER TABLE dbo.BankingTypes ADD CONSTRAINT uk_BankingTypes_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.BankingTypes ADD CONSTRAINT ukBankingTypes_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -1717,6 +1722,7 @@ ALTER TABLE dbo.BankingTypes ADD CONSTRAINT uk_BankingTypes_Denotation UNIQUE (D
 \code{.sql}
 INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue) VALUES
     (1, 'Hauptkonto', 'HK', 'Hauptkonto für die Personen in der Anwendung', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -1750,7 +1756,7 @@ INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">iContactID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CustID
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1761,7 +1767,7 @@ INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">iCustID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">Customer identification number of the contact associated customer.
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CustLiaison
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1772,7 +1778,7 @@ INSERT INTO BankingTypes (ID, Denotation, Abbreviation, Description, UrgentValue
     <td valign = "top"> &nbsp;
     <td valign = "top">iCustLiaison
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">liaision for this contact person as range value (from table CustLiasion)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -1807,15 +1813,12 @@ CREATE TABLE dbo.Contacts (
    CustLiaison INT NOT NULL
    );
 
-
-
-
-ALTER TABLE dbo.Contacts ADD CONSTRAINT pk_Contacts PRIMARY KEY (ContactID);
-
+ALTER TABLE dbo.Contacts ADD CONSTRAINT pkContacts PRIMARY KEY (ContactID);
 
 ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Person FOREIGN KEY (ContactID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Customer FOREIGN KEY (CustID) REFERENCES dbo.Customers (CustID);
 ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLiaison) REFERENCES dbo.CustLiaison (ID);
+
 
 \endcode
 
@@ -1850,7 +1853,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number / id for this enity of Legal Forms. Used as primary key and for relationships
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1861,7 +1864,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation for this entity. denotes the name or designation of the legal form
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -1872,7 +1875,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviated form of the legal form,  used in the application or reports for a compact display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -1883,7 +1886,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">provides a detailed description of the legal form. long text of this entity, used in the application for detailed informations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">IsLegalEntrity
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -1894,7 +1897,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
     <td valign = "top"> &nbsp;
     <td valign = "top">boIsLegalEntrity
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">indicates whether the legal form constitutes a legal entity (true/false)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -1905,7 +1908,7 @@ ALTER TABLE dbo.Contacts ADD CONSTRAINT refContacts2Liaison FOREIGN KEY (CustLia
     <td valign = "top"> &nbsp;
     <td valign = "top">iUrgentValue
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">indicates whether the legal form has urgent significance (true/false)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -1935,13 +1938,10 @@ CREATE TABLE dbo.CorporateForm (
    UrgentValue    INT
    );
 
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT pkCorporateForm PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.CorporateForm ADD CONSTRAINT pk_CorporateForm PRIMARY KEY (ID);
-
-ALTER TABLE dbo.CorporateForm ADD CONSTRAINT uk_CorporateForm_Donation UNIQUE (Denotation);
-ALTER TABLE dbo.CorporateForm ADD CONSTRAINT uk_CorporateForm_Abbreviation UNIQUE (ID);
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT ukCorporateForm_Donation UNIQUE (Denotation);
+ALTER TABLE dbo.CorporateForm ADD CONSTRAINT ukCorporateForm_Abbreviation UNIQUE (ID);
 
 
 \endcode
@@ -1958,6 +1958,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     (6, 'Einzelkaufmann', 'e.K.', 'Ein e.K. ist eine Einzelunternehmung, bei der der Unternehmer allein und unbeschränkt für alle Verbindlichkeiten haftet.', 0, 1), 
     (7, 'Ges. mit beschr. Haftung & Compagnie Kommanditges.', 'GmbH & Co. KG', 'Eine Gesellschaft mit beschränkter Haftung & Compagnie Kommanditgesellschaft ist eine Kommanditgesellschaft, bei der die Komplementärin eine GmbH ist. Dadurch kann eine GmbH als persönlich haftender Gesellschafter fungieren, während die übrigen Gesellschafter beschränkt haften.', 0, 1), 
     (8, 'Gesellschaft bürgerlichen Rechts', 'GbR', 'Eine GbR ist eine Personengesellschaft, bei der mindestens zwei natürliche oder juristische Personen gemeinsam ein bestimmtes Ziel verfolgen und gemeinsam handeln.', 0, 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -1991,7 +1992,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in the table Countries
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2002,7 +2003,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique, official designation of the country, key candidate
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2013,7 +2014,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation of the country for the program (iso code 3166 - alpha 3)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2024,7 +2025,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CountryDialing
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2035,7 +2036,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strCountryDialing
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">international country code for telephone for this country (not unique)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">ISO_Code
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2046,7 +2047,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strISO_Code
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique, official international code (ISO code 3166 - alpha 2) for the country in the communication
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">IsEU
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -2057,7 +2058,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">boIsEU
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value which is true when the country part of the european union
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Capital
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2068,7 +2069,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strCapital
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">name of the capital of this country 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Currency
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2079,7 +2080,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strCurrency
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">currency in this country
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2090,7 +2091,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this country, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -2101,7 +2102,7 @@ INSERT INTO CorporateForm (ID, Denotation, Abbreviation, Description, IsLegalEnt
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -2144,7 +2145,6 @@ CREATE TABLE dbo.Countries (
    UrgentValue    TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
-
 GO
 CREATE FUNCTION [dbo].[Country_Dialing] (@id AS INTEGER) RETURNS VARCHAR(10)
 BEGIN
@@ -2156,11 +2156,10 @@ BEGIN
 END
 GO
 
+ALTER TABLE dbo.Countries ADD CONSTRAINT pkCountries PRIMARY KEY (ID);
 
-ALTER TABLE dbo.Countries ADD CONSTRAINT pk_Countries PRIMARY KEY (ID);
-
-ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_Denotation UNIQUE (Denotation);
-ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
+ALTER TABLE dbo.Countries ADD CONSTRAINT ukCountries_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.Countries ADD CONSTRAINT ukCountries_ISOCode UNIQUE (ISO_Code);
 
 
 \endcode
@@ -2196,7 +2195,7 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number / id of this classification of a customer
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2207,7 +2206,7 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation of this classification of a customer
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2218,7 +2217,7 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation of this classification of a customer, used in the application for a compact display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2229,7 +2228,7 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description as long text of this classification of a customer, used in the application for detailed informations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2240,7 +2239,7 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information of this classification of a customer, not used in the application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -2251,7 +2250,7 @@ ALTER TABLE dbo.Countries ADD CONSTRAINT uk_Countries_ISOCode UNIQUE (ISO_Code);
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of this classification of a customer to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -2281,12 +2280,9 @@ CREATE TABLE dbo.CustClassification (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.CustClassification ADD CONSTRAINT pkCustClassification PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.CustClassification ADD CONSTRAINT pk_CustClassification PRIMARY KEY (ID);
-
-ALTER TABLE dbo.CustClassification ADD CONSTRAINT uk_CustClass_Donation UNIQUE (Denotation);
+ALTER TABLE dbo.CustClassification ADD CONSTRAINT ukCustClass_Donation UNIQUE (Denotation);
 
 
 \endcode
@@ -2300,6 +2296,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     (3, 'Gelegenheitskunde', 'GK', 'Ein Kunde, der nur gelegentlich Geschäfte mit dem Unternehmen tätigt und keine regelmäßigen oder wiederkehrenden Käufe macht.', 1), 
     (4, 'Geschäftskunde', 'B2B', 'Ein Kunde, der ein anderes Unternehmen oder eine Organisation vertritt und Produkte oder Dienstleistungen für geschäftliche Zwecke erwirbt. Diese Kunden haben oft spezifische Anforderungen und erwarten eine professionelle Betreuung.', 1), 
     (5, 'Privatkunde', 'B2C', 'Ein Kunde, der als Einzelperson Produkte oder Dienstleistungen für den persönlichen Gebrauch erwirbt. Diese Kunden können eine Vielzahl von Bedürfnissen haben und erwarten oft eine persönliche und freundliche Betreuung.', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -2333,7 +2330,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number / id of this liaison to use a contact in a customer
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2344,7 +2341,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation of this liaison to use a contact in a customer
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2355,7 +2352,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation of this liaison to use a contact in a customer, used in the application for a compact display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2366,7 +2363,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description as long text of this liaison to use a contact in a customer, used in the application for detailed informations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2377,7 +2374,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -2388,7 +2385,7 @@ INSERT INTO CustClassification (ID, Denotation, Abbreviation, Description, Urgen
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -2418,12 +2415,9 @@ CREATE TABLE dbo.CustLiaison (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.CustLiaison ADD CONSTRAINT pkCustLiaison PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.CustLiaison ADD CONSTRAINT pk_CustLiaison PRIMARY KEY (ID);
-
-ALTER TABLE dbo.CustLiaison ADD CONSTRAINT uk_CustLiaison_Donation UNIQUE (Denotation);
+ALTER TABLE dbo.CustLiaison ADD CONSTRAINT ukCustLiaison_Donation UNIQUE (Denotation);
 
 
 \endcode
@@ -2437,6 +2431,7 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     (3, 'Technische/r Berater/in', 'Technik', 'Der technische Ansprechpartner ist eine Person beim Kunden, die als direkter Kontaktpunkt für technische Fragen, Unterstützung und Problemlösungen fungiert.', 1), 
     (4, 'Kaufmännische/r Berater/in', 'Finanzen', 'Der kaufmännische Ansprechpartner ist für alle kaufmännischen Belange beim Kunden zuständig. Er ist verantwortlich für die Verwaltung von Verträgen, Preisgestaltung, Budgetierung und anderen finanziellen Fragen.', 1), 
     (5, 'Vertragsmanager/in', 'Vertrag', 'Der Vertragsmanager ist für die Verwaltung und Überwachung aller vertraglichen Angelegenheiten beim Kunden verantwortlich. Sie sind dafür zuständig, Verträge zu erstellen, zu überprüfen und zu verhandeln, Änderungen zu koordinieren und sicherzustellen, dass alle Vertragsbedingungen eingehalten werden.', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -2470,7 +2465,7 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iCustID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">internal id for this client, attribute as foreign key from an attribute ID of a person entity 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">ServiceAgent
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2481,7 +2476,7 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iServiceAgent
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">employee is  responsible for this client (association with the employys entity)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CustClassification
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2492,7 +2487,7 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iCustClassification
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">classification of this customer as range value (from table CustClassification)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">LegalForm
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2503,7 +2498,7 @@ INSERT INTO CustLiaison (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iLegalForm
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">legal form of this customer
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -2557,16 +2552,13 @@ CREATE TABLE dbo.Customers (
    LegalForm          INT NOT NULL
    );
 
-
-
-
-ALTER TABLE dbo.Customers ADD CONSTRAINT pk_Customers PRIMARY KEY (CustID);
-
+ALTER TABLE dbo.Customers ADD CONSTRAINT pkCustomers PRIMARY KEY (CustID);
 
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Person FOREIGN KEY (CustID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Classification FOREIGN KEY (CustClassification) REFERENCES dbo.CustClassification (ID);
-ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Employees_SA FOREIGN KEY (ServiceAgent) REFERENCES dbo.Employees (EmployeeID);
+ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2Employees_SA FOREIGN KEY (ServiceAgent) REFERENCES dbo.Employees (EmployID);
 ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (LegalForm) REFERENCES dbo.CorporateForm (ID);
+
 
 \endcode
 
@@ -2601,7 +2593,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (Le
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identifications number of the department. primary key and used for assoziations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2612,7 +2604,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (Le
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">distinct name of the department in the company. used to identify this and use in application for select
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2623,7 +2615,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (Le
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">used abbreviation of the department for list and such
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2634,7 +2626,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (Le
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description for this department, is used in the program, for example as hint 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Officer
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2645,7 +2637,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (Le
     <td valign = "top"> &nbsp;
     <td valign = "top">iOfficer
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">person responsible / head of this department (association with the employys entity)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -2656,7 +2648,7 @@ ALTER TABLE dbo.Customers ADD CONSTRAINT refCustomers2LegalForms FOREIGN KEY (Le
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">free notes to record information that is not used in the program
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -2700,14 +2692,12 @@ CREATE TABLE dbo.Departments (
    Notes        VARCHAR(MAX)
    );
 
+ALTER TABLE dbo.Departments ADD CONSTRAINT pkDepartments PRIMARY KEY (ID);
 
+ALTER TABLE dbo.Departments ADD CONSTRAINT ukDepartments_Denotation UNIQUE (Denotation);
 
+ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (EmployID);
 
-ALTER TABLE dbo.Departments ADD CONSTRAINT pk_Departments PRIMARY KEY (ID);
-
-ALTER TABLE dbo.Departments ADD CONSTRAINT uk_Departments_Denotation UNIQUE (Denotation);
-
-ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (Officer) REFERENCES dbo.Employees (EmployeeID);
 
 \endcode
 
@@ -2733,18 +2723,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <th>source type
 </tr><tr><th colspan="11">description
 </tr>
-<tr><td rowspan="2" valign ="top">Dummy
-    <td valign = "top"><a href ="#datatyp_integer">integer</a>
-    <td valign = "top">INT
-    <td valign = "top">
-    <td valign = "top">false
-    <td valign = "top">false
-    <td valign = "top">    <td valign = "top"> &nbsp;
-    <td valign = "top"> &nbsp;
-    <td valign = "top">iDummy
-    <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">dummy field to test the generator
-</tr><tr><td rowspan="2" valign ="top">EmployeeID
+<tr><td rowspan="2" valign ="top">EmployeeID
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
     <td valign = "top">
@@ -2754,7 +2733,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iEmployeeID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">attribute as foreign key from an attribute ID of a person entity to which these account details belong
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">PersonNumber
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2765,7 +2744,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strPersonNumber
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique HR number of the employee in the company, assigned by the HR department
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Salary
     <td valign = "top"><a href ="#datatyp_decimal">decimal</a>
     <td valign = "top">DECIMAL
@@ -2776,7 +2755,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">flSalary
     <td valign = "top">double</td></tr>
-<tr><td colspan="11" valign = "top">salary / income that the employee currently receives, dependant by the SalaryBase
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">SalaryType
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2787,7 +2766,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iSalaryType
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">range for SalaryType with the kind of Salary and determine the SalaryBase for the calculation
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">TaxClass
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2798,7 +2777,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iTaxClass
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">Tax class currently held by the employee
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">StartOfJob
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -2809,7 +2788,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">daStartOfJob
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">starting date of the employee in the company (can be extended later for the start of the current position)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">EndOfJob
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -2820,7 +2799,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">daEndOfJob
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">end date of the employee in the company, all dates without time history
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">ReasonDeparture
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2831,7 +2810,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iReasonDeparture
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">reason of departture when the person separated and the emplyment finished (NULL if active)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">JobPosition
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2842,7 +2821,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iJobPosition
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">current position / activity of the employee within the company
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">JobSpec
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2853,7 +2832,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strJobSpec
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">specification of the job as free text to concretize this
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">VacationDays
     <td valign = "top"><a href ="#datatyp_unsigned">unsigned</a>
     <td valign = "top">INT
@@ -2864,7 +2843,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">uVacationDays
     <td valign = "top">unsigned int</td></tr>
-<tr><td colspan="11" valign = "top">Entitlement to annual vacations for this employee
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Department
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -2875,7 +2854,18 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iDepartment
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">id of the department where the employee currently work
+<tr><td colspan="11" valign = "top"> &nbsp;
+</tr><tr><td rowspan="2" valign ="top">TaxNumber
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(11)
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strTaxNumber
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">SocialNummer
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -2886,7 +2876,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strSocialNummer
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">social insurance number of the employee
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Active
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -2897,7 +2887,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
     <td valign = "top">IIF(EndOfJob IS NULL OR EndOfJob &gt;= GETDATE(), 1, 0)
     <td valign = "top">boActive
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">calculated boolean value indicating whether the person is active in the company
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -2965,8 +2955,7 @@ ALTER TABLE dbo.Departments ADD CONSTRAINT refDepartments2Employee FOREIGN KEY (
 \code{.sql}
 -- statement to create the table dbo.Employees
 CREATE TABLE dbo.Employees (
-   Dummy           INT,
-   EmployeeID      INT NOT NULL,
+   EmployID        INT NOT NULL,
    PersonNumber    VARCHAR(15) NOT NULL,
    Salary          DECIMAL(10, 2) CHECK (Salary >= 0.0),
    SalaryType      INT,
@@ -2978,27 +2967,28 @@ CREATE TABLE dbo.Employees (
    JobSpec         VARCHAR(100),
    VacationDays    INT CHECK (VacationDays >= 0),
    Department      INT NOT NULL,
+   TaxNumber       VARCHAR(11),
    SocialNummer    VARCHAR(20) NOT NULL,
 
    );
 
 ALTER TABLE dbo.Employees ADD Active AS IIF(EndOfJob IS NULL OR EndOfJob >= GETDATE(), 1, 0);
 
-
 ALTER TABLE dbo.Employees ADD CONSTRAINT ck_Employees_EndOfJob CHECK (EndOfJob IS NULL OR (EndOfJob > StartOfJob));
 ALTER TABLE dbo.Employees ADD CONSTRAINT ck_Employees_ReasonDeparture CHECK ((ReasonDeparture IS NULL AND EndOfJob IS NULL) OR  (ReasonDeparture IS NOT NULL AND EndOfJob IS NOT NULL));
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT pk_Employees PRIMARY KEY (EmployeeID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT pkEmployees PRIMARY KEY (EmployID);
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_PersonNumber UNIQUE (PersonNumber);
-ALTER TABLE dbo.Employees ADD CONSTRAINT uk_Employees_SocialNumber UNIQUE (ReasonDeparture);
+ALTER TABLE dbo.Employees ADD CONSTRAINT ukEmployees_PersonNumber UNIQUE (PersonNumber);
+ALTER TABLE dbo.Employees ADD CONSTRAINT ukEmployees_SocialNumber UNIQUE (TaxNumber);
 
-ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (EmployeeID) REFERENCES dbo.Person (ID);
+ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Person FOREIGN KEY (EmployID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2TaxClass FOREIGN KEY (TaxClass) REFERENCES dbo.TaxClasses (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2ReasonDeparture FOREIGN KEY (ReasonDeparture) REFERENCES dbo.ReasonDeparture (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2JobPositions FOREIGN KEY (JobPosition) REFERENCES dbo.JobPositions (ID);
 ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (Department) REFERENCES dbo.Departments (ID);
+
 
 \endcode
 
@@ -3033,7 +3023,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with family status
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3044,7 +3034,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of a family status entity in the domain, used in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3055,7 +3045,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this family status
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3066,7 +3056,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these family status,this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Coupled
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3077,7 +3067,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">boCoupled
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that show if persones with this status are coupled and possibly receive tax relief
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">NeedDate
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3088,7 +3078,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">boNeedDate
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value which determine that the date when the person status changed the last time needed. 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3099,7 +3089,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of family status, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3110,7 +3100,7 @@ ALTER TABLE dbo.Employees ADD CONSTRAINT refEmployees2Department FOREIGN KEY (De
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -3142,12 +3132,9 @@ CREATE TABLE dbo.FamilyStatus (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT pkFamilyStatus PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT pk_FamilyStatus PRIMARY KEY (ID);
-
-ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT uk_FamilyStatus_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.FamilyStatus ADD CONSTRAINT ukFamilyStatus_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -3162,6 +3149,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     (3, 'geschieden', 'gesch', 'geschiedene Person', 0, 1, 1), 
     (4, 'verwitwert', 'verw', 'verwitwerte Person', 0, 1, 1), 
     (5, 'Lebenspartnerschaft', 'LP', 'eingetragene Lebenspartnerschaft', 1, 1, 0);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -3195,7 +3183,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with family types
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3206,7 +3194,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of a family type entity in the domain, used in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3217,7 +3205,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this banking type
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">IsNaturalPerson
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3228,7 +3216,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">boIsNaturalPerson
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean indicator whether this entity is a natural person when true, otherwise ist a legal entity
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3239,7 +3227,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these family type,this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3250,7 +3238,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of family status, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3261,7 +3249,7 @@ INSERT INTO FamilyStatus (ID, Denotation, Abbreviation, Description, Coupled, Ne
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of family type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -3292,12 +3280,9 @@ CREATE TABLE dbo.FamilyTypes (
    UrgentValue     TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT pkFamilyTypes PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT pk_FamilyTypes PRIMARY KEY (ID);
-
-ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT uk_FamilyTypes_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.FamilyTypes ADD CONSTRAINT ukFamilyTypes_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -3314,6 +3299,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     (6, 'Familie', 'Fam', 'Eine soziale Einheit, die aus Eltern und ihren Kindern besteht, die zusammenleben und sich normalerweise gegenseitig unterstützen und emotional miteinander verbunden sind.', 1), 
     (7, 'Gemeinschaft', 'eLG', 'Eine Form des Zusammenlebens von Menschen, die nicht notwendigerweise auf einer romantischen Beziehung basiert, sondern auf gemeinsamen Zielen, Werten oder Lebensweisen beruht, oft in einem gemeinsamen Haushalt.', 1), 
     (8, 'Verein', 'EV', 'Eine rechtliche und organisatorische Struktur, die von einer Gruppe von Personen gegründet wurde, um gemeinsame Interessen oder Ziele zu verfolgen, oft auf gemeinnütziger Basis.', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -3347,7 +3333,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number of the form of address to use it in relationships
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3358,7 +3344,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of  this form of address entity in the domain, used in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3369,7 +3355,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this form of address
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3380,7 +3366,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these form of address,this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">TypeSpec
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -3391,7 +3377,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">iTypeSpec
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">value from FamilyTypes who determine the art of persontype (gender, legal form, …)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Salutation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3402,7 +3388,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strSalutation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">salutation formula to be used in letters and emails for this salutation type and therefore person type
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Valediction
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3413,7 +3399,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strValediction
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">farewell formula to be used in letters and emails for this salutation type and therefore person type
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3424,7 +3410,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of form of address, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3435,7 +3421,7 @@ INSERT INTO FamilyTypes (ID, Denotation, Abbreviation, Description, UrgentValue)
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of form of address type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -3482,14 +3468,12 @@ CREATE TABLE dbo.FormOfAddress (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT pkFormOfAddress PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT pk_FormOfAddress PRIMARY KEY (ID);
-
-ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT uk_FormOfAddress_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT ukFormOfAddress_Denotation UNIQUE (Denotation);
 
 ALTER TABLE dbo.FormOfAddress ADD CONSTRAINT refFormOfAddress2Type FOREIGN KEY (TypeSpec) REFERENCES dbo.FamilyTypes (ID);
+
 
 \endcode
 
@@ -3500,6 +3484,7 @@ INSERT INTO FormOfAddress (ID, Denotation, Abbreviation, Description, TypeSpec, 
     (1, 'Herr', 'Hr', 'Anredesteuerung für Herr', 1, 'Sehr geehrter Herr', 'Mit freundlichen Grüßen', 1), 
     (2, 'Frau', 'Fr', 'Anredesteuerung für Frauen', 2, 'Sehr geehrte Frau', 'Mit freundlichen Grüßen', 1), 
     (3, 'Firma', 'Fa', 'Anredesteuerung für Firmen', 3, 'Sehr geehrte Damen und Herren', 'Mit freundlichen Grüßen', 0);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -3533,7 +3518,7 @@ INSERT INTO FormOfAddress (ID, Denotation, Abbreviation, Description, TypeSpec, 
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number of the person to whom the internet connection data belongs (foreign key from person)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">InternetType
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -3544,7 +3529,7 @@ INSERT INTO FormOfAddress (ID, Denotation, Abbreviation, Description, TypeSpec, 
     <td valign = "top"> &nbsp;
     <td valign = "top">iInternetType
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Adresse
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3555,7 +3540,7 @@ INSERT INTO FormOfAddress (ID, Denotation, Abbreviation, Description, TypeSpec, 
     <td valign = "top"> &nbsp;
     <td valign = "top">strAdresse
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">internet address for this connection, possible to split the protocol to the value table InternetTypes
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -3586,14 +3571,11 @@ CREATE TABLE dbo.Internet (
    Adresse      VARCHAR(100) NOT NULL
    );
 
-
-
-
-ALTER TABLE dbo.Internet ADD CONSTRAINT pk_Internet PRIMARY KEY (ID, InternetType);
-
+ALTER TABLE dbo.Internet ADD CONSTRAINT pkInternet PRIMARY KEY (ID, InternetType);
 
 ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetType) REFERENCES dbo.InternetTypes (ID);
+
 
 \endcode
 
@@ -3628,7 +3610,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with internet connection types
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3639,7 +3621,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3650,7 +3632,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this internet connection type
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3661,7 +3643,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Prefix
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3672,7 +3654,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strPrefix
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3683,7 +3665,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of internet connection, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3694,7 +3676,7 @@ ALTER TABLE dbo.Internet ADD CONSTRAINT refInternet2Type FOREIGN KEY (InternetTy
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -3725,12 +3707,9 @@ CREATE TABLE dbo.InternetTypes (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.InternetTypes ADD CONSTRAINT pkInternetTypes PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.InternetTypes ADD CONSTRAINT pk_InternetTypes PRIMARY KEY (ID);
-
-ALTER TABLE dbo.InternetTypes ADD CONSTRAINT uk_InternetTypes_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.InternetTypes ADD CONSTRAINT ukInternetTypes_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -3743,6 +3722,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     (2, 'Email', 'Mail', 'Email- Adresse einer Person', 'mailto:', 1), 
     (3, 'Skype', 'Skype', 'Skype- Name einer Person', 'skype:', 1), 
     (4, 'Telefon', 'VoIP', 'VoIP- Nummer einer Person', 'phone:', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -3776,7 +3756,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with positions in job
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3787,7 +3767,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation for this job position, used in selections, and lists to descripe this position
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3798,7 +3778,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation for this job position, used in overvies. Can be null and don't need be unique
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3809,7 +3789,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">SalaryType
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -3820,7 +3800,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">iSalaryType
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -3831,7 +3811,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of job position, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -3842,7 +3822,7 @@ INSERT INTO InternetTypes (ID, Denotation, Abbreviation, Description, Prefix, Ur
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -3887,14 +3867,12 @@ CREATE TABLE dbo.JobPositions (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT pkJobPositions PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.JobPositions ADD CONSTRAINT pk_JobPositions PRIMARY KEY (ID);
-
-ALTER TABLE dbo.JobPositions ADD CONSTRAINT uk_JobPositions_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.JobPositions ADD CONSTRAINT ukJobPositions_Denotation UNIQUE (Denotation);
 
 ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KEY (SalaryType) REFERENCES dbo.SalaryType (ID);
+
 
 \endcode
 
@@ -3932,7 +3910,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a entity of person
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Name
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -3943,8 +3921,8 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">strName
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">family name of the natural person respectively the name for a legal entity
-</tr><tr><td rowspan="2" valign ="top">Firstname
+<tr><td colspan="11" valign = "top"> &nbsp;
+</tr><tr><td rowspan="2" valign ="top">FirstName
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
     <td valign = "top">(30)
@@ -3952,9 +3930,20 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top">false
     <td valign = "top">    <td valign = "top"> &nbsp;
     <td valign = "top"> &nbsp;
-    <td valign = "top">strFirstname
+    <td valign = "top">strFirstName
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">first name of the natural person respectively a name extenstion for a legal entity
+<tr><td colspan="11" valign = "top"> &nbsp;
+</tr><tr><td rowspan="2" valign ="top">Birthname
+    <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
+    <td valign = "top">VARCHAR
+    <td valign = "top">(30)
+    <td valign = "top">false
+    <td valign = "top">false
+    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top"> &nbsp;
+    <td valign = "top">strBirthname
+    <td valign = "top">std::string</td></tr>
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">FormOfAddress
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -3965,7 +3954,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">iFormOfAddress
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">form of address for this person. this attribute control the kind of a person too
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">FamilyStatus
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -3976,7 +3965,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">iFamilyStatus
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">family status for the person
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">FamilyStatusSince
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -3987,7 +3976,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">daFamilyStatusSince
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">the date from which the current family status applies.
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Birthday
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -3998,7 +3987,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">daBirthday
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">birthday of a natural person. This attribute is unused for legal entrities
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4009,7 +3998,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this tperson, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">FullName
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4020,7 +4009,7 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
     <td valign = "top">Name + ', ' + FirstName
     <td valign = "top">strFullName
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">calculated field for displaying the full name for use in the program, for example, if a person is to be selected
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4086,7 +4075,8 @@ ALTER TABLE dbo.JobPositions ADD CONSTRAINT refJobPosition2SalaryType FOREIGN KE
 CREATE TABLE dbo.Person (
    ID                INT NOT NULL,
    Name              VARCHAR(30) NOT NULL,
-   Firstname         VARCHAR(30),
+   FirstName         VARCHAR(30),
+   Birthname         VARCHAR(30),
    FormOfAddress     INT NOT NULL,
    FamilyStatus      INT NOT NULL,
    FamilyStatusSince DATE,
@@ -4095,14 +4085,11 @@ CREATE TABLE dbo.Person (
    FullName          AS Name + ', ' + FirstName
    );
 
-
-
-
-ALTER TABLE dbo.Person ADD CONSTRAINT pk_Person PRIMARY KEY (ID);
-
+ALTER TABLE dbo.Person ADD CONSTRAINT pkPerson PRIMARY KEY (ID);
 
 ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FormOfAddress FOREIGN KEY (FormOfAddress) REFERENCES dbo.FormOfAddress (ID);
 ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (FamilyStatus) REFERENCES dbo.FamilyStatus (ID);
+
 
 \endcode
 
@@ -4137,7 +4124,7 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number of the person to whom the phone data belongs (foreign key from person)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">PhoneType
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -4148,18 +4135,18 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
     <td valign = "top"> &nbsp;
     <td valign = "top">iPhoneType
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">type of telephone data (value range from PhoneType as foreign key, extension to 1:n relationship))
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">AreaCode
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
     <td valign = "top">(10)
     <td valign = "top">true
     <td valign = "top">false
-    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top">NOT LIKE '%[^0-9]%'    <td valign = "top"> &nbsp;
     <td valign = "top"> &nbsp;
     <td valign = "top">strAreaCode
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">area code or network code of the telephone connection
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CallNumber
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4170,7 +4157,7 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
     <td valign = "top"> &nbsp;
     <td valign = "top">strCallNumber
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">call number within the local network or the selected cellphone network
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Country
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -4181,7 +4168,7 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
     <td valign = "top"> &nbsp;
     <td valign = "top">iCountry
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">country id for this data as foreign key in the Countries table. the country code is also located here
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">DialingNational
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4192,7 +4179,7 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
     <td valign = "top">AreaCode + REPLACE(REPLACE(CallNumber, ' ', ''), '-', '')
     <td valign = "top">strDialingNational
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">complete telephone number to be dialed in the national network as computed field
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">DialingInternational
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4203,7 +4190,7 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
     <td valign = "top">[dbo].[Country_Dialing](Country)+SUBSTRING(AreaCode, 2, LEN(AreaCode))+CallNumber
     <td valign = "top">strDialingInternational
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">complete telephone number to be dialed in the international network as computed field
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4235,7 +4222,7 @@ ALTER TABLE dbo.Person ADD CONSTRAINT refPerson2FamilyStatus FOREIGN KEY (Family
 CREATE TABLE dbo.Phone (
    ID              INT NOT NULL,
    PhoneType       INT NOT NULL,
-   AreaCode        VARCHAR(10) NOT NULL,
+   AreaCode        VARCHAR(10) NOT NULL CHECK (AreaCode NOT LIKE '%[^0-9]%'),
    CallNumber      VARCHAR(13) NOT NULL CHECK (CallNumber NOT LIKE '%[^0-9 -]%'),
    Country         INT NOT NULL,
    DialingNational AS AreaCode + REPLACE(REPLACE(CallNumber, ' ', ''), '-', ''),
@@ -4244,14 +4231,12 @@ CREATE TABLE dbo.Phone (
 
 ALTER TABLE dbo.Phone ADD DialingInternational AS [dbo].[Country_Dialing](Country)+SUBSTRING(AreaCode, 2, LEN(AreaCode))+CallNumber;
 
-
-
-ALTER TABLE dbo.Phone ADD CONSTRAINT pk_Phone PRIMARY KEY (ID, PhoneType);
-
+ALTER TABLE dbo.Phone ADD CONSTRAINT pkPhone PRIMARY KEY (ID, PhoneType);
 
 ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Person FOREIGN KEY (ID) REFERENCES dbo.Person (ID);
 ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Type FOREIGN KEY (PhoneType) REFERENCES dbo.PhoneTypes (ID);
 ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) REFERENCES dbo.Countries (ID);
+
 
 \endcode
 
@@ -4286,7 +4271,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with phone types
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4297,7 +4282,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description of a phone type entity in the domain, used in selections, comboboxes, … (key canditate)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4308,7 +4293,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">non-representative abbreviation that can be used for a short advertisement for this phone  type
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4319,7 +4304,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">detailed description of these phone  type,this is a self documentation, possible use as hint or to information in the programm
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4330,7 +4315,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for this type of banking, not used in application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -4341,7 +4326,7 @@ ALTER TABLE dbo.Phone ADD CONSTRAINT refPhone2Countries FOREIGN KEY (Country) RE
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of phone type to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4371,12 +4356,9 @@ CREATE TABLE dbo.PhoneTypes (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.PhoneTypes ADD CONSTRAINT pkPhoneTypes PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.PhoneTypes ADD CONSTRAINT pk_PhoneTypes PRIMARY KEY (ID);
-
-ALTER TABLE dbo.PhoneTypes ADD CONSTRAINT uk_PhonesTypes_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.PhoneTypes ADD CONSTRAINT ukPhonesTypes_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -4389,11 +4371,12 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     (2, 'Fax', 'Fax', 'Faxnummer zu einer Person', 1), 
     (3, 'Mobil', 'Mbl', 'Mobiltelefonnummer zu einer Person', 1);
 
+
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
 <hr>
 \subsection datamodel_table_ReasonDeparture ReasonDeparture
-\details <b>doman range with the reason of departure of the employee</b>
+\details <b>domain / range with the reasons of departure of the employee</b>
 \details the system class which represent this table in source is \ref myHR::TReasonDeparture.
 
 \subsubsection datamodel_table_ReasonDeparture_attributes attributes
@@ -4421,7 +4404,7 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number / id of the reason of the departure
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4432,7 +4415,7 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation for the reason of the departure
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4443,7 +4426,7 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation for the reason of the departure, used in the application for a compact display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4454,7 +4437,7 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description as long text for the reason of the departure, used in the application for detailed informations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4465,7 +4448,7 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for the reason of the departure, not used in the application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -4476,7 +4459,7 @@ INSERT INTO PhoneTypes (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of reason of departure to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4506,12 +4489,9 @@ CREATE TABLE dbo.ReasonDeparture (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT pkReasonDeparture PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT pk_ReasonDeparture PRIMARY KEY (ID);
-
-ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT uk_ReasonDeparture_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.ReasonDeparture ADD CONSTRAINT ukReasonDeparture_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -4524,6 +4504,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     (2, 'Rente', 'Re', 'Die Person verlässt das Unternehmen aufgrund des Erreichens des Rentenalters oder aus Altersgründen (Retirement ).', 1), 
     (3, 'Entlassung', 'En', 'Das Unternehmen hat das Arbeitsverhältnis mit der Person beendet (Dismissal )', 1), 
     (4, 'Restrukturierung', 'St', 'Die Person wird nicht mehr in diesem Programm geführt, da sie in einem anderen Unternehmensteil beschäftigt wird (restructuring).', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -4557,7 +4538,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number / id of the reason of non working times / idle times
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4568,7 +4549,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation for the reason of the non working times / idle times
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4579,7 +4560,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation for the reason of the non working times / idle times, used in the application for a compact display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4590,7 +4571,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description as long text for the reason of the non working times / idle times, used in the application for detailed informations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4601,7 +4582,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">notes, with additional / free information for the reason of the non working times / idle times, not used in the application
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -4612,7 +4593,7 @@ INSERT INTO ReasonDeparture (ID, Denotation, Abbreviation, Description, UrgentVa
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of reason of departure to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4642,12 +4623,9 @@ CREATE TABLE dbo.ReasonNonWorking (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT pkReasonNonWorking PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT pk_ReasonNonWorking PRIMARY KEY (ID);
-
-ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT uk_ReasonNonWorking_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.ReasonNonWorking ADD CONSTRAINT ukReasonNonWorking_Denotation UNIQUE (Denotation);
 
 
 \endcode
@@ -4661,6 +4639,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     (3, 'Krankheit bezahlt', 'K', 'Die Person ist krankgeschrieben', 1), 
     (4, 'Krankheit unbezahlt', 'KU', 'Die Person ist krankgeschrieben, aber die Krankenkasse zahlt.', 1), 
     (5, 'unbezahlt', 'unbez', 'Die Person ist unbezahlt freigestellt', 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -4694,7 +4673,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">ID for this Base of Salary (0 = free, 1 = hourly, 2 = dayly, 3 = monthly). Extentable via model, needed for calculations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4705,7 +4684,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique description / donation for this base of salary. The algorithm use the id , the text is for display or select
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4716,7 +4695,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique abbreviation for this base of salary. The algorithm use the id , the text is for display or select
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4727,7 +4706,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">a longer description for this base to use as hint or for display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -4738,7 +4717,7 @@ INSERT INTO ReasonNonWorking (ID, Denotation, Abbreviation, Description, UrgentV
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4767,13 +4746,10 @@ CREATE TABLE dbo.SalaryBase (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.SalaryBase ADD CONSTRAINT pkSalaryBase PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.SalaryBase ADD CONSTRAINT pk_SalaryBase PRIMARY KEY (ID);
-
-ALTER TABLE dbo.SalaryBase ADD CONSTRAINT uk_SalaryBase_Denotation UNIQUE (Denotation);
-ALTER TABLE dbo.SalaryBase ADD CONSTRAINT uk_SalaryBase_Abbreviation UNIQUE (Abbreviation);
+ALTER TABLE dbo.SalaryBase ADD CONSTRAINT ukSalaryBase_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.SalaryBase ADD CONSTRAINT ukSalaryBase_Abbreviation UNIQUE (Abbreviation);
 
 
 \endcode
@@ -4787,11 +4763,12 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     (2, 'täglich', 'd', 'Die Angabe des Gehalts erfolgt auf Tagesbasis. Dieses wird oft für Honorare verwendet.', 1), 
     (3, 'monatlich', 'm', 'Die Angabe des Bezugs erfolgt auf Monatsbasis.Das entspricht meistens dem Gehalt bei Angestellten*innen', 1);
 
+
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
 <hr>
 \subsection datamodel_table_SalaryType SalaryType
-\details <b>kind of salary as range value and base for calculations (flix, bonus, hourly, dayly, monthly, ...)</b>
+\details <b>kind of salary as range value and base for calculations (fix, bonus, hourly, dayly, monthly, ...)</b>
 \details the system class which represent this table in source is \ref myHR::TSalaryType.
 
 \subsubsection datamodel_table_SalaryType_attributes attributes
@@ -4819,7 +4796,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number / id of the type of salary
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4830,7 +4807,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation for the type of salary
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4841,7 +4818,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">abbreviation for thetype of salary, used in the application for a compact display
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4852,7 +4829,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description as long text for the type of salary, used in the application for detailed informations
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">SalaryBase
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -4863,7 +4840,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">iSalaryBase
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">id of the salary base which is used for this type of salary (foreign key from SalaryBase)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -4874,7 +4851,7 @@ INSERT INTO SalaryBase (ID, Denotation, Abbreviation, Description, UrgentValue) 
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of salary base to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -4922,13 +4899,10 @@ CREATE TABLE dbo.SalaryType (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
-
-
-
-ALTER TABLE dbo.SalaryType ADD CONSTRAINT pk_SalaryType PRIMARY KEY (ID);
-
+ALTER TABLE dbo.SalaryType ADD CONSTRAINT pkSalaryType PRIMARY KEY (ID);
 
 ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (SalaryBase) REFERENCES dbo.SalaryBase (ID);
+
 
 \endcode
 
@@ -4963,7 +4937,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with tax classes, used as key and attribute for relationships
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4974,7 +4948,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with tax class types, used in the programm to indentify this tax class, as selection in comboboxes and such
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -4985,7 +4959,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique abbreviation of a tax class entity in the domain, used in overviews and reports
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -4996,7 +4970,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">description for this tax class, used for the program
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Coupled
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -5007,7 +4981,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">boCoupled
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">Indicator whether this tax class applies to married couples or registered civil partnerships
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">UrgentValue
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -5018,7 +4992,7 @@ ALTER TABLE dbo.SalaryType ADD CONSTRAINT refSalaryType2SalaryBase FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">boUrgentValue
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value that makes this entity of tax classes to a system value (cannot be changed as it is used directly by the program)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5048,13 +5022,10 @@ CREATE TABLE dbo.TaxClasses (
    UrgentValue  TINYINT CHECK (UrgentValue IN (0, 1))
    );
 
+ALTER TABLE dbo.TaxClasses ADD CONSTRAINT pkTaxClasses PRIMARY KEY (ID);
 
-
-
-ALTER TABLE dbo.TaxClasses ADD CONSTRAINT pk_TaxClasses PRIMARY KEY (ID);
-
-ALTER TABLE dbo.TaxClasses ADD CONSTRAINT uk_TaxClasses_Denotation UNIQUE (Denotation);
-ALTER TABLE dbo.TaxClasses ADD CONSTRAINT uk_TaxClasses_Abbreviation UNIQUE (Abbreviation);
+ALTER TABLE dbo.TaxClasses ADD CONSTRAINT ukTaxClasses_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.TaxClasses ADD CONSTRAINT ukTaxClasses_Abbreviation UNIQUE (Abbreviation);
 
 
 \endcode
@@ -5071,6 +5042,7 @@ INSERT INTO TaxClasses (ID, Denotation, Abbreviation, Description, Coupled, Urge
     (6, 'Steuerklasse 6', 'VI', 'Diese Klasse wird verwendet, wenn eine Person mehrere Jobs hat oder zusätzliche Einkünfte aus einer geringfügigen Beschäftigung hat.', 0, 1), 
     (7, 'Ausland', 'A', 'Person wohnt im Ausland, Steuer individuell bestimmen ', 0, 1), 
     (8, 'unbekannt', '-', 'Steuerklasse noch unbekannt, unbedingt nachfragen, vorläufig als Steuerklasse 6 abrechnen', 0, 1);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -5104,7 +5076,7 @@ INSERT INTO TaxClasses (ID, Denotation, Abbreviation, Description, Coupled, Urge
     <td valign = "top"> &nbsp;
     <td valign = "top">daCalendarDay
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">calendar day on which the holiday is
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Donation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -5115,7 +5087,7 @@ INSERT INTO TaxClasses (ID, Denotation, Abbreviation, Description, Coupled, Urge
     <td valign = "top"> &nbsp;
     <td valign = "top">strDonation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">specification of the holiday as text
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Share
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5126,7 +5098,7 @@ INSERT INTO TaxClasses (ID, Denotation, Abbreviation, Description, Coupled, Urge
     <td valign = "top"> &nbsp;
     <td valign = "top">iShare
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">share of the holiday (addition for later extension, e.g. holy eve as a half holiday)
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Description
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -5137,7 +5109,7 @@ INSERT INTO TaxClasses (ID, Denotation, Abbreviation, Description, Coupled, Urge
     <td valign = "top"> &nbsp;
     <td valign = "top">strDescription
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">additional, more detailed description of the holiday. can use as hint in programm or reports
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5165,7 +5137,6 @@ CREATE TABLE dbo.WD_Holidays (
    Description VARCHAR(MAX)
    );
 
-
 GO
 CREATE FUNCTION [dbo].[GetIsHoliday](@caldate AS DATE) RETURNS INTEGER
 BEGIN
@@ -5177,11 +5148,10 @@ BEGIN
 END
 GO
 
-
-ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT pk_WD_Holidays PRIMARY KEY (CalendarDay);
-
+ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT pkWD_Holidays PRIMARY KEY (CalendarDay);
 
 ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (CalendarDay) REFERENCES dbo.WD_Workdays (CalendarDay);
+
 
 \endcode
 
@@ -5216,7 +5186,7 @@ ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with monthes for human resources
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -5227,7 +5197,7 @@ ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denotation for a record in this domain with months, used in the programm to indentify this month, as selection in comboboxes and such
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -5238,7 +5208,7 @@ ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique abbreviation of a month in the domain, used in overviews and reports
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Quarter
     <td valign = "top"><a href ="#datatyp_unsigned">unsigned</a>
     <td valign = "top">INT
@@ -5249,7 +5219,7 @@ ALTER TABLE dbo.WD_Holidays ADD CONSTRAINT refWD_Holidays_Workdays FOREIGN KEY (
     <td valign = "top"> &nbsp;
     <td valign = "top">uQuarter
     <td valign = "top">unsigned int</td></tr>
-<tr><td colspan="11" valign = "top">unsigned value with the number auf the quarter, values in 1 - 4
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5277,7 +5247,6 @@ CREATE TABLE dbo.WD_Months (
    Quarter      INT NOT NULL CHECK (Quarter >= 0 AND Quarter BETWEEN 1 AND 4)
    );
 
-
 GO
 CREATE FUNCTION [dbo].[GetQuarterOfMonth](@id AS INTEGER) RETURNS VARCHAR(10)
 BEGIN
@@ -5289,11 +5258,10 @@ BEGIN
 END
 GO
 
+ALTER TABLE dbo.WD_Months ADD CONSTRAINT pkWD_Months PRIMARY KEY (ID);
 
-ALTER TABLE dbo.WD_Months ADD CONSTRAINT pk_WD_Months PRIMARY KEY (ID);
-
-ALTER TABLE dbo.WD_Months ADD CONSTRAINT uk_WD_Months_Denotation UNIQUE (Denotation);
-ALTER TABLE dbo.WD_Months ADD CONSTRAINT uk_WD_Months_Abbreviation UNIQUE (Abbreviation);
+ALTER TABLE dbo.WD_Months ADD CONSTRAINT ukWD_Months_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.WD_Months ADD CONSTRAINT ukWD_Months_Abbreviation UNIQUE (Abbreviation);
 
 
 \endcode
@@ -5314,6 +5282,7 @@ INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     (10, 'Oktober', 'Okt', 4), 
     (11, 'November', 'Nov', 4), 
     (12, 'Dezember', 'Dez', 4);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -5347,7 +5316,7 @@ INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">attribute as foreign key from an attribute ID of a employee entity to who as idle this time
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">StartAt
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -5358,7 +5327,7 @@ INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">daStartAt
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">date when the non working time starts as foreign key from the wokdays table
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">ClosingAt
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -5369,7 +5338,7 @@ INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">daClosingAt
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">date when the non working time finishing. Value must exists in workdays, but isn't in the key. May be open
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Reason
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5380,7 +5349,7 @@ INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">iReason
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">reason of non working time, there exist a table, but values are interpreted through the applications
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Notes
     <td valign = "top"><a href ="#datatyp_text">text</a>
     <td valign = "top">VARCHAR(MAX)
@@ -5391,7 +5360,7 @@ INSERT INTO WD_Months (ID, Denotation, Abbreviation, Quarter) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">strNotes
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">free notices to the non-working time
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5432,16 +5401,13 @@ CREATE TABLE dbo.WD_NonWorking (
    Notes     VARCHAR(MAX)
    );
 
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT pkWD_NonWorking PRIMARY KEY (ID, StartAt);
 
-
-
-ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT pk_WD_NonWorking PRIMARY KEY (ID, StartAt);
-
-
-ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployeeID);
+ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployID);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Start FOREIGN KEY (StartAt) REFERENCES dbo.WD_Workdays (CalendarDay);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Workday_Finishing FOREIGN KEY (ClosingAt) REFERENCES dbo.WD_Workdays (CalendarDay);
 ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (Reason) REFERENCES dbo.ReasonNonWorking (ID);
+
 
 \endcode
 
@@ -5472,11 +5438,11 @@ ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (R
     <td valign = "top">
     <td valign = "top">true
     <td valign = "top">true
-    <td valign = "top">    <td valign = "top"> &nbsp;
+    <td valign = "top">BETWEEN 0 AND 6    <td valign = "top"> &nbsp;
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">unique identification number for a record in this domain with weekdays for human resources
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Denotation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -5487,7 +5453,7 @@ ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (R
     <td valign = "top"> &nbsp;
     <td valign = "top">strDenotation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique denation for this weekday 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Abbreviation
     <td valign = "top"><a href ="#datatyp_varchar">varchar</a>
     <td valign = "top">VARCHAR
@@ -5498,7 +5464,7 @@ ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (R
     <td valign = "top"> &nbsp;
     <td valign = "top">strAbbreviation
     <td valign = "top">std::string</td></tr>
-<tr><td colspan="11" valign = "top">unique abbreviation for this weekday 
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Workday
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -5509,7 +5475,7 @@ ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (R
     <td valign = "top"> &nbsp;
     <td valign = "top">boWorkday
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value to control the work time, true if this weekday usual a workday
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5531,12 +5497,11 @@ ALTER TABLE dbo.WD_NonWorking ADD CONSTRAINT refNonWorking2Reason FOREIGN KEY (R
 \code{.sql}
 -- statement to create the table dbo.WD_Weekdays
 CREATE TABLE dbo.WD_Weekdays (
-   ID           INT NOT NULL,
+   ID           INT NOT NULL CHECK (ID BETWEEN 0 AND 6),
    Denotation   VARCHAR(20) NOT NULL,
    Abbreviation VARCHAR(5) NOT NULL,
    Workday      TINYINT NOT NULL CHECK (Workday IN (0, 1))
    );
-
 
 GO
 CREATE FUNCTION [dbo].[GetIsWorkday](@id AS INTEGER) RETURNS SMALLINT
@@ -5549,11 +5514,10 @@ BEGIN
 END
 GO
 
+ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT pkWD_Weekdays PRIMARY KEY (ID);
 
-ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT pk_WD_Weekdays PRIMARY KEY (ID);
-
-ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT uk_WD_Weekdays_Denotation UNIQUE (Denotation);
-ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT uk_WD_Weekdays_Abbreviation UNIQUE (Abbreviation);
+ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT ukWD_Weekdays_Denotation UNIQUE (Denotation);
+ALTER TABLE dbo.WD_Weekdays ADD CONSTRAINT ukWD_Weekdays_Abbreviation UNIQUE (Abbreviation);
 
 
 \endcode
@@ -5569,6 +5533,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     (4, 'Freitag', 'Fr', 1), 
     (5, 'Sonnabend', 'Sa', 0), 
     (6, 'Sonntag', 'So', 0);
+
 
 \endcode
 <hr><a href = "#top_of_mainpage">top of the page</a>
@@ -5602,7 +5567,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">daCalendarDay
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">calendar day. is used as a key in all day-dependent time accounting tables. it is the basis for the calculated fields that are provided also
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarWeekday
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5613,7 +5578,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">iCalendarWeekday
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">day in the calendar week (values between 0 .. 6). The field referencing to the table with weekdays to get rules. set as a data element to avoid calculations, possible server settings and deviations from various standards
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarWeek
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5624,7 +5589,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top"> &nbsp;
     <td valign = "top">iCalendarWeek
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">calendar week. set as a data element to avoid calculations, possible server settings and deviations from various standards
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarYear
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5635,7 +5600,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top">YEAR(CalendarDay)
     <td valign = "top">iCalendarYear
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">calculated field for the year of the calendar day
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarMonth
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5646,7 +5611,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top">MONTH(CalendarDay)
     <td valign = "top">iCalendarMonth
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">calculated field for the year of the calendar day, persistent for the relationship to the table WD_Months
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarDayInWeek
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5657,7 +5622,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top">DAY(CalendarDay)
     <td valign = "top">iCalendarDayInWeek
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">calculated field for the year of the calendar day
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarDayInYear
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5668,7 +5633,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top">DATEPART(DAYOFYEAR, CalendarDay)
     <td valign = "top">iCalendarDayInYear
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">calculated field for the year of the calendar day
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">CalendarQuarter
     <td valign = "top"><a href ="#datatyp_integer">integer</a>
     <td valign = "top">INT
@@ -5679,7 +5644,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top">[dbo].[GetQuarterOfMonth](MONTH(CalendarDay))
     <td valign = "top">iCalendarQuarter
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">calculated field, use relationship to WD_Months and the function GetQuarterOfMonth to get the quarter
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Workday
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -5690,7 +5655,7 @@ INSERT INTO WD_Weekdays (ID, Denotation, Abbreviation, Workday) VALUES
     <td valign = "top">IIF(dbo.GetIsWorkday(CalendarWeekday) = 1 AND dbo.GetIsHoliday(CalendarDay) = 0, 1, 0)
     <td valign = "top">boWorkday
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean value which determin the day as work day, using functions of WD_Weekdays and WD_Holidays
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5751,20 +5716,18 @@ CREATE TABLE dbo.WD_Workdays (
 ALTER TABLE dbo.WD_Workdays ADD CalendarQuarter AS [dbo].[GetQuarterOfMonth](MONTH(CalendarDay));
 ALTER TABLE dbo.WD_Workdays ADD Workday AS IIF(dbo.GetIsWorkday(CalendarWeekday) = 1 AND dbo.GetIsHoliday(CalendarDay) = 0, 1, 0);
 
-
-
-ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT pk_WD_Workdays PRIMARY KEY (CalendarDay);
-
+ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT pkWD_Workdays PRIMARY KEY (CalendarDay);
 
 ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2WeekDay FOREIGN KEY (CalendarWeekday) REFERENCES dbo.WD_Weekdays (ID);
 ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (CalendarMonth) REFERENCES dbo.WD_Months (ID);
+
 
 \endcode
 
 <hr><a href = "#top_of_mainpage">top of the page</a>
 <hr>
 \subsection datamodel_table_WorkingTime WorkingTime
-\details <b>entity with the working times for an employee, as a composition for these.</b>
+\details <b>entity set with working hours performed and booked by employees</b>
 \details the system class which represent this table in source is \ref myHR::TWorkingTime.
 \details This class uses the ID of the employee as a foreign key in the database and extends it by the time at which a work segment begins.
 \details In the second phase of the project, this class / table is to be extended so that relationships can be established with projects / project parts and so that the working time can be related to project activities.
@@ -5794,7 +5757,7 @@ ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (Cal
     <td valign = "top"> &nbsp;
     <td valign = "top">iID
     <td valign = "top">int</td></tr>
-<tr><td colspan="11" valign = "top">attribute as foreign key from an attribute ID of a employee entity to who as worked these time
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">StartingTime
     <td valign = "top"><a href ="#datatyp_datetime">datetime</a>
     <td valign = "top">DATE
@@ -5805,7 +5768,7 @@ ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (Cal
     <td valign = "top"> &nbsp;
     <td valign = "top">dtStartingTime
     <td valign = "top">std::chrono::system_clock::time_point</td></tr>
-<tr><td colspan="11" valign = "top">date and time at which this work block started as timestamp
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">ClosingTime
     <td valign = "top"><a href ="#datatyp_datetime">datetime</a>
     <td valign = "top">DATE
@@ -5816,7 +5779,7 @@ ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (Cal
     <td valign = "top"> &nbsp;
     <td valign = "top">dtClosingTime
     <td valign = "top">std::chrono::system_clock::time_point</td></tr>
-<tr><td colspan="11" valign = "top">date and time at which this block of work finished as timestamp
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">Processed
     <td valign = "top"><a href ="#datatyp_bool">bool</a>
     <td valign = "top">TINYINT
@@ -5827,7 +5790,7 @@ ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (Cal
     <td valign = "top"> &nbsp;
     <td valign = "top">boProcessed
     <td valign = "top">bool</td></tr>
-<tr><td colspan="11" valign = "top">boolean indicator that specifies whether this time booking has already been charged
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">ProcessedAt
     <td valign = "top"><a href ="#datatyp_datetime">datetime</a>
     <td valign = "top">DATE
@@ -5838,7 +5801,7 @@ ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (Cal
     <td valign = "top"> &nbsp;
     <td valign = "top">dtProcessedAt
     <td valign = "top">std::chrono::system_clock::time_point</td></tr>
-<tr><td colspan="11" valign = "top">time at which this data record was settled and posted
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr><tr><td rowspan="2" valign ="top">DayOfWork
     <td valign = "top"><a href ="#datatyp_date">date</a>
     <td valign = "top">DATE
@@ -5849,7 +5812,7 @@ ALTER TABLE dbo.WD_Workdays ADD CONSTRAINT refWD_Workdays2Month FOREIGN KEY (Cal
     <td valign = "top">convert(date, StartingTime)
     <td valign = "top">daDayOfWork
     <td valign = "top">std::chrono::year_month_day</td></tr>
-<tr><td colspan="11" valign = "top">calculated day to the timepoint where work started
+<tr><td colspan="11" valign = "top"> &nbsp;
 </tr></table>
 
 
@@ -5879,15 +5842,14 @@ CREATE TABLE dbo.WorkingTime (
 
    );
 
-ALTER TABLE dbo.WorkingTime ADD DayOfWork AS convert(date, StartingTime) PERSISTED;
-
+ALTER TABLE dbo.WorkingTime ADD DayOfWork AS convert(date, StartingTime);
 
 ALTER TABLE dbo.WorkingTime ADD CONSTRAINT ck_WorkingTime_ClosingTime CHECK (convert(date, ClosingTime) = DayOfWork and ClosingTime > StartingTime);
 
-ALTER TABLE dbo.WorkingTime ADD CONSTRAINT pk_WorkingTime PRIMARY KEY (ID, StartingTime);
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT pkWorkingTime PRIMARY KEY (ID, StartingTime);
 
+ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployID);
 
-ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID) REFERENCES dbo.Employees (EmployeeID);
 
 \endcode
 
@@ -5901,5 +5863,5 @@ ALTER TABLE dbo.WorkingTime ADD CONSTRAINT refWorkTime2Employee FOREIGN KEY (ID)
 This project is released under the MIT License.
 \author Volker Hillmann (adecc Scholar)
 \version 1.0
-\date 25.03.2024
+\date 22.04.2025
 \copyright adecc Systemhaus GmbH 2024, All rights reserved.

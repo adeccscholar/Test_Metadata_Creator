@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TWD_Holidays
 * Content: entities with public holidays, in relation to working days table to determine non working days
-* Date: 25.03.2024 19:08:41,054  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:56,675  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -13,7 +13,7 @@
 
 
 // includes for common  virtual base class
-#include "System\Corporate\base.h"
+#include "Base\BaseClass.h"
 
 // necessary additional headers for used datatypes
 #include <chrono>
@@ -23,12 +23,14 @@
 #include <iomanip>
 #include <optional>
 #include <stdexcept>
+#include <functional>
 #include <map>
 #include <vector>
 #include <tuple>
 #include <memory>
 
 namespace reader {
+   class DataAccess; // helper class, later changing
    class TPersonReader;
    }
 
@@ -39,7 +41,7 @@ namespace myHR {
 // - entities with public holidays, in relation to working days table to determine non working days
 // -------------------------------------------------------------------------------------------------
 class TWD_Holidays : virtual public myCorporate::TSimplePersonBase {
-   friend class reader::TPersonReader;
+   friend class reader::DataAccess;   friend class reader::TPersonReader;
    public:
       // ----------------------------------------------------------------------------------------------
       // public datatypes for this table
@@ -52,7 +54,7 @@ class TWD_Holidays : virtual public myCorporate::TSimplePersonBase {
 
             primary_key();
          public:
-            explicit primary_key(std::chrono::year_month_day pCalendarDay);
+            /* explicit */primary_key(std::chrono::year_month_day pCalendarDay);
             explicit primary_key(TWD_Holidays const& other);
             primary_key(primary_key const& other);
             primary_key(primary_key&& other) noexcept;
@@ -82,6 +84,7 @@ class TWD_Holidays : virtual public myCorporate::TSimplePersonBase {
             int _compare(primary_key const& other) const;
          };
 
+      using func_ty = std::function<bool(TWD_Holidays&&)>;
       using container_ty = std::map<primary_key, TWD_Holidays>;
       using vector_ty    = std::vector<TWD_Holidays>;
 

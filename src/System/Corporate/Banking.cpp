@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TBanking
 * Content: informations about the account details provided by a person and used in a specific context
-* Date: 25.03.2024 19:08:39,748  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,326  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */

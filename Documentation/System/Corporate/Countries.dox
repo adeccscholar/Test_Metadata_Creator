@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Countries
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Countries
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TCountries
 \brief table with the countries and additional values for the countries. Used by others for assoziation.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_Countries
 
 \class myCorporate::TCountries::primary_key
@@ -51,11 +51,10 @@
 
 \fn myCorporate::TCountries::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in the table Countries
+\param [in] pID int  with 
 
 \var myCorporate::TCountries::primary_key::iID
-\brief unique identification number for a record in the table Countries
-\details Source: key member myCorporate::TCountries::primary_key::iID in class myCorporate::TCountries::primary_key with the type int
+\brief Source: key member myCorporate::TCountries::primary_key::iID in class myCorporate::TCountries::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_Countries with database type INT
 \fn myCorporate::TCountries::primary_key::ID() const
 \brief selector for the data element myCorporate::TCountries::primary_key::iID
@@ -167,59 +166,59 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TCountries::iID
-\brief unique identification number for a record in the table Countries
-\details Source: member myCorporate::TCountries::iID in class myCorporate::TCountries with the type std::optional<int>
+\brief Source: member myCorporate::TCountries::iID in class myCorporate::TCountries with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_Countries with database type INT
+\details unique identification number for a record in the table Countries
 
 \var myCorporate::TCountries::strDenotation
-\brief unique, official designation of the country, key candidate
-\details Source: member myCorporate::TCountries::strDenotation in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strDenotation in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_Countries with database type VARCHAR
+\details unique, official designation of the country, key candidate
 
 \var myCorporate::TCountries::strAbbreviation
-\brief abbreviation of the country for the program (iso code 3166 - alpha 3)
-\details Source: member myCorporate::TCountries::strAbbreviation in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strAbbreviation in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_Countries with database type VARCHAR
+\details abbreviation of the country for the program (iso code 3166 - alpha 3)
 
 \var myCorporate::TCountries::strDescription
-\brief text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint
-\details Source: member myCorporate::TCountries::strDescription in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strDescription in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_Countries with database type VARCHAR(MAX)
+\details text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint
 
 \var myCorporate::TCountries::strCountryDialing
-\brief international country code for telephone for this country (not unique)
-\details Source: member myCorporate::TCountries::strCountryDialing in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strCountryDialing in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "CountryDialing" in entity \ref datamodel_table_Countries with database type VARCHAR
+\details international country code for telephone for this country (not unique)
 
 \var myCorporate::TCountries::strISO_Code
-\brief unique, official international code (ISO code 3166 - alpha 2) for the country in the communication
-\details Source: member myCorporate::TCountries::strISO_Code in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strISO_Code in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "ISO_Code" in entity \ref datamodel_table_Countries with database type VARCHAR
+\details unique, official international code (ISO code 3166 - alpha 2) for the country in the communication
 
 \var myCorporate::TCountries::boIsEU
-\brief boolean value which is true when the country part of the european union
-\details Source: member myCorporate::TCountries::boIsEU in class myCorporate::TCountries with the type std::optional<bool>
+\brief Source: member myCorporate::TCountries::boIsEU in class myCorporate::TCountries with the type std::optional<bool>
 \details Database: attribute "IsEU" in entity \ref datamodel_table_Countries with database type TINYINT
+\details boolean value which is true when the country part of the european union
 
 \var myCorporate::TCountries::strCapital
-\brief name of the capital of this country 
-\details Source: member myCorporate::TCountries::strCapital in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strCapital in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "Capital" in entity \ref datamodel_table_Countries with database type VARCHAR
+\details name of the capital of this country 
 
 \var myCorporate::TCountries::strCurrency
-\brief currency in this country
-\details Source: member myCorporate::TCountries::strCurrency in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strCurrency in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "Currency" in entity \ref datamodel_table_Countries with database type VARCHAR
+\details currency in this country
 
 \var myCorporate::TCountries::strNotes
-\brief notes, with additional / free information for this country, not used in application
-\details Source: member myCorporate::TCountries::strNotes in class myCorporate::TCountries with the type std::optional<std::string>
+\brief Source: member myCorporate::TCountries::strNotes in class myCorporate::TCountries with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_Countries with database type VARCHAR(MAX)
+\details notes, with additional / free information for this country, not used in application
 
 \var myCorporate::TCountries::boUrgentValue
-\brief boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)
-\details Source: member myCorporate::TCountries::boUrgentValue in class myCorporate::TCountries with the type std::optional<bool>
+\brief Source: member myCorporate::TCountries::boUrgentValue in class myCorporate::TCountries with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_Countries with database type TINYINT
+\details boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -229,47 +228,36 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TCountries::ID() const
 \brief selector for the data element myCorporate::TCountries::iID
-\details <b>unique identification number for a record in the table Countries</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TCountries::iID
 \fn std::optional<std::string> const& myCorporate::TCountries::Denotation() const
 \brief selector for the data element myCorporate::TCountries::strDenotation
-\details <b>unique, official designation of the country, key candidate</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strDenotation
 \fn std::optional<std::string> const& myCorporate::TCountries::Abbreviation() const
 \brief selector for the data element myCorporate::TCountries::strAbbreviation
-\details <b>abbreviation of the country for the program (iso code 3166 - alpha 3)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strAbbreviation
 \fn std::optional<std::string> const& myCorporate::TCountries::Description() const
 \brief selector for the data element myCorporate::TCountries::strDescription
-\details <b>text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strDescription
 \fn std::optional<std::string> const& myCorporate::TCountries::CountryDialing() const
 \brief selector for the data element myCorporate::TCountries::strCountryDialing
-\details <b>international country code for telephone for this country (not unique)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strCountryDialing
 \fn std::optional<std::string> const& myCorporate::TCountries::ISO_Code() const
 \brief selector for the data element myCorporate::TCountries::strISO_Code
-\details <b>unique, official international code (ISO code 3166 - alpha 2) for the country in the communication</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strISO_Code
 \fn std::optional<bool> const& myCorporate::TCountries::IsEU() const
 \brief selector for the data element myCorporate::TCountries::boIsEU
-\details <b>boolean value which is true when the country part of the european union</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TCountries::boIsEU
 \fn std::optional<std::string> const& myCorporate::TCountries::Capital() const
 \brief selector for the data element myCorporate::TCountries::strCapital
-\details <b>name of the capital of this country </b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strCapital
 \fn std::optional<std::string> const& myCorporate::TCountries::Currency() const
 \brief selector for the data element myCorporate::TCountries::strCurrency
-\details <b>currency in this country</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strCurrency
 \fn std::optional<std::string> const& myCorporate::TCountries::Notes() const
 \brief selector for the data element myCorporate::TCountries::strNotes
-\details <b>notes, with additional / free information for this country, not used in application</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strNotes
 \fn std::optional<bool> const& myCorporate::TCountries::UrgentValue() const
 \brief selector for the data element myCorporate::TCountries::boUrgentValue
-\details <b>boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TCountries::boUrgentValue
 
 \}
@@ -279,68 +267,57 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TCountries::_ID() const
 \brief special selector for data element myCorporate::TCountries::iID
-\details unique identification number for a record in the table Countries
-\details <b>unique identification number for a record in the table Countries</b>
+\details attribute "ID" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::iID is empty
 \returns int const&: Reference to the data element myCorporate::TCountries::iID
 \fn std::string const& myCorporate::TCountries::_Denotation() const
 \brief special selector for data element myCorporate::TCountries::strDenotation
-\details unique, official designation of the country, key candidate
-\details <b>unique, official designation of the country, key candidate</b>
+\details attribute "Denotation" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strDenotation
 \fn std::string const& myCorporate::TCountries::_Abbreviation() const
 \brief special selector for data element myCorporate::TCountries::strAbbreviation
-\details abbreviation of the country for the program (iso code 3166 - alpha 3)
-\details <b>abbreviation of the country for the program (iso code 3166 - alpha 3)</b>
+\details attribute "Abbreviation" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strAbbreviation
 \fn std::string const& myCorporate::TCountries::_Description() const
 \brief special selector for data element myCorporate::TCountries::strDescription
-\details text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint
-\details <b>text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint</b>
+\details attribute "Description" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strDescription
 \fn std::string const& myCorporate::TCountries::_CountryDialing() const
 \brief special selector for data element myCorporate::TCountries::strCountryDialing
-\details international country code for telephone for this country (not unique)
-\details <b>international country code for telephone for this country (not unique)</b>
+\details attribute "CountryDialing" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strCountryDialing is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strCountryDialing
 \fn std::string const& myCorporate::TCountries::_ISO_Code() const
 \brief special selector for data element myCorporate::TCountries::strISO_Code
-\details unique, official international code (ISO code 3166 - alpha 2) for the country in the communication
-\details <b>unique, official international code (ISO code 3166 - alpha 2) for the country in the communication</b>
+\details attribute "ISO_Code" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strISO_Code is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strISO_Code
 \fn bool myCorporate::TCountries::_IsEU() const
 \brief special selector for data element myCorporate::TCountries::boIsEU
-\details boolean value which is true when the country part of the european union
-\details <b>boolean value which is true when the country part of the european union</b>
+\details attribute "IsEU" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::boIsEU is empty
 \returns bool const&: Reference to the data element myCorporate::TCountries::boIsEU
 \fn std::string const& myCorporate::TCountries::_Capital() const
 \brief special selector for data element myCorporate::TCountries::strCapital
-\details name of the capital of this country 
-\details <b>name of the capital of this country </b>
+\details attribute "Capital" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strCapital is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strCapital
 \fn std::string const& myCorporate::TCountries::_Currency() const
 \brief special selector for data element myCorporate::TCountries::strCurrency
-\details currency in this country
-\details <b>currency in this country</b>
+\details attribute "Currency" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strCurrency is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strCurrency
 \fn std::string const& myCorporate::TCountries::_Notes() const
 \brief special selector for data element myCorporate::TCountries::strNotes
-\details notes, with additional / free information for this country, not used in application
-\details <b>notes, with additional / free information for this country, not used in application</b>
+\details attribute "Notes" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TCountries::strNotes
 \fn bool myCorporate::TCountries::_UrgentValue() const
 \brief special selector for data element myCorporate::TCountries::boUrgentValue
-\details boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "Countries"
 \throws std::runtime::error if the attribute myCorporate::TCountries::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TCountries::boUrgentValue
 
@@ -351,67 +328,56 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TCountries::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::iID
-\details <b>unique identification number for a record in the table Countries</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TCountries::iID
 
 \fn std::optional<std::string> const& myCorporate::TCountries::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strDenotation
-\details <b>unique, official designation of the country, key candidate</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strDenotation
 
 \fn std::optional<std::string> const& myCorporate::TCountries::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strAbbreviation
-\details <b>abbreviation of the country for the program (iso code 3166 - alpha 3)</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strAbbreviation
 
 \fn std::optional<std::string> const& myCorporate::TCountries::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strDescription
-\details <b>text field for the description of the country. can be used by the program to provide additional information, for example in the status bar or a hint</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strDescription
 
 \fn std::optional<std::string> const& myCorporate::TCountries::CountryDialing(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strCountryDialing
-\details <b>international country code for telephone for this country (not unique)</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strCountryDialing
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strCountryDialing
 
 \fn std::optional<std::string> const& myCorporate::TCountries::ISO_Code(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strISO_Code
-\details <b>unique, official international code (ISO code 3166 - alpha 2) for the country in the communication</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strISO_Code
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strISO_Code
 
 \fn std::optional<bool> const& myCorporate::TCountries::IsEU(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::boIsEU
-\details <b>boolean value which is true when the country part of the european union</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::boIsEU
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TCountries::boIsEU
 
 \fn std::optional<std::string> const& myCorporate::TCountries::Capital(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strCapital
-\details <b>name of the capital of this country </b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strCapital
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strCapital
 
 \fn std::optional<std::string> const& myCorporate::TCountries::Currency(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strCurrency
-\details <b>currency in this country</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strCurrency
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strCurrency
 
 \fn std::optional<std::string> const& myCorporate::TCountries::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::strNotes
-\details <b>notes, with additional / free information for this country, not used in application</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TCountries::strNotes
 
 \fn std::optional<bool> const& myCorporate::TCountries::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TCountries::boUrgentValue
-\details <b>boolean value that makes this entity of country to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member myCorporate::TCountries::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TCountries::boUrgentValue
 

@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Internet
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Internet
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TInternet
 \brief connections for different kinds of communications about the internet as part of persons (part of relationship)
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_Internet
 
 \class myCorporate::TInternet::primary_key
@@ -51,12 +51,11 @@
 
 \fn myCorporate::TInternet::primary_key::primary_key(int pID, int pInternetType)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number of the person to whom the internet connection data belongs (foreign key from person)
-\param [in] pInternetType int  with type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
+\param [in] pID int  with 
+\param [in] pInternetType int  with 
 
 \var myCorporate::TInternet::primary_key::iID
-\brief unique identification number of the person to whom the internet connection data belongs (foreign key from person)
-\details Source: key member myCorporate::TInternet::primary_key::iID in class myCorporate::TInternet::primary_key with the type int
+\brief Source: key member myCorporate::TInternet::primary_key::iID in class myCorporate::TInternet::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_Internet with database type INT
 \fn myCorporate::TInternet::primary_key::ID() const
 \brief selector for the data element myCorporate::TInternet::primary_key::iID
@@ -66,8 +65,7 @@
 \param[in] newVal int with the value of the member.
 \returns int with the new value for this member.
 \var myCorporate::TInternet::primary_key::iInternetType
-\brief type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
-\details Source: key member myCorporate::TInternet::primary_key::iInternetType in class myCorporate::TInternet::primary_key with the type int
+\brief Source: key member myCorporate::TInternet::primary_key::iInternetType in class myCorporate::TInternet::primary_key with the type int
 \details Database: primary key attribute "InternetType" in entity \ref datamodel_table_Internet with database type INT
 \fn myCorporate::TInternet::primary_key::InternetType() const
 \brief selector for the data element myCorporate::TInternet::primary_key::iInternetType
@@ -179,19 +177,19 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TInternet::iID
-\brief unique identification number of the person to whom the internet connection data belongs (foreign key from person)
-\details Source: member myCorporate::TInternet::iID in class myCorporate::TInternet with the type std::optional<int>
+\brief Source: member myCorporate::TInternet::iID in class myCorporate::TInternet with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_Internet with database type INT
+\details unique identification number of the person to whom the internet connection data belongs (foreign key from person)
 
 \var myCorporate::TInternet::iInternetType
-\brief type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
-\details Source: member myCorporate::TInternet::iInternetType in class myCorporate::TInternet with the type std::optional<int>
+\brief Source: member myCorporate::TInternet::iInternetType in class myCorporate::TInternet with the type std::optional<int>
 \details Database: attribute "InternetType" in entity \ref datamodel_table_Internet with database type INT
+\details type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
 
 \var myCorporate::TInternet::strAdresse
-\brief internet address for this connection, possible to split the protocol to the value table InternetTypes
-\details Source: member myCorporate::TInternet::strAdresse in class myCorporate::TInternet with the type std::optional<std::string>
+\brief Source: member myCorporate::TInternet::strAdresse in class myCorporate::TInternet with the type std::optional<std::string>
 \details Database: attribute "Adresse" in entity \ref datamodel_table_Internet with database type VARCHAR
+\details internet address for this connection, possible to split the protocol to the value table InternetTypes
 
 
 \}
@@ -201,15 +199,12 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TInternet::ID() const
 \brief selector for the data element myCorporate::TInternet::iID
-\details <b>unique identification number of the person to whom the internet connection data belongs (foreign key from person)</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TInternet::iID
 \fn std::optional<int> const& myCorporate::TInternet::InternetType() const
 \brief selector for the data element myCorporate::TInternet::iInternetType
-\details <b>type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TInternet::iInternetType
 \fn std::optional<std::string> const& myCorporate::TInternet::Adresse() const
 \brief selector for the data element myCorporate::TInternet::strAdresse
-\details <b>internet address for this connection, possible to split the protocol to the value table InternetTypes</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternet::strAdresse
 
 \}
@@ -219,20 +214,17 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TInternet::_ID() const
 \brief special selector for data element myCorporate::TInternet::iID
-\details unique identification number of the person to whom the internet connection data belongs (foreign key from person)
-\details <b>unique identification number of the person to whom the internet connection data belongs (foreign key from person)</b>
+\details attribute "ID" in entity "Internet"
 \throws std::runtime::error if the attribute myCorporate::TInternet::iID is empty
 \returns int const&: Reference to the data element myCorporate::TInternet::iID
 \fn int myCorporate::TInternet::_InternetType() const
 \brief special selector for data element myCorporate::TInternet::iInternetType
-\details type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))
-\details <b>type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))</b>
+\details attribute "InternetType" in entity "Internet"
 \throws std::runtime::error if the attribute myCorporate::TInternet::iInternetType is empty
 \returns int const&: Reference to the data element myCorporate::TInternet::iInternetType
 \fn std::string const& myCorporate::TInternet::_Adresse() const
 \brief special selector for data element myCorporate::TInternet::strAdresse
-\details internet address for this connection, possible to split the protocol to the value table InternetTypes
-\details <b>internet address for this connection, possible to split the protocol to the value table InternetTypes</b>
+\details attribute "Adresse" in entity "Internet"
 \throws std::runtime::error if the attribute myCorporate::TInternet::strAdresse is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternet::strAdresse
 
@@ -243,19 +235,16 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TInternet::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TInternet::iID
-\details <b>unique identification number of the person to whom the internet connection data belongs (foreign key from person)</b>
 \param[in] newVal the new Value for the member myCorporate::TInternet::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TInternet::iID
 
 \fn std::optional<int> const& myCorporate::TInternet::InternetType(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TInternet::iInternetType
-\details <b>type of internet connection data (value range from InternetType as foreign key, extension to 1:n relationship))</b>
 \param[in] newVal the new Value for the member myCorporate::TInternet::iInternetType
 \returns std::optional<int> const&: Reference to the data element myCorporate::TInternet::iInternetType
 
 \fn std::optional<std::string> const& myCorporate::TInternet::Adresse(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternet::strAdresse
-\details <b>internet address for this connection, possible to split the protocol to the value table InternetTypes</b>
 \param[in] newVal the new Value for the member myCorporate::TInternet::strAdresse
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternet::strAdresse
 

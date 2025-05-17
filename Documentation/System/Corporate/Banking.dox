@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Banking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Banking
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TBanking
 \brief informations about the account details provided by a person and used in a specific context
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_Banking
 
 \class myCorporate::TBanking::primary_key
@@ -51,12 +51,11 @@
 
 \fn myCorporate::TBanking::primary_key::primary_key(int pID, int pBankingType)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\param [in] pBankingType int  with extension of the account details key in order to be able to save several / different bank details in a standardized way
+\param [in] pID int  with 
+\param [in] pBankingType int  with 
 
 \var myCorporate::TBanking::primary_key::iID
-\brief attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\details Source: key member myCorporate::TBanking::primary_key::iID in class myCorporate::TBanking::primary_key with the type int
+\brief Source: key member myCorporate::TBanking::primary_key::iID in class myCorporate::TBanking::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_Banking with database type INT
 \fn myCorporate::TBanking::primary_key::ID() const
 \brief selector for the data element myCorporate::TBanking::primary_key::iID
@@ -66,8 +65,7 @@
 \param[in] newVal int with the value of the member.
 \returns int with the new value for this member.
 \var myCorporate::TBanking::primary_key::iBankingType
-\brief extension of the account details key in order to be able to save several / different bank details in a standardized way
-\details Source: key member myCorporate::TBanking::primary_key::iBankingType in class myCorporate::TBanking::primary_key with the type int
+\brief Source: key member myCorporate::TBanking::primary_key::iBankingType in class myCorporate::TBanking::primary_key with the type int
 \details Database: primary key attribute "BankingType" in entity \ref datamodel_table_Banking with database type INT
 \fn myCorporate::TBanking::primary_key::BankingType() const
 \brief selector for the data element myCorporate::TBanking::primary_key::iBankingType
@@ -179,39 +177,39 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TBanking::iID
-\brief attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\details Source: member myCorporate::TBanking::iID in class myCorporate::TBanking with the type std::optional<int>
+\brief Source: member myCorporate::TBanking::iID in class myCorporate::TBanking with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_Banking with database type INT
+\details attribute as foreign key from an attribute ID of a person entity to which these account details belong
 
 \var myCorporate::TBanking::iBankingType
-\brief extension of the account details key in order to be able to save several / different bank details in a standardized way
-\details Source: member myCorporate::TBanking::iBankingType in class myCorporate::TBanking with the type std::optional<int>
+\brief Source: member myCorporate::TBanking::iBankingType in class myCorporate::TBanking with the type std::optional<int>
 \details Database: attribute "BankingType" in entity \ref datamodel_table_Banking with database type INT
+\details extension of the account details key in order to be able to save several / different bank details in a standardized way
 
 \var myCorporate::TBanking::strBankName
-\brief name of the bank that manages this account (not necessarily required)
-\details Source: member myCorporate::TBanking::strBankName in class myCorporate::TBanking with the type std::optional<std::string>
+\brief Source: member myCorporate::TBanking::strBankName in class myCorporate::TBanking with the type std::optional<std::string>
 \details Database: attribute "BankName" in entity \ref datamodel_table_Banking with database type VARCHAR
+\details name of the bank that manages this account (not necessarily required)
 
 \var myCorporate::TBanking::strIBAN
-\brief IBAN number (account identification) for this bank account (required)
-\details Source: member myCorporate::TBanking::strIBAN in class myCorporate::TBanking with the type std::optional<std::string>
+\brief Source: member myCorporate::TBanking::strIBAN in class myCorporate::TBanking with the type std::optional<std::string>
 \details Database: attribute "IBAN" in entity \ref datamodel_table_Banking with database type VARCHAR
+\details IBAN number (account identification) for this bank account (required)
 
 \var myCorporate::TBanking::strBIC
-\brief BIC number of the bank that manages this account (not necessarily required for transactions inside europe)
-\details Source: member myCorporate::TBanking::strBIC in class myCorporate::TBanking with the type std::optional<std::string>
+\brief Source: member myCorporate::TBanking::strBIC in class myCorporate::TBanking with the type std::optional<std::string>
 \details Database: attribute "BIC" in entity \ref datamodel_table_Banking with database type VARCHAR
+\details BIC number of the bank that manages this account (not necessarily required for transactions inside europe)
 
 \var myCorporate::TBanking::strBankOwner
-\brief optionally the name of the owner of the bank details, if this differs from the assigned person
-\details Source: member myCorporate::TBanking::strBankOwner in class myCorporate::TBanking with the type std::optional<std::string>
+\brief Source: member myCorporate::TBanking::strBankOwner in class myCorporate::TBanking with the type std::optional<std::string>
 \details Database: attribute "BankOwner" in entity \ref datamodel_table_Banking with database type VARCHAR
+\details optionally the name of the owner of the bank details, if this differs from the assigned person
 
 \var myCorporate::TBanking::iCountry
-\brief ID of the country for the banking entity, key attribute from the Countries entity
-\details Source: member myCorporate::TBanking::iCountry in class myCorporate::TBanking with the type std::optional<int>
+\brief Source: member myCorporate::TBanking::iCountry in class myCorporate::TBanking with the type std::optional<int>
 \details Database: attribute "Country" in entity \ref datamodel_table_Banking with database type INT
+\details ID of the country for the banking entity, key attribute from the Countries entity
 
 
 \}
@@ -221,31 +219,24 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TBanking::ID() const
 \brief selector for the data element myCorporate::TBanking::iID
-\details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBanking::iID
 \fn std::optional<int> const& myCorporate::TBanking::BankingType() const
 \brief selector for the data element myCorporate::TBanking::iBankingType
-\details <b>extension of the account details key in order to be able to save several / different bank details in a standardized way</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBanking::iBankingType
 \fn std::optional<std::string> const& myCorporate::TBanking::BankName() const
 \brief selector for the data element myCorporate::TBanking::strBankName
-\details <b>name of the bank that manages this account (not necessarily required)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strBankName
 \fn std::optional<std::string> const& myCorporate::TBanking::IBAN() const
 \brief selector for the data element myCorporate::TBanking::strIBAN
-\details <b>IBAN number (account identification) for this bank account (required)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strIBAN
 \fn std::optional<std::string> const& myCorporate::TBanking::BIC() const
 \brief selector for the data element myCorporate::TBanking::strBIC
-\details <b>BIC number of the bank that manages this account (not necessarily required for transactions inside europe)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strBIC
 \fn std::optional<std::string> const& myCorporate::TBanking::BankOwner() const
 \brief selector for the data element myCorporate::TBanking::strBankOwner
-\details <b>optionally the name of the owner of the bank details, if this differs from the assigned person</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strBankOwner
 \fn std::optional<int> const& myCorporate::TBanking::Country() const
 \brief selector for the data element myCorporate::TBanking::iCountry
-\details <b>ID of the country for the banking entity, key attribute from the Countries entity</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBanking::iCountry
 
 \}
@@ -255,44 +246,37 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TBanking::_ID() const
 \brief special selector for data element myCorporate::TBanking::iID
-\details attribute as foreign key from an attribute ID of a person entity to which these account details belong
-\details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
+\details attribute "ID" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::iID is empty
 \returns int const&: Reference to the data element myCorporate::TBanking::iID
 \fn int myCorporate::TBanking::_BankingType() const
 \brief special selector for data element myCorporate::TBanking::iBankingType
-\details extension of the account details key in order to be able to save several / different bank details in a standardized way
-\details <b>extension of the account details key in order to be able to save several / different bank details in a standardized way</b>
+\details attribute "BankingType" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::iBankingType is empty
 \returns int const&: Reference to the data element myCorporate::TBanking::iBankingType
 \fn std::string const& myCorporate::TBanking::_BankName() const
 \brief special selector for data element myCorporate::TBanking::strBankName
-\details name of the bank that manages this account (not necessarily required)
-\details <b>name of the bank that manages this account (not necessarily required)</b>
+\details attribute "BankName" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::strBankName is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strBankName
 \fn std::string const& myCorporate::TBanking::_IBAN() const
 \brief special selector for data element myCorporate::TBanking::strIBAN
-\details IBAN number (account identification) for this bank account (required)
-\details <b>IBAN number (account identification) for this bank account (required)</b>
+\details attribute "IBAN" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::strIBAN is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strIBAN
 \fn std::string const& myCorporate::TBanking::_BIC() const
 \brief special selector for data element myCorporate::TBanking::strBIC
-\details BIC number of the bank that manages this account (not necessarily required for transactions inside europe)
-\details <b>BIC number of the bank that manages this account (not necessarily required for transactions inside europe)</b>
+\details attribute "BIC" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::strBIC is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strBIC
 \fn std::string const& myCorporate::TBanking::_BankOwner() const
 \brief special selector for data element myCorporate::TBanking::strBankOwner
-\details optionally the name of the owner of the bank details, if this differs from the assigned person
-\details <b>optionally the name of the owner of the bank details, if this differs from the assigned person</b>
+\details attribute "BankOwner" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::strBankOwner is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TBanking::strBankOwner
 \fn int myCorporate::TBanking::_Country() const
 \brief special selector for data element myCorporate::TBanking::iCountry
-\details ID of the country for the banking entity, key attribute from the Countries entity
-\details <b>ID of the country for the banking entity, key attribute from the Countries entity</b>
+\details attribute "Country" in entity "Banking"
 \throws std::runtime::error if the attribute myCorporate::TBanking::iCountry is empty
 \returns int const&: Reference to the data element myCorporate::TBanking::iCountry
 
@@ -303,43 +287,36 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TBanking::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::iID
-\details <b>attribute as foreign key from an attribute ID of a person entity to which these account details belong</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBanking::iID
 
 \fn std::optional<int> const& myCorporate::TBanking::BankingType(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::iBankingType
-\details <b>extension of the account details key in order to be able to save several / different bank details in a standardized way</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::iBankingType
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBanking::iBankingType
 
 \fn std::optional<std::string> const& myCorporate::TBanking::BankName(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::strBankName
-\details <b>name of the bank that manages this account (not necessarily required)</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::strBankName
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strBankName
 
 \fn std::optional<std::string> const& myCorporate::TBanking::IBAN(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::strIBAN
-\details <b>IBAN number (account identification) for this bank account (required)</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::strIBAN
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strIBAN
 
 \fn std::optional<std::string> const& myCorporate::TBanking::BIC(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::strBIC
-\details <b>BIC number of the bank that manages this account (not necessarily required for transactions inside europe)</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::strBIC
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strBIC
 
 \fn std::optional<std::string> const& myCorporate::TBanking::BankOwner(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::strBankOwner
-\details <b>optionally the name of the owner of the bank details, if this differs from the assigned person</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::strBankOwner
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TBanking::strBankOwner
 
 \fn std::optional<int> const& myCorporate::TBanking::Country(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TBanking::iCountry
-\details <b>ID of the country for the banking entity, key attribute from the Countries entity</b>
 \param[in] newVal the new Value for the member myCorporate::TBanking::iCountry
 \returns std::optional<int> const&: Reference to the data element myCorporate::TBanking::iCountry
 

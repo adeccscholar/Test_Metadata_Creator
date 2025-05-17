@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_WD_Weekdays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_WD_Weekdays
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TWD_Weekdays
 \brief domain for days of week, used for table working time. Possible to extent with informations. In area HR only
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_WD_Weekdays
 
 \class myHR::TWD_Weekdays::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TWD_Weekdays::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in this domain with weekdays for human resources
+\param [in] pID int  with 
 
 \var myHR::TWD_Weekdays::primary_key::iID
-\brief unique identification number for a record in this domain with weekdays for human resources
-\details Source: key member myHR::TWD_Weekdays::primary_key::iID in class myHR::TWD_Weekdays::primary_key with the type int
+\brief Source: key member myHR::TWD_Weekdays::primary_key::iID in class myHR::TWD_Weekdays::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_WD_Weekdays with database type INT
 \fn myHR::TWD_Weekdays::primary_key::ID() const
 \brief selector for the data element myHR::TWD_Weekdays::primary_key::iID
@@ -167,24 +166,24 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TWD_Weekdays::iID
-\brief unique identification number for a record in this domain with weekdays for human resources
-\details Source: member myHR::TWD_Weekdays::iID in class myHR::TWD_Weekdays with the type std::optional<int>
+\brief Source: member myHR::TWD_Weekdays::iID in class myHR::TWD_Weekdays with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_WD_Weekdays with database type INT
+\details unique identification number for a record in this domain with weekdays for human resources
 
 \var myHR::TWD_Weekdays::strDenotation
-\brief unique denation for this weekday 
-\details Source: member myHR::TWD_Weekdays::strDenotation in class myHR::TWD_Weekdays with the type std::optional<std::string>
+\brief Source: member myHR::TWD_Weekdays::strDenotation in class myHR::TWD_Weekdays with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_WD_Weekdays with database type VARCHAR
+\details unique denation for this weekday 
 
 \var myHR::TWD_Weekdays::strAbbreviation
-\brief unique abbreviation for this weekday 
-\details Source: member myHR::TWD_Weekdays::strAbbreviation in class myHR::TWD_Weekdays with the type std::optional<std::string>
+\brief Source: member myHR::TWD_Weekdays::strAbbreviation in class myHR::TWD_Weekdays with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_WD_Weekdays with database type VARCHAR
+\details unique abbreviation for this weekday 
 
 \var myHR::TWD_Weekdays::boWorkday
-\brief boolean value to control the work time, true if this weekday usual a workday
-\details Source: member myHR::TWD_Weekdays::boWorkday in class myHR::TWD_Weekdays with the type std::optional<bool>
+\brief Source: member myHR::TWD_Weekdays::boWorkday in class myHR::TWD_Weekdays with the type std::optional<bool>
 \details Database: attribute "Workday" in entity \ref datamodel_table_WD_Weekdays with database type TINYINT
+\details boolean value to control the work time, true if this weekday usual a workday
 
 
 \}
@@ -194,19 +193,15 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_Weekdays::ID() const
 \brief selector for the data element myHR::TWD_Weekdays::iID
-\details <b>unique identification number for a record in this domain with weekdays for human resources</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Weekdays::iID
 \fn std::optional<std::string> const& myHR::TWD_Weekdays::Denotation() const
 \brief selector for the data element myHR::TWD_Weekdays::strDenotation
-\details <b>unique denation for this weekday </b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Weekdays::strDenotation
 \fn std::optional<std::string> const& myHR::TWD_Weekdays::Abbreviation() const
 \brief selector for the data element myHR::TWD_Weekdays::strAbbreviation
-\details <b>unique abbreviation for this weekday </b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Weekdays::strAbbreviation
 \fn std::optional<bool> const& myHR::TWD_Weekdays::Workday() const
 \brief selector for the data element myHR::TWD_Weekdays::boWorkday
-\details <b>boolean value to control the work time, true if this weekday usual a workday</b>
 \returns std::optional<bool> const&: Reference to the data element myHR::TWD_Weekdays::boWorkday
 
 \}
@@ -216,26 +211,22 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TWD_Weekdays::_ID() const
 \brief special selector for data element myHR::TWD_Weekdays::iID
-\details unique identification number for a record in this domain with weekdays for human resources
-\details <b>unique identification number for a record in this domain with weekdays for human resources</b>
+\details attribute "ID" in entity "WD_Weekdays"
 \throws std::runtime::error if the attribute myHR::TWD_Weekdays::iID is empty
 \returns int const&: Reference to the data element myHR::TWD_Weekdays::iID
 \fn std::string const& myHR::TWD_Weekdays::_Denotation() const
 \brief special selector for data element myHR::TWD_Weekdays::strDenotation
-\details unique denation for this weekday 
-\details <b>unique denation for this weekday </b>
+\details attribute "Denotation" in entity "WD_Weekdays"
 \throws std::runtime::error if the attribute myHR::TWD_Weekdays::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Weekdays::strDenotation
 \fn std::string const& myHR::TWD_Weekdays::_Abbreviation() const
 \brief special selector for data element myHR::TWD_Weekdays::strAbbreviation
-\details unique abbreviation for this weekday 
-\details <b>unique abbreviation for this weekday </b>
+\details attribute "Abbreviation" in entity "WD_Weekdays"
 \throws std::runtime::error if the attribute myHR::TWD_Weekdays::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TWD_Weekdays::strAbbreviation
 \fn bool myHR::TWD_Weekdays::_Workday() const
 \brief special selector for data element myHR::TWD_Weekdays::boWorkday
-\details boolean value to control the work time, true if this weekday usual a workday
-\details <b>boolean value to control the work time, true if this weekday usual a workday</b>
+\details attribute "Workday" in entity "WD_Weekdays"
 \throws std::runtime::error if the attribute myHR::TWD_Weekdays::boWorkday is empty
 \returns bool const&: Reference to the data element myHR::TWD_Weekdays::boWorkday
 
@@ -246,25 +237,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TWD_Weekdays::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TWD_Weekdays::iID
-\details <b>unique identification number for a record in this domain with weekdays for human resources</b>
 \param[in] newVal the new Value for the member myHR::TWD_Weekdays::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TWD_Weekdays::iID
 
 \fn std::optional<std::string> const& myHR::TWD_Weekdays::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_Weekdays::strDenotation
-\details <b>unique denation for this weekday </b>
 \param[in] newVal the new Value for the member myHR::TWD_Weekdays::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Weekdays::strDenotation
 
 \fn std::optional<std::string> const& myHR::TWD_Weekdays::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TWD_Weekdays::strAbbreviation
-\details <b>unique abbreviation for this weekday </b>
 \param[in] newVal the new Value for the member myHR::TWD_Weekdays::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TWD_Weekdays::strAbbreviation
 
 \fn std::optional<bool> const& myHR::TWD_Weekdays::Workday(std::optional<bool> const& newVal)
 \brief manipulator for the data element myHR::TWD_Weekdays::boWorkday
-\details <b>boolean value to control the work time, true if this weekday usual a workday</b>
 \param[in] newVal the new Value for the member myHR::TWD_Weekdays::boWorkday
 \returns std::optional<bool> const&: Reference to the data element myHR::TWD_Weekdays::boWorkday
 

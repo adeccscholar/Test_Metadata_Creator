@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TEmployees
 * Content: information about the employees in the company (generalization of a person)
-* Date: 25.03.2024 19:08:40,249  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,867  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -27,12 +27,14 @@
 #include <iomanip>
 #include <optional>
 #include <stdexcept>
+#include <functional>
 #include <map>
 #include <vector>
 #include <tuple>
 #include <memory>
 
 namespace reader {
+   class DataAccess; // helper class, later changing
    class TPersonReader;
    }
 
@@ -43,7 +45,7 @@ namespace myHR {
 // - information about the employees in the company (generalization of a person)
 // -------------------------------------------------------------------------------------------------
 class TEmployees: public myCorporate::TPerson {
-   friend class reader::TPersonReader;
+   friend class reader::DataAccess;   friend class reader::TPersonReader;
    public:
       // ----------------------------------------------------------------------------------------------
       // public datatypes for this table
@@ -56,7 +58,7 @@ class TEmployees: public myCorporate::TPerson {
 
             primary_key();
          public:
-            explicit primary_key(int pEmployeeID);
+            /* explicit */primary_key(int pEmployeeID);
             explicit primary_key(TEmployees const& other);
             primary_key(primary_key const& other);
             primary_key(primary_key&& other) noexcept;
@@ -86,6 +88,7 @@ class TEmployees: public myCorporate::TPerson {
             int _compare(primary_key const& other) const;
          };
 
+      using func_ty = std::function<bool(TEmployees&&)>;
       using container_ty = std::map<primary_key, TEmployees>;
       using vector_ty    = std::vector<TEmployees>;
 
@@ -99,7 +102,6 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // private data elements, direct attributes from table Employees
       // ----------------------------------------------------------------------------------------------
-      std::optional<int>                         iDummy;          
       std::optional<int>                         iEmployeeID;     
       std::optional<std::string>                 strPersonNumber; 
       std::optional<double>                      flSalary;        
@@ -112,6 +114,7 @@ class TEmployees: public myCorporate::TPerson {
       std::optional<std::string>                 strJobSpec;      
       std::optional<unsigned int>                uVacationDays;   
       std::optional<int>                         iDepartment;     
+      std::optional<std::string>                 strTaxNumber;    
       std::optional<std::string>                 strSocialNummer; 
       std::optional<bool>                        boActive;        
 
@@ -155,7 +158,6 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // selectors for the data access to the direct data elements with std::optional retval
       // ----------------------------------------------------------------------------------------------
-      std::optional<int> const&                         Dummy() const { return iDummy; }
       std::optional<int> const&                         EmployeeID() const { return iEmployeeID; }
       std::optional<std::string> const&                 PersonNumber() const { return strPersonNumber; }
       std::optional<double> const&                      Salary() const { return flSalary; }
@@ -168,13 +170,13 @@ class TEmployees: public myCorporate::TPerson {
       std::optional<std::string> const&                 JobSpec() const { return strJobSpec; }
       std::optional<unsigned int> const&                VacationDays() const { return uVacationDays; }
       std::optional<int> const&                         Department() const { return iDepartment; }
+      std::optional<std::string> const&                 TaxNumber() const { return strTaxNumber; }
       std::optional<std::string> const&                 SocialNummer() const { return strSocialNummer; }
       std::optional<bool> const&                        Active() const { return boActive; }
 
       // ----------------------------------------------------------------------------------------------
       // public selectors for direct data access to the values inside std::optional (unboxing)
       // ----------------------------------------------------------------------------------------------
-      int                                               _Dummy() const;
       int                                               _EmployeeID() const;
       std::string const&                                _PersonNumber() const;
       double const&                                     _Salary() const;
@@ -187,6 +189,7 @@ class TEmployees: public myCorporate::TPerson {
       std::string const&                                _JobSpec() const;
       unsigned int                                      _VacationDays() const;
       int                                               _Department() const;
+      std::string const&                                _TaxNumber() const;
       std::string const&                                _SocialNummer() const;
       bool                                              _Active() const;
 
@@ -199,7 +202,6 @@ class TEmployees: public myCorporate::TPerson {
       // ----------------------------------------------------------------------------------------------
       // public manipulators for the class
       // ----------------------------------------------------------------------------------------------
-      std::optional<int> const&                         Dummy(std::optional<int> const& newVal);
       std::optional<int> const&                         EmployeeID(std::optional<int> const& newVal);
       std::optional<std::string> const&                 PersonNumber(std::optional<std::string> const& newVal);
       std::optional<double> const&                      Salary(std::optional<double> const& newVal);
@@ -212,6 +214,7 @@ class TEmployees: public myCorporate::TPerson {
       std::optional<std::string> const&                 JobSpec(std::optional<std::string> const& newVal);
       std::optional<unsigned int> const&                VacationDays(std::optional<unsigned int> const& newVal);
       std::optional<int> const&                         Department(std::optional<int> const& newVal);
+      std::optional<std::string> const&                 TaxNumber(std::optional<std::string> const& newVal);
       std::optional<std::string> const&                 SocialNummer(std::optional<std::string> const& newVal);
 
       // ----------------------------------------------------------------------------------------------
@@ -238,11 +241,6 @@ class TEmployees: public myCorporate::TPerson {
 // -------------------------------------------------------------------------------------------------
 // Implementations of the special selectors for return values instead std::optional
 // -------------------------------------------------------------------------------------------------
-inline int TEmployees::_Dummy() const {
-   if(iDummy) [[likely]] return iDummy.value();
-   else throw std::runtime_error("value for attribute \"Dummy\" in class \"TEmployees\" is empty.");;
-   }
-
 inline int TEmployees::_EmployeeID() const {
    if(iEmployeeID) [[likely]] return iEmployeeID.value();
    else throw std::runtime_error("value for attribute \"EmployeeID\" in class \"TEmployees\" is empty.");;
@@ -303,6 +301,11 @@ inline int TEmployees::_Department() const {
    else throw std::runtime_error("value for attribute \"Department\" in class \"TEmployees\" is empty.");;
    }
 
+inline std::string const& TEmployees::_TaxNumber() const {
+   if(strTaxNumber) [[likely]] return strTaxNumber.value();
+   else throw std::runtime_error("value for attribute \"TaxNumber\" in class \"TEmployees\" is empty.");;
+   }
+
 inline std::string const& TEmployees::_SocialNummer() const {
    if(strSocialNummer) [[likely]] return strSocialNummer.value();
    else throw std::runtime_error("value for attribute \"SocialNummer\" in class \"TEmployees\" is empty.");;
@@ -315,10 +318,6 @@ inline bool TEmployees::_Active() const {
 
 
 // Implementations of the manipulators
-inline std::optional<int> const& TEmployees::Dummy(std::optional<int> const& newVal) {
-   return iDummy = newVal;
-   }
-
 inline std::optional<int> const& TEmployees::EmployeeID(std::optional<int> const& newVal) {
    return iEmployeeID = newVal;
    }
@@ -365,6 +364,10 @@ inline std::optional<unsigned int> const& TEmployees::VacationDays(std::optional
 
 inline std::optional<int> const& TEmployees::Department(std::optional<int> const& newVal) {
    return iDepartment = newVal;
+   }
+
+inline std::optional<std::string> const& TEmployees::TaxNumber(std::optional<std::string> const& newVal) {
+   return strTaxNumber = newVal;
    }
 
 inline std::optional<std::string> const& TEmployees::SocialNummer(std::optional<std::string> const& newVal) {

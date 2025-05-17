@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_Contacts
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_Contacts
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -28,7 +28,7 @@
 <tr><td>myCorporate::TPerson</td>    <td>\ref datamodel_table_Person</td>    <td>System\Corporate/Person.h</td></tr></table>
 
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_Contacts
 
 \class mySales::TContacts::primary_key
@@ -56,11 +56,10 @@
 
 \fn mySales::TContacts::primary_key::primary_key(int pContactID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pContactID int  with internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
+\param [in] pContactID int  with 
 
 \var mySales::TContacts::primary_key::iContactID
-\brief internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
-\details Source: key member mySales::TContacts::primary_key::iContactID in class mySales::TContacts::primary_key with the type int
+\brief Source: key member mySales::TContacts::primary_key::iContactID in class mySales::TContacts::primary_key with the type int
 \details Database: primary key attribute "ContactID" in entity \ref datamodel_table_Contacts with database type INT
 \fn mySales::TContacts::primary_key::ContactID() const
 \brief selector for the data element mySales::TContacts::primary_key::iContactID
@@ -172,19 +171,19 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var mySales::TContacts::iContactID
-\brief internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
-\details Source: member mySales::TContacts::iContactID in class mySales::TContacts with the type std::optional<int>
+\brief Source: member mySales::TContacts::iContactID in class mySales::TContacts with the type std::optional<int>
 \details Database: attribute "ContactID" in entity \ref datamodel_table_Contacts with database type INT
+\details internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
 
 \var mySales::TContacts::iCustID
-\brief Customer identification number of the contact associated customer.
-\details Source: member mySales::TContacts::iCustID in class mySales::TContacts with the type std::optional<int>
+\brief Source: member mySales::TContacts::iCustID in class mySales::TContacts with the type std::optional<int>
 \details Database: attribute "CustID" in entity \ref datamodel_table_Contacts with database type INT
+\details Customer identification number of the contact associated customer.
 
 \var mySales::TContacts::iCustLiaison
-\brief liaision for this contact person as range value (from table CustLiasion)
-\details Source: member mySales::TContacts::iCustLiaison in class mySales::TContacts with the type std::optional<int>
+\brief Source: member mySales::TContacts::iCustLiaison in class mySales::TContacts with the type std::optional<int>
 \details Database: attribute "CustLiaison" in entity \ref datamodel_table_Contacts with database type INT
+\details liaision for this contact person as range value (from table CustLiasion)
 
 
 \}
@@ -194,15 +193,12 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TContacts::ContactID() const
 \brief selector for the data element mySales::TContacts::iContactID
-\details <b>internal id for this contact, attribute as foreign key from an attribute ID of a person entity </b>
 \returns std::optional<int> const&: Reference to the data element mySales::TContacts::iContactID
 \fn std::optional<int> const& mySales::TContacts::CustID() const
 \brief selector for the data element mySales::TContacts::iCustID
-\details <b>Customer identification number of the contact associated customer.</b>
 \returns std::optional<int> const&: Reference to the data element mySales::TContacts::iCustID
 \fn std::optional<int> const& mySales::TContacts::CustLiaison() const
 \brief selector for the data element mySales::TContacts::iCustLiaison
-\details <b>liaision for this contact person as range value (from table CustLiasion)</b>
 \returns std::optional<int> const&: Reference to the data element mySales::TContacts::iCustLiaison
 
 \}
@@ -212,20 +208,17 @@ method to copy instances of the hierachie of classes into another
 
 \fn int mySales::TContacts::_ContactID() const
 \brief special selector for data element mySales::TContacts::iContactID
-\details internal id for this contact, attribute as foreign key from an attribute ID of a person entity 
-\details <b>internal id for this contact, attribute as foreign key from an attribute ID of a person entity </b>
+\details attribute "ContactID" in entity "Contacts"
 \throws std::runtime::error if the attribute mySales::TContacts::iContactID is empty
 \returns int const&: Reference to the data element mySales::TContacts::iContactID
 \fn int mySales::TContacts::_CustID() const
 \brief special selector for data element mySales::TContacts::iCustID
-\details Customer identification number of the contact associated customer.
-\details <b>Customer identification number of the contact associated customer.</b>
+\details attribute "CustID" in entity "Contacts"
 \throws std::runtime::error if the attribute mySales::TContacts::iCustID is empty
 \returns int const&: Reference to the data element mySales::TContacts::iCustID
 \fn int mySales::TContacts::_CustLiaison() const
 \brief special selector for data element mySales::TContacts::iCustLiaison
-\details liaision for this contact person as range value (from table CustLiasion)
-\details <b>liaision for this contact person as range value (from table CustLiasion)</b>
+\details attribute "CustLiaison" in entity "Contacts"
 \throws std::runtime::error if the attribute mySales::TContacts::iCustLiaison is empty
 \returns int const&: Reference to the data element mySales::TContacts::iCustLiaison
 
@@ -236,19 +229,16 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TContacts::ContactID(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TContacts::iContactID
-\details <b>internal id for this contact, attribute as foreign key from an attribute ID of a person entity </b>
 \param[in] newVal the new Value for the member mySales::TContacts::iContactID
 \returns std::optional<int> const&: Reference to the data element mySales::TContacts::iContactID
 
 \fn std::optional<int> const& mySales::TContacts::CustID(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TContacts::iCustID
-\details <b>Customer identification number of the contact associated customer.</b>
 \param[in] newVal the new Value for the member mySales::TContacts::iCustID
 \returns std::optional<int> const&: Reference to the data element mySales::TContacts::iCustID
 
 \fn std::optional<int> const& mySales::TContacts::CustLiaison(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TContacts::iCustLiaison
-\details <b>liaision for this contact person as range value (from table CustLiasion)</b>
 \param[in] newVal the new Value for the member mySales::TContacts::iCustLiaison
 \returns std::optional<int> const&: Reference to the data element mySales::TContacts::iCustLiaison
 

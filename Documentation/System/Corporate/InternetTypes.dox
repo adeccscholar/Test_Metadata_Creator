@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_InternetTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_InternetTypes
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myCorporate::TInternetTypes
 \brief domain / range of values for internet connection types, this is an extension of the relationship between persons and internet connections.
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_InternetTypes
 
 \class myCorporate::TInternetTypes::primary_key
@@ -51,11 +51,10 @@
 
 \fn myCorporate::TInternetTypes::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in this domain with internet connection types
+\param [in] pID int  with 
 
 \var myCorporate::TInternetTypes::primary_key::iID
-\brief unique identification number for a record in this domain with internet connection types
-\details Source: key member myCorporate::TInternetTypes::primary_key::iID in class myCorporate::TInternetTypes::primary_key with the type int
+\brief Source: key member myCorporate::TInternetTypes::primary_key::iID in class myCorporate::TInternetTypes::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_InternetTypes with database type INT
 \fn myCorporate::TInternetTypes::primary_key::ID() const
 \brief selector for the data element myCorporate::TInternetTypes::primary_key::iID
@@ -167,39 +166,39 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myCorporate::TInternetTypes::iID
-\brief unique identification number for a record in this domain with internet connection types
-\details Source: member myCorporate::TInternetTypes::iID in class myCorporate::TInternetTypes with the type std::optional<int>
+\brief Source: member myCorporate::TInternetTypes::iID in class myCorporate::TInternetTypes with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_InternetTypes with database type INT
+\details unique identification number for a record in this domain with internet connection types
 
 \var myCorporate::TInternetTypes::strDenotation
-\brief unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)
-\details Source: member myCorporate::TInternetTypes::strDenotation in class myCorporate::TInternetTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TInternetTypes::strDenotation in class myCorporate::TInternetTypes with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_InternetTypes with database type VARCHAR
+\details unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)
 
 \var myCorporate::TInternetTypes::strAbbreviation
-\brief non-representative abbreviation that can be used for a short advertisement for this internet connection type
-\details Source: member myCorporate::TInternetTypes::strAbbreviation in class myCorporate::TInternetTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TInternetTypes::strAbbreviation in class myCorporate::TInternetTypes with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_InternetTypes with database type VARCHAR
+\details non-representative abbreviation that can be used for a short advertisement for this internet connection type
 
 \var myCorporate::TInternetTypes::strDescription
-\brief detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm
-\details Source: member myCorporate::TInternetTypes::strDescription in class myCorporate::TInternetTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TInternetTypes::strDescription in class myCorporate::TInternetTypes with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_InternetTypes with database type VARCHAR(MAX)
+\details detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm
 
 \var myCorporate::TInternetTypes::strPrefix
-\brief protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)
-\details Source: member myCorporate::TInternetTypes::strPrefix in class myCorporate::TInternetTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TInternetTypes::strPrefix in class myCorporate::TInternetTypes with the type std::optional<std::string>
 \details Database: attribute "Prefix" in entity \ref datamodel_table_InternetTypes with database type VARCHAR
+\details protocoll prefix which is used for this internet type (smtp:, phone:, https_, …)
 
 \var myCorporate::TInternetTypes::strNotes
-\brief notes, with additional / free information for this type of internet connection, not used in application
-\details Source: member myCorporate::TInternetTypes::strNotes in class myCorporate::TInternetTypes with the type std::optional<std::string>
+\brief Source: member myCorporate::TInternetTypes::strNotes in class myCorporate::TInternetTypes with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_InternetTypes with database type VARCHAR(MAX)
+\details notes, with additional / free information for this type of internet connection, not used in application
 
 \var myCorporate::TInternetTypes::boUrgentValue
-\brief boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)
-\details Source: member myCorporate::TInternetTypes::boUrgentValue in class myCorporate::TInternetTypes with the type std::optional<bool>
+\brief Source: member myCorporate::TInternetTypes::boUrgentValue in class myCorporate::TInternetTypes with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_InternetTypes with database type TINYINT
+\details boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -209,31 +208,24 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TInternetTypes::ID() const
 \brief selector for the data element myCorporate::TInternetTypes::iID
-\details <b>unique identification number for a record in this domain with internet connection types</b>
 \returns std::optional<int> const&: Reference to the data element myCorporate::TInternetTypes::iID
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Denotation() const
 \brief selector for the data element myCorporate::TInternetTypes::strDenotation
-\details <b>unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strDenotation
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Abbreviation() const
 \brief selector for the data element myCorporate::TInternetTypes::strAbbreviation
-\details <b>non-representative abbreviation that can be used for a short advertisement for this internet connection type</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strAbbreviation
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Description() const
 \brief selector for the data element myCorporate::TInternetTypes::strDescription
-\details <b>detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strDescription
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Prefix() const
 \brief selector for the data element myCorporate::TInternetTypes::strPrefix
-\details <b>protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strPrefix
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Notes() const
 \brief selector for the data element myCorporate::TInternetTypes::strNotes
-\details <b>notes, with additional / free information for this type of internet connection, not used in application</b>
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strNotes
 \fn std::optional<bool> const& myCorporate::TInternetTypes::UrgentValue() const
 \brief selector for the data element myCorporate::TInternetTypes::boUrgentValue
-\details <b>boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TInternetTypes::boUrgentValue
 
 \}
@@ -243,44 +235,37 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myCorporate::TInternetTypes::_ID() const
 \brief special selector for data element myCorporate::TInternetTypes::iID
-\details unique identification number for a record in this domain with internet connection types
-\details <b>unique identification number for a record in this domain with internet connection types</b>
+\details attribute "ID" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::iID is empty
 \returns int const&: Reference to the data element myCorporate::TInternetTypes::iID
 \fn std::string const& myCorporate::TInternetTypes::_Denotation() const
 \brief special selector for data element myCorporate::TInternetTypes::strDenotation
-\details unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)
-\details <b>unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
+\details attribute "Denotation" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strDenotation
 \fn std::string const& myCorporate::TInternetTypes::_Abbreviation() const
 \brief special selector for data element myCorporate::TInternetTypes::strAbbreviation
-\details non-representative abbreviation that can be used for a short advertisement for this internet connection type
-\details <b>non-representative abbreviation that can be used for a short advertisement for this internet connection type</b>
+\details attribute "Abbreviation" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strAbbreviation
 \fn std::string const& myCorporate::TInternetTypes::_Description() const
 \brief special selector for data element myCorporate::TInternetTypes::strDescription
-\details detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm
-\details <b>detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm</b>
+\details attribute "Description" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::strDescription is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strDescription
 \fn std::string const& myCorporate::TInternetTypes::_Prefix() const
 \brief special selector for data element myCorporate::TInternetTypes::strPrefix
-\details protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)
-\details <b>protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)</b>
+\details attribute "Prefix" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::strPrefix is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strPrefix
 \fn std::string const& myCorporate::TInternetTypes::_Notes() const
 \brief special selector for data element myCorporate::TInternetTypes::strNotes
-\details notes, with additional / free information for this type of internet connection, not used in application
-\details <b>notes, with additional / free information for this type of internet connection, not used in application</b>
+\details attribute "Notes" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::strNotes is empty
 \returns std::string const& const&: Reference to the data element myCorporate::TInternetTypes::strNotes
 \fn bool myCorporate::TInternetTypes::_UrgentValue() const
 \brief special selector for data element myCorporate::TInternetTypes::boUrgentValue
-\details boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "InternetTypes"
 \throws std::runtime::error if the attribute myCorporate::TInternetTypes::boUrgentValue is empty
 \returns bool const&: Reference to the data element myCorporate::TInternetTypes::boUrgentValue
 
@@ -291,43 +276,36 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myCorporate::TInternetTypes::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::iID
-\details <b>unique identification number for a record in this domain with internet connection types</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::iID
 \returns std::optional<int> const&: Reference to the data element myCorporate::TInternetTypes::iID
 
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::strDenotation
-\details <b>unique description of an internet connection type entity in the domain, used in selections, comboboxes, … (key canditate)</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strDenotation
 
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::strAbbreviation
-\details <b>non-representative abbreviation that can be used for a short advertisement for this internet connection type</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strAbbreviation
 
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::strDescription
-\details <b>detailed description of these internet connection type,this is a self documentation, possible use as hint or to information in the programm</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strDescription
 
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Prefix(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::strPrefix
-\details <b>protocoll prefix which is used for this internet type (smtp:, phone:, https_, ...)</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::strPrefix
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strPrefix
 
 \fn std::optional<std::string> const& myCorporate::TInternetTypes::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::strNotes
-\details <b>notes, with additional / free information for this type of internet connection, not used in application</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myCorporate::TInternetTypes::strNotes
 
 \fn std::optional<bool> const& myCorporate::TInternetTypes::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element myCorporate::TInternetTypes::boUrgentValue
-\details <b>boolean value that makes this entity of internet connection type to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member myCorporate::TInternetTypes::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element myCorporate::TInternetTypes::boUrgentValue
 

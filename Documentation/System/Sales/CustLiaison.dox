@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_CustLiaison
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_CustLiaison
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class mySales::TCustLiaison
 \brief doman range with the liaisons to use a contact at a customer
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_CustLiaison
 
 \class mySales::TCustLiaison::primary_key
@@ -51,11 +51,10 @@
 
 \fn mySales::TCustLiaison::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number / id of this liaison to use a contact in a customer
+\param [in] pID int  with 
 
 \var mySales::TCustLiaison::primary_key::iID
-\brief unique identification number / id of this liaison to use a contact in a customer
-\details Source: key member mySales::TCustLiaison::primary_key::iID in class mySales::TCustLiaison::primary_key with the type int
+\brief Source: key member mySales::TCustLiaison::primary_key::iID in class mySales::TCustLiaison::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_CustLiaison with database type INT
 \fn mySales::TCustLiaison::primary_key::ID() const
 \brief selector for the data element mySales::TCustLiaison::primary_key::iID
@@ -167,34 +166,34 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var mySales::TCustLiaison::iID
-\brief unique identification number / id of this liaison to use a contact in a customer
-\details Source: member mySales::TCustLiaison::iID in class mySales::TCustLiaison with the type std::optional<int>
+\brief Source: member mySales::TCustLiaison::iID in class mySales::TCustLiaison with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_CustLiaison with database type INT
+\details unique identification number / id of this liaison to use a contact in a customer
 
 \var mySales::TCustLiaison::strDenotation
-\brief unique denotation of this liaison to use a contact in a customer
-\details Source: member mySales::TCustLiaison::strDenotation in class mySales::TCustLiaison with the type std::optional<std::string>
+\brief Source: member mySales::TCustLiaison::strDenotation in class mySales::TCustLiaison with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_CustLiaison with database type VARCHAR
+\details unique denotation of this liaison to use a contact in a customer
 
 \var mySales::TCustLiaison::strAbbreviation
-\brief abbreviation of this liaison to use a contact in a customer, used in the application for a compact display
-\details Source: member mySales::TCustLiaison::strAbbreviation in class mySales::TCustLiaison with the type std::optional<std::string>
+\brief Source: member mySales::TCustLiaison::strAbbreviation in class mySales::TCustLiaison with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_CustLiaison with database type VARCHAR
+\details abbreviation of this liaison to use a contact in a customer, used in the application for a compact display
 
 \var mySales::TCustLiaison::strDescription
-\brief description as long text of this liaison to use a contact in a customer, used in the application for detailed informations
-\details Source: member mySales::TCustLiaison::strDescription in class mySales::TCustLiaison with the type std::optional<std::string>
+\brief Source: member mySales::TCustLiaison::strDescription in class mySales::TCustLiaison with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_CustLiaison with database type VARCHAR(MAX)
+\details description as long text of this liaison to use a contact in a customer, used in the application for detailed informations
 
 \var mySales::TCustLiaison::strNotes
-\brief notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application
-\details Source: member mySales::TCustLiaison::strNotes in class mySales::TCustLiaison with the type std::optional<std::string>
+\brief Source: member mySales::TCustLiaison::strNotes in class mySales::TCustLiaison with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_CustLiaison with database type VARCHAR(MAX)
+\details notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application
 
 \var mySales::TCustLiaison::boUrgentValue
-\brief boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)
-\details Source: member mySales::TCustLiaison::boUrgentValue in class mySales::TCustLiaison with the type std::optional<bool>
+\brief Source: member mySales::TCustLiaison::boUrgentValue in class mySales::TCustLiaison with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_CustLiaison with database type TINYINT
+\details boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -204,27 +203,21 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustLiaison::ID() const
 \brief selector for the data element mySales::TCustLiaison::iID
-\details <b>unique identification number / id of this liaison to use a contact in a customer</b>
 \returns std::optional<int> const&: Reference to the data element mySales::TCustLiaison::iID
 \fn std::optional<std::string> const& mySales::TCustLiaison::Denotation() const
 \brief selector for the data element mySales::TCustLiaison::strDenotation
-\details <b>unique denotation of this liaison to use a contact in a customer</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strDenotation
 \fn std::optional<std::string> const& mySales::TCustLiaison::Abbreviation() const
 \brief selector for the data element mySales::TCustLiaison::strAbbreviation
-\details <b>abbreviation of this liaison to use a contact in a customer, used in the application for a compact display</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strAbbreviation
 \fn std::optional<std::string> const& mySales::TCustLiaison::Description() const
 \brief selector for the data element mySales::TCustLiaison::strDescription
-\details <b>description as long text of this liaison to use a contact in a customer, used in the application for detailed informations</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strDescription
 \fn std::optional<std::string> const& mySales::TCustLiaison::Notes() const
 \brief selector for the data element mySales::TCustLiaison::strNotes
-\details <b>notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application</b>
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strNotes
 \fn std::optional<bool> const& mySales::TCustLiaison::UrgentValue() const
 \brief selector for the data element mySales::TCustLiaison::boUrgentValue
-\details <b>boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element mySales::TCustLiaison::boUrgentValue
 
 \}
@@ -234,38 +227,32 @@ method to copy instances of the hierachie of classes into another
 
 \fn int mySales::TCustLiaison::_ID() const
 \brief special selector for data element mySales::TCustLiaison::iID
-\details unique identification number / id of this liaison to use a contact in a customer
-\details <b>unique identification number / id of this liaison to use a contact in a customer</b>
+\details attribute "ID" in entity "CustLiaison"
 \throws std::runtime::error if the attribute mySales::TCustLiaison::iID is empty
 \returns int const&: Reference to the data element mySales::TCustLiaison::iID
 \fn std::string const& mySales::TCustLiaison::_Denotation() const
 \brief special selector for data element mySales::TCustLiaison::strDenotation
-\details unique denotation of this liaison to use a contact in a customer
-\details <b>unique denotation of this liaison to use a contact in a customer</b>
+\details attribute "Denotation" in entity "CustLiaison"
 \throws std::runtime::error if the attribute mySales::TCustLiaison::strDenotation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strDenotation
 \fn std::string const& mySales::TCustLiaison::_Abbreviation() const
 \brief special selector for data element mySales::TCustLiaison::strAbbreviation
-\details abbreviation of this liaison to use a contact in a customer, used in the application for a compact display
-\details <b>abbreviation of this liaison to use a contact in a customer, used in the application for a compact display</b>
+\details attribute "Abbreviation" in entity "CustLiaison"
 \throws std::runtime::error if the attribute mySales::TCustLiaison::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strAbbreviation
 \fn std::string const& mySales::TCustLiaison::_Description() const
 \brief special selector for data element mySales::TCustLiaison::strDescription
-\details description as long text of this liaison to use a contact in a customer, used in the application for detailed informations
-\details <b>description as long text of this liaison to use a contact in a customer, used in the application for detailed informations</b>
+\details attribute "Description" in entity "CustLiaison"
 \throws std::runtime::error if the attribute mySales::TCustLiaison::strDescription is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strDescription
 \fn std::string const& mySales::TCustLiaison::_Notes() const
 \brief special selector for data element mySales::TCustLiaison::strNotes
-\details notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application
-\details <b>notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application</b>
+\details attribute "Notes" in entity "CustLiaison"
 \throws std::runtime::error if the attribute mySales::TCustLiaison::strNotes is empty
 \returns std::string const& const&: Reference to the data element mySales::TCustLiaison::strNotes
 \fn bool mySales::TCustLiaison::_UrgentValue() const
 \brief special selector for data element mySales::TCustLiaison::boUrgentValue
-\details boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "CustLiaison"
 \throws std::runtime::error if the attribute mySales::TCustLiaison::boUrgentValue is empty
 \returns bool const&: Reference to the data element mySales::TCustLiaison::boUrgentValue
 
@@ -276,37 +263,31 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& mySales::TCustLiaison::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element mySales::TCustLiaison::iID
-\details <b>unique identification number / id of this liaison to use a contact in a customer</b>
 \param[in] newVal the new Value for the member mySales::TCustLiaison::iID
 \returns std::optional<int> const&: Reference to the data element mySales::TCustLiaison::iID
 
 \fn std::optional<std::string> const& mySales::TCustLiaison::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustLiaison::strDenotation
-\details <b>unique denotation of this liaison to use a contact in a customer</b>
 \param[in] newVal the new Value for the member mySales::TCustLiaison::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strDenotation
 
 \fn std::optional<std::string> const& mySales::TCustLiaison::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustLiaison::strAbbreviation
-\details <b>abbreviation of this liaison to use a contact in a customer, used in the application for a compact display</b>
 \param[in] newVal the new Value for the member mySales::TCustLiaison::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strAbbreviation
 
 \fn std::optional<std::string> const& mySales::TCustLiaison::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustLiaison::strDescription
-\details <b>description as long text of this liaison to use a contact in a customer, used in the application for detailed informations</b>
 \param[in] newVal the new Value for the member mySales::TCustLiaison::strDescription
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strDescription
 
 \fn std::optional<std::string> const& mySales::TCustLiaison::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element mySales::TCustLiaison::strNotes
-\details <b>notes, with additional / free information of this  liaison to use a contact in a customer, not used in the application</b>
 \param[in] newVal the new Value for the member mySales::TCustLiaison::strNotes
 \returns std::optional<std::string> const&: Reference to the data element mySales::TCustLiaison::strNotes
 
 \fn std::optional<bool> const& mySales::TCustLiaison::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element mySales::TCustLiaison::boUrgentValue
-\details <b>boolean value that makes this entity of this liaison to use a contact in a customer to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member mySales::TCustLiaison::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element mySales::TCustLiaison::boUrgentValue
 

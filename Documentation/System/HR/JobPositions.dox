@@ -3,7 +3,7 @@
 \see table \ref datamodel_table_JobPositions
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -14,7 +14,7 @@
 \see table \ref datamodel_table_JobPositions
 \version 1.0
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024  file created with adecc Scholar metadata generator
+\date 22.04.2025  file created with adecc Scholar metadata generator
 <HR>
 \copyright &copy; adecc Systemhaus GmbH 2024, All rights reserved.
 <BR>This project is released under the MIT License.
@@ -23,7 +23,7 @@
 \class myHR::TJobPositions
 \brief domain or range of values for different positions for the employee. Important as anchor for additional informations
 \author Volker Hillmann (adecc Scholar)
-\date 25.03.2024 documentation for this project created
+\date 22.04.2025 documentation for this project created
 \see system class for the table \ref datamodel_table_JobPositions
 
 \class myHR::TJobPositions::primary_key
@@ -51,11 +51,10 @@
 
 \fn myHR::TJobPositions::primary_key::primary_key(int pID)
 \brief initializing constructor with the values for key attributes of the primary_key class
-\param [in] pID int  with unique identification number for a record in this domain with positions in job
+\param [in] pID int  with 
 
 \var myHR::TJobPositions::primary_key::iID
-\brief unique identification number for a record in this domain with positions in job
-\details Source: key member myHR::TJobPositions::primary_key::iID in class myHR::TJobPositions::primary_key with the type int
+\brief Source: key member myHR::TJobPositions::primary_key::iID in class myHR::TJobPositions::primary_key with the type int
 \details Database: primary key attribute "ID" in entity \ref datamodel_table_JobPositions with database type INT
 \fn myHR::TJobPositions::primary_key::ID() const
 \brief selector for the data element myHR::TJobPositions::primary_key::iID
@@ -167,39 +166,39 @@ method to copy instances of the hierachie of classes into another
 \{
 
 \var myHR::TJobPositions::iID
-\brief unique identification number for a record in this domain with positions in job
-\details Source: member myHR::TJobPositions::iID in class myHR::TJobPositions with the type std::optional<int>
+\brief Source: member myHR::TJobPositions::iID in class myHR::TJobPositions with the type std::optional<int>
 \details Database: attribute "ID" in entity \ref datamodel_table_JobPositions with database type INT
+\details unique identification number for a record in this domain with positions in job
 
 \var myHR::TJobPositions::strDenotation
-\brief unique denotation for this job position, used in selections, and lists to descripe this position
-\details Source: member myHR::TJobPositions::strDenotation in class myHR::TJobPositions with the type std::optional<std::string>
+\brief Source: member myHR::TJobPositions::strDenotation in class myHR::TJobPositions with the type std::optional<std::string>
 \details Database: attribute "Denotation" in entity \ref datamodel_table_JobPositions with database type VARCHAR
+\details unique denotation for this job position, used in selections, and lists to descripe this position
 
 \var myHR::TJobPositions::strAbbreviation
-\brief abbreviation for this job position, used in overvies. Can be null and don't need be unique
-\details Source: member myHR::TJobPositions::strAbbreviation in class myHR::TJobPositions with the type std::optional<std::string>
+\brief Source: member myHR::TJobPositions::strAbbreviation in class myHR::TJobPositions with the type std::optional<std::string>
 \details Database: attribute "Abbreviation" in entity \ref datamodel_table_JobPositions with database type VARCHAR
+\details abbreviation for this job position, used in overvies. Can be null and don't need be unique
 
 \var myHR::TJobPositions::strDescription
-\brief detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
-\details Source: member myHR::TJobPositions::strDescription in class myHR::TJobPositions with the type std::optional<std::string>
+\brief Source: member myHR::TJobPositions::strDescription in class myHR::TJobPositions with the type std::optional<std::string>
 \details Database: attribute "Description" in entity \ref datamodel_table_JobPositions with database type VARCHAR(MAX)
+\details detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
 
 \var myHR::TJobPositions::iSalaryType
-\brief prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
-\details Source: member myHR::TJobPositions::iSalaryType in class myHR::TJobPositions with the type std::optional<int>
+\brief Source: member myHR::TJobPositions::iSalaryType in class myHR::TJobPositions with the type std::optional<int>
 \details Database: attribute "SalaryType" in entity \ref datamodel_table_JobPositions with database type INT
+\details prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
 
 \var myHR::TJobPositions::strNotes
-\brief notes, with additional / free information for this type of job position, not used in application
-\details Source: member myHR::TJobPositions::strNotes in class myHR::TJobPositions with the type std::optional<std::string>
+\brief Source: member myHR::TJobPositions::strNotes in class myHR::TJobPositions with the type std::optional<std::string>
 \details Database: attribute "Notes" in entity \ref datamodel_table_JobPositions with database type VARCHAR(MAX)
+\details notes, with additional / free information for this type of job position, not used in application
 
 \var myHR::TJobPositions::boUrgentValue
-\brief boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
-\details Source: member myHR::TJobPositions::boUrgentValue in class myHR::TJobPositions with the type std::optional<bool>
+\brief Source: member myHR::TJobPositions::boUrgentValue in class myHR::TJobPositions with the type std::optional<bool>
 \details Database: attribute "UrgentValue" in entity \ref datamodel_table_JobPositions with database type TINYINT
+\details boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
 
 
 \}
@@ -209,31 +208,24 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TJobPositions::ID() const
 \brief selector for the data element myHR::TJobPositions::iID
-\details <b>unique identification number for a record in this domain with positions in job</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iID
 \fn std::optional<std::string> const& myHR::TJobPositions::Denotation() const
 \brief selector for the data element myHR::TJobPositions::strDenotation
-\details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDenotation
 \fn std::optional<std::string> const& myHR::TJobPositions::Abbreviation() const
 \brief selector for the data element myHR::TJobPositions::strAbbreviation
-\details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strAbbreviation
 \fn std::optional<std::string> const& myHR::TJobPositions::Description() const
 \brief selector for the data element myHR::TJobPositions::strDescription
-\details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDescription
 \fn std::optional<int> const& myHR::TJobPositions::SalaryType() const
 \brief selector for the data element myHR::TJobPositions::iSalaryType
-\details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
 \returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iSalaryType
 \fn std::optional<std::string> const& myHR::TJobPositions::Notes() const
 \brief selector for the data element myHR::TJobPositions::strNotes
-\details <b>notes, with additional / free information for this type of job position, not used in application</b>
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strNotes
 \fn std::optional<bool> const& myHR::TJobPositions::UrgentValue() const
 \brief selector for the data element myHR::TJobPositions::boUrgentValue
-\details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
 \returns std::optional<bool> const&: Reference to the data element myHR::TJobPositions::boUrgentValue
 
 \}
@@ -243,44 +235,37 @@ method to copy instances of the hierachie of classes into another
 
 \fn int myHR::TJobPositions::_ID() const
 \brief special selector for data element myHR::TJobPositions::iID
-\details unique identification number for a record in this domain with positions in job
-\details <b>unique identification number for a record in this domain with positions in job</b>
+\details attribute "ID" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::iID is empty
 \returns int const&: Reference to the data element myHR::TJobPositions::iID
 \fn std::string const& myHR::TJobPositions::_Denotation() const
 \brief special selector for data element myHR::TJobPositions::strDenotation
-\details unique denotation for this job position, used in selections, and lists to descripe this position
-\details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
+\details attribute "Denotation" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::strDenotation is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strDenotation
 \fn std::string const& myHR::TJobPositions::_Abbreviation() const
 \brief special selector for data element myHR::TJobPositions::strAbbreviation
-\details abbreviation for this job position, used in overvies. Can be null and don't need be unique
-\details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
+\details attribute "Abbreviation" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::strAbbreviation is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strAbbreviation
 \fn std::string const& myHR::TJobPositions::_Description() const
 \brief special selector for data element myHR::TJobPositions::strDescription
-\details detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm
-\details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
+\details attribute "Description" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::strDescription is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strDescription
 \fn int myHR::TJobPositions::_SalaryType() const
 \brief special selector for data element myHR::TJobPositions::iSalaryType
-\details prefered salary type for this job positions. may be overridden in emplyee for individual aggreements
-\details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
+\details attribute "SalaryType" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::iSalaryType is empty
 \returns int const&: Reference to the data element myHR::TJobPositions::iSalaryType
 \fn std::string const& myHR::TJobPositions::_Notes() const
 \brief special selector for data element myHR::TJobPositions::strNotes
-\details notes, with additional / free information for this type of job position, not used in application
-\details <b>notes, with additional / free information for this type of job position, not used in application</b>
+\details attribute "Notes" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::strNotes is empty
 \returns std::string const& const&: Reference to the data element myHR::TJobPositions::strNotes
 \fn bool myHR::TJobPositions::_UrgentValue() const
 \brief special selector for data element myHR::TJobPositions::boUrgentValue
-\details boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)
-\details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
+\details attribute "UrgentValue" in entity "JobPositions"
 \throws std::runtime::error if the attribute myHR::TJobPositions::boUrgentValue is empty
 \returns bool const&: Reference to the data element myHR::TJobPositions::boUrgentValue
 
@@ -291,43 +276,36 @@ method to copy instances of the hierachie of classes into another
 
 \fn std::optional<int> const& myHR::TJobPositions::ID(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::iID
-\details <b>unique identification number for a record in this domain with positions in job</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::iID
 \returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iID
 
 \fn std::optional<std::string> const& myHR::TJobPositions::Denotation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::strDenotation
-\details <b>unique denotation for this job position, used in selections, and lists to descripe this position</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::strDenotation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDenotation
 
 \fn std::optional<std::string> const& myHR::TJobPositions::Abbreviation(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::strAbbreviation
-\details <b>abbreviation for this job position, used in overvies. Can be null and don't need be unique</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::strAbbreviation
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strAbbreviation
 
 \fn std::optional<std::string> const& myHR::TJobPositions::Description(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::strDescription
-\details <b>detailed description of these job position, this is a self documentation, possible use as hint or to information in the programm</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::strDescription
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strDescription
 
 \fn std::optional<int> const& myHR::TJobPositions::SalaryType(std::optional<int> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::iSalaryType
-\details <b>prefered salary type for this job positions. may be overridden in emplyee for individual aggreements</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::iSalaryType
 \returns std::optional<int> const&: Reference to the data element myHR::TJobPositions::iSalaryType
 
 \fn std::optional<std::string> const& myHR::TJobPositions::Notes(std::optional<std::string> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::strNotes
-\details <b>notes, with additional / free information for this type of job position, not used in application</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::strNotes
 \returns std::optional<std::string> const&: Reference to the data element myHR::TJobPositions::strNotes
 
 \fn std::optional<bool> const& myHR::TJobPositions::UrgentValue(std::optional<bool> const& newVal)
 \brief manipulator for the data element myHR::TJobPositions::boUrgentValue
-\details <b>boolean value that makes this entity of job position to a system value (cannot be changed as it is used directly by the program)</b>
 \param[in] newVal the new Value for the member myHR::TJobPositions::boUrgentValue
 \returns std::optional<bool> const&: Reference to the data element myHR::TJobPositions::boUrgentValue
 

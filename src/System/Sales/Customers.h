@@ -3,7 +3,7 @@
 * Project: model with a simple person administration
 * Definition of the data class TCustomers
 * Content: information to the data of a client / customer  (inherited from Person)
-* Date: 25.03.2024 19:08:40,123  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,748  file created with adecc Scholar metadata generator
 * copyright © adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
@@ -24,12 +24,14 @@
 #include <iomanip>
 #include <optional>
 #include <stdexcept>
+#include <functional>
 #include <map>
 #include <vector>
 #include <tuple>
 #include <memory>
 
 namespace reader {
+   class DataAccess; // helper class, later changing
    class TPersonReader;
    }
 
@@ -40,7 +42,7 @@ namespace mySales {
 // - information to the data of a client / customer  (inherited from Person)
 // -------------------------------------------------------------------------------------------------
 class TCustomers: public myCorporate::TPerson {
-   friend class reader::TPersonReader;
+   friend class reader::DataAccess;   friend class reader::TPersonReader;
    public:
       // ----------------------------------------------------------------------------------------------
       // public datatypes for this table
@@ -53,7 +55,7 @@ class TCustomers: public myCorporate::TPerson {
 
             primary_key();
          public:
-            explicit primary_key(int pCustID);
+            /* explicit */primary_key(int pCustID);
             explicit primary_key(TCustomers const& other);
             primary_key(primary_key const& other);
             primary_key(primary_key&& other) noexcept;
@@ -83,6 +85,7 @@ class TCustomers: public myCorporate::TPerson {
             int _compare(primary_key const& other) const;
          };
 
+      using func_ty = std::function<bool(TCustomers&&)>;
       using container_ty = std::map<primary_key, TCustomers>;
       using vector_ty    = std::vector<TCustomers>;
 

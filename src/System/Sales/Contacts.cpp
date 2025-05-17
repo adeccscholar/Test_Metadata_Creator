@@ -2,7 +2,7 @@
 * Project: model with a simple person administration
 * Implementation of the data class TContacts
 * Content: information to the data of a contact person at the customer  (inherited from Person)
-* Date: 25.03.2024 19:08:39,862  file created with adecc Scholar metadata generator
+* Date: 22.04.2025 22:26:55,465  file created with adecc Scholar metadata generator
 * copyright ©  adecc Systemhaus GmbH 2024, All rights reserved.
 * This project is released under the MIT License.
 */
